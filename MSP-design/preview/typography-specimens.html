@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Typography Preview — Web Prototype DS</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  body { padding: 24px; font-family: var(--font-body); background: var(--bg); color: var(--fg); max-width: 800px; }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 24px; }
+  h2 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 32px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .specimen { margin: 20px 0; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+  .specimen-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); margin-bottom: 8px; display: flex; gap: 12px; }
+  .specimen-label span { background: var(--sidebar-bg); padding: 2px 6px; border-radius: var(--radius-sm); }
+  .font-stack { display: flex; gap: 20px; margin: 12px 0; padding: 12px; background: var(--sidebar-bg); border-radius: var(--radius-lg); }
+  .font-stack-item { flex: 1; }
+  .font-stack-item .label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<h1>Typography Specimens</h1>
+
+<div class="font-stack">
+  <div class="font-stack-item"><div class="label">Display</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Source Serif 4</div></div>
+  <div class="font-stack-item"><div class="label">Body / UI</div><div style="font-family:var(--font-body);font-size:16px;font-weight:400">Inter / system-ui</div></div>
+  <div class="font-stack-item"><div class="label">Mono</div><div style="font-family:var(--font-mono);font-size:14px">JetBrains Mono</div></div>
+</div>
+
+<h2>Display — Source Serif 4</h2>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-h1</span><span>clamp(32px, 4vw, 44px)</span><span>700</span><span>1.06</span><span>-0.03em</span></div>
+  <h1>The AI Engineer Documentation Protocol</h1>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-h2</span><span>clamp(24px, 3vw, 32px)</span><span>700</span><span>1.25</span><span>-0.02em</span></div>
+  <h2>AI Engineering vs ML Engineering</h2>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-h3</span><span>20px</span><span>600</span><span>1.30</span></div>
+  <h3>What is an AI Engineer?</h3>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-h4</span><span>17px</span><span>600</span><span>1.40</span></div>
+  <h4>Core Concepts — Architecture Overview</h4>
+</div>
+
+<h2>Body — Inter / system-ui</h2>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-body</span><span>16px</span><span>400</span><span>1.55</span></div>
+  <p>The software engineering landscape is changing. With the availability of AI APIs and open-source models, a new role has emerged: the <strong>AI Engineer</strong>. These developers focus on building applications that leverage AI capabilities.</p>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-sm</span><span>14px</span><span>400–500</span><span>1.43</span><span>Caption / secondary</span></div>
+  <p style="font-size:var(--fs-sm);color:var(--muted)">Getting Started · 01 / 07 · Last updated March 2025</p>
+</div>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--fs-xs</span><span>12px</span><span>500–600</span><span>1.33</span><span>Badge / micro</span></div>
+  <p style="font-size:var(--fs-xs);letter-spacing:0.125px"><span style="background:var(--notion-blue-badge-bg);color:var(--notion-blue-focus);padding:3px 8px;border-radius:9999px;font-weight:600">New</span> <span style="background:var(--sidebar-hover);padding:3px 8px;border-radius:9999px;font-weight:500">Beta</span></p>
+</div>
+
+<h2>Code — JetBrains Mono</h2>
+
+<div class="specimen">
+  <div class="specimen-label"><span>--font-mono</span><span>0.85em relative</span><span>13px in pre</span></div>
+  <p style="margin-bottom:12px">Inline code: <code>const result = await api.fetch()</code> in body text.</p>
+  <pre>function evaluatePrompt(template: string, context: Record&lt;string, unknown&gt;): string {
+  return template.replace(/\{\{(\w+)\}\}/g, (_, key) =>
+    String(context[key] ?? `{{${key}}}`)
+  );
+}</pre>
+</div>
+
+<h2>Combined Hierarchy Example</h2>
+
+<div class="specimen">
+  <h2 style="margin-bottom:8px">Setting Up Evaluations</h2>
+  <p style="color:var(--muted);font-size:var(--fs-sm);margin-bottom:12px">Guide · 15 min read</p>
+  <p>Evaluations are the backbone of reliable AI applications. Without them, you're flying blind — guessing whether a prompt change improved or degraded your system. This guide walks through setting up a practical evaluation pipeline.</p>
+  <p style="margin-top:12px"><code>pip install evals</code> — then configure your first test suite.</p>
+</div>
+
+</body>
+</html>

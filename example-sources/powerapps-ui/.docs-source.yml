@@ -1,0 +1,12 @@
+id: powerapps-ui
+name: Power Apps UI
+category: Power Platform
+description: Reusable Power Apps components, UI guidance, and implementation patterns.
+docs_path: docs
+tags:
+  - powerapps
+  - ui
+  - components
+navigation:
+  - guides
+  - patterns

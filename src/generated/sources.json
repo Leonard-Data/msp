@@ -1,0 +1,44 @@
+[
+  {
+    "id": "powerapps-ui",
+    "name": "Power Apps UI",
+    "description": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+    "category": "Power Platform",
+    "tags": [
+      "powerapps",
+      "ui",
+      "components"
+    ],
+    "navigation": [
+      "guides",
+      "patterns"
+    ],
+    "repo": "company/powerapps-ui",
+    "repoUrl": "https://github.com/company/powerapps-ui",
+    "docsPath": "docs",
+    "sourceDir": ".tmp/aggregated/powerapps-ui",
+    "publicDir": "public/_sources/powerapps-ui",
+    "local": true
+  },
+  {
+    "id": "agent-engineering",
+    "name": "Agent Engineering",
+    "description": "Agent design patterns, workflows, and operating guidance for production systems.",
+    "category": "AI",
+    "tags": [
+      "ai",
+      "agents",
+      "workflows"
+    ],
+    "navigation": [
+      "concepts",
+      "guides"
+    ],
+    "repo": "company/agent-engineering",
+    "repoUrl": "https://github.com/company/agent-engineering",
+    "docsPath": "docs",
+    "sourceDir": ".tmp/aggregated/agent-engineering",
+    "publicDir": "public/_sources/agent-engineering",
+    "local": true
+  }
+]

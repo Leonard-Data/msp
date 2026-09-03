@@ -1,0 +1,12 @@
+id: agent-engineering
+name: Agent Engineering
+category: AI
+description: Agent design patterns, workflows, and operating guidance for production systems.
+docs_path: docs
+tags:
+  - ai
+  - agents
+  - workflows
+navigation:
+  - concepts
+  - guides

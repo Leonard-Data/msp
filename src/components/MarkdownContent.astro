@@ -1,0 +1,84 @@
+---
+// @ts-nocheck
+import { marked } from 'marked';
+
+const { page } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const renderer = new marked.Renderer();
+
+renderer.heading = ({ tokens, depth }) => {
+  const text = plainText(tokens).trim();
+  const slug = slugify(text);
+  const html = marked.parser(tokens);
+  return `<h${depth} id="${slug}">${html}</h${depth}>`;
+};
+
+renderer.link = ({ href = '', title, tokens }) => {
+  const text = escapeHtml(plainText(tokens).trim());
+  const safeHref = rewriteHref(href, page);
+  const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+  return `<a href="${escapeHtml(safeHref)}"${titleAttr}>${text}</a>`;
+};
+
+renderer.image = ({ href = '', text = '', title }) => {
+  const src = rewriteAssetHref(href, page);
+  const alt = escapeHtml(text || '');
+  const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+  return `<img src="${escapeHtml(src)}" alt="${alt}"${titleAttr} loading="lazy" />`;
+};
+
+marked.setOptions({ gfm: true, breaks: false, renderer });
+const html = marked.parse(page.raw);
+
+function plainText(tokens = []) {
+  return tokens.map((token) => token.text || token.raw || plainText(token.tokens || [])).join('');
+}
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function rewriteHref(href, page) {
+  if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (page.kind !== 'source') return href;
+  const resolved = resolvePath(page.relativePath, href);
+  if (resolved.toLowerCase().endsWith('.md')) {
+    const withoutExt = resolved.replace(/\.md$/i, '');
+    const cleaned = withoutExt.replace(/\/README$/i, '').replace(/^README$/i, '');
+    return `${base}docs/sources/${page.sourceId}${cleaned ? `/${cleaned}` : ''}/`;
+  }
+  if (!pathHasExtension(resolved)) return `${base}docs/sources/${page.sourceId}/${resolved}/`;
+  return rewriteAssetHref(href, page);
+}
+
+function rewriteAssetHref(href, page) {
+  if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (page.kind !== 'source') return href;
+  return `${base}_sources/${page.sourceId}/${resolvePath(page.relativePath, href)}`;
+}
+
+function resolvePath(fromFile, target) {
+  const fromParts = fromFile.split('/').slice(0, -1);
+  const parts = `${fromParts.join('/')}/${target}`.split('/');
+  const out = [];
+  for (const part of parts) {
+    if (!part || part === '.') continue;
+    if (part === '..') out.pop();
+    else out.push(part);
+  }
+  return out.join('/');
+}
+
+function pathHasExtension(value) {
+  return /\.[a-z0-9]+$/i.test(value);
+}
+
+function escapeHtml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+---
+<div class="prose" set:html={html} />

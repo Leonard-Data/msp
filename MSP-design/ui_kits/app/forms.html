@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Forms &amp; Inputs — UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); padding: 24px; }
+  .container { max-width: 700px; margin: 0 auto; }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 32px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 16px 0; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius-lg); font-size: 14px; font-weight: 600; border: 1px solid transparent; cursor: pointer; transition: all 0.15s; }
+  .btn-primary { background: var(--accent); color: var(--accent-on); }
+  .btn-primary:hover { background: color-mix(in oklch, var(--accent) 88%, black); }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--sidebar-hover); }
+  .btn-link { background: none; border: none; color: var(--fg); text-decoration: underline; padding: 4px 8px; cursor: pointer; }
+  .btn-sm { padding: 6px 12px; font-size: 13px; }
+  .btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  /* Inputs */
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 4px; color: var(--fg); }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--border);
+    border-radius: var(--radius); font-size: 14px; font-family: var(--font-body);
+    background: var(--bg); color: var(--fg); transition: border-color 0.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--fg);
+  }
+  .field input::placeholder { color: var(--muted-fg); }
+  .field textarea { min-height: 80px; resize: vertical; }
+  .field .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .field select { cursor: pointer; }
+  .form-card { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 16px; }
+
+  /* Badges & Pills */
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 9999px; font-size: 12px; font-weight: 600; letter-spacing: 0.125px; }
+  .badge-blue { background: var(--notion-blue-badge-bg); color: var(--notion-blue-focus); }
+  .badge-gray { background: var(--sidebar-hover); color: var(--muted); }
+  .badge-green { background: #e8f5e9; color: #1b5e20; }
+  .badge-orange { background: #fff3e0; color: #e65100; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 7px; background: var(--accent-soft); color: var(--fg); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--border); }
+
+  .group { display: flex; gap: 16px; flex-wrap: wrap; }
+  .group > .field { flex: 1; min-width: 180px; }
+
+  /* Switch / Toggle */
+  .switch-row { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+  .switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider { position: absolute; inset: 0; background: var(--border); border-radius: 9999px; cursor: pointer; transition: background 0.2s; }
+  .switch .slider::before { content: ''; position: absolute; width: 16px; height: 16px; left: 2px; bottom: 2px; background: #fff; border-radius: 50%; transition: transform 0.2s; }
+  .switch input:checked + .slider { background: var(--accent); }
+  .switch input:checked + .slider::before { transform: translateX(16px); }
+  .switch input:focus-visible + .slider { outline: 2px solid var(--fg); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Forms &amp; Inputs</h1>
+
+  <h2>Buttons</h2>
+  <div class="demo-row">
+    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-ghost">Cancel</button>
+    <button class="btn btn-link">Learn more</button>
+    <button class="btn btn-primary btn-sm">Small</button>
+    <button class="btn btn-ghost btn-sm" disabled style="opacity:0.5;cursor:not-allowed">Disabled</button>
+  </div>
+
+  <h2>Form Example</h2>
+  <div class="form-card">
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" placeholder="Jane Doe" />
+    </div>
+    <div class="group">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="jane@example.com" />
+      </div>
+      <div class="field">
+        <label for="role">Role</label>
+        <select id="role">
+          <option>AI Engineer</option>
+          <option>ML Engineer</option>
+          <option>Software Engineer</option>
+          <option>Product Manager</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Tell us about your project..."></textarea>
+    </div>
+    <div class="switch-row">
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <span style="font-size:14px">Subscribe to newsletter</span>
+    </div>
+    <div style="margin-top:16px">
+      <button class="btn btn-primary">Send message</button>
+    </div>
+  </div>
+
+  <h2>Badges &amp; Pills</h2>
+  <div class="demo-row">
+    <span class="badge badge-blue">New</span>
+    <span class="badge badge-gray">Draft</span>
+    <span class="badge badge-green">Active</span>
+    <span class="badge badge-orange">Warning</span>
+    <span class="pill">01 / 07</span>
+    <span class="pill">Guide</span>
+    <span class="pill">API</span>
+  </div>
+
+  <h2>Focus States</h2>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Tab through the elements below to see <code>:focus-visible</code> outlines:</p>
+  <div class="demo-row">
+    <button class="btn btn-primary">Focus me</button>
+    <button class="btn btn-ghost">And me</button>
+    <input type="text" placeholder="Type here" style="padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--fg)" />
+  </div>
+  <p style="font-size:12px;color:var(--muted-fg);margin-top:4px">All interactive elements have <code>outline: 2px solid var(--fg)</code> on focus-visible.</p>
+</div>
+</body>
+</html>

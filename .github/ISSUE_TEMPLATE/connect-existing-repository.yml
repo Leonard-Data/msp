@@ -1,0 +1,32 @@
+name: Connect existing repository
+description: Register an existing repository as an MSP documentation source.
+title: "[connect-source]: "
+labels:
+  - connect-source
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      placeholder: company/payment-portal
+    validations:
+      required: true
+  - type: input
+    id: docs_path
+    attributes:
+      label: Documentation path
+      placeholder: docs
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      placeholder: Finance Applications
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      placeholder: Add any metadata or onboarding notes for the maintainers.

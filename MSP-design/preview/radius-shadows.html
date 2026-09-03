@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Radius &amp; Shadows — Web Prototype DS</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 24px; font-family: var(--font-body); background: var(--bg); color: var(--fg); }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 24px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; }
+  .card-grid { display: flex; flex-wrap: wrap; gap: 16px; }
+  .shadow-card {
+    width: 200px; height: 120px; background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+    text-align: center; padding: 12px;
+  }
+  .border-demo { display: flex; gap: 12px; flex-wrap: wrap; }
+  .border-sample { padding: 12px 16px; font-size: 13px; font-family: var(--font-mono); }
+  .card-examples { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+  .card {
+    width: 240px; padding: 20px; background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--muted); }
+  .card .meta { font-size: 11px; color: var(--muted-fg); margin-top: 12px; font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<h1>Radius &amp; Shadow Tokens</h1>
+
+<h2>Border Radius</h2>
+<div class="border-demo">
+  <div class="border-sample" style="border:2px solid var(--accent);border-radius:var(--radius-sm)">sm 4px</div>
+  <div class="border-sample" style="border:2px solid var(--accent);border-radius:var(--radius)">default 6px</div>
+  <div class="border-sample" style="border:2px solid var(--accent);border-radius:var(--radius-lg)">lg 9px</div>
+  <div class="border-sample" style="border:2px solid var(--accent);border-radius:var(--radius-xl)">xl 12px</div>
+  <div class="border-sample" style="border:2px solid var(--accent);border-radius:9999px">pill 9999px</div>
+</div>
+
+<h2>Shadow Levels</h2>
+<div class="card-grid">
+  <div class="shadow-card" style="border:1px solid var(--border);border-radius:var(--radius-lg)">
+    Level 0 — Flat<br/>no shadow
+  </div>
+  <div class="shadow-card" style="border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--card-shadow, 0 1px 2px rgba(0,0,0,0.04))">
+    Level 1 — Whisper<br/>soft separation
+  </div>
+  <div class="shadow-card" style="border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--card-shadow, 0 4px 18px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.027), 0 0.8px 3px rgba(0,0,0,0.02), 0 0.175px 1px rgba(0,0,0,0.01))">
+    Level 2 — Soft Card<br/>4-layer stack
+  </div>
+  <div class="shadow-card" style="border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--card-shadow-deep, 0 1px 3px rgba(0,0,0,0.01), 0 3px 7px rgba(0,0,0,0.02), 0 7px 15px rgba(0,0,0,0.02), 0 14px 28px rgba(0,0,0,0.04), 0 23px 52px rgba(0,0,0,0.05))">
+    Level 3 — Deep Card<br/>5-layer stack
+  </div>
+</div>
+
+<h2>Card Examples</h2>
+<div class="card-examples">
+  <div class="card" style="border-radius:var(--radius-xl);box-shadow:0 4px 18px rgba(0,0,0,0.04),0 2px 8px rgba(0,0,0,0.027),0 0.8px 3px rgba(0,0,0,0.02),0 0.175px 1px rgba(0,0,0,0.01)">
+    <h3>Feature Card</h3>
+    <p>Standard card with whisper border and 4-layer shadow stack.</p>
+    <div class="meta">--radius-xl · Level 2 shadow</div>
+  </div>
+  <div class="card" style="border-radius:var(--radius-lg)">
+    <h3>Simple Card</h3>
+    <p>Minimal card with whisper border, no shadow.</p>
+    <div class="meta">--radius-lg · Level 0</div>
+  </div>
+  <div class="card" style="border-radius:var(--radius-xl);border:1px solid var(--accent-soft);background:var(--accent-soft)">
+    <h3>CTA Card</h3>
+    <p>Accent-tinted card for calls-to-action.</p>
+    <div class="meta">--accent-soft bg · --radius-xl</div>
+  </div>
+</div>
+
+</body>
+</html>

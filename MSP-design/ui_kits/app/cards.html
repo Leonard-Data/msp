@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cards — UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); padding: 24px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 32px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 16px; }
+  .card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 15px; line-height: 1.55; }
+  .card .meta { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); margin-top: 12px; }
+
+  .card-cta { background: var(--accent-soft); border: 1px solid var(--accent-soft); border-radius: var(--radius-xl); padding: 24px 28px; margin-bottom: 16px; }
+  .card-cta .cta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  .card-cta h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin: 8px 0; }
+  .card-cta p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+
+  .card-shadow { box-shadow: 0 4px 18px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.027), 0 0.8px 3px rgba(0,0,0,0.02), 0 0.175px 1px rgba(0,0,0,0.01); }
+  .card-alt { background: var(--notion-warm-white); }
+
+  .callout { display: flex; align-items: stretch; gap: 16px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); overflow: hidden; margin-bottom: 16px; }
+  .callout-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 16px 20px; border-right: 1px solid var(--border); color: var(--fg); }
+  .callout-icon svg { width: 20px; height: 20px; }
+  .callout-body { padding: 16px 20px 16px 0; display: flex; flex-direction: column; justify-content: center; }
+  .callout-body p { margin: 0; font-size: 14px; }
+  .callout-body a { font-weight: 500; text-decoration: underline; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .next-lesson { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .next-lesson a { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; transition: background 0.15s; }
+  .next-lesson a:hover { background: var(--sidebar-hover); }
+  .next-lesson .next-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-fg); margin-bottom: 4px; }
+  .next-lesson .next-title { font-size: 16px; font-weight: 600; color: var(--fg); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--radius-lg); font-size: 14px; font-weight: 600; border: 1px solid transparent; cursor: pointer; transition: all 0.15s; }
+  .btn-primary { background: var(--accent); color: var(--accent-on); }
+  .btn-primary:hover { background: color-mix(in oklch, var(--accent) 88%, black); }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Card System</h1>
+
+  <h2>Standard Card</h2>
+  <div class="card" data-od-id="card-standard">
+    <h3>Feature Card</h3>
+    <p>Standard card with whisper border, white background, and 12px radius. Used for feature blocks, content containers, and documentation sections.</p>
+    <div class="meta">--surface bg · --radius-xl · 1px var(--border)</div>
+  </div>
+
+  <h2>Card with Shadow</h2>
+  <div class="card card-shadow" data-od-id="card-shadow">
+    <h3>Elevated Card</h3>
+    <p>Same card with the 4-layer Notion-style shadow stack. Use for featured content, product cards, and panels that need subtle elevation.</p>
+    <div class="meta">4-layer shadow: 0.04/18px → 0.01/1px</div>
+  </div>
+
+  <h2>Alt Background Card</h2>
+  <div class="card card-alt" data-od-id="card-alt">
+    <h3>Warm White Card</h3>
+    <p>Card on warm white (#f6f5f4) background for alternating sections. Used in Notion-style section rhythm.</p>
+    <div class="meta">--notion-warm-white bg</div>
+  </div>
+
+  <h2>Card Grid</h2>
+  <div class="grid-2">
+    <div class="card" data-od-id="card-grid-1">
+      <h3>RAG Systems</h3>
+      <p>Build retrieval-augmented generation pipelines with vector stores and embedding models.</p>
+    </div>
+    <div class="card" data-od-id="card-grid-2">
+      <h3>Evaluation</h3>
+      <p>Design evaluation frameworks to measure and improve your AI system's performance.</p>
+    </div>
+    <div class="card" data-od-id="card-grid-3">
+      <h3>Prompt Engineering</h3>
+      <p>Techniques for crafting effective prompts that produce reliable, structured outputs.</p>
+    </div>
+    <div class="card" data-od-id="card-grid-4">
+      <h3>Production</h3>
+      <p>Deploy, monitor, and scale AI applications in production environments.</p>
+    </div>
+  </div>
+
+  <h2>CTA Card</h2>
+  <div class="card-cta" data-od-id="card-cta">
+    <span class="cta-label">Getting Started</span>
+    <h3>Ready to build with MSP?</h3>
+    <p>Jump into the quickstart guide and have your first project running in minutes.</p>
+    <button class="btn btn-primary">Start the quickstart</button>
+  </div>
+
+  <h2>Callout Card</h2>
+  <div class="callout" data-od-id="callout-card">
+    <div class="callout-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 6v12"/><path d="M17.196 9 6.804 15"/><path d="m6.804 9 10.392 6"/></svg>
+    </div>
+    <div class="callout-body">
+      <p><strong>Go deeper:</strong> <a href="#">join the waitlist for AI Coding for Real Engineers</a></p>
+    </div>
+  </div>
+
+  <h2>Next Lesson Navigation</h2>
+  <div class="next-lesson">
+    <a href="#">
+      <div>
+        <div class="next-label">Up next</div>
+        <div class="next-title">Core Concepts — Architecture Overview</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+</body>
+</html>

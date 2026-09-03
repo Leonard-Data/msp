@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MSP documentation workflow notes
+    url: https://github.com/company/MSP-Portal/blob/main/README.md
+    about: Review the source contract and automation notes before opening a request.

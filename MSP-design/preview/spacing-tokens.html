@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spacing Preview — Web Prototype DS</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 24px; font-family: var(--font-body); background: var(--bg); color: var(--fg); }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 24px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; }
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+  .spacing-vis { flex-shrink: 0; background: var(--accent); border-radius: var(--radius-sm); }
+  .spacing-info { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+  .gap-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .gap-cell { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .gap-block { width: 60px; border-radius: var(--radius-sm); }
+  .gap-block .fill { background: var(--notion-blue); border-radius: var(--radius-sm); }
+  .layout-demo { border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 0; overflow: hidden; margin: 16px 0; }
+  .layout-section { padding: 24px; background: var(--bg); }
+  .layout-section.alt { background: var(--notion-warm-white); }
+  .layout-section .label { font-size: 11px; font-family: var(--font-mono); color: var(--muted-fg); text-transform: uppercase; letter-spacing: 0.05em; }
+  .layout-section h3 { font-family: var(--font-display); font-size: 18px; margin-top: 4px; }
+  .layout-section p { font-size: 14px; color: var(--muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>Spacing &amp; Layout Tokens</h1>
+
+<h2>Spacing Scale</h2>
+<div class="spacing-row"><div class="spacing-vis" style="width:4px;height:16px"></div><span class="spacing-info">--gap-xs: 4px</span></div>
+<div class="spacing-row"><div class="spacing-vis" style="width:8px;height:16px"></div><span class="spacing-info">--gap-sm: 8px</span></div>
+<div class="spacing-row"><div class="spacing-vis" style="width:16px;height:16px"></div><span class="spacing-info">--gap-md: 16px</span></div>
+<div class="spacing-row"><div class="spacing-vis" style="width:24px;height:16px"></div><span class="spacing-info">--gap-lg: 24px</span></div>
+<div class="spacing-row"><div class="spacing-vis" style="width:32px;height:16px"></div><span class="spacing-info">--gap-xl: 32px</span></div>
+<div class="spacing-row"><div class="spacing-vis" style="width:48px;height:16px"></div><span class="spacing-info">--gap-2xl: 48px</span></div>
+
+<h2>Layout Dimensions</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px">
+  <div style="padding:12px;border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-fg)">--sidebar-w</div>
+    <div style="font-size:24px;font-weight:700">264px</div>
+  </div>
+  <div style="padding:12px;border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-fg)">--toc-w</div>
+    <div style="font-size:24px;font-weight:700">232px</div>
+  </div>
+  <div style="padding:12px;border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-fg)">--nav-height</div>
+    <div style="font-size:24px;font-weight:700">57px</div>
+  </div>
+  <div style="padding:12px;border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-fg)">--prose</div>
+    <div style="font-size:24px;font-weight:700">65ch</div>
+  </div>
+</div>
+
+<h2>Radius Scale</h2>
+<div class="gap-grid">
+  <div class="gap-cell"><div style="width:60px;height:40px;border:2px solid var(--accent);border-radius:var(--radius-sm)"></div><span class="spacing-info">--radius-sm<br/>4px</span></div>
+  <div class="gap-cell"><div style="width:60px;height:40px;border:2px solid var(--accent);border-radius:var(--radius)"></div><span class="spacing-info">--radius<br/>6px</span></div>
+  <div class="gap-cell"><div style="width:60px;height:40px;border:2px solid var(--accent);border-radius:var(--radius-lg)"></div><span class="spacing-info">--radius-lg<br/>9px</span></div>
+  <div class="gap-cell"><div style="width:60px;height:40px;border:2px solid var(--accent);border-radius:var(--radius-xl)"></div><span class="spacing-info">--radius-xl<br/>12px</span></div>
+</div>
+
+<h2>Section Alternation Demo</h2>
+<div class="layout-demo">
+  <div class="layout-section">
+    <div class="label">Section 1 — White</div>
+    <h3>Getting Started</h3>
+    <p>A reusable documentation site template inspired by modern developer docs.</p>
+  </div>
+  <div class="layout-section alt">
+    <div class="label">Section 2 — Warm White (#f6f5f4)</div>
+    <h3>Core Concepts</h3>
+    <p>AI Engineers bridge the gap between traditional software engineering and artificial intelligence.</p>
+  </div>
+  <div class="layout-section">
+    <div class="label">Section 3 — White</div>
+    <h3>Architecture Overview</h3>
+    <p>Understanding the system architecture is key to building reliable applications.</p>
+  </div>
+</div>
+
+</body>
+</html>

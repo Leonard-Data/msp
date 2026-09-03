@@ -1,0 +1,634 @@
+{
+  "updatedAt": "2026-09-03T16:43:21.932Z",
+  "portalPages": [
+    {
+      "kind": "portal",
+      "title": "MSP Portal",
+      "description": "MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site.",
+      "content": "MSP Portal MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site. Core flow 1. Register a source in sources.yml 2. Sync repository docs into the portal 3. Generate navigation and search data 4. Publish to GitHub Pages What ships in this starter Multi repository source registry Searchable docs experience Auto generated sidebar and table of contents GitHub issue forms for source requests GitHub Actions for sync and Pages deploy",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Core flow",
+          "slug": "core-flow"
+        },
+        {
+          "depth": 2,
+          "text": "What ships in this starter",
+          "slug": "what-ships-in-this-starter"
+        }
+      ],
+      "file": "content/portal/overview.md",
+      "relativePath": "overview.md",
+      "slug": "overview",
+      "href": "/docs/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
+      "title": "How it works",
+      "description": "The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time.",
+      "content": "How it works The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time. Pipeline ADD REGISTER SYNC VALIDATE INDEX PUBLISH Source contract Every source repository should contain: docs/ .docs source.yml Why this model Docs stay close to the code The portal stays small Search and navigation stay centralized",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "depth": 2,
+          "text": "Source contract",
+          "slug": "source-contract"
+        },
+        {
+          "depth": 2,
+          "text": "Why this model",
+          "slug": "why-this-model"
+        }
+      ],
+      "file": "content/portal/how-it-works.md",
+      "relativePath": "how-it-works.md",
+      "slug": "how-it-works",
+      "href": "/docs/how-it-works/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    }
+  ],
+  "sourceGroups": [
+    {
+      "id": "powerapps-ui",
+      "name": "Power Apps UI",
+      "category": "Power Platform",
+      "description": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+      "repo": "company/powerapps-ui",
+      "repoUrl": "https://github.com/company/powerapps-ui",
+      "tags": [
+        "powerapps",
+        "ui",
+        "components"
+      ],
+      "pages": [
+        {
+          "title": "Power Apps UI",
+          "href": "/docs/sources/powerapps-ui/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "What you will find",
+              "slug": "what-you-will-find"
+            },
+            {
+              "depth": 2,
+              "text": "Start here",
+              "slug": "start-here"
+            }
+          ]
+        },
+        {
+          "title": "Component standards",
+          "href": "/docs/sources/powerapps-ui/guides/component-standards/",
+          "section": "guides",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Principles",
+              "slug": "principles"
+            },
+            {
+              "depth": 2,
+              "text": "Example",
+              "slug": "example"
+            }
+          ]
+        },
+        {
+          "title": "Responsive forms",
+          "href": "/docs/sources/powerapps-ui/patterns/responsive-forms/",
+          "section": "patterns",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Checklist",
+              "slug": "checklist"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agent-engineering",
+      "name": "Agent Engineering",
+      "category": "AI",
+      "description": "Agent design patterns, workflows, and operating guidance for production systems.",
+      "repo": "company/agent-engineering",
+      "repoUrl": "https://github.com/company/agent-engineering",
+      "tags": [
+        "ai",
+        "agents",
+        "workflows"
+      ],
+      "pages": [
+        {
+          "title": "Agent Engineering",
+          "href": "/docs/sources/agent-engineering/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Sections",
+              "slug": "sections"
+            }
+          ]
+        },
+        {
+          "title": "Execution model",
+          "href": "/docs/sources/agent-engineering/concepts/execution-model/",
+          "section": "concepts",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Core loop",
+              "slug": "core-loop"
+            },
+            {
+              "depth": 2,
+              "text": "Failure modes",
+              "slug": "failure-modes"
+            }
+          ]
+        },
+        {
+          "title": "Workflow review checklist",
+          "href": "/docs/sources/agent-engineering/guides/workflow-review-checklist/",
+          "section": "guides",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Review items",
+              "slug": "review-items"
+            },
+            {
+              "depth": 2,
+              "text": "Notes",
+              "slug": "notes"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "name": "AI",
+      "sources": [
+        {
+          "id": "agent-engineering",
+          "name": "Agent Engineering",
+          "category": "AI",
+          "description": "Agent design patterns, workflows, and operating guidance for production systems.",
+          "repo": "company/agent-engineering",
+          "repoUrl": "https://github.com/company/agent-engineering",
+          "tags": [
+            "ai",
+            "agents",
+            "workflows"
+          ],
+          "pages": [
+            {
+              "title": "Agent Engineering",
+              "href": "/docs/sources/agent-engineering/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Sections",
+                  "slug": "sections"
+                }
+              ]
+            },
+            {
+              "title": "Execution model",
+              "href": "/docs/sources/agent-engineering/concepts/execution-model/",
+              "section": "concepts",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Core loop",
+                  "slug": "core-loop"
+                },
+                {
+                  "depth": 2,
+                  "text": "Failure modes",
+                  "slug": "failure-modes"
+                }
+              ]
+            },
+            {
+              "title": "Workflow review checklist",
+              "href": "/docs/sources/agent-engineering/guides/workflow-review-checklist/",
+              "section": "guides",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Review items",
+                  "slug": "review-items"
+                },
+                {
+                  "depth": 2,
+                  "text": "Notes",
+                  "slug": "notes"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Power Platform",
+      "sources": [
+        {
+          "id": "powerapps-ui",
+          "name": "Power Apps UI",
+          "category": "Power Platform",
+          "description": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+          "repo": "company/powerapps-ui",
+          "repoUrl": "https://github.com/company/powerapps-ui",
+          "tags": [
+            "powerapps",
+            "ui",
+            "components"
+          ],
+          "pages": [
+            {
+              "title": "Power Apps UI",
+              "href": "/docs/sources/powerapps-ui/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "What you will find",
+                  "slug": "what-you-will-find"
+                },
+                {
+                  "depth": 2,
+                  "text": "Start here",
+                  "slug": "start-here"
+                }
+              ]
+            },
+            {
+              "title": "Component standards",
+              "href": "/docs/sources/powerapps-ui/guides/component-standards/",
+              "section": "guides",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Principles",
+                  "slug": "principles"
+                },
+                {
+                  "depth": 2,
+                  "text": "Example",
+                  "slug": "example"
+                }
+              ]
+            },
+            {
+              "title": "Responsive forms",
+              "href": "/docs/sources/powerapps-ui/patterns/responsive-forms/",
+              "section": "patterns",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Checklist",
+                  "slug": "checklist"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sidebar": [
+    {
+      "label": "Portal",
+      "items": [
+        {
+          "label": "MSP Portal",
+          "href": "/docs/"
+        },
+        {
+          "label": "How it works",
+          "href": "/docs/how-it-works/"
+        }
+      ]
+    },
+    {
+      "label": "AI",
+      "items": [
+        {
+          "label": "Agent Engineering",
+          "href": "/docs/sources/agent-engineering/",
+          "children": [
+            {
+              "label": "Execution model",
+              "href": "/docs/sources/agent-engineering/concepts/execution-model/"
+            },
+            {
+              "label": "Workflow review checklist",
+              "href": "/docs/sources/agent-engineering/guides/workflow-review-checklist/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Power Platform",
+      "items": [
+        {
+          "label": "Power Apps UI",
+          "href": "/docs/sources/powerapps-ui/",
+          "children": [
+            {
+              "label": "Component standards",
+              "href": "/docs/sources/powerapps-ui/guides/component-standards/"
+            },
+            {
+              "label": "Responsive forms",
+              "href": "/docs/sources/powerapps-ui/patterns/responsive-forms/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "kind": "portal",
+      "title": "MSP Portal",
+      "description": "MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site.",
+      "content": "MSP Portal MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site. Core flow 1. Register a source in sources.yml 2. Sync repository docs into the portal 3. Generate navigation and search data 4. Publish to GitHub Pages What ships in this starter Multi repository source registry Searchable docs experience Auto generated sidebar and table of contents GitHub issue forms for source requests GitHub Actions for sync and Pages deploy",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Core flow",
+          "slug": "core-flow"
+        },
+        {
+          "depth": 2,
+          "text": "What ships in this starter",
+          "slug": "what-ships-in-this-starter"
+        }
+      ],
+      "file": "content/portal/overview.md",
+      "relativePath": "overview.md",
+      "slug": "overview",
+      "href": "/docs/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
+      "title": "How it works",
+      "description": "The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time.",
+      "content": "How it works The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time. Pipeline ADD REGISTER SYNC VALIDATE INDEX PUBLISH Source contract Every source repository should contain: docs/ .docs source.yml Why this model Docs stay close to the code The portal stays small Search and navigation stay centralized",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "depth": 2,
+          "text": "Source contract",
+          "slug": "source-contract"
+        },
+        {
+          "depth": 2,
+          "text": "Why this model",
+          "slug": "why-this-model"
+        }
+      ],
+      "file": "content/portal/how-it-works.md",
+      "relativePath": "how-it-works.md",
+      "slug": "how-it-works",
+      "href": "/docs/how-it-works/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Power Apps UI",
+      "description": "Centralized guidance for reusable Power Apps UI building blocks.",
+      "content": "Power Apps UI Centralized guidance for reusable Power Apps UI building blocks. What you will find Layout and component patterns Accessibility guidance Reusable snippets for Canvas Apps Start here Component standards ./guides/component standards.md Responsive forms ./patterns/responsive forms.md",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "What you will find",
+          "slug": "what-you-will-find"
+        },
+        {
+          "depth": 2,
+          "text": "Start here",
+          "slug": "start-here"
+        }
+      ],
+      "file": ".tmp/aggregated/powerapps-ui/README.md",
+      "relativePath": "README.md",
+      "slug": "sources/powerapps-ui",
+      "href": "/docs/sources/powerapps-ui/",
+      "category": "Power Platform",
+      "sourceId": "powerapps-ui",
+      "sourceName": "Power Apps UI",
+      "sourceDescription": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+      "section": "overview",
+      "repo": "company/powerapps-ui",
+      "repoUrl": "https://github.com/company/powerapps-ui",
+      "tags": [
+        "powerapps",
+        "ui",
+        "components"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Component standards",
+      "description": "Use consistent naming, spacing, and data contracts for every reusable component.",
+      "content": "Component standards Use consistent naming, spacing, and data contracts for every reusable component. Principles 1. Keep components boring. 2. Prefer built in controls before custom wrappers. 3. Document inputs, outputs, and known limits. Example Component Purpose Header Shared page title and actions Empty state Standard no data message",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Principles",
+          "slug": "principles"
+        },
+        {
+          "depth": 2,
+          "text": "Example",
+          "slug": "example"
+        }
+      ],
+      "file": ".tmp/aggregated/powerapps-ui/guides/component-standards.md",
+      "relativePath": "guides/component-standards.md",
+      "slug": "sources/powerapps-ui/guides/component-standards",
+      "href": "/docs/sources/powerapps-ui/guides/component-standards/",
+      "category": "Power Platform",
+      "sourceId": "powerapps-ui",
+      "sourceName": "Power Apps UI",
+      "sourceDescription": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+      "section": "guides",
+      "repo": "company/powerapps-ui",
+      "repoUrl": "https://github.com/company/powerapps-ui",
+      "tags": [
+        "powerapps",
+        "ui",
+        "components"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Responsive forms",
+      "description": "Document your breakpoints directly in markdown so app makers can copy the pattern.",
+      "content": "Responsive forms Document your breakpoints directly in markdown so app makers can copy the pattern. Checklist Group required fields first Keep labels visible Avoid horizontal scrolling Tip: Prefer native Power Apps controls before bringing in custom PCF components.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Checklist",
+          "slug": "checklist"
+        }
+      ],
+      "file": ".tmp/aggregated/powerapps-ui/patterns/responsive-forms.md",
+      "relativePath": "patterns/responsive-forms.md",
+      "slug": "sources/powerapps-ui/patterns/responsive-forms",
+      "href": "/docs/sources/powerapps-ui/patterns/responsive-forms/",
+      "category": "Power Platform",
+      "sourceId": "powerapps-ui",
+      "sourceName": "Power Apps UI",
+      "sourceDescription": "Reusable Power Apps components, UI guidance, and implementation patterns.",
+      "section": "patterns",
+      "repo": "company/powerapps-ui",
+      "repoUrl": "https://github.com/company/powerapps-ui",
+      "tags": [
+        "powerapps",
+        "ui",
+        "components"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Agent Engineering",
+      "description": "Patterns for building reliable agent systems.",
+      "content": "Agent Engineering Patterns for building reliable agent systems. Sections Execution model ./concepts/execution model.md Workflow review checklist ./guides/workflow review checklist.md",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Sections",
+          "slug": "sections"
+        }
+      ],
+      "file": ".tmp/aggregated/agent-engineering/README.md",
+      "relativePath": "README.md",
+      "slug": "sources/agent-engineering",
+      "href": "/docs/sources/agent-engineering/",
+      "category": "AI",
+      "sourceId": "agent-engineering",
+      "sourceName": "Agent Engineering",
+      "sourceDescription": "Agent design patterns, workflows, and operating guidance for production systems.",
+      "section": "overview",
+      "repo": "company/agent-engineering",
+      "repoUrl": "https://github.com/company/agent-engineering",
+      "tags": [
+        "ai",
+        "agents",
+        "workflows"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Execution model",
+      "description": "An agent system should make the control flow explicit.",
+      "content": "Execution model An agent system should make the control flow explicit. Core loop 1. Observe input 2. Decide next action 3. Execute tool or workflow 4. Validate the result Failure modes Missing guardrails Hidden shared state No retry budget",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Core loop",
+          "slug": "core-loop"
+        },
+        {
+          "depth": 2,
+          "text": "Failure modes",
+          "slug": "failure-modes"
+        }
+      ],
+      "file": ".tmp/aggregated/agent-engineering/concepts/execution-model.md",
+      "relativePath": "concepts/execution-model.md",
+      "slug": "sources/agent-engineering/concepts/execution-model",
+      "href": "/docs/sources/agent-engineering/concepts/execution-model/",
+      "category": "AI",
+      "sourceId": "agent-engineering",
+      "sourceName": "Agent Engineering",
+      "sourceDescription": "Agent design patterns, workflows, and operating guidance for production systems.",
+      "section": "concepts",
+      "repo": "company/agent-engineering",
+      "repoUrl": "https://github.com/company/agent-engineering",
+      "tags": [
+        "ai",
+        "agents",
+        "workflows"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Workflow review checklist",
+      "description": "Use this checklist before enabling a workflow in production.",
+      "content": "Workflow review checklist Use this checklist before enabling a workflow in production. Review items Clear owner Bounded permissions Failure handling Observable logs Human escalation path Notes A workflow is easier to trust when each stage has one clear responsibility.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Review items",
+          "slug": "review-items"
+        },
+        {
+          "depth": 2,
+          "text": "Notes",
+          "slug": "notes"
+        }
+      ],
+      "file": ".tmp/aggregated/agent-engineering/guides/workflow-review-checklist.md",
+      "relativePath": "guides/workflow-review-checklist.md",
+      "slug": "sources/agent-engineering/guides/workflow-review-checklist",
+      "href": "/docs/sources/agent-engineering/guides/workflow-review-checklist/",
+      "category": "AI",
+      "sourceId": "agent-engineering",
+      "sourceName": "Agent Engineering",
+      "sourceDescription": "Agent design patterns, workflows, and operating guidance for production systems.",
+      "section": "guides",
+      "repo": "company/agent-engineering",
+      "repoUrl": "https://github.com/company/agent-engineering",
+      "tags": [
+        "ai",
+        "agents",
+        "workflows"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+name: Handle documentation requests
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  create-or-connect:
+    if: contains(join(github.event.issue.labels.*.name, ','), 'create-section') || contains(join(github.event.issue.labels.*.name, ','), 'connect-source')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse issue and register source
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.MSP_ADMIN_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const body = context.payload.issue.body || '';
+            const lines = body.split('\n');
+            const pick = (label) => {
+              const idx = lines.findIndex((line) => line.trim() === `### ${label}`);
+              return idx >= 0 ? (lines[idx + 2] || '').trim() : '';
+            };
+            const isCreate = context.payload.issue.labels.some((label) => label.name === 'create-section');
+            const repo = isCreate ? `${context.repo.owner}/${pick('Repository name')}` : pick('Repository');
+            const category = pick('Category');
+            const docsPath = pick('Documentation path') || 'docs';
+            const sectionName = pick('Section name') || repo.split('/')[1];
+            const sourceId = repo.split('/')[1].toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            if (!repo || !category) core.setFailed('Missing required fields in issue form');
+
+            core.notice(`Request received for ${repo}`);
+
+            // ponytail: repo creation is intentionally secret-driven. Add a GitHub App or org token when ready.
+            if (isCreate && process.env.MSP_TEMPLATE_REPOSITORY) {
+              await github.request('POST /repos/{template_owner}/{template_repo}/generate', {
+                template_owner: context.repo.owner,
+                template_repo: process.env.MSP_TEMPLATE_REPOSITORY,
+                owner: context.repo.owner,
+                name: repo.split('/')[1],
+                private: pick('Visibility') === 'private',
+                description: pick('Description')
+              }).catch((error) => core.warning(error.message));
+            }
+          env:
+            MSP_TEMPLATE_REPOSITORY: ${{ vars.MSP_TEMPLATE_REPOSITORY }}
+      - name: Append source registry entry
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          repo = "${{ github.event.issue.title }}"
+          body = Path("${{ github.workspace }}") / ".github" / "ISSUE_TEMPLATE" / "config.yml"
+          print("Request parsed in previous step; edit sources.yml in a follow-up hardening pass.")
+          PY
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'Request received. The workflow scaffold is in place; wire `MSP_ADMIN_TOKEN`, `MSP_TEMPLATE_REPOSITORY`, and the source-registration step for your org before relying on it in production.'
+            });

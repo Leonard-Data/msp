@@ -1,0 +1,30 @@
+---
+// @ts-nocheck
+import fs from 'node:fs/promises';
+import docsData from '../../generated/docs-data.json';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import MarkdownContent from '../../components/MarkdownContent.astro';
+
+export function getStaticPaths() {
+  return docsData.pages
+    .filter((page) => page.href !== '/docs/')
+    .map((page) => ({ params: { slug: page.href.replace(/^\/docs\//, '').replace(/\/$/, '') }, props: { page } }));
+}
+
+const { page } = Astro.props;
+page.raw = await fs.readFile(`${process.cwd()}/${page.file}`, 'utf8');
+const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const toc = page.headings.filter((item) => item.depth <= 3);
+---
+<DocsLayout title={`${page.title} · MSP Docs`} description={page.description} sidebar={docsData.sidebar} toc={toc} repoUrl={repoUrl} currentPath={page.href}>
+  <header class="doc-header">
+    <div class="doc-meta">
+      <span class="pill">{page.category}</span>
+      {page.kind === 'source' && <span>{page.sourceName}</span>}
+      {page.kind === 'source' && <a href={page.repoUrl} target="_blank" rel="noreferrer">{page.repo}</a>}
+    </div>
+    <h1>{page.title}</h1>
+    <p class="lead">{page.description}</p>
+  </header>
+  <MarkdownContent page={page} />
+</DocsLayout>

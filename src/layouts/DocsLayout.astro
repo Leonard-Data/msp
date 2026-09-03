@@ -1,0 +1,50 @@
+---
+// @ts-nocheck
+import BaseLayout from './BaseLayout.astro';
+
+const { title, description, sidebar = [], toc = [], repoUrl, currentPath = '/', children } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const hrefFor = (href) => `${base}${href.replace(/^\//, '')}`;
+---
+<BaseLayout title={title} description={description} repoUrl={repoUrl}>
+  <div class="page">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      {sidebar.map((section) => (
+        <section class="sidebar__section">
+          <div class="sidebar__label">{section.label}</div>
+          <div>
+            {section.items.map((item) => item.children?.length ? (
+              <details open={currentPath.startsWith(item.href)}>
+                <summary>{item.label}</summary>
+                <div class="sidebar__children">
+                  <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                  {item.children.map((child) => (
+                    <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </aside>
+
+    <main class="content">
+      <slot />
+      <footer class="footer">Centralized docs pipeline: add → register → sync → validate → index → publish.</footer>
+    </main>
+
+    <aside class="toc" aria-label="Table of contents">
+      <section class="toc__section">
+        <div class="toc__label">On this page</div>
+        <div>
+          {toc.length ? toc.map((item) => (
+            <a href={`#${item.slug}`}>{item.text}</a>
+          )) : <p class="muted">No headings yet.</p>}
+        </div>
+      </section>
+    </aside>
+  </div>
+</BaseLayout>

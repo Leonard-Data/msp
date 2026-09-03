@@ -1,0 +1,47 @@
+---
+// @ts-nocheck
+import docsData from '../generated/docs-data.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const base = import.meta.env.BASE_URL;
+const sourceCount = docsData.sourceGroups.length;
+const docCount = docsData.pages.filter((page) => page.kind === 'source').length;
+---
+<BaseLayout title="MSP Portal" description="Reusable Astro portal for multi-repository documentation" repoUrl={repoUrl}>
+  <main class="content" style="width:min(1456px,calc(100% - 2 * var(--gutter)));margin:0 auto;">
+    <section class="hero">
+      <div class="eyebrow">Centralized documentation</div>
+      <h1>One Astro portal for every documentation repository.</h1>
+      <p class="lead">MSP keeps markdown with the owning project, syncs it into one GitHub Pages site, and gives you shared navigation, search, and contribution workflows.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="button button--primary" href={`${base}docs/`}>Browse docs</a>
+        <a class="button button--ghost" href={`${base}search/`}>Search content</a>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:24px;">
+      <div class="metric"><span class="eyebrow">Sources</span><strong>{sourceCount}</strong><span class="muted">registered repositories</span></div>
+      <div class="metric"><span class="eyebrow">Pages</span><strong>{docCount}</strong><span class="muted">synced markdown documents</span></div>
+      <div class="metric"><span class="eyebrow">Hosting</span><strong>GitHub Pages</strong><span class="muted">static build, no runtime backend</span></div>
+    </section>
+
+    <section class="stack" style="margin-top:32px;">
+      <div class="card">
+        <div class="eyebrow">Pipeline</div>
+        <h2 style="margin-top:8px;">Add → register → sync → validate → index → publish</h2>
+        <p class="muted">The portal owns discovery, search, and publishing. Each source repository still owns its own documentation files.</p>
+      </div>
+
+      <div class="source-grid">
+        {docsData.categories.map((category) => (
+          <article>
+            <div class="eyebrow">{category.name}</div>
+            <h3 style="margin:10px 0;">{category.sources.length} source{category.sources.length === 1 ? '' : 's'}</h3>
+            <p class="muted">{category.sources.map((source) => source.name).join(', ')}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

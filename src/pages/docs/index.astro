@@ -1,0 +1,27 @@
+---
+// @ts-nocheck
+import fs from 'node:fs/promises';
+import docsData from '../../generated/docs-data.json';
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import MarkdownContent from '../../components/MarkdownContent.astro';
+
+const page = docsData.pages.find((entry) => entry.href === '/docs/');
+page.raw = await fs.readFile(`${process.cwd()}/${page.file}`, 'utf8');
+const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const base = import.meta.env.BASE_URL;
+---
+<DocsLayout title={`${page.title} · MSP Docs`} description={page.description} sidebar={docsData.sidebar} toc={page.headings} repoUrl={repoUrl} currentPath="/docs/">
+  <header class="doc-header">
+    <span class="pill">Portal overview</span>
+    <h1>{page.title}</h1>
+    <p class="lead">{page.description}</p>
+  </header>
+
+  <div class="search-panel">
+    <div class="eyebrow">Quick jump</div>
+    <h3 style="margin:8px 0 12px;">Search every synced repository</h3>
+    <a class="button button--ghost" href={`${base}search/`}>Open search</a>
+  </div>
+
+  <MarkdownContent page={page} />
+</DocsLayout>

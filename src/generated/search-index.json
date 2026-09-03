@@ -1,0 +1,110 @@
+[
+  {
+    "title": "MSP Portal",
+    "href": "/docs/",
+    "description": "MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site.",
+    "category": "Portal",
+    "sourceName": "MSP Portal",
+    "tags": [
+      "portal"
+    ],
+    "headings": "Core flow What ships in this starter",
+    "content": "MSP Portal MSP is a reusable Astro documentation portal that aggregates markdown from multiple repositories into one searchable site. Core flow 1. Register a source in sources.yml 2. Sync repository docs into the portal 3. Generate navigation and search data 4. Publish to GitHub Pages What ships in this starter Multi repository source registry Searchable docs experience Auto generated sidebar and table of contents GitHub issue forms for source requests GitHub Actions for sync and Pages deploy"
+  },
+  {
+    "title": "How it works",
+    "href": "/docs/how-it-works/",
+    "description": "The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time.",
+    "category": "Portal",
+    "sourceName": "MSP Portal",
+    "tags": [
+      "portal"
+    ],
+    "headings": "Pipeline Source contract Why this model",
+    "content": "How it works The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time. Pipeline ADD REGISTER SYNC VALIDATE INDEX PUBLISH Source contract Every source repository should contain: docs/ .docs source.yml Why this model Docs stay close to the code The portal stays small Search and navigation stay centralized"
+  },
+  {
+    "title": "Power Apps UI",
+    "href": "/docs/sources/powerapps-ui/",
+    "description": "Centralized guidance for reusable Power Apps UI building blocks.",
+    "category": "Power Platform",
+    "sourceName": "Power Apps UI",
+    "tags": [
+      "powerapps",
+      "ui",
+      "components"
+    ],
+    "headings": "What you will find Start here",
+    "content": "Power Apps UI Centralized guidance for reusable Power Apps UI building blocks. What you will find Layout and component patterns Accessibility guidance Reusable snippets for Canvas Apps Start here Component standards ./guides/component standards.md Responsive forms ./patterns/responsive forms.md"
+  },
+  {
+    "title": "Component standards",
+    "href": "/docs/sources/powerapps-ui/guides/component-standards/",
+    "description": "Use consistent naming, spacing, and data contracts for every reusable component.",
+    "category": "Power Platform",
+    "sourceName": "Power Apps UI",
+    "tags": [
+      "powerapps",
+      "ui",
+      "components"
+    ],
+    "headings": "Principles Example",
+    "content": "Component standards Use consistent naming, spacing, and data contracts for every reusable component. Principles 1. Keep components boring. 2. Prefer built in controls before custom wrappers. 3. Document inputs, outputs, and known limits. Example Component Purpose Header Shared page title and actions Empty state Standard no data message"
+  },
+  {
+    "title": "Responsive forms",
+    "href": "/docs/sources/powerapps-ui/patterns/responsive-forms/",
+    "description": "Document your breakpoints directly in markdown so app makers can copy the pattern.",
+    "category": "Power Platform",
+    "sourceName": "Power Apps UI",
+    "tags": [
+      "powerapps",
+      "ui",
+      "components"
+    ],
+    "headings": "Checklist",
+    "content": "Responsive forms Document your breakpoints directly in markdown so app makers can copy the pattern. Checklist Group required fields first Keep labels visible Avoid horizontal scrolling Tip: Prefer native Power Apps controls before bringing in custom PCF components."
+  },
+  {
+    "title": "Agent Engineering",
+    "href": "/docs/sources/agent-engineering/",
+    "description": "Patterns for building reliable agent systems.",
+    "category": "AI",
+    "sourceName": "Agent Engineering",
+    "tags": [
+      "ai",
+      "agents",
+      "workflows"
+    ],
+    "headings": "Sections",
+    "content": "Agent Engineering Patterns for building reliable agent systems. Sections Execution model ./concepts/execution model.md Workflow review checklist ./guides/workflow review checklist.md"
+  },
+  {
+    "title": "Execution model",
+    "href": "/docs/sources/agent-engineering/concepts/execution-model/",
+    "description": "An agent system should make the control flow explicit.",
+    "category": "AI",
+    "sourceName": "Agent Engineering",
+    "tags": [
+      "ai",
+      "agents",
+      "workflows"
+    ],
+    "headings": "Core loop Failure modes",
+    "content": "Execution model An agent system should make the control flow explicit. Core loop 1. Observe input 2. Decide next action 3. Execute tool or workflow 4. Validate the result Failure modes Missing guardrails Hidden shared state No retry budget"
+  },
+  {
+    "title": "Workflow review checklist",
+    "href": "/docs/sources/agent-engineering/guides/workflow-review-checklist/",
+    "description": "Use this checklist before enabling a workflow in production.",
+    "category": "AI",
+    "sourceName": "Agent Engineering",
+    "tags": [
+      "ai",
+      "agents",
+      "workflows"
+    ],
+    "headings": "Review items Notes",
+    "content": "Workflow review checklist Use this checklist before enabling a workflow in production. Review items Clear owner Bounded permissions Failure handling Observable logs Human escalation path Notes A workflow is easier to trust when each stage has one clear responsibility."
+  }
+]

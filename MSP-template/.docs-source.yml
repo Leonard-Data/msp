@@ -1,0 +1,15 @@
+id: replace-me
+name: Replace Me
+category: General
+description: Replace this metadata before connecting the repository to MSP Portal.
+docs_path: docs
+tags: []
+navigation:
+  - concepts
+  - architecture
+  - guides
+  - patterns
+  - examples
+  - snippets
+  - troubleshooting
+  - reference

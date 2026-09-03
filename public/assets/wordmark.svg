@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="28" viewBox="0 0 120 28">
+  <rect width="28" height="28" rx="6" fill="#000000"/>
+  <text x="14" y="19" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="15" font-weight="700" fill="#ffffff">M</text>
+  <text x="36" y="19" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="700" fill="#0a0a0b">MSP Docs</text>
+</svg>

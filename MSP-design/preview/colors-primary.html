@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Color Preview — Web Prototype DS</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 24px; font-family: var(--font-body); background: var(--bg); color: var(--fg); }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 24px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 12px; }
+  .swatch { width: 160px; border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; }
+  .swatch-fill { height: 60px; }
+  .swatch-info { padding: 8px 10px; font-size: 12px; }
+  .swatch-info .name { font-weight: 600; }
+  .swatch-info .value { color: var(--muted); font-family: var(--font-mono); font-size: 11px; margin-top: 2px; }
+  .section-group { margin-bottom: 32px; }
+  .contrast-demo { display: flex; gap: 16px; margin-top: 16px; }
+  .contrast-box { padding: 20px; border-radius: var(--radius-lg); flex: 1; }
+  .contrast-box .big { font-size: 24px; font-weight: 700; }
+  .contrast-box .small { font-size: 14px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<h1>Color Preview</h1>
+
+<div class="section-group">
+  <h2>Core Light Palette</h2>
+  <div class="grid">
+    <div class="swatch"><div class="swatch-fill" style="background:var(--bg);border-bottom:1px solid var(--border)"></div><div class="swatch-info"><div class="name">--bg</div><div class="value">#ffffff</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--surface);border-bottom:1px solid var(--border)"></div><div class="swatch-info"><div class="name">--surface</div><div class="value">#ffffff</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--fg)"></div><div class="swatch-info"><div class="name" style="color:var(--fg)">--fg</div><div class="value" style="color:var(--fg)">#0a0a0b</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--muted)"></div><div class="swatch-info"><div class="name">--muted</div><div class="value">#6b6b78</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--muted-fg)"></div><div class="swatch-info"><div class="name">--muted-fg</div><div class="value">#8b8b98</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--faint)"></div><div class="swatch-info"><div class="name">--faint</div><div class="value">#b0b0bb</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--accent)"></div><div class="swatch-info"><div class="name" style="color:#fff">--accent</div><div class="value" style="color:#fff">#000000</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--accent-soft)"></div><div class="swatch-info"><div class="name">--accent-soft</div><div class="value">rgba(0,0,0,0.10)</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--sidebar-bg);border-bottom:1px solid var(--border)"></div><div class="swatch-info"><div class="name">--sidebar-bg</div><div class="value">#fafafa</div></div></div>
+  </div>
+</div>
+
+<div class="section-group">
+  <h2>Notion Semantic Palette</h2>
+  <div class="grid">
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-blue)"></div><div class="swatch-info"><div class="name" style="color:#fff">Notion Blue</div><div class="value" style="color:#fff">#0075de</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-blue-active)"></div><div class="swatch-info"><div class="name" style="color:#fff">Active Blue</div><div class="value" style="color:#fff">#005bab</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-warm-white)"></div><div class="swatch-info"><div class="name">Warm White</div><div class="value">#f6f5f4</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-warm-dark)"></div><div class="swatch-info"><div class="name" style="color:#fff">Warm Dark</div><div class="value" style="color:#fff">#31302e</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-warm-gray-500)"></div><div class="swatch-info"><div class="name" style="color:#fff">Warm Gray 500</div><div class="value" style="color:#fff">#615d59</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background:var(--notion-warm-gray-300)"></div><div class="swatch-info"><div class="name">Warm Gray 300</div><div class="value">#a39e98</div></div></div>
+  </div>
+</div>
+
+<div class="section-group">
+  <h2>Contrast Verification</h2>
+  <div class="contrast-demo">
+    <div class="contrast-box" style="background:var(--bg);border:1px solid var(--border)">
+      <div class="big" style="color:var(--fg)">Primary text on bg</div>
+      <div class="small" style="color:var(--muted)">Secondary text (#6b6b78) — target &gt;4.5:1</div>
+    </div>
+    <div class="contrast-box" style="background:var(--accent);color:var(--accent-on)">
+      <div class="big">White on black</div>
+      <div class="small" style="opacity:0.8">Primary CTA contrast</div>
+    </div>
+    <div class="contrast-box" style="background:var(--notion-warm-white);border:1px solid var(--border)">
+      <div class="big" style="color:var(--fg)">On warm white</div>
+      <div class="small" style="color:var(--notion-warm-gray-500)">Secondary text #615d59</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-group">
+  <h2>Dark Mode Tokens</h2>
+  <div class="grid">
+    <div class="swatch" style="border-color:var(--dark-border)"><div class="swatch-fill" style="background:var(--dark-bg)"></div><div class="swatch-info" style="background:var(--dark-bg);color:var(--dark-fg)"><div class="name">--dark-bg</div><div class="value" style="color:var(--dark-muted)">#0a0a0b</div></div></div>
+    <div class="swatch" style="border-color:var(--dark-border)"><div class="swatch-fill" style="background:var(--dark-surface)"></div><div class="swatch-info" style="background:var(--dark-surface);color:var(--dark-fg)"><div class="name">--dark-surface</div><div class="value" style="color:var(--dark-muted)">#111113</div></div></div>
+    <div class="swatch" style="border-color:var(--dark-border)"><div class="swatch-fill" style="background:var(--dark-fg)"></div><div class="swatch-info" style="background:var(--dark-surface);color:var(--dark-fg)"><div class="name">--dark-fg</div><div class="value" style="color:var(--dark-muted)">#ededee</div></div></div>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:var(--muted)">Dark mode is activated via <code>prefers-color-scheme: dark</code>. Preview by toggling your OS color scheme.</p>
+</div>
+
+</body>
+</html>

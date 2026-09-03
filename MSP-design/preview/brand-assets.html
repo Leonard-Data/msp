@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brand Assets Preview — Web Prototype DS</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding: 24px; font-family: var(--font-body); background: var(--bg); color: var(--fg); }
+  h1 { font-family: var(--font-display); font-size: 28px; margin-bottom: 24px; }
+  h2 { font-size: 16px; font-weight: 600; margin: 28px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .asset-grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .asset-card { width: 220px; border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+  .asset-visual { height: 100px; display: flex; align-items: center; justify-content: center; background: var(--sidebar-bg); }
+  .asset-info { padding: 12px; }
+  .asset-info .name { font-weight: 600; font-size: 14px; }
+  .asset-info .detail { font-size: 12px; color: var(--muted); font-family: var(--font-mono); margin-top: 2px; }
+  .logo-grid { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin: 16px 0; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); }
+  .favicon-set { display: flex; gap: 8px; }
+  .favicon { width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+  .color-variants { display: flex; gap: 12px; margin: 16px 0; }
+  .color-chip { width: 80px; height: 60px; border-radius: var(--radius-lg); display: flex; align-items: flex-end; padding: 6px; font-family: var(--font-mono); font-size: 9px; color: #fff; }
+</style>
+</head>
+<body>
+<h1>Brand Assets Preview</h1>
+
+<h2>Logo Mark</h2>
+<div class="logo-grid">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="../assets/logo-mark.svg" alt="Logo mark" width="36" height="36" style="border-radius:8px" />
+    <div>
+      <div style="font-weight:700;font-size:16px;font-family:var(--font-mono)">MSP Docs</div>
+      <div style="font-size:11px;color:var(--muted)">assets/logo-mark.svg + wordmark</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="../assets/wordmark.svg" alt="Wordmark" width="120" height="28" />
+    <div>
+      <div style="font-size:11px;color:var(--muted)">assets/wordmark.svg</div>
+    </div>
+  </div>
+</div>
+
+<h2>Favicon</h2>
+<div class="favicon-set">
+  <img src="../assets/favicon.svg" alt="Favicon" width="32" height="32" style="border-radius:8px" />
+  <img src="../assets/favicon.svg" alt="Favicon large" width="48" height="48" style="border-radius:10px" />
+  <img src="../assets/favicon.svg" alt="Favicon xl" width="64" height="64" style="border-radius:12px" />
+</div>
+<p style="font-size:12px;color:var(--muted);margin-top:4px">assets/favicon.svg · 32×32 black badge with "M"</p>
+
+<h2>Icon Sprite</h2>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:16px;border:1px solid var(--border);border-radius:var(--radius-lg)">
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-book"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-share"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-settings"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-copy"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-menu"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-share-2"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-arrow-right"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-burst"/></svg>
+  <svg width="20" height="20"><use href="../assets/icons.svg#icon-linkedin"/></svg>
+</div>
+<p style="font-size:12px;color:var(--muted);margin-top:4px">assets/icons.svg — 10 icons extracted from docs-protocol.html</p>
+
+<h2>Color Application</h2>
+<div class="color-variants">
+  <div class="color-chip" style="background:var(--accent)">--accent #000</div>
+  <div class="color-chip" style="background:var(--notion-blue)">--notion-blue<br/>#0075de</div>
+  <div class="color-chip" style="background:var(--notion-warm-white);color:var(--fg)">--warm-white<br/>#f6f5f4</div>
+  <div class="color-chip" style="background:var(--notion-warm-dark)">--warm-dark<br/>#31302e</div>
+</div>
+
+<h2>Typography Pairing</h2>
+<div class="asset-grid">
+  <div class="asset-card">
+    <div class="asset-visual" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:700;letter-spacing:-0.02em;color:var(--fg);background:var(--bg);border-bottom:1px solid var(--border)">
+      Aa
+    </div>
+    <div class="asset-info">
+      <div class="name">Source Serif 4</div>
+      <div class="detail">Display headings · 400/600/700</div>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-visual" style="font-family:'Inter',system-ui,sans-serif;font-size:24px;font-weight:500;color:var(--fg);background:var(--bg);border-bottom:1px solid var(--border)">
+      Aa
+    </div>
+    <div class="asset-info">
+      <div class="name">Inter / system-ui</div>
+      <div class="detail">Body &amp; UI · 400/500/600/700</div>
+    </div>
+  </div>
+  <div class="asset-card">
+    <div class="asset-visual" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:500;color:var(--fg);background:var(--bg);border-bottom:1px solid var(--border)">
+      Aa
+    </div>
+    <div class="asset-info">
+      <div class="name">JetBrains Mono</div>
+      <div class="detail">Code · 400/500/600</div>
+    </div>
+  </div>
+</div>
+
+<h2>Source Artifact</h2>
+<p>The full <code>docs-protocol.html</code> artifact (46 KB) is preserved at the project root. It contains the complete implementation of the MSP Documentation Protocol with layout, navigation, sidebar, table, callout, and typography patterns.</p>
+<div style="padding:16px;border:1px solid var(--border);border-radius:var(--radius-lg);margin-top:12px;background:var(--sidebar-bg)">
+  <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">
+    <div>📄 docs-protocol.html &mdash; 46,571 bytes</div>
+    <div style="margin-top:4px">Sections: topnav, sidebar, article, prose, table-wrap, callout, card-cta, toc-sidebar, responsive</div>
+    <div style="margin-top:4px">Tokens extracted: color, typography, spacing, radius, shadow, layout, motion</div>
+  </div>
+</div>
+
+</body>
+</html>

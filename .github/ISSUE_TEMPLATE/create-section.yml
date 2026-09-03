@@ -1,0 +1,55 @@
+name: Create new documentation section
+description: Request a new documentation repository from the MSP template.
+title: "[create-section]: "
+labels:
+  - create-section
+body:
+  - type: input
+    id: section_name
+    attributes:
+      label: Section name
+      placeholder: Power Automate Patterns
+    validations:
+      required: true
+  - type: input
+    id: repository_name
+    attributes:
+      label: Repository name
+      placeholder: power-automate-patterns
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      placeholder: Power Platform
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Reusable workflow and architecture patterns for Power Automate.
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      placeholder: power-automate, cloud-flow, automation
+  - type: dropdown
+    id: visibility
+    attributes:
+      label: Visibility
+      options:
+        - public
+        - private
+    validations:
+      required: true
+  - type: input
+    id: maintainer
+    attributes:
+      label: Maintainer / owner
+      placeholder: team-platform
+    validations:
+      required: true

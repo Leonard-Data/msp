@@ -1,0 +1,84 @@
+---
+// @ts-nocheck
+import searchIndex from '../../generated/search-index.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const base = import.meta.env.BASE_URL;
+const serialized = JSON.stringify(searchIndex);
+---
+<BaseLayout title="Search · MSP Docs" description="Search across every synced documentation repository" repoUrl={repoUrl}>
+  <main class="content" style="width:min(960px,calc(100% - 2 * var(--gutter)));margin:0 auto;">
+    <section class="hero">
+      <div class="eyebrow">Search</div>
+      <h1>Find content across every synced repository.</h1>
+      <p class="lead">Client-side search keeps the site static and swappable. Replace the generated JSON index later with Pagefind, Typesense, or Algolia without changing the docs pipeline.</p>
+    </section>
+
+    <section class="search-panel" data-search-root data-search-index={serialized}>
+      <label class="eyebrow" for="search-box">Query</label>
+      <input id="search-box" type="search" placeholder="Search for topics, snippets, errors, or patterns" />
+      <div class="search-results" data-search-results>
+        {searchIndex.slice(0, 8).map((result) => (
+          <a href={`${base}${result.href.replace(/^\//, '')}`}>
+            <strong>{result.title}</strong>
+            <div class="doc-meta">
+              <span>{result.sourceName}</span>
+              <span>{result.category}</span>
+            </div>
+            <p class="muted">{result.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script is:inline>
+    const root = document.querySelector('[data-search-root]');
+    const input = root?.querySelector('input');
+    const results = root?.querySelector('[data-search-results]');
+    const index = JSON.parse(root?.dataset.searchIndex || '[]');
+    const base = document.documentElement.dataset.base || '/';
+
+    function rank(query, item) {
+      const q = query.toLowerCase();
+      const haystack = `${item.title} ${item.description} ${item.headings} ${item.content}`.toLowerCase();
+      if (!q) return 1;
+      if (!haystack.includes(q)) return 0;
+      let score = 1;
+      if (item.title.toLowerCase().includes(q)) score += 5;
+      if ((item.headings || '').toLowerCase().includes(q)) score += 3;
+      if (item.category?.toLowerCase().includes(q)) score += 1;
+      return score;
+    }
+
+    function render(items) {
+      results.innerHTML = items.length ? items.map((item) => `
+        <a href="${base}${item.href.replace(/^\//, '')}">
+          <strong>${escapeHtml(item.title)}</strong>
+          <div class="doc-meta"><span>${escapeHtml(item.sourceName)}</span><span>${escapeHtml(item.category)}</span></div>
+          <p class="muted">${escapeHtml(item.description || '')}</p>
+        </a>
+      `).join('') : '<p class="muted">No results.</p>';
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    input?.addEventListener('input', () => {
+      const query = input.value.trim();
+      const matches = index
+        .map((item) => ({ item, score: rank(query, item) }))
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 25)
+        .map((entry) => entry.item);
+      render(matches);
+    });
+  </script>
+</BaseLayout>
