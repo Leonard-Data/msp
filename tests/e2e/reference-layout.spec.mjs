@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PNG } from 'pngjs';
 import { test, expect } from '@playwright/test';
+import { passesLayoutThreshold } from './reference-layout-threshold.mjs';
 
 const DOWNSCALE = 48;
 const FIXTURE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
@@ -107,5 +108,5 @@ test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ 
   await testInfo.attach('local-home', { path: localShot.file, contentType: 'image/png' });
   await testInfo.attach('reference-home', { path: referenceFile, contentType: 'image/png' });
 
-  expect(score).toBeGreaterThan(0.90);
+  expect(passesLayoutThreshold(score)).toBe(true);
 });

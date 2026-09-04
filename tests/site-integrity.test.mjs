@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, rmSync } from 'node:fs';
+import { readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 function href(base, path = '') {
   return `${base.replace(/\/?$/, '/')}${path.replace(/^\/+/, '')}`;
@@ -34,6 +34,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const docsHref = href(base, 'docs/');
   const howItWorksHref = href(base, 'docs/how-it-works/');
   const searchHref = href(base, 'search/');
+  const aiCategoryHref = `${searchHref}?q=${encodeURIComponent('AI')}`;
+  const powerPlatformCategoryHref = `${searchHref}?q=${encodeURIComponent('Power Platform')}`;
   const overviewHref = href(base, 'docs/sources/agent-engineering/');
   const addDocsHref = 'https://github.com/owner/msp-portal/issues/new/choose';
 
@@ -52,6 +54,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one header action owner');
   assert.match(home, /Documentation Library/, 'home should present the docs-library identity');
   assert.match(home, /Browse by category/, 'home should expose category browsing');
+  assert.match(home, new RegExp(`href="${escapeRegex(aiCategoryHref)}"[^>]*>[\\s\\S]*?<h3>AI<\\/h3>`), 'AI category card should link into the existing search route');
+  assert.match(home, new RegExp(`href="${escapeRegex(powerPlatformCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Power Platform<\\/h3>`), 'Power Platform category card should link into the existing search route');
   assert.match(home, /Create New Section/, 'home should surface the create-section workflow');
   assert.match(home, /Connect Existing Repository/, 'home should surface the connect-existing workflow');
   assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
@@ -62,4 +66,23 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.match(sourceDoc, /Open source repository/, 'docs page should expose the source repository action');
   assert.match(portalDoc, /Keep user-installed commands out of\s*<code>sudo<\/code>/, 'inline code inside headings should render');
   assert.doesNotMatch(portalDoc, /<h[1-6][^>]*>\s*<p>/, 'headings should not wrap paragraph tags');
+});
+
+test('portal markdown rewrites relative links to other portal pages', () => {
+  const env = {
+    GITHUB_ACTIONS: '1',
+    GITHUB_REPOSITORY: 'owner/msp-portal',
+    GITHUB_REPOSITORY_OWNER: 'owner',
+  };
+  const tempPage = 'content/portal/review-link-check.md';
+
+  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md).\n');
+
+  try {
+    buildSite(env);
+    const built = readFileSync('dist/docs/review-link-check/index.html', 'utf8');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/">How it works<\/a>/, 'portal pages should rewrite relative markdown links to docs routes');
+  } finally {
+    rmSync(tempPage, { force: true });
+  }
 });

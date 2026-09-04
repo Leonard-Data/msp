@@ -503,11 +503,15 @@ input, textarea, button, select { font: inherit; caret-color: var(--accent); }
 .search-hero__meta { margin-top: 6px; }
 .search-panel { padding: 22px; }
 .search-results { margin-top: 18px; }
+.category-card,
 .search-result-card {
   text-decoration: none;
   color: inherit;
+}
+.search-result-card {
   background: color-mix(in srgb, var(--surface-strong) 98%, transparent);
 }
+.category-card:hover,
 .search-result-card:hover { transform: translateY(-1px); }
 .footer {
   margin-top: 42px;

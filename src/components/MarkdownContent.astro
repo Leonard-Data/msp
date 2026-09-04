@@ -1,6 +1,7 @@
 ---
 // @ts-nocheck
 import { marked } from 'marked';
+import { withBase } from '../lib/base-path';
 
 const { page } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -40,21 +41,33 @@ function slugify(value) {
 
 function rewriteHref(href, page) {
   if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
-  if (page.kind !== 'source') return href;
   const resolved = resolvePath(page.relativePath, href);
-  if (resolved.toLowerCase().endsWith('.md')) {
-    const withoutExt = resolved.replace(/\.md$/i, '');
-    const cleaned = withoutExt.replace(/\/README$/i, '').replace(/^README$/i, '');
-    return `${base}docs/sources/${page.sourceId}${cleaned ? `/${cleaned}` : ''}/`;
+  if (page.kind === 'source') {
+    if (resolved.toLowerCase().endsWith('.md')) return sourceDocHref(page.sourceId, resolved);
+    if (!pathHasExtension(resolved)) return `${base}docs/sources/${page.sourceId}/${resolved}/`;
+    return rewriteAssetHref(href, page);
   }
-  if (!pathHasExtension(resolved)) return `${base}docs/sources/${page.sourceId}/${resolved}/`;
-  return rewriteAssetHref(href, page);
+  if (page.kind === 'portal' && (resolved.toLowerCase().endsWith('.md') || !pathHasExtension(resolved))) {
+    return portalDocHref(resolved);
+  }
+  return href;
+}
+
+function sourceDocHref(sourceId, resolved) {
+  const withoutExt = resolved.replace(/\.md$/i, '');
+  const cleaned = withoutExt.replace(/\/README$/i, '').replace(/^README$/i, '');
+  return withBase(base, `docs/sources/${sourceId}${cleaned ? `/${cleaned}` : ''}/`);
+}
+
+function portalDocHref(resolved) {
+  const slug = resolved.replace(/\.md$/i, '').replace(/\/$/, '');
+  return withBase(base, `docs/${slug && slug !== 'overview' ? `${slug}/` : ''}`);
 }
 
 function rewriteAssetHref(href, page) {
   if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
   if (page.kind !== 'source') return href;
-  return `${base}_sources/${page.sourceId}/${resolvePath(page.relativePath, href)}`;
+  return withBase(base, `_sources/${page.sourceId}/${resolvePath(page.relativePath, href)}`);
 }
 
 function resolvePath(fromFile, target) {

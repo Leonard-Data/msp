@@ -25,7 +25,7 @@ const categories = docsData.categories.map((category) => category.name);
     <section class="search-panel" data-search-root data-search-index={serialized}>
       <label class="meta-label" for="search-box">Search the library</label>
       <input id="search-box" type="search" placeholder="Search for topics, snippets, workflows, or errors" />
-      <div class="search-hint">Results pull from titles, descriptions, headings, and page content.</div>
+      <div class="search-hint">Results pull from titles, descriptions, headings, page content, source names, and category labels.</div>
       <div class="search-results" data-search-results></div>
     </section>
   </main>
@@ -45,7 +45,7 @@ const categories = docsData.categories.map((category) => category.name);
       const category = (item.category || '').toLowerCase();
       const sourceName = (item.sourceName || '').toLowerCase();
       const content = (item.content || '').toLowerCase();
-      const haystack = `${title} ${item.description || ''} ${headings} ${content}`.toLowerCase();
+      const haystack = `${title} ${item.description || ''} ${headings} ${content} ${sourceName} ${category}`.toLowerCase();
       if (!q) return 1;
       if (!haystack.includes(q)) return 0;
       let score = 1;
