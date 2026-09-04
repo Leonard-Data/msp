@@ -82,7 +82,7 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
     buildSite(env);
     const built = readFileSync('dist/docs/review-link-check/index.html', 'utf8');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/">How it works<\/a>/, 'portal pages should rewrite relative markdown links to docs routes');
-    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/search\/">Search<\/a>/, 'portal pages should preserve root-absolute links');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/search\/">Search<\/a>/, 'portal pages should preserve root-absolute links under the configured base path');
   } finally {
     rmSync(tempPage, { force: true });
   }

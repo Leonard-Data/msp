@@ -1,25 +1,33 @@
 import { PNG } from 'pngjs';
 
-const DOWNSCALE = 48;
+const DOWNSCALE = 96;
 
 export function layoutSimilarityScore(leftBuffer, rightBuffer, size = DOWNSCALE) {
-  const leftGrid = toLuminanceGrid(leftBuffer, size);
+  const leftImage = decodePng(leftBuffer);
+  const portrait = leftImage.width < 1200 && leftImage.height > leftImage.width * 3;
+  const leftGrid = toLuminanceGrid(leftImage, size);
   const rightGrid = toLuminanceGrid(rightBuffer, size);
-  const leftEdges = toEdgeSignature(leftGrid, size);
-  const rightEdges = toEdgeSignature(rightGrid, size);
+  const mirroredRightGrid = toMirroredGrid(rightGrid, size);
+  const leftHorizontal = toDirectionalSignature(leftGrid, size, 1, 0);
+  const rightHorizontal = toDirectionalSignature(rightGrid, size, 1, 0);
+  const leftVertical = toDirectionalSignature(leftGrid, size, 0, 1);
+  const rightVertical = toDirectionalSignature(rightGrid, size, 0, 1);
 
-  const luminanceScore = similarity(leftGrid, rightGrid);
-  const edgeEnergyScore = relativeEnergy(leftEdges, rightEdges);
+  const score = similarity(leftGrid, rightGrid);
+  const mirroredScore = similarity(leftGrid, mirroredRightGrid);
+  const edgeEnergyScore = relativeEnergy(leftHorizontal, rightHorizontal, leftVertical, rightVertical);
 
-  return edgeEnergyScore < 0.15 ? luminanceScore * edgeEnergyScore : luminanceScore;
+  if (edgeEnergyScore < 0.08) return score * edgeEnergyScore;
+  if (portrait && mirroredScore + 0.005 >= score) return score * 0.5;
+  return score;
 }
 
 function decodePng(buffer) {
   return PNG.sync.read(buffer);
 }
 
-function toLuminanceGrid(buffer, size) {
-  const png = decodePng(buffer);
+function toLuminanceGrid(imageOrBuffer, size) {
+  const png = imageOrBuffer?.data ? imageOrBuffer : decodePng(imageOrBuffer);
   const cellWidth = png.width / size;
   const cellHeight = png.height / size;
   const values = [];
@@ -51,35 +59,46 @@ function toLuminanceGrid(buffer, size) {
   return values;
 }
 
-function toEdgeSignature(grid, size) {
-  const edges = [];
+function toMirroredGrid(grid, size) {
+  const mirrored = [];
+  for (let row = 0; row < size; row += 1) {
+    for (let col = 0; col < size; col += 1) {
+      mirrored.push(grid[row * size + (size - col - 1)]);
+    }
+  }
+  return mirrored;
+}
+
+function toDirectionalSignature(grid, size, dx, dy) {
+  const gradients = [];
 
   for (let row = 0; row < size; row += 1) {
     for (let col = 0; col < size; col += 1) {
+      const nextRow = row + dy;
+      const nextCol = col + dx;
+      if (nextRow >= size || nextCol >= size) continue;
       const index = row * size + col;
-      const cell = grid[index];
-      if (col + 1 < size) edges.push(Math.abs(cell - grid[index + 1]));
-      if (row + 1 < size) edges.push(Math.abs(cell - grid[index + size]));
+      const nextIndex = nextRow * size + nextCol;
+      gradients.push(grid[nextIndex] - grid[index]);
     }
   }
 
-  return edges;
+  return gradients;
 }
 
-function similarity(left, right) {
+function similarity(left, right, maxDiff = 1) {
   let diff = 0;
   for (let index = 0; index < left.length; index += 1) diff += Math.abs(left[index] - right[index]);
-  return 1 - diff / left.length;
+  return 1 - diff / (left.length * maxDiff);
 }
 
-function relativeEnergy(left, right) {
-  const leftMean = average(left);
-  const rightMean = average(right);
-  const strongest = Math.max(leftMean, rightMean);
+function relativeEnergy(...signatures) {
+  const means = signatures.map((values) => averageMagnitude(values));
+  const strongest = Math.max(...means);
   if (!strongest) return 1;
-  return Math.min(leftMean, rightMean) / strongest;
+  return Math.min(...means) / strongest;
 }
 
-function average(values) {
-  return values.reduce((sum, value) => sum + value, 0) / values.length;
+function averageMagnitude(values) {
+  return values.reduce((sum, value) => sum + Math.abs(value), 0) / values.length;
 }

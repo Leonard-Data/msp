@@ -40,7 +40,8 @@ function slugify(value) {
 }
 
 function rewriteHref(href, page) {
-  if (!href || /^(?:\/|[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (href.startsWith('/')) return withBase(base, href.slice(1));
   const resolved = resolvePath(page.relativePath, href);
   if (page.kind === 'source') {
     if (resolved.toLowerCase().endsWith('.md')) return sourceDocHref(page.sourceId, resolved);
@@ -65,7 +66,8 @@ function portalDocHref(resolved) {
 }
 
 function rewriteAssetHref(href, page) {
-  if (!href || /^(?:\/|[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
+  if (href.startsWith('/')) return withBase(base, href.slice(1));
   if (page.kind !== 'source') return href;
   return withBase(base, `_sources/${page.sourceId}/${resolvePath(page.relativePath, href)}`);
 }
