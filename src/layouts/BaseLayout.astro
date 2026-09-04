@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 
-const { title = 'MSP Portal', description = 'Centralized documentation portal', repoUrl = 'https://github.com/company/MSP-Portal' } = Astro.props;
+const { title = 'MSP', description = 'Centralized documentation portal', repoUrl = 'https://github.com/Leonard-Data/msp' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
@@ -20,14 +20,14 @@ const base = import.meta.env.BASE_URL;
     <div class="shell">
       <header class="topbar">
         <div class="topbar__inner">
-          <a class="brand" href={base}>
-            <img src={`${base}assets/logo-mark.svg`} alt="MSP" />
+          <a class="brand" href={base}/>
+            <img src={`${base}/assets/logo-mark.svg`} alt="MSP" />
             <span>MSP Docs</span>
           </a>
           <nav class="topnav" aria-label="Primary">
-            <a href={`${base}docs/`}>Documentation</a>
-            <a href={`${base}docs/how-it-works/`}>How it works</a>
-            <a href={`${base}search/`}>Search</a>
+            <a href={`${base}/docs/`}>Documentation</a>
+            <a href={`${base}/docs/how-it-works/`}>How it works</a>
+            <a href={`${base}/search/`}>Search</a>
           </nav>
           <div class="topbar__actions">
             <a class="search-trigger" href={`${base}search/`}>Search</a>
