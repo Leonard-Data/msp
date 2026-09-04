@@ -8,42 +8,113 @@ const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/
 const base = import.meta.env.BASE_URL;
 const docsHref = withBase(base, 'docs/');
 const searchHref = withBase(base, 'search/');
+const createSectionHref = `${repoUrl}/issues/new?template=create-section.yml`;
+const connectRepoHref = `${repoUrl}/issues/new?template=connect-existing-repository.yml`;
 const sourceCount = docsData.sourceGroups.length;
 const docCount = docsData.pages.filter((page) => page.kind === 'source').length;
+const categoryCount = docsData.categories.length;
+const featuredSources = docsData.sourceGroups.slice(0, 4);
 ---
 <BaseLayout title="MSP Portal" description="Reusable Astro portal for multi-repository documentation" repoUrl={repoUrl}>
-  <main class="content" style="width:min(1456px,calc(100% - 2 * var(--gutter)));margin:0 auto;">
-    <section class="hero">
-      <div class="eyebrow">Centralized documentation</div>
-      <h1>One Astro portal for every documentation repository.</h1>
-      <p class="lead">MSP keeps markdown with the owning project, syncs it into one GitHub Pages site, and gives you shared navigation, search, and contribution workflows.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a class="button button--primary" href={docsHref}>Browse docs</a>
-        <a class="button button--ghost" href={searchHref}>Search content</a>
+  <main class="content library-home">
+    <section class="library-hero">
+      <div class="library-hero__copy">
+        <p class="library-kicker">Documentation Library</p>
+        <h1>One library for every repository your team documents.</h1>
+        <p class="lead">MSP keeps docs with the project that owns them, then turns every source into one searchable reading experience built for phone and desktop.</p>
+        <div class="library-hero__actions">
+          <a class="button button--primary" href={docsHref}>Browse library</a>
+          <a class="button button--ghost" href={createSectionHref} target="_blank" rel="noreferrer">Add documentation</a>
+        </div>
       </div>
+      <form class="hero-search" action={searchHref} method="get">
+        <label for="home-search">Search across every synced repository</label>
+        <input id="home-search" name="q" type="search" placeholder="Search for patterns, snippets, workflows, or errors" />
+        <button class="button button--primary" type="submit">Open search</button>
+        <p class="muted">Static search today, replaceable indexing later. Same portal, better results whenever you upgrade.</p>
+      </form>
     </section>
 
-    <section class="grid" style="margin-top:24px;">
-      <div class="metric"><span class="eyebrow">Sources</span><strong>{sourceCount}</strong><span class="muted">registered repositories</span></div>
-      <div class="metric"><span class="eyebrow">Pages</span><strong>{docCount}</strong><span class="muted">synced markdown documents</span></div>
-      <div class="metric"><span class="eyebrow">Hosting</span><strong>GitHub Pages</strong><span class="muted">static build, no runtime backend</span></div>
+    <section class="library-trust grid grid--stats">
+      <article class="metric metric--highlight">
+        <span class="metric__label">Sources</span>
+        <strong>{sourceCount}</strong>
+        <span class="muted">registered documentation repositories</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">Pages</span>
+        <strong>{docCount}</strong>
+        <span class="muted">synced markdown documents</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">Categories</span>
+        <strong>{categoryCount}</strong>
+        <span class="muted">browseable knowledge shelves</span>
+      </article>
+      <article class="metric">
+        <span class="metric__label">Workflow</span>
+        <strong>Static by design</strong>
+        <span class="muted">GitHub Pages, generated data, no browser-held secrets</span>
+      </article>
     </section>
 
-    <section class="stack" style="margin-top:32px;">
-      <div class="card">
-        <div class="eyebrow">Pipeline</div>
-        <h2 style="margin-top:8px;">Add → register → sync → validate → index → publish</h2>
-        <p class="muted">The portal owns discovery, search, and publishing. Each source repository still owns its own documentation files.</p>
+    <section class="library-section">
+      <div class="section-heading">
+        <h2>Browse by category</h2>
+        <p>Move through the library the way readers think: by domain first, then by the repository that owns the details.</p>
       </div>
-
-      <div class="source-grid">
+      <div class="category-grid">
         {docsData.categories.map((category) => (
-          <article>
-            <div class="eyebrow">{category.name}</div>
-            <h3 style="margin:10px 0;">{category.sources.length} source{category.sources.length === 1 ? '' : 's'}</h3>
-            <p class="muted">{category.sources.map((source) => source.name).join(', ')}</p>
+          <article class="category-card">
+            <div class="category-card__header">
+              <h3>{category.name}</h3>
+              <span>{category.sources.length} source{category.sources.length === 1 ? '' : 's'}</span>
+            </div>
+            <p class="muted">{category.sources.map((source) => source.name).join(' · ')}</p>
           </article>
         ))}
+      </div>
+    </section>
+
+    <section class="library-section library-section--shelves">
+      <div class="section-heading">
+        <h2>Library shelves</h2>
+        <p>Featured sources stay readable, identifiable, and easy to jump into without losing the repo that owns the content.</p>
+      </div>
+      <div class="source-shelf">
+        {featuredSources.map((source, index) => (
+          <article class:list={["source-card", index === 0 && 'source-card--featured']}>
+            <div class="source-card__meta">
+              <span class="pill">{source.category}</span>
+              <span>{source.pages.length} page{source.pages.length === 1 ? '' : 's'}</span>
+            </div>
+            <h3>{source.name}</h3>
+            <p>{source.description}</p>
+            <div class="source-card__actions">
+              <a class="button button--ghost" href={withBase(base, source.pages[0]?.href || 'docs/')}>Open source</a>
+              <a class="text-link" href={source.repoUrl} target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="library-section library-section--contribute">
+      <div class="section-heading">
+        <h2>Add documentation without changing the portal model</h2>
+        <p>MSP keeps the PRD workflow intact: create a new section from the template, or connect an existing repository that already owns its docs.</p>
+      </div>
+      <div class="workflow-split">
+        <article class="workflow-card">
+          <h3>Create New Section</h3>
+          <p>Use the repository template, register the source, and let the portal pick it up on the next sync.</p>
+          <a class="button button--primary" href={createSectionHref} target="_blank" rel="noreferrer">Start new section</a>
+        </article>
+        <article class="workflow-card workflow-card--muted">
+          <h3>Connect Existing Repository</h3>
+          <p>Point MSP at a repository that already has docs and source metadata, then keep content ownership where it belongs.</p>
+          <a class="button button--ghost" href={connectRepoHref} target="_blank" rel="noreferrer">Connect repository</a>
+        </article>
       </div>
     </section>
   </main>

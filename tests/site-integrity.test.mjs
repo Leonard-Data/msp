@@ -40,18 +40,25 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   buildSite(env);
 
   const home = readFileSync('dist/index.html', 'utf8');
-  const doc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
+  const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
+  const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
 
   assert.doesNotMatch(home, /href="\/\//, 'base-prefixed links should not become protocol-relative');
   assert.doesNotMatch(home, /src="\/\//, 'base-prefixed assets should not become protocol-relative');
   assert.match(home, new RegExp(`<a class="brand" href="${escapeRegex(base)}">[\\s\\S]*?<img[\\s\\S]*?<span>MSP Docs<\\/span>[\\s\\S]*?<\\/a>`), 'brand should wrap its visible content and keep the configured base');
-  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(docsHref)}"[^>]*>Documentation<\\/a>`, 'g')), 1, 'documentation should have one header owner');
+  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(docsHref)}"[^>]*>Library<\\/a>`, 'g')), 1, 'library should have one header owner');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(howItWorksHref)}"[^>]*>How it works<\\/a>`, 'g')), 1, 'how-it-works should have one header owner');
-  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 2, 'search should stay reachable from the nav and header action');
-  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one action owner');
+  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 2, 'search should stay reachable from the nav and hero action');
+  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one header action owner');
+  assert.match(home, /Documentation Library/, 'home should present the docs-library identity');
+  assert.match(home, /Browse by category/, 'home should expose category browsing');
+  assert.match(home, /Create New Section/, 'home should surface the create-section workflow');
+  assert.match(home, /Connect Existing Repository/, 'home should surface the connect-existing workflow');
 
-  assert.match(doc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
-  assert.equal(countMatches(doc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
-  assert.match(doc, /Keep user-installed commands out of\s*<code>sudo<\/code>/, 'inline code inside headings should render');
-  assert.doesNotMatch(doc, /<h[1-6][^>]*>\s*<p>/, 'headings should not wrap paragraph tags');
+  assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
+  assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
+  assert.match(sourceDoc, /Source repository/, 'docs page should label source metadata clearly');
+  assert.match(sourceDoc, /Open source repository/, 'docs page should expose the source repository action');
+  assert.match(portalDoc, /Keep user-installed commands out of\s*<code>sudo<\/code>/, 'inline code inside headings should render');
+  assert.doesNotMatch(portalDoc, /<h[1-6][^>]*>\s*<p>/, 'headings should not wrap paragraph tags');
 });

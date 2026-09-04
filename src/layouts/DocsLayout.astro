@@ -3,17 +3,17 @@
 import BaseLayout from './BaseLayout.astro';
 import { withBase } from '../lib/base-path';
 
-const { title, description, sidebar = [], toc = [], repoUrl, currentPath = '/', children } = Astro.props;
+const { title, description, sidebar = [], toc = [], repoUrl, currentPath = '/' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const hrefFor = (href) => withBase(base, href);
 ---
 <BaseLayout title={title} description={description} repoUrl={repoUrl}>
-  <div class="page">
+  <div class="page docs-page">
     <aside class="sidebar" aria-label="Documentation navigation">
       {sidebar.map((section) => (
         <section class="sidebar__section">
           <div class="sidebar__label">{section.label}</div>
-          <div>
+          <div class="sidebar__links">
             {section.items.map((item) => item.children?.length ? (
               <details open={currentPath.startsWith(item.href)}>
                 <summary>{item.label}</summary>
@@ -32,15 +32,15 @@ const hrefFor = (href) => withBase(base, href);
       ))}
     </aside>
 
-    <main class="content">
+    <main class="content docs-content">
       <slot />
-      <footer class="footer">Centralized docs pipeline: add → register → sync → validate → index → publish.</footer>
+      <footer class="footer">MSP keeps documentation with its source repository and publishes one searchable library.</footer>
     </main>
 
     <aside class="toc" aria-label="Table of contents">
       <section class="toc__section">
         <div class="toc__label">On this page</div>
-        <div>
+        <div class="toc__links">
           {toc.length ? toc.map((item) => (
             <a href={`#${item.slug}`}>{item.text}</a>
           )) : <p class="muted">No headings yet.</p>}

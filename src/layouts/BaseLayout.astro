@@ -9,6 +9,7 @@ const docsHref = withBase(base, 'docs/');
 const howItWorksHref = withBase(base, 'docs/how-it-works/');
 const searchHref = withBase(base, 'search/');
 const logoHref = withBase(base, 'assets/logo-mark.svg');
+const addDocsHref = `${repoUrl}/issues/new/choose`;
 ---
 <!doctype html>
 <html lang="en" data-base={base}>
@@ -19,7 +20,7 @@ const logoHref = withBase(base, 'assets/logo-mark.svg');
     <link rel="icon" href={withBase(base, 'assets/favicon.svg')} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
   <body>
@@ -28,17 +29,20 @@ const logoHref = withBase(base, 'assets/logo-mark.svg');
         <div class="topbar__inner">
           <a class="brand" href={homeHref}>
             <img src={logoHref} alt="MSP" />
-            <span>MSP Docs</span>
+            <span class="brand__copy">
+              <span>MSP Docs</span>
+              <small>Documentation Library</small>
+            </span>
           </a>
           <nav class="topnav" aria-label="Primary">
-            <a href={docsHref}>Documentation</a>
-            <a href={howItWorksHref}>How it works</a>
+            <a href={docsHref}>Library</a>
             <a href={searchHref}>Search</a>
+            <a href={howItWorksHref}>How it works</a>
           </nav>
           <div class="topbar__actions">
             <a class="search-trigger" href={searchHref}>Search</a>
-            <a href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
-            <a class="button button--primary" href={`${repoUrl}/issues/new/choose`} target="_blank" rel="noreferrer">Add documentation</a>
+            <a class="button button--ghost" href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button button--primary" href={addDocsHref} target="_blank" rel="noreferrer">Add documentation</a>
           </div>
         </div>
       </header>

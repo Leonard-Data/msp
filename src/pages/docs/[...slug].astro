@@ -20,11 +20,17 @@ const toc = page.headings.filter((item) => item.depth <= 3);
   <header class="doc-header">
     <div class="doc-meta">
       <span class="pill">{page.category}</span>
-      {page.kind === 'source' && <span>{page.sourceName}</span>}
-      {page.kind === 'source' && <a href={page.repoUrl} target="_blank" rel="noreferrer">{page.repo}</a>}
+      <span>{page.kind === 'source' ? page.sourceName : 'MSP Portal'}</span>
+      {page.kind === 'source' && <span>{page.repo}</span>}
     </div>
     <h1>{page.title}</h1>
     <p class="lead">{page.description}</p>
+    {page.kind === 'source' ? (
+      <div class="doc-actions">
+        <span class="meta-label">Source repository</span>
+        <a class="button button--ghost button--sm" href={page.repoUrl} target="_blank" rel="noreferrer">Open source repository</a>
+      </div>
+    ) : null}
   </header>
   <MarkdownContent page={page} />
 </DocsLayout>
