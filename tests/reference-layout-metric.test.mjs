@@ -49,6 +49,23 @@ test('layout proof rejects a large vertical shift of the desktop reference', () 
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a blank top half on desktop', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const blanked = PNG.sync.read(reference);
+  for (let y = 0; y < Math.floor(blanked.height / 2); y += 1) {
+    for (let x = 0; x < blanked.width; x += 1) {
+      const index = (blanked.width * y + x) << 2;
+      blanked.data[index] = 245;
+      blanked.data[index + 1] = 245;
+      blanked.data[index + 2] = 245;
+      blanked.data[index + 3] = 255;
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(blanked), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects a blank lower half on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
   const blanked = PNG.sync.read(reference);
@@ -89,7 +106,50 @@ test('layout proof rejects swapped top and bottom halves on desktop', () => {
   assert.equal(proof.passes, false);
 });
 
-test('layout proof rejects a mirrored mobile reference', () => {
+test('layout proof rejects a downward shift on mobile', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const png = PNG.sync.read(reference);
+  const shifted = new PNG({ width: png.width, height: png.height });
+  const offset = 100;
+
+  for (let y = 0; y < png.height - offset; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const from = (png.width * y + x) << 2;
+      const to = (png.width * (y + offset) + x) << 2;
+      shifted.data[to] = png.data[from];
+      shifted.data[to + 1] = png.data[from + 1];
+      shifted.data[to + 2] = png.data[from + 2];
+      shifted.data[to + 3] = png.data[from + 3];
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(shifted), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects swapped top quarter-bands on mobile', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const png = PNG.sync.read(reference);
+  const swapped = PNG.sync.read(reference);
+  const quarter = Math.floor(png.height / 4);
+
+  for (let y = 0; y < quarter * 2; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const sourceY = y < quarter ? y + quarter : y - quarter;
+      const from = (png.width * sourceY + x) << 2;
+      const to = (png.width * y + x) << 2;
+      swapped.data[to] = png.data[from];
+      swapped.data[to + 1] = png.data[from + 1];
+      swapped.data[to + 2] = png.data[from + 2];
+      swapped.data[to + 3] = png.data[from + 3];
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(swapped), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+ test('layout proof rejects a mirrored mobile reference', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
   const png = PNG.sync.read(reference);
   const mirrored = new PNG({ width: png.width, height: png.height });

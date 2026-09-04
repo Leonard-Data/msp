@@ -59,13 +59,13 @@ async function writeReport(testInfo, proof, localFile, referenceFile) {
       '',
       `- Project: ${testInfo.project.name}`,
       `- Similarity score: ${proof.overallScore.toFixed(4)}`,
+      `- Bands: ${proof.labels.join(', ')}`,
       `- Band scores: ${proof.bandScores.map((score) => score.toFixed(4)).join(', ')}`,
-      `- Bottom band energy: ${proof.bandEnergies.at(-1).toFixed(4)}`,
-      proof.mirroredScore == null ? null : `- Mirrored reference score: ${proof.mirroredScore.toFixed(4)}`,
+      `- Band energies: ${proof.bandEnergies.map((energy) => energy.toFixed(4)).join(', ')}`,
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',
-      'The proof combines an overall layout score with independent vertical band checks and lower-section energy so major section presence, order, and placement still matter without requiring text or branding identity.',
+      'The proof combines an overall layout score with explicit reference-derived homepage bands, requiring each major band to appear in order with comparable occupancy and structural detail without requiring text or branding identity.',
     ].filter(Boolean).join('\n'),
   );
   await testInfo.attach('reference-match-report', { path: reportPath, contentType: 'text/markdown' });

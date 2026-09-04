@@ -5,15 +5,16 @@ const GRID_SIZE = 96;
 
 const PROJECT_RULES = {
   'desktop-chromium': {
-    bands: [0, 0.18, 0.36, 0.62, 1],
-    minBandScores: [0.89, 0.94, 0.92, 0.91],
-    minBottomEnergy: 0.001,
+    bands: [0, 0.08, 0.16, 0.2, 0.62, 1],
+    labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
+    minBandScores: [0.895, 0.887, 0.92, 0.93, 0.91],
+    minBandEnergies: [0.008, 0.008, 0.01, 0.005, 0.001],
   },
   'mobile-chromium': {
-    bands: [0, 0.18, 0.36, 0.62, 1],
-    minBandScores: [0.86, 0.9, 0.92, 0.91],
-    minBottomEnergy: 0.01,
-    minMirrorMargin: 0.005,
+    bands: [0, 0.08, 0.16, 0.2, 0.62, 1],
+    labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
+    minBandScores: [0.89, 0.85, 0.89, 0.91, 0.91],
+    minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
   },
 };
 
@@ -26,19 +27,17 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const overallScore = similarity(leftGrid, rightGrid);
   const bandScores = regionSimilarityScores(leftGrid, rightGrid, rule.bands);
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
-  const mirroredScore = rule.minMirrorMargin ? similarity(leftGrid, mirrorGrid(rightGrid)) : null;
 
   const passes =
     passesLayoutThreshold(overallScore) &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
-    bandEnergies.at(-1) >= rule.minBottomEnergy &&
-    (mirroredScore == null || overallScore > mirroredScore + rule.minMirrorMargin);
+    bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]);
 
   return {
     overallScore,
     bandScores,
     bandEnergies,
-    mirroredScore,
+    labels: rule.labels,
     passes,
   };
 }
@@ -138,12 +137,3 @@ function regionEdgeEnergies(grid, bands, size = GRID_SIZE) {
   return energies;
 }
 
-function mirrorGrid(grid, size = GRID_SIZE) {
-  const mirrored = [];
-  for (let row = 0; row < size; row += 1) {
-    for (let col = 0; col < size; col += 1) {
-      mirrored.push(grid[row * size + (size - col - 1)]);
-    }
-  }
-  return mirrored;
-}
