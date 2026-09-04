@@ -2,8 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test, expect } from '@playwright/test';
-import { layoutSimilarityScore } from './reference-layout-metric.mjs';
-import { passesLayoutThreshold } from './reference-layout-threshold.mjs';
+import { evaluateLayoutProof } from './reference-layout-metric.mjs';
 const FIXTURE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
 const REFERENCE_FIXTURES = {
   'desktop-chromium': 'reference-home-desktop.png',
@@ -25,7 +24,13 @@ async function captureEvidence(page, label, testInfo) {
   return { file, buffer };
 }
 
-async function assertHomepageLayoutStructure(page) {
+const PROJECT_RULES = {
+  'desktop-chromium': { maxHeroTop: 320 },
+  'mobile-chromium': { maxHeroTop: 360 },
+};
+
+async function assertHomepageLayoutStructure(page, projectName) {
+  const rule = PROJECT_RULES[projectName];
   const sections = [
     page.getByRole('heading', { level: 1, name: /One library/i }),
     page.getByRole('heading', { level: 2, name: 'Browse by category' }),
@@ -42,9 +47,10 @@ async function assertHomepageLayoutStructure(page) {
   }
 
   expect(tops).toEqual([...tops].sort((left, right) => left - right));
+  expect(tops[0]).toBeLessThan(rule.maxHeroTop);
 }
 
-async function writeReport(testInfo, score, localFile, referenceFile) {
+async function writeReport(testInfo, proof, localFile, referenceFile) {
   const reportPath = testInfo.outputPath('reference-match-report.md');
   await fs.writeFile(
     reportPath,
@@ -52,12 +58,15 @@ async function writeReport(testInfo, score, localFile, referenceFile) {
       '# Reference match evidence',
       '',
       `- Project: ${testInfo.project.name}`,
-      `- Similarity score: ${score.toFixed(4)}`,
+      `- Similarity score: ${proof.overallScore.toFixed(4)}`,
+      `- Band scores: ${proof.bandScores.map((score) => score.toFixed(4)).join(', ')}`,
+      `- Bottom band energy: ${proof.bandEnergies.at(-1).toFixed(4)}`,
+      proof.mirroredScore == null ? null : `- Mirrored reference score: ${proof.mirroredScore.toFixed(4)}`,
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',
-      'The score combines low-detail luminance similarity with structural edge similarity so layout rhythm must still be present without requiring text or branding identity.',
-    ].join('\n'),
+      'The proof combines an overall layout score with independent vertical band checks and lower-section energy so major section presence, order, and placement still matter without requiring text or branding identity.',
+    ].filter(Boolean).join('\n'),
   );
   await testInfo.attach('reference-match-report', { path: reportPath, contentType: 'text/markdown' });
 }
@@ -71,15 +80,15 @@ test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('One library');
   await expect(page.getByText('Create New Section')).toBeVisible();
   await expect(page.getByText('Connect Existing Repository')).toBeVisible();
-  await assertHomepageLayoutStructure(page);
+  await assertHomepageLayoutStructure(page, testInfo.project.name);
 
   const localShot = await captureEvidence(page, 'local-home', testInfo);
   const referenceBuffer = await fs.readFile(referenceFile);
-  const score = layoutSimilarityScore(localShot.buffer, referenceBuffer);
+  const proof = evaluateLayoutProof(localShot.buffer, referenceBuffer, testInfo.project.name);
 
-  await writeReport(testInfo, score, localShot.file, referenceFile);
+  await writeReport(testInfo, proof, localShot.file, referenceFile);
   await testInfo.attach('local-home', { path: localShot.file, contentType: 'image/png' });
   await testInfo.attach('reference-home', { path: referenceFile, contentType: 'image/png' });
 
-  expect(passesLayoutThreshold(score)).toBe(true);
+  expect(proof.passes).toBe(true);
 });
