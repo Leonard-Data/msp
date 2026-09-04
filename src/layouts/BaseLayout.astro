@@ -40,16 +40,6 @@ const logoHref = withBase(base, 'assets/logo-mark.svg');
             <a href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
             <a class="button button--primary" href={`${repoUrl}/issues/new/choose`} target="_blank" rel="noreferrer">Add documentation</a>
           </div>
-          <details class="mobile-nav" aria-label="Mobile navigation">
-            <summary class="mobile-nav__trigger">Menu</summary>
-            <nav class="mobile-nav__panel" aria-label="Mobile">
-              <a href={docsHref}>Documentation</a>
-              <a href={howItWorksHref}>How it works</a>
-              <a href={searchHref}>Search</a>
-              <a href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
-              <a href={`${repoUrl}/issues/new/choose`} target="_blank" rel="noreferrer">Add documentation</a>
-            </nav>
-          </details>
         </div>
       </header>
       <slot />
