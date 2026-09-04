@@ -1,10 +1,11 @@
 ---
 // @ts-nocheck
 import BaseLayout from './BaseLayout.astro';
+import { withBase } from '../lib/base-path';
 
 const { title, description, sidebar = [], toc = [], repoUrl, currentPath = '/', children } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const hrefFor = (href) => `${base}${href.replace(/^\//, '')}`;
+const hrefFor = (href) => withBase(base, href);
 ---
 <BaseLayout title={title} description={description} repoUrl={repoUrl}>
   <div class="page">

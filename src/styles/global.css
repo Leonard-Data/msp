@@ -93,7 +93,7 @@ pre code { background: none; padding: 0; }
   position: sticky;
   top: 0;
   z-index: 30;
-  height: var(--nav-height);
+  min-height: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,17 +312,34 @@ pre code { background: none; padding: 0; }
 
 @media (max-width: 1023px) {
   .page { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
-  .topnav { display: none; }
+  .sidebar {
+    position: static;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 20px 0 0;
+  }
+  .topbar__inner {
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+  .brand { width: 100%; }
+  .topnav,
+  .topbar__actions {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
   .hide-desktop { display: inline-flex; }
-  .topbar__inner { gap: 12px; }
 }
 
 @media (max-width: 640px) {
   .content { padding-top: 20px; }
   .hero { padding: 24px; }
   .doc-meta { flex-direction: column; gap: 6px; }
-  .topbar__actions a:not(.button) { display: none; }
+  .topnav,
+  .topbar__actions { gap: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

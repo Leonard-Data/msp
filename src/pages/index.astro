@@ -2,9 +2,12 @@
 // @ts-nocheck
 import docsData from '../generated/docs-data.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/base-path';
 
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
 const base = import.meta.env.BASE_URL;
+const docsHref = withBase(base, 'docs/');
+const searchHref = withBase(base, 'search/');
 const sourceCount = docsData.sourceGroups.length;
 const docCount = docsData.pages.filter((page) => page.kind === 'source').length;
 ---
@@ -15,8 +18,8 @@ const docCount = docsData.pages.filter((page) => page.kind === 'source').length;
       <h1>One Astro portal for every documentation repository.</h1>
       <p class="lead">MSP keeps markdown with the owning project, syncs it into one GitHub Pages site, and gives you shared navigation, search, and contribution workflows.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a class="button button--primary" href={`${base}/docs/`}>Browse docs</a>
-        <a class="button button--ghost" href={`${base}/search/`}>Search content</a>
+        <a class="button button--primary" href={docsHref}>Browse docs</a>
+        <a class="button button--ghost" href={searchHref}>Search content</a>
       </div>
     </section>
 
