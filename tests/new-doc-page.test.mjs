@@ -4,8 +4,9 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { fileURLToPath } from 'node:url';
 
-const script = '/home/sam/agent-orchestrator/projects/msp/scripts/new-doc-page.mjs';
+const script = fileURLToPath(new URL('../scripts/new-doc-page.mjs', import.meta.url));
 
 function makeTempProject() {
   const root = mkdtempSync(join(tmpdir(), 'msp-doc-page-'));

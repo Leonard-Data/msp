@@ -1,10 +1,15 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { PNG } from 'pngjs';
 import { test, expect } from '@playwright/test';
 
-const REFERENCE_URL = 'https://www.aihero.dev/skills-to-questionnaire';
 const DOWNSCALE = 48;
+const FIXTURE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
+const REFERENCE_FIXTURES = {
+  'desktop-chromium': 'reference-home-desktop.png',
+  'mobile-chromium': 'reference-home-mobile.png',
+};
 
 function decodePng(buffer) {
   return PNG.sync.read(buffer);
@@ -84,30 +89,23 @@ async function writeReport(testInfo, score, localFile, referenceFile) {
   await testInfo.attach('reference-match-report', { path: reportPath, contentType: 'text/markdown' });
 }
 
-test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ page, browser }, testInfo) => {
-  const local = await browser.newPage({ viewport: page.viewportSize() ?? { width: 1440, height: 2200 } });
-  const reference = await browser.newPage({ viewport: page.viewportSize() ?? { width: 1440, height: 2200 } });
+test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ page }, testInfo) => {
+  const referenceName = REFERENCE_FIXTURES[testInfo.project.name];
+  expect(referenceName, `missing reference fixture for ${testInfo.project.name}`).toBeTruthy();
+  const referenceFile = path.join(FIXTURE_DIR, referenceName);
 
-  try {
-    await local.goto('/');
-    await expect(local.getByRole('heading', { level: 1 })).toContainText('One library');
-    await expect(local.getByText('Create New Section')).toBeVisible();
-    await expect(local.getByText('Connect Existing Repository')).toBeVisible();
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('One library');
+  await expect(page.getByText('Create New Section')).toBeVisible();
+  await expect(page.getByText('Connect Existing Repository')).toBeVisible();
 
-    await reference.goto(REFERENCE_URL, { waitUntil: 'domcontentloaded' });
-    await expect(reference.getByRole('heading', { level: 1 })).toBeVisible();
+  const localShot = await captureEvidence(page, 'local-home', testInfo);
+  const referenceBuffer = await fs.readFile(referenceFile);
+  const score = similarityScore(localShot.buffer, referenceBuffer);
 
-    const localShot = await captureEvidence(local, 'local-home', testInfo);
-    const referenceShot = await captureEvidence(reference, 'reference-home', testInfo);
-    const score = similarityScore(localShot.buffer, referenceShot.buffer);
+  await writeReport(testInfo, score, localShot.file, referenceFile);
+  await testInfo.attach('local-home', { path: localShot.file, contentType: 'image/png' });
+  await testInfo.attach('reference-home', { path: referenceFile, contentType: 'image/png' });
 
-    await writeReport(testInfo, score, localShot.file, referenceShot.file);
-    await testInfo.attach('local-home', { path: localShot.file, contentType: 'image/png' });
-    await testInfo.attach('reference-home', { path: referenceShot.file, contentType: 'image/png' });
-
-    expect(score).toBeGreaterThan(0.90);
-  } finally {
-    await local.close();
-    await reference.close();
-  }
+  expect(score).toBeGreaterThan(0.90);
 });

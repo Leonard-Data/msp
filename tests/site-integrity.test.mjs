@@ -54,6 +54,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.match(home, /Browse by category/, 'home should expose category browsing');
   assert.match(home, /Create New Section/, 'home should surface the create-section workflow');
   assert.match(home, /Connect Existing Repository/, 'home should surface the connect-existing workflow');
+  assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
 
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
