@@ -43,6 +43,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
 
   const home = readFileSync('dist/index.html', 'utf8');
   const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
+  const docsHome = readFileSync('dist/docs/index.html', 'utf8');
   const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
 
   assert.doesNotMatch(home, /href="\/\//, 'base-prefixed links should not become protocol-relative');
@@ -61,6 +62,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
 
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
+  assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
+  assert.doesNotMatch(docsHome, /mini-source-card/, 'docs landing should not repeat the homepage featured shelf');
   assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
   assert.match(sourceDoc, /Source repository/, 'docs page should label source metadata clearly');
   assert.match(sourceDoc, /Open source repository/, 'docs page should expose the source repository action');
@@ -76,13 +79,13 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
   };
   const tempPage = 'content/portal/review-link-check.md';
 
-  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md).\n\nOpen [Search](/search/).\n');
+  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n');
 
   try {
     buildSite(env);
     const built = readFileSync('dist/docs/review-link-check/index.html', 'utf8');
-    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/">How it works<\/a>/, 'portal pages should rewrite relative markdown links to docs routes');
-    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/search\/">Search<\/a>/, 'portal pages should preserve root-absolute links under the configured base path');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/#pipeline\?x=1">How it works<\/a>/, 'portal pages should preserve fragments and query strings when rewriting relative docs links');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/search\/\?q=abc#top">Search<\/a>/, 'portal pages should preserve based root-absolute links with fragments and query strings');
   } finally {
     rmSync(tempPage, { force: true });
   }

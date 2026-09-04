@@ -10,7 +10,6 @@ const page = docsData.pages.find((entry) => entry.href === '/docs/');
 page.raw = await fs.readFile(`${process.cwd()}/${page.file}`, 'utf8');
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
 const base = import.meta.env.BASE_URL;
-const featuredSources = docsData.sourceGroups.slice(0, 4);
 ---
 <DocsLayout title={`${page.title} · MSP Docs`} description={page.description} sidebar={docsData.sidebar} toc={page.headings} repoUrl={repoUrl} currentPath="/docs/">
   <header class="doc-header">
@@ -31,17 +30,6 @@ const featuredSources = docsData.sourceGroups.slice(0, 4);
       <a class="button button--primary" href={withBase(base, 'search/')}>Open search</a>
       <a class="button button--ghost" href={withBase(base, 'docs/how-it-works/')}>How it works</a>
     </div>
-  </section>
-
-  <section class="inline-shelf">
-    {featuredSources.map((source) => (
-      <article class="mini-source-card">
-        <span class="pill">{source.category}</span>
-        <h3>{source.name}</h3>
-        <p>{source.description}</p>
-        <a class="text-link" href={withBase(base, source.pages[0]?.href || 'docs/')}>Open source</a>
-      </article>
-    ))}
   </section>
 
   <MarkdownContent page={page} />

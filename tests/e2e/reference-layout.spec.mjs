@@ -25,6 +25,25 @@ async function captureEvidence(page, label, testInfo) {
   return { file, buffer };
 }
 
+async function assertHomepageLayoutStructure(page) {
+  const sections = [
+    page.getByRole('heading', { level: 1, name: /One library/i }),
+    page.getByRole('heading', { level: 2, name: 'Browse by category' }),
+    page.getByRole('heading', { level: 2, name: 'Library shelves' }),
+    page.getByRole('heading', { level: 2, name: 'Add documentation without changing the portal model' }),
+  ];
+
+  const tops = [];
+  for (const section of sections) {
+    await expect(section).toBeVisible();
+    const box = await section.boundingBox();
+    expect(box).toBeTruthy();
+    tops.push(box.y);
+  }
+
+  expect(tops).toEqual([...tops].sort((left, right) => left - right));
+}
+
 async function writeReport(testInfo, score, localFile, referenceFile) {
   const reportPath = testInfo.outputPath('reference-match-report.md');
   await fs.writeFile(
@@ -52,6 +71,7 @@ test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('One library');
   await expect(page.getByText('Create New Section')).toBeVisible();
   await expect(page.getByText('Connect Existing Repository')).toBeVisible();
+  await assertHomepageLayoutStructure(page);
 
   const localShot = await captureEvidence(page, 'local-home', testInfo);
   const referenceBuffer = await fs.readFile(referenceFile);
