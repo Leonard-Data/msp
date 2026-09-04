@@ -68,7 +68,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.doesNotMatch(portalDoc, /<h[1-6][^>]*>\s*<p>/, 'headings should not wrap paragraph tags');
 });
 
-test('portal markdown rewrites relative links to other portal pages', () => {
+test('portal markdown preserves root links and rewrites relative doc links', () => {
   const env = {
     GITHUB_ACTIONS: '1',
     GITHUB_REPOSITORY: 'owner/msp-portal',
@@ -76,12 +76,13 @@ test('portal markdown rewrites relative links to other portal pages', () => {
   };
   const tempPage = 'content/portal/review-link-check.md';
 
-  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md).\n');
+  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md).\n\nOpen [Search](/search/).\n');
 
   try {
     buildSite(env);
     const built = readFileSync('dist/docs/review-link-check/index.html', 'utf8');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/">How it works<\/a>/, 'portal pages should rewrite relative markdown links to docs routes');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/search\/">Search<\/a>/, 'portal pages should preserve root-absolute links');
   } finally {
     rmSync(tempPage, { force: true });
   }

@@ -1,61 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PNG } from 'pngjs';
 import { test, expect } from '@playwright/test';
+import { layoutSimilarityScore } from './reference-layout-metric.mjs';
 import { passesLayoutThreshold } from './reference-layout-threshold.mjs';
-
-const DOWNSCALE = 48;
 const FIXTURE_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
 const REFERENCE_FIXTURES = {
   'desktop-chromium': 'reference-home-desktop.png',
   'mobile-chromium': 'reference-home-mobile.png',
 };
-
-function decodePng(buffer) {
-  return PNG.sync.read(buffer);
-}
-
-function toSignature(buffer, size = DOWNSCALE) {
-  const png = decodePng(buffer);
-  const cellWidth = png.width / size;
-  const cellHeight = png.height / size;
-  const values = [];
-
-  for (let row = 0; row < size; row += 1) {
-    for (let col = 0; col < size; col += 1) {
-      const startX = Math.floor(col * cellWidth);
-      const endX = Math.max(startX + 1, Math.floor((col + 1) * cellWidth));
-      const startY = Math.floor(row * cellHeight);
-      const endY = Math.max(startY + 1, Math.floor((row + 1) * cellHeight));
-      let total = 0;
-      let count = 0;
-      for (let y = startY; y < endY; y += 1) {
-        for (let x = startX; x < endX; x += 1) {
-          const index = (png.width * y + x) << 2;
-          const r = png.data[index];
-          const g = png.data[index + 1];
-          const b = png.data[index + 2];
-          total += 0.299 * r + 0.587 * g + 0.114 * b;
-          count += 1;
-        }
-      }
-      values.push(total / (count * 255));
-    }
-  }
-
-  return values;
-}
-
-function similarityScore(leftBuffer, rightBuffer) {
-  const left = toSignature(leftBuffer);
-  const right = toSignature(rightBuffer);
-  let diff = 0;
-  for (let index = 0; index < left.length; index += 1) {
-    diff += Math.abs(left[index] - right[index]);
-  }
-  return 1 - diff / left.length;
-}
 
 async function captureEvidence(page, label, testInfo) {
   await page.addStyleTag({
@@ -84,7 +37,7 @@ async function writeReport(testInfo, score, localFile, referenceFile) {
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',
-      'The score is a low-detail grayscale layout signature comparison intended to judge section rhythm and large-block composition, not text or branding identity.',
+      'The score combines low-detail luminance similarity with structural edge similarity so layout rhythm must still be present without requiring text or branding identity.',
     ].join('\n'),
   );
   await testInfo.attach('reference-match-report', { path: reportPath, contentType: 'text/markdown' });
@@ -102,7 +55,7 @@ test('homepage keeps the AI Hero layout rhythm on desktop and mobile', async ({ 
 
   const localShot = await captureEvidence(page, 'local-home', testInfo);
   const referenceBuffer = await fs.readFile(referenceFile);
-  const score = similarityScore(localShot.buffer, referenceBuffer);
+  const score = layoutSimilarityScore(localShot.buffer, referenceBuffer);
 
   await writeReport(testInfo, score, localShot.file, referenceFile);
   await testInfo.attach('local-home', { path: localShot.file, contentType: 'image/png' });
