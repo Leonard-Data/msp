@@ -34,8 +34,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const docsHref = href(base, 'docs/');
   const howItWorksHref = href(base, 'docs/how-it-works/');
   const searchHref = href(base, 'search/');
-  const aiCategoryHref = `${searchHref}?q=${encodeURIComponent('AI')}`;
-  const powerPlatformCategoryHref = `${searchHref}?q=${encodeURIComponent('Power Platform')}`;
+  const aiCategoryHref = `${searchHref}?category=${encodeURIComponent('AI')}`;
+  const powerPlatformCategoryHref = `${searchHref}?category=${encodeURIComponent('Power Platform')}`;
   const overviewHref = href(base, 'docs/sources/agent-engineering/');
   const addDocsHref = 'https://github.com/owner/msp-portal/issues/new/choose';
 

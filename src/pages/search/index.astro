@@ -38,6 +38,10 @@ const categories = docsData.categories.map((category) => category.name);
     const base = document.documentElement.dataset.base || '/';
     const params = new URLSearchParams(window.location.search);
 
+    function selectedCategory() {
+      return (params.get('category') || '').trim().toLowerCase();
+    }
+
     function rank(query, item) {
       const q = query.toLowerCase();
       const title = (item.title || '').toLowerCase();
@@ -97,12 +101,14 @@ const categories = docsData.categories.map((category) => category.name);
 
     function refresh() {
       const query = input?.value.trim() || '';
-      if (!query) {
+      const category = selectedCategory();
+      if (!query && !category) {
         renderDefault();
         return;
       }
       const matches = index
-        .map((item) => ({ item, score: rank(query, item) }))
+        .filter((item) => !category || (item.category || '').toLowerCase() === category)
+        .map((item) => ({ item, score: query ? rank(query, item) : 1 }))
         .filter((entry) => entry.score > 0)
         .sort((a, b) => b.score - a.score)
         .slice(0, 25)
