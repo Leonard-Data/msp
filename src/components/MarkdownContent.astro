@@ -9,7 +9,7 @@ const renderer = new marked.Renderer();
 renderer.heading = ({ tokens, depth }) => {
   const text = plainText(tokens).trim();
   const slug = slugify(text);
-  const html = marked.parser(tokens);
+  const html = marked.Parser.parseInline(tokens);
   return `<h${depth} id="${slug}">${html}</h${depth}>`;
 };
 
