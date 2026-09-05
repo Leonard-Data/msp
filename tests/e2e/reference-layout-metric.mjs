@@ -1,6 +1,6 @@
 import { PNG } from 'pngjs';
 
-const GRID_SIZE = 96;
+const GRID_SIZE = 256;
 const LAYOUT_THRESHOLD = 0.9;
 const LOW_VARIANCE_THRESHOLD = 0.0003;
 const BAND_FINGERPRINT_ROWS = 12;
@@ -19,7 +19,7 @@ const PROJECT_RULES = {
     minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0, 0.005, 0.005],
+    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -30,7 +30,7 @@ const PROJECT_RULES = {
     minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0, 0.005, 0.005],
+    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
   },
 };
 

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 function href(base, path = '') {
   return `${base.replace(/\/?$/, '/')}${path.replace(/^\/+/, '')}`;
@@ -57,6 +57,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.match(home, new RegExp(`href="${escapeRegex(powerPlatformCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Power Platform<\\/h3>`), 'Power Platform category card should link into the existing search route');
   assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
 
+  assert.equal(existsSync('dist/docs/review-link-check/index.html'), false, 'site should not ship the review-link-check page');
+  assert.doesNotMatch(docsHome, /href="\/msp-portal\/docs\/review-link-check\//, 'docs landing should not link a review-link-check page');
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
   assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');

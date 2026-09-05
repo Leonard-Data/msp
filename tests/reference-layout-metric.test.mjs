@@ -164,6 +164,12 @@ test('layout proof rejects a desktop contribution slice replaced by another cont
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a desktop category slice replaced by another category slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const proof = evaluateLayoutProof(replaceBandSlice(reference, 2, 1, 0), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects swapped top and bottom halves on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
   const png = PNG.sync.read(reference);
@@ -223,6 +229,12 @@ test('layout proof rejects a partially replaced mobile contribution slice', () =
 test('layout proof rejects a mobile contribution slice replaced by another contribution slice', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
   const proof = evaluateLayoutProof(replaceBandSlice(reference, 4, 1, 0), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects a mobile hero slice replaced by another hero slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const proof = evaluateLayoutProof(replaceBandSlice(reference, 0, 3, 0), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
 
