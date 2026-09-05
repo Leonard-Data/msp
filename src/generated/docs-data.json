@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T19:01:56.056Z",
+  "updatedAt": "2026-09-05T19:29:58.247Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -66,7 +66,7 @@
       "kind": "portal",
       "title": "Markdown features",
       "description": "MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors.",
-      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button",
+      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button External links and embeds External links automatically open in a new tab: See the Astro documentation https://astro.build/ for more about the static site generator. YouTube links turn into embedded video players. Just write a normal markdown link: Building with Astro — overview https://www.youtube.com/watch?v=gxBkghlglTg File embeds Embed a source file's content directly in the page using embed: followed by the language: SVG images in the project are rendered inline so you can style them with CSS: ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\"",
       "headings": [
         {
           "depth": 2,
@@ -77,6 +77,16 @@
           "depth": 2,
           "text": "Code blocks",
           "slug": "code-blocks"
+        },
+        {
+          "depth": 2,
+          "text": "External links and embeds",
+          "slug": "external-links-and-embeds"
+        },
+        {
+          "depth": 2,
+          "text": "File embeds",
+          "slug": "file-embeds"
         }
       ],
       "file": "content/portal/markdown-features.md",
@@ -355,13 +365,13 @@
         {
           "title": "Workflows",
           "href": "/docs/sources/firstmate-docs/workflows/",
-          "section": "overview",
+          "section": "workflows",
           "headings": []
         },
         {
           "title": "Troubleshooting",
           "href": "/docs/sources/firstmate-docs/troubleshooting/",
-          "section": "overview",
+          "section": "troubleshooting",
           "headings": [
             {
               "depth": 2,
@@ -388,7 +398,7 @@
         {
           "title": "Snippets",
           "href": "/docs/sources/firstmate-docs/snippets/",
-          "section": "overview",
+          "section": "snippets",
           "headings": [
             {
               "depth": 2,
@@ -405,7 +415,7 @@
         {
           "title": "/updatefirstmate",
           "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -442,7 +452,7 @@
         {
           "title": "/stuck-crewmate-recovery",
           "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -479,7 +489,7 @@
         {
           "title": "/stow",
           "href": "/docs/sources/firstmate-docs/skills/stow/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -516,7 +526,7 @@
         {
           "title": "/secondmate-provisioning",
           "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -553,7 +563,7 @@
         {
           "title": "/quota-array-dispatch",
           "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -590,7 +600,7 @@
         {
           "title": "/project-management",
           "href": "/docs/sources/firstmate-docs/skills/project-management/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -627,7 +637,7 @@
         {
           "title": "/process-event-sources",
           "href": "/docs/sources/firstmate-docs/skills/process-event-sources/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -664,7 +674,7 @@
         {
           "title": "/harness-adapters",
           "href": "/docs/sources/firstmate-docs/skills/harness-adapters/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -701,7 +711,7 @@
         {
           "title": "/fmx-respond",
           "href": "/docs/sources/firstmate-docs/skills/fmx-respond/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -738,7 +748,7 @@
         {
           "title": "/firstmate-orca",
           "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -775,7 +785,7 @@
         {
           "title": "/firstmate-coding-guidelines",
           "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -812,7 +822,7 @@
         {
           "title": "/firstmate-codexapp",
           "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -849,7 +859,7 @@
         {
           "title": "/diagnostic-reasoning",
           "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -886,7 +896,7 @@
         {
           "title": "/decision-hold-lifecycle",
           "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -923,7 +933,7 @@
         {
           "title": "/captain-hold-lifecycle",
           "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -960,7 +970,7 @@
         {
           "title": "/bootstrap-diagnostics",
           "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -997,7 +1007,7 @@
         {
           "title": "/bearings",
           "href": "/docs/sources/firstmate-docs/skills/bearings/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -1034,7 +1044,7 @@
         {
           "title": "/ask-user-authority",
           "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -1071,7 +1081,7 @@
         {
           "title": "/ahoy",
           "href": "/docs/sources/firstmate-docs/skills/ahoy/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -1108,7 +1118,7 @@
         {
           "title": "/afk",
           "href": "/docs/sources/firstmate-docs/skills/afk/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 3,
@@ -1145,7 +1155,7 @@
         {
           "title": "Firstmate skills",
           "href": "/docs/sources/firstmate-docs/skills/",
-          "section": "overview",
+          "section": "skills",
           "headings": [
             {
               "depth": 2,
@@ -1172,13 +1182,13 @@
         {
           "title": "Reference",
           "href": "/docs/sources/firstmate-docs/reference/",
-          "section": "overview",
+          "section": "reference",
           "headings": []
         },
         {
           "title": "Patterns",
           "href": "/docs/sources/firstmate-docs/patterns/",
-          "section": "overview",
+          "section": "patterns",
           "headings": [
             {
               "depth": 2,
@@ -1190,13 +1200,13 @@
         {
           "title": "Guides",
           "href": "/docs/sources/firstmate-docs/guides/",
-          "section": "overview",
+          "section": "guides",
           "headings": []
         },
         {
           "title": "Examples",
           "href": "/docs/sources/firstmate-docs/examples/",
-          "section": "overview",
+          "section": "examples",
           "headings": [
             {
               "depth": 2,
@@ -1208,25 +1218,25 @@
         {
           "title": "Concepts",
           "href": "/docs/sources/firstmate-docs/concepts/",
-          "section": "overview",
+          "section": "concepts",
           "headings": []
         },
         {
           "title": "Components",
           "href": "/docs/sources/firstmate-docs/components/",
-          "section": "overview",
+          "section": "components",
           "headings": []
         },
         {
           "title": "Assets",
           "href": "/docs/sources/firstmate-docs/assets/",
-          "section": "overview",
+          "section": "assets",
           "headings": []
         },
         {
           "title": "Architecture",
           "href": "/docs/sources/firstmate-docs/architecture/",
-          "section": "overview",
+          "section": "architecture",
           "headings": []
         },
         {
@@ -1763,13 +1773,13 @@
             {
               "title": "Workflows",
               "href": "/docs/sources/firstmate-docs/workflows/",
-              "section": "overview",
+              "section": "workflows",
               "headings": []
             },
             {
               "title": "Troubleshooting",
               "href": "/docs/sources/firstmate-docs/troubleshooting/",
-              "section": "overview",
+              "section": "troubleshooting",
               "headings": [
                 {
                   "depth": 2,
@@ -1796,7 +1806,7 @@
             {
               "title": "Snippets",
               "href": "/docs/sources/firstmate-docs/snippets/",
-              "section": "overview",
+              "section": "snippets",
               "headings": [
                 {
                   "depth": 2,
@@ -1813,7 +1823,7 @@
             {
               "title": "/updatefirstmate",
               "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -1850,7 +1860,7 @@
             {
               "title": "/stuck-crewmate-recovery",
               "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -1887,7 +1897,7 @@
             {
               "title": "/stow",
               "href": "/docs/sources/firstmate-docs/skills/stow/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -1924,7 +1934,7 @@
             {
               "title": "/secondmate-provisioning",
               "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -1961,7 +1971,7 @@
             {
               "title": "/quota-array-dispatch",
               "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -1998,7 +2008,7 @@
             {
               "title": "/project-management",
               "href": "/docs/sources/firstmate-docs/skills/project-management/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2035,7 +2045,7 @@
             {
               "title": "/process-event-sources",
               "href": "/docs/sources/firstmate-docs/skills/process-event-sources/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2072,7 +2082,7 @@
             {
               "title": "/harness-adapters",
               "href": "/docs/sources/firstmate-docs/skills/harness-adapters/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2109,7 +2119,7 @@
             {
               "title": "/fmx-respond",
               "href": "/docs/sources/firstmate-docs/skills/fmx-respond/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2146,7 +2156,7 @@
             {
               "title": "/firstmate-orca",
               "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2183,7 +2193,7 @@
             {
               "title": "/firstmate-coding-guidelines",
               "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2220,7 +2230,7 @@
             {
               "title": "/firstmate-codexapp",
               "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2257,7 +2267,7 @@
             {
               "title": "/diagnostic-reasoning",
               "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2294,7 +2304,7 @@
             {
               "title": "/decision-hold-lifecycle",
               "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2331,7 +2341,7 @@
             {
               "title": "/captain-hold-lifecycle",
               "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2368,7 +2378,7 @@
             {
               "title": "/bootstrap-diagnostics",
               "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2405,7 +2415,7 @@
             {
               "title": "/bearings",
               "href": "/docs/sources/firstmate-docs/skills/bearings/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2442,7 +2452,7 @@
             {
               "title": "/ask-user-authority",
               "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2479,7 +2489,7 @@
             {
               "title": "/ahoy",
               "href": "/docs/sources/firstmate-docs/skills/ahoy/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2516,7 +2526,7 @@
             {
               "title": "/afk",
               "href": "/docs/sources/firstmate-docs/skills/afk/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 3,
@@ -2553,7 +2563,7 @@
             {
               "title": "Firstmate skills",
               "href": "/docs/sources/firstmate-docs/skills/",
-              "section": "overview",
+              "section": "skills",
               "headings": [
                 {
                   "depth": 2,
@@ -2580,13 +2590,13 @@
             {
               "title": "Reference",
               "href": "/docs/sources/firstmate-docs/reference/",
-              "section": "overview",
+              "section": "reference",
               "headings": []
             },
             {
               "title": "Patterns",
               "href": "/docs/sources/firstmate-docs/patterns/",
-              "section": "overview",
+              "section": "patterns",
               "headings": [
                 {
                   "depth": 2,
@@ -2598,13 +2608,13 @@
             {
               "title": "Guides",
               "href": "/docs/sources/firstmate-docs/guides/",
-              "section": "overview",
+              "section": "guides",
               "headings": []
             },
             {
               "title": "Examples",
               "href": "/docs/sources/firstmate-docs/examples/",
-              "section": "overview",
+              "section": "examples",
               "headings": [
                 {
                   "depth": 2,
@@ -2616,25 +2626,25 @@
             {
               "title": "Concepts",
               "href": "/docs/sources/firstmate-docs/concepts/",
-              "section": "overview",
+              "section": "concepts",
               "headings": []
             },
             {
               "title": "Components",
               "href": "/docs/sources/firstmate-docs/components/",
-              "section": "overview",
+              "section": "components",
               "headings": []
             },
             {
               "title": "Assets",
               "href": "/docs/sources/firstmate-docs/assets/",
-              "section": "overview",
+              "section": "assets",
               "headings": []
             },
             {
               "title": "Architecture",
               "href": "/docs/sources/firstmate-docs/architecture/",
-              "section": "overview",
+              "section": "architecture",
               "headings": []
             },
             {
@@ -3291,16 +3301,16 @@
       "label": "Portal",
       "items": [
         {
-          "label": "MSP Portal",
-          "href": "/docs/"
-        },
-        {
           "label": "How it works",
           "href": "/docs/how-it-works/"
         },
         {
           "label": "Markdown features",
           "href": "/docs/markdown-features/"
+        },
+        {
+          "label": "MSP Portal",
+          "href": "/docs/"
         },
         {
           "label": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
@@ -3316,208 +3326,248 @@
           "href": "/docs/sources/firstmate-docs/workflows/",
           "children": [
             {
-              "label": "Troubleshooting",
-              "href": "/docs/sources/firstmate-docs/troubleshooting/"
-            },
-            {
-              "label": "Snippets",
-              "href": "/docs/sources/firstmate-docs/snippets/"
-            },
-            {
-              "label": "/updatefirstmate",
-              "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/"
-            },
-            {
-              "label": "/stuck-crewmate-recovery",
-              "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/"
-            },
-            {
-              "label": "/stow",
-              "href": "/docs/sources/firstmate-docs/skills/stow/"
-            },
-            {
-              "label": "/secondmate-provisioning",
-              "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
-            },
-            {
-              "label": "/quota-array-dispatch",
-              "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/"
-            },
-            {
-              "label": "/project-management",
-              "href": "/docs/sources/firstmate-docs/skills/project-management/"
-            },
-            {
-              "label": "/process-event-sources",
-              "href": "/docs/sources/firstmate-docs/skills/process-event-sources/"
-            },
-            {
-              "label": "/harness-adapters",
-              "href": "/docs/sources/firstmate-docs/skills/harness-adapters/"
-            },
-            {
-              "label": "/fmx-respond",
-              "href": "/docs/sources/firstmate-docs/skills/fmx-respond/"
-            },
-            {
-              "label": "/firstmate-orca",
-              "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/"
-            },
-            {
-              "label": "/firstmate-coding-guidelines",
-              "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/"
-            },
-            {
-              "label": "/firstmate-codexapp",
-              "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/"
-            },
-            {
-              "label": "/diagnostic-reasoning",
-              "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/"
-            },
-            {
-              "label": "/decision-hold-lifecycle",
-              "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/"
-            },
-            {
-              "label": "/captain-hold-lifecycle",
-              "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/"
-            },
-            {
-              "label": "/bootstrap-diagnostics",
-              "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/"
-            },
-            {
-              "label": "/bearings",
-              "href": "/docs/sources/firstmate-docs/skills/bearings/"
-            },
-            {
-              "label": "/ask-user-authority",
-              "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/"
-            },
-            {
-              "label": "/ahoy",
-              "href": "/docs/sources/firstmate-docs/skills/ahoy/"
-            },
-            {
-              "label": "/afk",
-              "href": "/docs/sources/firstmate-docs/skills/afk/"
-            },
-            {
-              "label": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/"
-            },
-            {
-              "label": "Reference",
-              "href": "/docs/sources/firstmate-docs/reference/"
-            },
-            {
-              "label": "Patterns",
-              "href": "/docs/sources/firstmate-docs/patterns/"
-            },
-            {
-              "label": "Guides",
-              "href": "/docs/sources/firstmate-docs/guides/"
-            },
-            {
-              "label": "Examples",
-              "href": "/docs/sources/firstmate-docs/examples/"
-            },
-            {
-              "label": "Concepts",
-              "href": "/docs/sources/firstmate-docs/concepts/"
-            },
-            {
-              "label": "Components",
-              "href": "/docs/sources/firstmate-docs/components/"
+              "label": "Architecture",
+              "children": [
+                {
+                  "label": "Architecture",
+                  "href": "/docs/sources/firstmate-docs/architecture/"
+                },
+                {
+                  "label": "State and records",
+                  "href": "/docs/sources/firstmate-docs/architecture/state-and-records/"
+                },
+                {
+                  "label": "System map",
+                  "href": "/docs/sources/firstmate-docs/architecture/system-map/"
+                }
+              ]
             },
             {
               "label": "Assets",
               "href": "/docs/sources/firstmate-docs/assets/"
             },
             {
-              "label": "Architecture",
-              "href": "/docs/sources/firstmate-docs/architecture/"
+              "label": "Components",
+              "children": [
+                {
+                  "label": "Components",
+                  "href": "/docs/sources/firstmate-docs/components/"
+                },
+                {
+                  "label": "Harnesses",
+                  "href": "/docs/sources/firstmate-docs/components/harnesses/"
+                },
+                {
+                  "label": "Scripts",
+                  "href": "/docs/sources/firstmate-docs/components/scripts/"
+                },
+                {
+                  "label": "Skills",
+                  "href": "/docs/sources/firstmate-docs/components/skills/"
+                },
+                {
+                  "label": "Tools",
+                  "href": "/docs/sources/firstmate-docs/components/tools/"
+                }
+              ]
+            },
+            {
+              "label": "Concepts",
+              "children": [
+                {
+                  "label": "Concepts",
+                  "href": "/docs/sources/firstmate-docs/concepts/"
+                },
+                {
+                  "label": "Firstmate core and soul",
+                  "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/"
+                },
+                {
+                  "label": "Multi-project operations",
+                  "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/"
+                },
+                {
+                  "label": "Operating contract",
+                  "href": "/docs/sources/firstmate-docs/concepts/operating-contract/"
+                },
+                {
+                  "label": "Safety model",
+                  "href": "/docs/sources/firstmate-docs/concepts/safety-model/"
+                }
+              ]
+            },
+            {
+              "label": "Examples",
+              "children": [
+                {
+                  "label": "Examples",
+                  "href": "/docs/sources/firstmate-docs/examples/"
+                },
+                {
+                  "label": "Multi-project request examples",
+                  "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/"
+                }
+              ]
+            },
+            {
+              "label": "Guides",
+              "children": [
+                {
+                  "label": "Guides",
+                  "href": "/docs/sources/firstmate-docs/guides/"
+                },
+                {
+                  "label": "Setup",
+                  "href": "/docs/sources/firstmate-docs/guides/setup/"
+                },
+                {
+                  "label": "Working well with Firstmate",
+                  "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/"
+                }
+              ]
             },
             {
               "label": "Firstmate documentation",
               "href": "/docs/sources/firstmate-docs/"
             },
             {
-              "label": "Firstmate core and soul",
-              "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/"
+              "label": "Patterns",
+              "href": "/docs/sources/firstmate-docs/patterns/"
             },
             {
-              "label": "Multi-project operations",
-              "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/"
-            },
-            {
-              "label": "Operating contract",
-              "href": "/docs/sources/firstmate-docs/concepts/operating-contract/"
-            },
-            {
-              "label": "Safety model",
-              "href": "/docs/sources/firstmate-docs/concepts/safety-model/"
-            },
-            {
-              "label": "State and records",
-              "href": "/docs/sources/firstmate-docs/architecture/state-and-records/"
-            },
-            {
-              "label": "System map",
-              "href": "/docs/sources/firstmate-docs/architecture/system-map/"
-            },
-            {
-              "label": "Setup",
-              "href": "/docs/sources/firstmate-docs/guides/setup/"
-            },
-            {
-              "label": "Working well with Firstmate",
-              "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/"
-            },
-            {
-              "label": "MSP documentation sync",
-              "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/"
-            },
-            {
-              "label": "Routing and assignment",
-              "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/"
-            },
-            {
-              "label": "Task lifecycle",
-              "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/"
-            },
-            {
-              "label": "Harnesses",
-              "href": "/docs/sources/firstmate-docs/components/harnesses/"
-            },
-            {
-              "label": "Scripts",
-              "href": "/docs/sources/firstmate-docs/components/scripts/"
+              "label": "Reference",
+              "children": [
+                {
+                  "label": "Commands",
+                  "href": "/docs/sources/firstmate-docs/reference/commands/"
+                },
+                {
+                  "label": "Glossary",
+                  "href": "/docs/sources/firstmate-docs/reference/glossary/"
+                },
+                {
+                  "label": "Reference",
+                  "href": "/docs/sources/firstmate-docs/reference/"
+                }
+              ]
             },
             {
               "label": "Skills",
-              "href": "/docs/sources/firstmate-docs/components/skills/"
+              "children": [
+                {
+                  "label": "/afk",
+                  "href": "/docs/sources/firstmate-docs/skills/afk/"
+                },
+                {
+                  "label": "/ahoy",
+                  "href": "/docs/sources/firstmate-docs/skills/ahoy/"
+                },
+                {
+                  "label": "/ask-user-authority",
+                  "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/"
+                },
+                {
+                  "label": "/bearings",
+                  "href": "/docs/sources/firstmate-docs/skills/bearings/"
+                },
+                {
+                  "label": "/bootstrap-diagnostics",
+                  "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/"
+                },
+                {
+                  "label": "/captain-hold-lifecycle",
+                  "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/"
+                },
+                {
+                  "label": "/decision-hold-lifecycle",
+                  "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/"
+                },
+                {
+                  "label": "/diagnostic-reasoning",
+                  "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/"
+                },
+                {
+                  "label": "/firstmate-codexapp",
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/"
+                },
+                {
+                  "label": "/firstmate-coding-guidelines",
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/"
+                },
+                {
+                  "label": "/firstmate-orca",
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/"
+                },
+                {
+                  "label": "/fmx-respond",
+                  "href": "/docs/sources/firstmate-docs/skills/fmx-respond/"
+                },
+                {
+                  "label": "/harness-adapters",
+                  "href": "/docs/sources/firstmate-docs/skills/harness-adapters/"
+                },
+                {
+                  "label": "/process-event-sources",
+                  "href": "/docs/sources/firstmate-docs/skills/process-event-sources/"
+                },
+                {
+                  "label": "/project-management",
+                  "href": "/docs/sources/firstmate-docs/skills/project-management/"
+                },
+                {
+                  "label": "/quota-array-dispatch",
+                  "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/"
+                },
+                {
+                  "label": "/secondmate-provisioning",
+                  "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
+                },
+                {
+                  "label": "/stow",
+                  "href": "/docs/sources/firstmate-docs/skills/stow/"
+                },
+                {
+                  "label": "/stuck-crewmate-recovery",
+                  "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/"
+                },
+                {
+                  "label": "/updatefirstmate",
+                  "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/"
+                },
+                {
+                  "label": "Firstmate skills",
+                  "href": "/docs/sources/firstmate-docs/skills/"
+                },
+                {
+                  "label": "Public installer-facing `stow`",
+                  "href": "/docs/sources/firstmate-docs/skills/stow/public/"
+                }
+              ]
             },
             {
-              "label": "Tools",
-              "href": "/docs/sources/firstmate-docs/components/tools/"
+              "label": "Snippets",
+              "href": "/docs/sources/firstmate-docs/snippets/"
             },
             {
-              "label": "Multi-project request examples",
-              "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/"
+              "label": "Troubleshooting",
+              "href": "/docs/sources/firstmate-docs/troubleshooting/"
             },
             {
-              "label": "Commands",
-              "href": "/docs/sources/firstmate-docs/reference/commands/"
-            },
-            {
-              "label": "Glossary",
-              "href": "/docs/sources/firstmate-docs/reference/glossary/"
-            },
-            {
-              "label": "Public installer-facing `stow`",
-              "href": "/docs/sources/firstmate-docs/skills/stow/public/"
+              "label": "Workflows",
+              "children": [
+                {
+                  "label": "MSP documentation sync",
+                  "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/"
+                },
+                {
+                  "label": "Routing and assignment",
+                  "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/"
+                },
+                {
+                  "label": "Task lifecycle",
+                  "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/"
+                }
+              ]
             }
           ]
         }
@@ -3628,7 +3678,7 @@
       "kind": "portal",
       "title": "Markdown features",
       "description": "MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors.",
-      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button",
+      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button External links and embeds External links automatically open in a new tab: See the Astro documentation https://astro.build/ for more about the static site generator. YouTube links turn into embedded video players. Just write a normal markdown link: Building with Astro — overview https://www.youtube.com/watch?v=gxBkghlglTg File embeds Embed a source file's content directly in the page using embed: followed by the language: SVG images in the project are rendered inline so you can style them with CSS: ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\"",
       "headings": [
         {
           "depth": 2,
@@ -3639,6 +3689,16 @@
           "depth": 2,
           "text": "Code blocks",
           "slug": "code-blocks"
+        },
+        {
+          "depth": 2,
+          "text": "External links and embeds",
+          "slug": "external-links-and-embeds"
+        },
+        {
+          "depth": 2,
+          "text": "File embeds",
+          "slug": "file-embeds"
         }
       ],
       "file": "content/portal/markdown-features.md",
@@ -3990,7 +4050,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "workflows",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4037,7 +4097,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "troubleshooting",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4074,7 +4134,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "snippets",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4131,7 +4191,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4188,7 +4248,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4245,7 +4305,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4302,7 +4362,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4359,7 +4419,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4416,7 +4476,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4473,7 +4533,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4530,7 +4590,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4587,7 +4647,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4644,7 +4704,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4701,7 +4761,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4758,7 +4818,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4815,7 +4875,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4872,7 +4932,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4929,7 +4989,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -4986,7 +5046,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5043,7 +5103,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5100,7 +5160,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5157,7 +5217,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5214,7 +5274,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5261,7 +5321,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5287,7 +5347,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "reference",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5319,7 +5379,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "patterns",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5345,7 +5405,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "guides",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5377,7 +5437,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "examples",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5403,7 +5463,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "concepts",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5429,7 +5489,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "components",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5455,7 +5515,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "assets",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5481,7 +5541,7 @@
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
+      "section": "architecture",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
