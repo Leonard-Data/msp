@@ -12,7 +12,7 @@ test('homepage stays usable on the current device class', async ({ page }) => {
 
   await page.goto('/');
   await page.getByLabel('Search across every synced repository').fill('Agent Engineering');
-  await page.getByRole('button', { name: /Open search/i }).click();
+  await page.getByRole('button', { name: /^Open search$/i }).click();
   await expect(page).toHaveURL(/\/search\/\?q=Agent\+Engineering$/);
   await expect(page.getByRole('link', { name: /Agent Engineering/i }).first()).toBeVisible();
 });

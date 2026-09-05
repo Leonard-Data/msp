@@ -1,8 +1,15 @@
 ---
 import '../styles/global.css';
+import SearchPanel from '../components/SearchPanel.astro';
 import { withBase } from '../lib/base-path';
 
-const { title = 'MSP', description = 'Centralized documentation portal', repoUrl = 'https://github.com/Leonard-Data/msp' } = Astro.props;
+const {
+  title = 'MSP',
+  description = 'Centralized documentation portal',
+  repoUrl = 'https://github.com/Leonard-Data/msp',
+  docsNavToggle = false,
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL;
 const homeHref = withBase(base);
 const docsHref = withBase(base, 'docs/');
@@ -24,19 +31,42 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
     <div class="shell">
       <header class="topbar">
         <div class="topbar__inner">
-          <a class="brand" href={homeHref}>
-            <img src={logoHref} alt="MSP" />
-            <span class="brand__copy">
-              <span>MSP</span>
-            </span>
-          </a>
+          <div class="topbar__brand-group">
+            {docsNavToggle ? (
+              <button
+                type="button"
+                class="button button--ghost button--sm topbar__toggle"
+                data-docs-nav-toggle
+                aria-controls="docs-sidebar"
+                aria-expanded="false"
+                aria-label="Toggle documentation navigation"
+              >
+                <span aria-hidden="true">☰</span>
+              </button>
+            ) : null}
+            <a class="brand" href={homeHref}>
+              <img src={logoHref} alt="MSP" />
+              <span class="brand__copy">
+                <span>MSP</span>
+              </span>
+            </a>
+          </div>
           <nav class="topnav" aria-label="Primary">
             <a href={docsHref}>Library</a>
             <a href={searchHref}>Search</a>
             <a href={howItWorksHref}>How it works</a>
           </nav>
           <div class="topbar__actions">
-            <a class="search-trigger" href={searchHref}>Search</a>
+            <button
+              type="button"
+              class="button button--ghost button--sm search-trigger"
+              data-search-open
+              aria-haspopup="dialog"
+              aria-controls="site-search-dialog"
+              aria-label="Open search dialog"
+            >
+              Search
+            </button>
             <a class="button button--ghost" href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
             <a class="button button--primary" href={addDocsHref} target="_blank" rel="noreferrer">Add documentation</a>
           </div>
@@ -44,5 +74,40 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
       </header>
       <slot />
     </div>
+
+    <dialog class="search-dialog" id="site-search-dialog" data-search-dialog aria-labelledby="site-search-dialog-title">
+      <div class="search-dialog__surface">
+        <div class="search-dialog__header">
+          <div>
+            <span class="meta-label">Global search</span>
+            <h2 id="site-search-dialog-title">Search the library</h2>
+          </div>
+          <button type="button" class="button button--ghost button--sm" data-search-close aria-label="Close search dialog">Close</button>
+        </div>
+        <SearchPanel inputId="global-search-box" dialogMode={true} />
+      </div>
+    </dialog>
+
+    <script is:inline>
+      const searchDialog = document.querySelector('[data-search-dialog]');
+      const searchOpeners = document.querySelectorAll('[data-search-open]');
+      const searchCloser = searchDialog?.querySelector('[data-search-close]');
+      const searchPanel = searchDialog?.querySelector('[data-search-root]');
+
+      const openSearchDialog = () => {
+        if (!searchDialog?.showModal) return;
+        searchDialog.showModal();
+        searchPanel?.dispatchEvent(new CustomEvent('search:focus'));
+      };
+
+      searchOpeners.forEach((button) => button.addEventListener('click', openSearchDialog));
+      searchCloser?.addEventListener('click', () => searchDialog?.close());
+      searchDialog?.addEventListener('click', (event) => {
+        const bounds = searchDialog.getBoundingClientRect();
+        const inside = event.clientX >= bounds.left && event.clientX <= bounds.right
+          && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
+        if (!inside) searchDialog.close();
+      });
+    </script>
   </body>
 </html>
