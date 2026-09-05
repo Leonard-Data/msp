@@ -92,7 +92,7 @@ const featuredSources = docsData.sourceGroups.slice(0, 4);
             <h3>{source.name}</h3>
             <p>{source.description}</p>
             <div class="source-card__actions">
-              <a class="button button--ghost" href={withBase(base, source.pages[0]?.href || 'docs/')}>Open source</a>
+              <a class="button button--ghost" href={source.pages[0]?.href ? withBase(base, source.pages[0].href.replace(/^\/+/, '')) : source.repoUrl} target={source.pages[0]?.href ? undefined : '_blank'} rel={source.pages[0]?.href ? undefined : 'noreferrer'}>Open source</a>
               <a class="text-link" href={source.repoUrl} target="_blank" rel="noreferrer">View repository</a>
             </div>
           </article>

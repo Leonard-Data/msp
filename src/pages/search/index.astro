@@ -48,19 +48,23 @@ const categories = docsData.categories.map((category) => category.name);
     const base = document.documentElement.dataset.base || '/';
     const params = new URLSearchParams(window.location.search);
 
+    function normalizeCategory(value) {
+      return (value || '').trim().toLowerCase();
+    }
+
     function selectedCategoryValue() {
       return (params.get('category') || '').trim();
     }
 
     function selectedCategory() {
-      return selectedCategoryValue().toLowerCase();
+      return normalizeCategory(selectedCategoryValue());
     }
 
     function rank(query, item) {
       const q = query.toLowerCase();
       const title = (item.title || '').toLowerCase();
       const headings = (item.headings || '').toLowerCase();
-      const category = (item.category || '').toLowerCase();
+      const category = normalizeCategory(item.category || '');
       const sourceName = (item.sourceName || '').toLowerCase();
       const content = (item.content || '').toLowerCase();
       const haystack = `${title} ${item.description || ''} ${headings} ${content} ${sourceName} ${category}`.toLowerCase();
@@ -134,7 +138,7 @@ const categories = docsData.categories.map((category) => category.name);
         return;
       }
       const matches = index
-        .filter((item) => !category || (item.category || '').toLowerCase() === category)
+        .filter((item) => !category || normalizeCategory(item.category || '') === category)
         .map((item) => ({ item, score: query ? rank(query, item) : 1 }))
         .filter((entry) => entry.score > 0)
         .sort((a, b) => b.score - a.score)

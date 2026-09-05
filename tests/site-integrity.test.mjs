@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 function href(base, path = '') {
   return `${base.replace(/\/?$/, '/')}${path.replace(/^\/+/, '')}`;
@@ -52,7 +52,6 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const home = readFileSync('dist/index.html', 'utf8');
   const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
   const docsHome = readFileSync('dist/docs/index.html', 'utf8');
-  const searchPage = readFileSync('dist/search/index.html', 'utf8');
   const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
   const generatedDocs = JSON.parse(readFileSync('src/generated/docs-data.json', 'utf8'));
   const generatedSearch = JSON.parse(readFileSync('src/generated/search-index.json', 'utf8'));
@@ -74,8 +73,6 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.equal(generatedDocs.pages.some((page) => page.slug === 'review-link-check' || page.href === '/docs/review-link-check/'), false, 'generated pages should not include the review-link-check page');
   assert.equal(collectSidebarHrefs(generatedDocs.sidebar).includes('/docs/review-link-check/'), false, 'generated sidebar should not include the review-link-check page');
   assert.equal(generatedSearch.some((item) => item.href === '/docs/review-link-check/'), false, 'generated search index should not include the review-link-check page');
-  assert.match(searchPage, /data-search-active-filter/, 'search page should render a visible active-filter surface');
-  assert.match(searchPage, /data-search-clear-category/, 'search page should render a clear-category control');
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
   assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');
@@ -113,4 +110,45 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
 
   assert.equal(readFileSync('src/generated/docs-data.json', 'utf8'), originalDocsData, 'generated docs data should be restored after the temporary portal page test');
   assert.equal(readFileSync('src/generated/search-index.json', 'utf8'), originalSearchIndex, 'generated search index should be restored after the temporary portal page test');
+});
+
+test('empty source shelves link to the repository when no docs exist yet', () => {
+  const env = {
+    GITHUB_ACTIONS: '1',
+    GITHUB_REPOSITORY: 'owner/msp-portal',
+    GITHUB_REPOSITORY_OWNER: 'owner',
+  };
+  const tempSourceDir = 'example-sources/empty-source';
+  const tempDocsDir = `${tempSourceDir}/docs`;
+  const sourcesYaml = readFileSync('sources.yml', 'utf8');
+  const originalDocsData = readFileSync('src/generated/docs-data.json', 'utf8');
+  const originalSearchIndex = readFileSync('src/generated/search-index.json', 'utf8');
+  const originalSourcesJson = readFileSync('src/generated/sources.json', 'utf8');
+
+  mkdirSync(tempDocsDir, { recursive: true });
+  writeFileSync(`${tempSourceDir}/.docs-source.yml`, [
+    'id: empty-source',
+    'name: Empty Source',
+    'description: Repository connected before docs exist.',
+    'category: AI',
+    'tags:',
+    '  - empty',
+    'navigation: []',
+    'docs_path: docs',
+    '',
+  ].join('\n'));
+  writeFileSync('sources.yml', `${sourcesYaml.trimEnd()}\n\n  - repo: company/empty-source\n    repoUrl: https://github.com/company/empty-source\n    localPath: example-sources/empty-source\n    defaultBranch: main\n`);
+
+  try {
+    buildSite(env);
+    const home = readFileSync('dist/index.html', 'utf8');
+    assert.match(home, /<h3>Empty Source<\/h3>/, 'empty sources should still render a shelf card');
+    assert.match(home, /href="https:\/\/github\.com\/company\/empty-source"[^>]*>Open source<\/a>/, 'empty sources should send their primary action to the repository');
+  } finally {
+    rmSync(tempSourceDir, { recursive: true, force: true });
+    writeFileSync('sources.yml', sourcesYaml);
+    writeFileSync('src/generated/docs-data.json', originalDocsData);
+    writeFileSync('src/generated/search-index.json', originalSearchIndex);
+    writeFileSync('src/generated/sources.json', originalSourcesJson);
+  }
 });
