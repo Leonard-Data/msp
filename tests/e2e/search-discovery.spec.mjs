@@ -12,17 +12,22 @@ test('search matches category and source labels', async ({ page }) => {
   await expect(pageSearch.getByRole('link', { name: /Agent Engineering/i }).first()).toBeVisible();
 });
 
-test('global search dialog opens from every screen and routes to the source page', async ({ page }) => {
-  for (const path of globalSearchPaths) {
+test('global search dialog lazy-loads the index and routes to the source page', async ({ page }) => {
+  for (const [index, path] of globalSearchPaths.entries()) {
     await page.goto(path);
 
     const openSearch = page.getByRole('button', { name: /open search dialog/i });
     await expect(openSearch).toBeVisible();
+
+    const indexResponse = index === 0
+      ? page.waitForResponse((response) => /search-index.*\.json(?:\?|$)/.test(response.url()) && response.ok())
+      : null;
     await openSearch.click();
 
     const dialog = page.getByRole('dialog', { name: /search the library/i });
     const dialogSearch = dialog.locator('[data-search-root]').first();
     await expect(dialog).toBeVisible();
+    if (indexResponse) await indexResponse;
 
     await dialogSearch.getByLabel('Search the library').fill('Concepts');
     await expect(dialogSearch.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();

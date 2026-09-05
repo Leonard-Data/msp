@@ -1,6 +1,6 @@
 ---
 // @ts-nocheck
-import searchIndex from '../generated/search-index.json';
+import searchIndexUrl from '../generated/search-index.json?url';
 import { withBase } from '../lib/base-path';
 
 const {
@@ -12,12 +12,11 @@ const {
 
 const base = import.meta.env.BASE_URL;
 const searchPageHref = withBase(base, 'search/');
-const serialized = JSON.stringify(searchIndex);
 ---
 <section
   class:list={['search-panel', dialogMode && 'search-panel--dialog']}
   data-search-root
-  data-search-index={serialized}
+  data-search-index-url={searchIndexUrl}
   data-search-page-href={searchPageHref}
   data-sync-url={syncUrl ? 'true' : 'false'}
 >
@@ -49,11 +48,13 @@ const serialized = JSON.stringify(searchIndex);
     const activeFilter = root.querySelector('[data-search-active-filter]');
     const activeFilterLabel = root.querySelector('[data-search-active-filter-label]');
     const clearCategoryLink = root.querySelector('[data-search-clear-category]');
-    const index = JSON.parse(root.dataset.searchIndex || '[]');
     const base = document.documentElement.dataset.base || '/';
     const syncUrl = root.dataset.syncUrl === 'true';
     const searchPageHref = root.dataset.searchPageHref || `${base}search/`;
+    const searchIndexUrl = root.dataset.searchIndexUrl || '';
     const params = syncUrl ? new URLSearchParams(window.location.search) : new URLSearchParams();
+    let index;
+    let loadPromise;
 
     function withBase(path) {
       const prefix = base.endsWith('/') ? base : `${base}/`;
@@ -78,6 +79,24 @@ const serialized = JSON.stringify(searchIndex);
 
     function resultHref(item) {
       return withBase(canonicalHref(item.href));
+    }
+
+    async function loadIndex() {
+      if (index) return index;
+      if (!loadPromise) {
+        if (results) results.innerHTML = '<p class="muted">Loading…</p>';
+        loadPromise = fetch(searchIndexUrl)
+          .then((response) => (response.ok ? response.json() : []))
+          .then((data) => {
+            index = Array.isArray(data) ? data : [];
+            return index;
+          })
+          .catch(() => {
+            index = [];
+            return index;
+          });
+      }
+      return loadPromise;
     }
 
     function rank(query, item) {
@@ -119,10 +138,6 @@ const serialized = JSON.stringify(searchIndex);
         .replace(/"/g, '&quot;');
     }
 
-    function renderDefault() {
-      render(index.slice(0, 8), '');
-    }
-
     function syncActiveCategory(query) {
       if (!activeFilter || !activeFilterLabel || !clearCategoryLink) return;
       const category = selectedCategoryValue();
@@ -148,15 +163,16 @@ const serialized = JSON.stringify(searchIndex);
       `).join('') : `<p class="muted">No results${category ? ` in ${escapeHtml(category)}.` : '.'}</p>`;
     }
 
-    function refresh() {
+    async function refresh() {
       const query = input?.value.trim() || '';
       const category = selectedCategory();
+      const items = await loadIndex();
       syncActiveCategory(query);
       if (!query && !category) {
-        renderDefault();
+        render(items.slice(0, 8), '');
         return;
       }
-      const matches = index
+      const matches = items
         .filter((item) => !category || normalizeCategory(item.category || '') === category)
         .map((item) => ({ item, score: query ? rank(query, item) : 1 }))
         .filter((entry) => entry.score > 0)
@@ -169,13 +185,15 @@ const serialized = JSON.stringify(searchIndex);
     root.addEventListener('search:focus', () => {
       input?.focus();
       input?.select();
-      refresh();
+      void refresh();
     });
 
     if (input) {
       input.value = syncUrl ? (params.get('q') || '') : '';
-      input.addEventListener('input', refresh);
-      refresh();
+      input.addEventListener('input', () => {
+        void refresh();
+      });
+      if (syncUrl) void refresh();
     }
   })();
 </script>

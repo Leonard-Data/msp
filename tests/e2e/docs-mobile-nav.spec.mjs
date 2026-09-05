@@ -35,19 +35,29 @@ test('mobile docs pages use the header toggle to open and close the sidebar draw
 
     const toggle = page.getByRole('button', { name: /toggle documentation navigation/i });
     const navigation = page.locator('[aria-label="Documentation navigation"]');
+    const backdrop = page.getByRole('button', { name: /close documentation navigation/i });
 
     await expect(toggle).toBeVisible();
     await expect(navigation).toBeHidden();
+    await expect(backdrop).toBeHidden();
 
     await toggle.click();
     await expect(navigation).toBeVisible();
+    await expect(backdrop).toBeVisible();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+
+    const headerBox = await page.locator('.topbar').boundingBox();
+    const navBox = await page.locator('[data-docs-nav-shell]').boundingBox();
+    const backdropBox = await backdrop.boundingBox();
+    expect(navBox?.y).toBeGreaterThanOrEqual((headerBox?.y || 0) + (headerBox?.height || 0) - 1);
+    expect(backdropBox?.y).toBeGreaterThanOrEqual((headerBox?.y || 0) + (headerBox?.height || 0) - 1);
 
     const linkCount = await navigation.locator('a:visible').count();
     expect(linkCount).toBeGreaterThan(1);
 
     await toggle.click();
     await expect(navigation).toBeHidden();
+    await expect(backdrop).toBeHidden();
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   }
 });
