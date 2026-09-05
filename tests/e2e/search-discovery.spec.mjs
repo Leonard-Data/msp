@@ -70,7 +70,7 @@ test('search link falls back to the search page without JavaScript', async ({ br
 });
 
 
-test('search dialog shows a simple load error before succeeding after an initial index fetch failure', async ({ page }) => {
+test('search dialog retries after an initial fetch failure without showing an extra error mode', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
@@ -86,12 +86,11 @@ test('search dialog shows a simple load error before succeeding after an initial
 
   const dialog = page.getByRole('dialog', { name: /search the library/i });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText(/Search is unavailable right now\./i)).toBeVisible();
+  await expect(dialog.getByText(/Search is unavailable right now\./i)).toHaveCount(0);
 
   await dialog.getByLabel('Search the library').fill('Concepts');
 
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText(/Search is unavailable right now\./i)).toHaveCount(0);
   await expect(dialog.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();
   expect(requests).toBeGreaterThanOrEqual(2);
 });

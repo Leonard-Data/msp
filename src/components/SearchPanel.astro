@@ -159,10 +159,6 @@ const searchPageHref = withBase(base, 'search/');
       `).join('') : `<p class="muted">No results${category ? ` in ${escapeHtml(category)}.` : '.'}</p>`;
     }
 
-    function renderLoadError() {
-      results.innerHTML = '<p class="muted">Search is unavailable right now.</p>';
-    }
-
     async function refresh() {
       const query = input?.value.trim() || '';
       const category = selectedCategory();
@@ -171,7 +167,7 @@ const searchPageHref = withBase(base, 'search/');
         items = await loadIndex();
       } catch {
         syncActiveCategory(query);
-        renderLoadError();
+        results.innerHTML = '';
         return;
       }
       syncActiveCategory(query);
