@@ -5,6 +5,9 @@ const LAYOUT_THRESHOLD = 0.9;
 const LOW_VARIANCE_THRESHOLD = 0.0003;
 const BAND_FINGERPRINT_ROWS = 12;
 const BAND_FINGERPRINT_COLS = 12;
+const BAND_SLICE_COUNT = 4;
+const SLICE_FINGERPRINT_ROWS = 3;
+const SLICE_FINGERPRINT_COLS = 12;
 
 const PROJECT_RULES = {
   'desktop-chromium': {
@@ -15,6 +18,8 @@ const PROJECT_RULES = {
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
     minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
+    minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
+    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -24,6 +29,8 @@ const PROJECT_RULES = {
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
     minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
+    minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
+    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
   },
 };
 
@@ -71,6 +78,30 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
       otherScores,
     };
   });
+  const sliceIdentityChecks = rule.labels.flatMap((label, bandIndex) =>
+    sliceRanges(rule.bands[bandIndex], rule.bands[bandIndex + 1]).map(({ start, end }, sliceIndex) => {
+      const score = sliceFingerprintSimilarity(leftGrid, rightGrid, start, end);
+      const otherScores = rule.labels
+        .flatMap((otherLabel, otherBandIndex) => {
+          if (otherBandIndex === bandIndex) return [];
+          return sliceRanges(rule.bands[otherBandIndex], rule.bands[otherBandIndex + 1]).map(({ start: otherStart, end: otherEnd }, otherSliceIndex) => ({
+            label: `${otherLabel}:${otherSliceIndex}`,
+            score: sliceFingerprintSimilarity(leftGrid, rightGrid, start, end, otherStart, otherEnd),
+          }));
+        })
+        .sort((left, right) => right.score - left.score);
+
+      return {
+        label,
+        bandIndex,
+        sliceIndex,
+        score,
+        maxOtherScore: otherScores[0]?.score ?? 0,
+        margin: score - (otherScores[0]?.score ?? 0),
+        otherScores,
+      };
+    }),
+  );
 
   const passes =
     overallScore >= LAYOUT_THRESHOLD &&
@@ -79,6 +110,9 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]) &&
     identityChecks.every(({ score, margin }, index) =>
       score >= rule.minIdentityScores[index] && margin >= rule.minIdentityMargins[index],
+    ) &&
+    sliceIdentityChecks.every(({ bandIndex, score, margin }) =>
+      score >= rule.minSliceIdentityScores[bandIndex] && margin >= rule.minSliceIdentityMargins[bandIndex],
     );
 
   return {
@@ -87,6 +121,7 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     bandEnergies,
     lowVarianceRuns,
     identityChecks,
+    sliceIdentityChecks,
     labels: rule.labels,
     passes,
   };
@@ -221,6 +256,27 @@ function bandFingerprintSimilarity(leftGrid, rightGrid, leftStart, leftEnd, righ
     bandFingerprint(leftGrid, leftStart, leftEnd),
     bandFingerprint(rightGrid, rightStart, rightEnd),
   );
+}
+
+function sliceFingerprintSimilarity(leftGrid, rightGrid, leftStart, leftEnd, rightStart = leftStart, rightEnd = leftEnd) {
+  return similarity(
+    bandFingerprint(leftGrid, leftStart, leftEnd, GRID_SIZE, SLICE_FINGERPRINT_ROWS, SLICE_FINGERPRINT_COLS),
+    bandFingerprint(rightGrid, rightStart, rightEnd, GRID_SIZE, SLICE_FINGERPRINT_ROWS, SLICE_FINGERPRINT_COLS),
+  );
+}
+
+function sliceRanges(start, end, slices = BAND_SLICE_COUNT) {
+  const ranges = [];
+  const span = end - start;
+
+  for (let index = 0; index < slices; index += 1) {
+    ranges.push({
+      start: start + (span * index) / slices,
+      end: start + (span * (index + 1)) / slices,
+    });
+  }
+
+  return ranges;
 }
 
 function bandFingerprint(grid, start, end, size = GRID_SIZE, rows = BAND_FINGERPRINT_ROWS, cols = BAND_FINGERPRINT_COLS) {

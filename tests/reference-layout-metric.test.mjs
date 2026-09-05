@@ -10,21 +10,39 @@ const fixtureDir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'e2e'
 const BAND_BREAKS = [0, 0.08, 0.16, 0.18, 0.46, 1];
 const BAND_LABELS = ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'];
 
-function replaceBand(reference, fromIndex, toIndex) {
+function blankRange(reference, start, end) {
+  const png = PNG.sync.read(reference);
+  const startY = Math.floor(png.height * start);
+  const endY = Math.floor(png.height * end);
+
+  for (let y = startY; y < endY; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const index = (png.width * y + x) << 2;
+      png.data[index] = 245;
+      png.data[index + 1] = 245;
+      png.data[index + 2] = 245;
+      png.data[index + 3] = 255;
+    }
+  }
+
+  return PNG.sync.write(png);
+}
+
+function replaceRange(reference, fromStart, fromEnd, toStart, toEnd) {
   const src = PNG.sync.read(reference);
   const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * BAND_BREAKS[fromIndex]);
-  const fromEnd = Math.floor(src.height * BAND_BREAKS[fromIndex + 1]);
-  const toStart = Math.floor(src.height * BAND_BREAKS[toIndex]);
-  const toEnd = Math.floor(src.height * BAND_BREAKS[toIndex + 1]);
-  const fromHeight = Math.max(1, fromEnd - fromStart);
-  const toHeight = Math.max(1, toEnd - toStart);
+  const fromStartY = Math.floor(src.height * fromStart);
+  const fromEndY = Math.floor(src.height * fromEnd);
+  const toStartY = Math.floor(src.height * toStart);
+  const toEndY = Math.floor(src.height * toEnd);
+  const fromHeight = Math.max(1, fromEndY - fromStartY);
+  const toHeight = Math.max(1, toEndY - toStartY);
 
   for (let y = 0; y < toHeight; y += 1) {
     for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
+      const sourceY = fromStartY + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
       const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
+      const to = (src.width * (toStartY + y) + x) << 2;
       replaced.data[to] = src.data[from];
       replaced.data[to + 1] = src.data[from + 1];
       replaced.data[to + 2] = src.data[from + 2];
@@ -35,6 +53,16 @@ function replaceBand(reference, fromIndex, toIndex) {
   return PNG.sync.write(replaced);
 }
 
+function replaceBand(reference, fromIndex, toIndex) {
+  return replaceRange(
+    reference,
+    BAND_BREAKS[fromIndex],
+    BAND_BREAKS[fromIndex + 1],
+    BAND_BREAKS[toIndex],
+    BAND_BREAKS[toIndex + 1],
+  );
+}
+
 for (const [projectName, fixture] of [
   ['desktop-chromium', 'reference-home-desktop.png'],
   ['mobile-chromium', 'reference-home-mobile.png'],
@@ -43,6 +71,7 @@ for (const [projectName, fixture] of [
     const reference = readFileSync(path.join(fixtureDir, fixture));
     const png = PNG.sync.read(reference);
     const solid = new PNG({ width: png.width, height: png.height });
+
     for (let index = 0; index < solid.data.length; index += 4) {
       solid.data[index] = 245;
       solid.data[index + 1] = 245;
@@ -78,106 +107,37 @@ test('layout proof rejects a large vertical shift of the desktop reference', () 
 
 test('layout proof rejects a blank top half on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const blanked = PNG.sync.read(reference);
-  for (let y = 0; y < Math.floor(blanked.height / 2); y += 1) {
-    for (let x = 0; x < blanked.width; x += 1) {
-      const index = (blanked.width * y + x) << 2;
-      blanked.data[index] = 245;
-      blanked.data[index + 1] = 245;
-      blanked.data[index + 2] = 245;
-      blanked.data[index + 3] = 255;
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(blanked), reference, 'desktop-chromium');
+  const proof = evaluateLayoutProof(blankRange(reference, 0, 0.5), reference, 'desktop-chromium');
   assert.equal(proof.passes, false);
 });
 
 test('layout proof rejects a blanked 30%-50% desktop region', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const blanked = PNG.sync.read(reference);
-  for (let y = Math.floor(blanked.height * 0.3); y < Math.floor(blanked.height * 0.5); y += 1) {
-    for (let x = 0; x < blanked.width; x += 1) {
-      const index = (blanked.width * y + x) << 2;
-      blanked.data[index] = 245;
-      blanked.data[index + 1] = 245;
-      blanked.data[index + 2] = 245;
-      blanked.data[index + 3] = 255;
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(blanked), reference, 'desktop-chromium');
+  const proof = evaluateLayoutProof(blankRange(reference, 0.3, 0.5), reference, 'desktop-chromium');
   assert.equal(proof.passes, false);
 });
 
 test('layout proof rejects a blank lower half on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const blanked = PNG.sync.read(reference);
-  for (let y = Math.floor(blanked.height / 2); y < blanked.height; y += 1) {
-    for (let x = 0; x < blanked.width; x += 1) {
-      const index = (blanked.width * y + x) << 2;
-      blanked.data[index] = 245;
-      blanked.data[index + 1] = 245;
-      blanked.data[index + 2] = 245;
-      blanked.data[index + 3] = 255;
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(blanked), reference, 'desktop-chromium');
+  const proof = evaluateLayoutProof(blankRange(reference, 0.5, 1), reference, 'desktop-chromium');
   assert.equal(proof.passes, false);
 });
 
-test('layout proof rejects a desktop stats band replaced by category structure', () => {
+test('layout proof rejects a blanked desktop contribution slice', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.16);
-  const fromEnd = Math.floor(src.height * 0.18);
-  const toStart = Math.floor(src.height * 0.08);
-  const toEnd = Math.floor(src.height * 0.16);
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
-
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'desktop-chromium');
+  const proof = evaluateLayoutProof(blankRange(reference, 0.46, 0.7), reference, 'desktop-chromium');
   assert.equal(proof.passes, false);
 });
 
-test('layout proof rejects a desktop contribution band replaced by featured-shelf structure', () => {
+test('layout proof rejects a blanked desktop hero slice', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.18);
-  const fromEnd = Math.floor(src.height * 0.46);
-  const toStart = Math.floor(src.height * 0.46);
-  const toEnd = src.height;
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
+  const proof = evaluateLayoutProof(blankRange(reference, 0, 0.04), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
 
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'desktop-chromium');
+test('layout proof rejects a partially replaced desktop contribution slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const proof = evaluateLayoutProof(replaceRange(reference, 0.18, 0.3, 0.46, 0.6), reference, 'desktop-chromium');
   assert.equal(proof.passes, false);
 });
 
@@ -225,30 +185,15 @@ test('layout proof rejects a downward shift on mobile', () => {
   assert.equal(proof.passes, false);
 });
 
-test('layout proof rejects a mobile category band replaced by hero structure', () => {
+test('layout proof rejects a blanked mobile hero slice', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = 0;
-  const fromEnd = Math.floor(src.height * 0.08);
-  const toStart = Math.floor(src.height * 0.16);
-  const toEnd = Math.floor(src.height * 0.18);
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
+  const proof = evaluateLayoutProof(blankRange(reference, 0, 0.04), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
 
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
+test('layout proof rejects a partially replaced mobile contribution slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const proof = evaluateLayoutProof(replaceRange(reference, 0.18, 0.32, 0.46, 0.73), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
 
@@ -271,114 +216,6 @@ test('layout proof rejects swapped top quarter-bands on mobile', () => {
   }
 
   const proof = evaluateLayoutProof(PNG.sync.write(swapped), reference, 'mobile-chromium');
-  assert.equal(proof.passes, false);
-});
-
- test('layout proof rejects a desktop hero band replaced by contribution structure', () => {
-  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.46);
-  const fromEnd = src.height;
-  const toStart = 0;
-  const toEnd = Math.floor(src.height * 0.08);
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
-
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'desktop-chromium');
-  assert.equal(proof.passes, false);
-});
-
-test('layout proof rejects a mobile hero band replaced by contribution structure', () => {
-  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.46);
-  const fromEnd = src.height;
-  const toStart = 0;
-  const toEnd = Math.floor(src.height * 0.08);
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
-
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
-  assert.equal(proof.passes, false);
-});
-
-test('layout proof rejects a mobile featured-shelf band replaced by contribution structure', () => {
-  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.46);
-  const fromEnd = src.height;
-  const toStart = Math.floor(src.height * 0.18);
-  const toEnd = Math.floor(src.height * 0.46);
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
-
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
-  assert.equal(proof.passes, false);
-});
-
-test('layout proof rejects a mobile contribution band replaced by featured-shelf structure', () => {
-  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
-  const src = PNG.sync.read(reference);
-  const replaced = PNG.sync.read(reference);
-  const fromStart = Math.floor(src.height * 0.18);
-  const fromEnd = Math.floor(src.height * 0.46);
-  const toStart = Math.floor(src.height * 0.46);
-  const toEnd = src.height;
-  const fromHeight = fromEnd - fromStart;
-  const toHeight = toEnd - toStart;
-
-  for (let y = 0; y < toHeight; y += 1) {
-    for (let x = 0; x < src.width; x += 1) {
-      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
-      const from = (src.width * sourceY + x) << 2;
-      const to = (src.width * (toStart + y) + x) << 2;
-      replaced.data[to] = src.data[from];
-      replaced.data[to + 1] = src.data[from + 1];
-      replaced.data[to + 2] = src.data[from + 2];
-      replaced.data[to + 3] = src.data[from + 3];
-    }
-  }
-
-  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
 
@@ -422,4 +259,3 @@ for (const [projectName, fixture] of [
     }
   });
 }
-
