@@ -31,6 +31,13 @@ test('global search dialog opens from every screen and routes to the source page
   }
 });
 
+test('legacy README source URLs still resolve to the source doc', async ({ page }) => {
+  await page.goto('/docs/sources/firstmate-docs/workflows/README/');
+
+  await expect(page.locator('.doc-header').getByRole('heading', { level: 1, name: 'Workflows' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Open source repository/i })).toBeVisible();
+});
+
 test('category browsing stays exact for AI results', async ({ page }) => {
   await page.goto('/search/?category=AI');
 

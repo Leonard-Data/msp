@@ -8,7 +8,14 @@ import MarkdownContent from '../../components/MarkdownContent.astro';
 export function getStaticPaths() {
   return docsData.pages
     .filter((page) => page.href !== '/docs/')
-    .map((page) => ({ params: { slug: page.href.replace(/^\/docs\//, '').replace(/\/$/, '') }, props: { page } }));
+    .flatMap((page) => {
+      const canonicalSlug = page.href.replace(/^\/docs\//, '').replace(/\/$/, '');
+      const slugs = [canonicalSlug];
+      if (page.kind === 'source' && /(^|\/)README\.md$/i.test(page.relativePath || '')) {
+        slugs.push(`${canonicalSlug}/README`);
+      }
+      return slugs.map((slug) => ({ params: { slug }, props: { page } }));
+    });
 }
 
 const { page } = Astro.props;
