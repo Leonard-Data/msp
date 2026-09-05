@@ -63,7 +63,7 @@ const hrefFor = (href) => withBase(base, href);
     };
 
     syncDocsNav();
-    if (mobileDocsNav.addEventListener) mobileDocsNav.addEventListener('change', syncDocsNav);
-    else mobileDocsNav.addListener(syncDocsNav);
+    if ('addEventListener' in mobileDocsNav) mobileDocsNav.addEventListener('change', syncDocsNav);
+    else mobileDocsNav.onchange = syncDocsNav;
   </script>
 </BaseLayout>
