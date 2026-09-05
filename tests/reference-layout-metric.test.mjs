@@ -100,6 +100,33 @@ test('layout proof rejects a blank lower half on desktop', () => {
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a desktop contribution band replaced by featured-shelf structure', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const src = PNG.sync.read(reference);
+  const replaced = PNG.sync.read(reference);
+  const fromStart = Math.floor(src.height * 0.18);
+  const fromEnd = Math.floor(src.height * 0.46);
+  const toStart = Math.floor(src.height * 0.46);
+  const toEnd = src.height;
+  const fromHeight = fromEnd - fromStart;
+  const toHeight = toEnd - toStart;
+
+  for (let y = 0; y < toHeight; y += 1) {
+    for (let x = 0; x < src.width; x += 1) {
+      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
+      const from = (src.width * sourceY + x) << 2;
+      const to = (src.width * (toStart + y) + x) << 2;
+      replaced.data[to] = src.data[from];
+      replaced.data[to + 1] = src.data[from + 1];
+      replaced.data[to + 2] = src.data[from + 2];
+      replaced.data[to + 3] = src.data[from + 3];
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects swapped top and bottom halves on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
   const png = PNG.sync.read(reference);
@@ -193,7 +220,34 @@ test('layout proof rejects swapped top quarter-bands on mobile', () => {
   assert.equal(proof.passes, false);
 });
 
- test('layout proof rejects a mobile contribution band replaced by featured-shelf structure', () => {
+ test('layout proof rejects a mobile hero band replaced by contribution structure', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const src = PNG.sync.read(reference);
+  const replaced = PNG.sync.read(reference);
+  const fromStart = Math.floor(src.height * 0.46);
+  const fromEnd = src.height;
+  const toStart = 0;
+  const toEnd = Math.floor(src.height * 0.08);
+  const fromHeight = fromEnd - fromStart;
+  const toHeight = toEnd - toStart;
+
+  for (let y = 0; y < toHeight; y += 1) {
+    for (let x = 0; x < src.width; x += 1) {
+      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
+      const from = (src.width * sourceY + x) << 2;
+      const to = (src.width * (toStart + y) + x) << 2;
+      replaced.data[to] = src.data[from];
+      replaced.data[to + 1] = src.data[from + 1];
+      replaced.data[to + 2] = src.data[from + 2];
+      replaced.data[to + 3] = src.data[from + 3];
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects a mobile contribution band replaced by featured-shelf structure', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
   const src = PNG.sync.read(reference);
   const replaced = PNG.sync.read(reference);

@@ -11,6 +11,7 @@ const PROJECT_RULES = {
     minBandScores: [0.895, 0.887, 0.91, 0.95, 0.91],
     minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
+    profileChecks: [{ label: 'contribution', bandIndex: 4, minScore: 0.959 }],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -18,7 +19,10 @@ const PROJECT_RULES = {
     minBandScores: [0.89, 0.85, 0.84, 0.91, 0.91],
     minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
-    contributionProfileMin: 0.94,
+    profileChecks: [
+      { label: 'hero/search', bandIndex: 0, minScore: 0.92 },
+      { label: 'contribution', bandIndex: 4, minScore: 0.94 },
+    ],
   },
 };
 
@@ -33,27 +37,26 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
   const lowVarianceRuns = regionLowVarianceRuns(leftGrid, rule.bands);
 
-  const contributionProfileScore = rule.contributionProfileMin == null
-    ? null
-    : profileSimilarity(leftGrid, rightGrid, rule.bands.at(-2), rule.bands.at(-1));
-  const contributionShelfScore = rule.contributionProfileMin == null
-    ? null
-    : profileSimilarity(leftGrid, rightGrid, rule.bands.at(-2), rule.bands.at(-2), rule.bands.at(-3), rule.bands.at(-2));
+  const profileScores = Object.fromEntries(
+    (rule.profileChecks || []).map(({ label, bandIndex }) => [
+      label,
+      profileSimilarity(leftGrid, rightGrid, rule.bands[bandIndex], rule.bands[bandIndex + 1]),
+    ]),
+  );
 
   const passes =
     overallScore >= LAYOUT_THRESHOLD &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
     bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]) &&
     lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]) &&
-    (contributionProfileScore == null || contributionProfileScore >= rule.contributionProfileMin);
+    (rule.profileChecks || []).every(({ label, minScore }) => profileScores[label] >= minScore);
 
   return {
     overallScore,
     bandScores,
     bandEnergies,
     lowVarianceRuns,
-    contributionProfileScore,
-    contributionShelfScore,
+    profileScores,
     labels: rule.labels,
     passes,
   };
@@ -193,11 +196,12 @@ function gradientProfile(grid, start, end, size = GRID_SIZE, samples = 12) {
   const s = Math.floor(size * start);
   const e = Math.max(s + 1, Math.floor(size * end));
   const rows = e - s;
+  const steps = Math.min(samples, rows);
   const profile = [];
 
-  for (let index = 0; index < samples; index += 1) {
-    const startRow = s + Math.floor((index * rows) / samples);
-    const endRow = s + Math.max(1, Math.floor(((index + 1) * rows) / samples));
+  for (let index = 0; index < steps; index += 1) {
+    const startRow = s + Math.floor((index * rows) / steps);
+    const endRow = s + Math.max(1, Math.floor(((index + 1) * rows) / steps));
     let total = 0;
     let count = 0;
 
@@ -210,6 +214,8 @@ function gradientProfile(grid, start, end, size = GRID_SIZE, samples = 12) {
 
     profile.push(total / count);
   }
+
+  if (profile.length === 1) return [0];
 
   const gradients = [];
   for (let index = 0; index < profile.length - 1; index += 1) {
