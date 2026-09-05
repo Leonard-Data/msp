@@ -90,6 +90,8 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
     GITHUB_REPOSITORY_OWNER: 'owner',
   };
   const tempPage = 'content/portal/review-link-check.md';
+  const originalDocsData = readFileSync('src/generated/docs-data.json', 'utf8');
+  const originalSearchIndex = readFileSync('src/generated/search-index.json', 'utf8');
 
   writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n\nStay [here](?mode=raw).\n');
 
@@ -101,5 +103,10 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/review-link-check\/\?mode=raw">here<\/a>/, 'query-only links should stay on the current page under the configured base path');
   } finally {
     rmSync(tempPage, { force: true });
+    writeFileSync('src/generated/docs-data.json', originalDocsData);
+    writeFileSync('src/generated/search-index.json', originalSearchIndex);
   }
+
+  assert.equal(readFileSync('src/generated/docs-data.json', 'utf8'), originalDocsData, 'generated docs data should be restored after the temporary portal page test');
+  assert.equal(readFileSync('src/generated/search-index.json', 'utf8'), originalSearchIndex, 'generated search index should be restored after the temporary portal page test');
 });
