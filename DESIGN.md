@@ -31,7 +31,7 @@ The visual direction takes structural inspiration from AI Hero's page rhythm and
 
 - Homepage uses a layered library rhythm: hero, trust metrics, category browse, featured shelves, then contribution workflows.
 - Docs pages keep a three-part desktop structure: navigation rail, reading column, table of contents.
-- On mobile, reading content comes first and navigation moves below it.
+- On mobile, navigation stays reachable from the header and falls back to a lightweight browse summary when scripts are unavailable.
 - Prose stays near a 72ch measure.
 
 ## Components

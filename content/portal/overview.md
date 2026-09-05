@@ -13,6 +13,6 @@ MSP is a reusable Astro documentation portal that aggregates markdown from multi
 
 - Multi-repository source registry
 - Searchable docs experience
-- Auto-generated docs navigation: desktop sidebar rail, desktop-only table of contents, and a mobile "Browse docs" toggle
+- Auto-generated docs navigation: a collapsible desktop/mobile sidebar toggle near the header, a desktop-only table of contents, and a native mobile browse fallback when scripts are unavailable
 - GitHub issue forms for source requests
 - GitHub Actions for sync and Pages deploy
