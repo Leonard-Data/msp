@@ -18,8 +18,8 @@ const PROJECT_RULES = {
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
     minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
-    minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceIdentityScores: [0.9, 0.9, 0.99, 0.9, 0.9],
+    minSliceIdentityMargins: [0.005, 0.02, 0.005, 0.005, 0.005],
     minSliceEnergyRatios: [0.7, 0.7, 0.7, 0.7, 0.7],
   },
   'mobile-chromium': {
@@ -30,8 +30,8 @@ const PROJECT_RULES = {
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
     minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
-    minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceIdentityScores: [0.9, 0.9, 0.99, 0.9, 0.9],
+    minSliceIdentityMargins: [0.005, 0.02, 0.005, 0.005, 0.005],
     minSliceEnergyRatios: [0.7, 0.7, 0.7, 0.7, 0.7],
   },
 };
