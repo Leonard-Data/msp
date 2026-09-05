@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T18:02:28.948Z",
+  "updatedAt": "2026-09-05T19:01:56.056Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -547,33 +547,6 @@
               "depth": 3,
               "text": "Where it fits",
               "slug": "where-it-fits"
-            }
-          ]
-        },
-        {
-          "title": "Firstmate skills",
-          "href": "/docs/sources/firstmate-docs/skills/",
-          "section": "overview",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Skill types",
-              "slug": "skill-types"
-            },
-            {
-              "depth": 2,
-              "text": "Skill catalog",
-              "slug": "skill-catalog"
-            },
-            {
-              "depth": 2,
-              "text": "Public skills",
-              "slug": "public-skills"
-            },
-            {
-              "depth": 2,
-              "text": "How the catalog fits together",
-              "slug": "how-the-catalog-fits-together"
             }
           ]
         },
@@ -1170,27 +1143,37 @@
           ]
         },
         {
-          "title": "Reference",
-          "href": "/docs/sources/firstmate-docs/reference/",
-          "section": "overview",
-          "headings": []
-        },
-        {
-          "title": "Firstmate documentation",
-          "href": "/docs/sources/firstmate-docs/",
+          "title": "Firstmate skills",
+          "href": "/docs/sources/firstmate-docs/skills/",
           "section": "overview",
           "headings": [
             {
               "depth": 2,
-              "text": "Fast path for readers",
-              "slug": "fast-path-for-readers"
+              "text": "Skill types",
+              "slug": "skill-types"
             },
             {
               "depth": 2,
-              "text": "Section map",
-              "slug": "section-map"
+              "text": "Skill catalog",
+              "slug": "skill-catalog"
+            },
+            {
+              "depth": 2,
+              "text": "Public skills",
+              "slug": "public-skills"
+            },
+            {
+              "depth": 2,
+              "text": "How the catalog fits together",
+              "slug": "how-the-catalog-fits-together"
             }
           ]
+        },
+        {
+          "title": "Reference",
+          "href": "/docs/sources/firstmate-docs/reference/",
+          "section": "overview",
+          "headings": []
         },
         {
           "title": "Patterns",
@@ -1245,6 +1228,23 @@
           "href": "/docs/sources/firstmate-docs/architecture/",
           "section": "overview",
           "headings": []
+        },
+        {
+          "title": "Firstmate documentation",
+          "href": "/docs/sources/firstmate-docs/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Fast path for readers",
+              "slug": "fast-path-for-readers"
+            },
+            {
+              "depth": 2,
+              "text": "Section map",
+              "slug": "section-map"
+            }
+          ]
         },
         {
           "title": "Firstmate core and soul",
@@ -1959,33 +1959,6 @@
               ]
             },
             {
-              "title": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/",
-              "section": "overview",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Skill types",
-                  "slug": "skill-types"
-                },
-                {
-                  "depth": 2,
-                  "text": "Skill catalog",
-                  "slug": "skill-catalog"
-                },
-                {
-                  "depth": 2,
-                  "text": "Public skills",
-                  "slug": "public-skills"
-                },
-                {
-                  "depth": 2,
-                  "text": "How the catalog fits together",
-                  "slug": "how-the-catalog-fits-together"
-                }
-              ]
-            },
-            {
               "title": "/quota-array-dispatch",
               "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/",
               "section": "overview",
@@ -2578,27 +2551,37 @@
               ]
             },
             {
-              "title": "Reference",
-              "href": "/docs/sources/firstmate-docs/reference/",
-              "section": "overview",
-              "headings": []
-            },
-            {
-              "title": "Firstmate documentation",
-              "href": "/docs/sources/firstmate-docs/",
+              "title": "Firstmate skills",
+              "href": "/docs/sources/firstmate-docs/skills/",
               "section": "overview",
               "headings": [
                 {
                   "depth": 2,
-                  "text": "Fast path for readers",
-                  "slug": "fast-path-for-readers"
+                  "text": "Skill types",
+                  "slug": "skill-types"
                 },
                 {
                   "depth": 2,
-                  "text": "Section map",
-                  "slug": "section-map"
+                  "text": "Skill catalog",
+                  "slug": "skill-catalog"
+                },
+                {
+                  "depth": 2,
+                  "text": "Public skills",
+                  "slug": "public-skills"
+                },
+                {
+                  "depth": 2,
+                  "text": "How the catalog fits together",
+                  "slug": "how-the-catalog-fits-together"
                 }
               ]
+            },
+            {
+              "title": "Reference",
+              "href": "/docs/sources/firstmate-docs/reference/",
+              "section": "overview",
+              "headings": []
             },
             {
               "title": "Patterns",
@@ -2653,6 +2636,23 @@
               "href": "/docs/sources/firstmate-docs/architecture/",
               "section": "overview",
               "headings": []
+            },
+            {
+              "title": "Firstmate documentation",
+              "href": "/docs/sources/firstmate-docs/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Fast path for readers",
+                  "slug": "fast-path-for-readers"
+                },
+                {
+                  "depth": 2,
+                  "text": "Section map",
+                  "slug": "section-map"
+                }
+              ]
             },
             {
               "title": "Firstmate core and soul",
@@ -3340,10 +3340,6 @@
               "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
             },
             {
-              "label": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/"
-            },
-            {
               "label": "/quota-array-dispatch",
               "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/"
             },
@@ -3408,12 +3404,12 @@
               "href": "/docs/sources/firstmate-docs/skills/afk/"
             },
             {
-              "label": "Reference",
-              "href": "/docs/sources/firstmate-docs/reference/"
+              "label": "Firstmate skills",
+              "href": "/docs/sources/firstmate-docs/skills/"
             },
             {
-              "label": "Firstmate documentation",
-              "href": "/docs/sources/firstmate-docs/"
+              "label": "Reference",
+              "href": "/docs/sources/firstmate-docs/reference/"
             },
             {
               "label": "Patterns",
@@ -3442,6 +3438,10 @@
             {
               "label": "Architecture",
               "href": "/docs/sources/firstmate-docs/architecture/"
+            },
+            {
+              "label": "Firstmate documentation",
+              "href": "/docs/sources/firstmate-docs/"
             },
             {
               "label": "Firstmate core and soul",
@@ -4298,53 +4298,6 @@
       "relativePath": "skills/secondmate-provisioning/README.md",
       "slug": "sources/firstmate-docs/skills/secondmate-provisioning",
       "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "defaultBranch": "main",
-      "docsPath": "docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Firstmate skills",
-      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
-      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Skill types",
-          "slug": "skill-types"
-        },
-        {
-          "depth": 2,
-          "text": "Skill catalog",
-          "slug": "skill-catalog"
-        },
-        {
-          "depth": 2,
-          "text": "Public skills",
-          "slug": "public-skills"
-        },
-        {
-          "depth": 2,
-          "text": "How the catalog fits together",
-          "slug": "how-the-catalog-fits-together"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
-      "relativePath": "skills/README.md",
-      "slug": "sources/firstmate-docs/skills",
-      "href": "/docs/sources/firstmate-docs/skills/",
       "category": "Agent Harness",
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
@@ -5275,14 +5228,35 @@
     },
     {
       "kind": "source",
-      "title": "Reference",
-      "description": "Lookup pages for exact terms and commands.",
-      "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/reference/README.md",
-      "relativePath": "reference/README.md",
-      "slug": "sources/firstmate-docs/reference",
-      "href": "/docs/sources/firstmate-docs/reference/",
+      "title": "Firstmate skills",
+      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
+      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Skill types",
+          "slug": "skill-types"
+        },
+        {
+          "depth": 2,
+          "text": "Skill catalog",
+          "slug": "skill-catalog"
+        },
+        {
+          "depth": 2,
+          "text": "Public skills",
+          "slug": "public-skills"
+        },
+        {
+          "depth": 2,
+          "text": "How the catalog fits together",
+          "slug": "how-the-catalog-fits-together"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
+      "relativePath": "skills/README.md",
+      "slug": "sources/firstmate-docs/skills",
+      "href": "/docs/sources/firstmate-docs/skills/",
       "category": "Agent Harness",
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
@@ -5301,25 +5275,14 @@
     },
     {
       "kind": "source",
-      "title": "Firstmate documentation",
-      "description": "Firstmate is the captain's operating layer for software work across projects.",
-      "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup.",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Fast path for readers",
-          "slug": "fast-path-for-readers"
-        },
-        {
-          "depth": 2,
-          "text": "Section map",
-          "slug": "section-map"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/README.md",
-      "relativePath": "README.md",
-      "slug": "sources/firstmate-docs",
-      "href": "/docs/sources/firstmate-docs/",
+      "title": "Reference",
+      "description": "Lookup pages for exact terms and commands.",
+      "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/reference/README.md",
+      "relativePath": "reference/README.md",
+      "slug": "sources/firstmate-docs/reference",
+      "href": "/docs/sources/firstmate-docs/reference/",
       "category": "Agent Harness",
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
@@ -5514,6 +5477,43 @@
       "relativePath": "architecture/README.md",
       "slug": "sources/firstmate-docs/architecture",
       "href": "/docs/sources/firstmate-docs/architecture/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate documentation",
+      "description": "Firstmate is the captain's operating layer for software work across projects.",
+      "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Fast path for readers",
+          "slug": "fast-path-for-readers"
+        },
+        {
+          "depth": 2,
+          "text": "Section map",
+          "slug": "section-map"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/README.md",
+      "relativePath": "README.md",
+      "slug": "sources/firstmate-docs",
+      "href": "/docs/sources/firstmate-docs/",
       "category": "Agent Harness",
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
