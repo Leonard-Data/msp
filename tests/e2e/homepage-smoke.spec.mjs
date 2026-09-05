@@ -16,3 +16,13 @@ test('homepage stays usable on the current device class', async ({ page }) => {
   await expect(page).toHaveURL(/\/search\/\?q=Agent\+Engineering$/);
   await expect(page.getByRole('link', { name: /Agent Engineering/i }).first()).toBeVisible();
 });
+
+test('docs blockquotes keep the existing prose styling', async ({ page }) => {
+  await page.goto('/docs/orches-harness/');
+
+  const blockquote = page.locator('.prose blockquote').first();
+  await expect(blockquote).toBeVisible();
+  await expect(blockquote).toHaveCSS('border-left-width', '3px');
+  await expect(blockquote).toHaveCSS('border-left-color', 'rgb(242, 182, 50)');
+  await expect(blockquote).toHaveCSS('background-color', 'rgb(245, 246, 247)');
+});
