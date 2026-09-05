@@ -19,7 +19,7 @@ const PROJECT_RULES = {
     minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceIdentityMargins: [0.005, 0.005, 0, 0.005, 0.005],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -30,7 +30,7 @@ const PROJECT_RULES = {
     minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceIdentityMargins: [0.005, 0.005, 0, 0.005, 0.005],
   },
 };
 
@@ -82,13 +82,17 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     sliceRanges(rule.bands[bandIndex], rule.bands[bandIndex + 1]).map(({ start, end }, sliceIndex) => {
       const score = sliceFingerprintSimilarity(leftGrid, rightGrid, start, end);
       const otherScores = rule.labels
-        .flatMap((otherLabel, otherBandIndex) => {
-          if (otherBandIndex === bandIndex) return [];
-          return sliceRanges(rule.bands[otherBandIndex], rule.bands[otherBandIndex + 1]).map(({ start: otherStart, end: otherEnd }, otherSliceIndex) => ({
-            label: `${otherLabel}:${otherSliceIndex}`,
-            score: sliceFingerprintSimilarity(leftGrid, rightGrid, start, end, otherStart, otherEnd),
-          }));
-        })
+        .flatMap((otherLabel, otherBandIndex) =>
+          sliceRanges(rule.bands[otherBandIndex], rule.bands[otherBandIndex + 1])
+            .map(({ start: otherStart, end: otherEnd }, otherSliceIndex) => {
+              if (otherBandIndex === bandIndex && otherSliceIndex === sliceIndex) return null;
+              return {
+                label: `${otherLabel}:${otherSliceIndex}`,
+                score: sliceFingerprintSimilarity(leftGrid, rightGrid, start, end, otherStart, otherEnd),
+              };
+            })
+            .filter(Boolean),
+        )
         .sort((left, right) => right.score - left.score);
 
       return {

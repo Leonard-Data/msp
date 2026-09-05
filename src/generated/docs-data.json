@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T02:46:36.748Z",
+  "updatedAt": "2026-09-05T03:12:44.672Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -173,6 +173,23 @@
       "relativePath": "orches-harness.md",
       "slug": "orches-harness",
       "href": "/docs/orches-harness/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
+      "title": "Review link check",
+      "description": "See [How it works](how-it-works.md#pipeline?x=1).",
+      "content": "Review link check See How it works how it works.md pipeline?x=1 . Open Search /search/?q=abc top . Stay here ?mode=raw .",
+      "headings": [],
+      "file": "content/portal/review-link-check.md",
+      "relativePath": "review-link-check.md",
+      "slug": "review-link-check",
+      "href": "/docs/review-link-check/",
       "category": "Portal",
       "sourceId": "portal",
       "sourceName": "MSP Portal",
@@ -454,6 +471,10 @@
         {
           "label": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
           "href": "/docs/orches-harness/"
+        },
+        {
+          "label": "Review link check",
+          "href": "/docs/review-link-check/"
         }
       ]
     },
@@ -669,6 +690,23 @@
       "relativePath": "orches-harness.md",
       "slug": "orches-harness",
       "href": "/docs/orches-harness/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
+      "title": "Review link check",
+      "description": "See [How it works](how-it-works.md#pipeline?x=1).",
+      "content": "Review link check See How it works how it works.md pipeline?x=1 . Open Search /search/?q=abc top . Stay here ?mode=raw .",
+      "headings": [],
+      "file": "content/portal/review-link-check.md",
+      "relativePath": "review-link-check.md",
+      "slug": "review-link-check",
+      "href": "/docs/review-link-check/",
       "category": "Portal",
       "sourceId": "portal",
       "sourceName": "MSP Portal",

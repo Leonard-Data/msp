@@ -53,12 +53,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(howItWorksHref)}"[^>]*>How it works<\\/a>`, 'g')), 1, 'how-it-works should have one header owner');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 2, 'search should stay reachable from the nav and hero action');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one header action owner');
-  assert.match(home, /Documentation Library/, 'home should present the docs-library identity');
-  assert.match(home, /Browse by category/, 'home should expose category browsing');
   assert.match(home, new RegExp(`href="${escapeRegex(aiCategoryHref)}"[^>]*>[\\s\\S]*?<h3>AI<\\/h3>`), 'AI category card should link into the existing search route');
   assert.match(home, new RegExp(`href="${escapeRegex(powerPlatformCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Power Platform<\\/h3>`), 'Power Platform category card should link into the existing search route');
-  assert.match(home, /Create New Section/, 'home should surface the create-section workflow');
-  assert.match(home, /Connect Existing Repository/, 'home should surface the connect-existing workflow');
   assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
 
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');

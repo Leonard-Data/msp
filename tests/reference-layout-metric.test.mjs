@@ -9,6 +9,7 @@ import { evaluateLayoutProof } from './e2e/reference-layout-metric.mjs';
 const fixtureDir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'e2e', 'fixtures');
 const BAND_BREAKS = [0, 0.08, 0.16, 0.18, 0.46, 1];
 const BAND_LABELS = ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'];
+const BAND_SLICE_COUNT = 4;
 
 function blankRange(reference, start, end) {
   const png = PNG.sync.read(reference);
@@ -61,6 +62,22 @@ function replaceBand(reference, fromIndex, toIndex) {
     BAND_BREAKS[toIndex],
     BAND_BREAKS[toIndex + 1],
   );
+}
+
+function bandSliceRange(bandIndex, sliceIndex, slices = BAND_SLICE_COUNT) {
+  const start = BAND_BREAKS[bandIndex];
+  const end = BAND_BREAKS[bandIndex + 1];
+  const span = end - start;
+  return {
+    start: start + (span * sliceIndex) / slices,
+    end: start + (span * (sliceIndex + 1)) / slices,
+  };
+}
+
+function replaceBandSlice(reference, bandIndex, fromSliceIndex, toSliceIndex) {
+  const fromRange = bandSliceRange(bandIndex, fromSliceIndex);
+  const toRange = bandSliceRange(bandIndex, toSliceIndex);
+  return replaceRange(reference, fromRange.start, fromRange.end, toRange.start, toRange.end);
 }
 
 for (const [projectName, fixture] of [
@@ -141,6 +158,12 @@ test('layout proof rejects a partially replaced desktop contribution slice', () 
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a desktop contribution slice replaced by another contribution slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const proof = evaluateLayoutProof(replaceBandSlice(reference, 4, 1, 0), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects swapped top and bottom halves on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
   const png = PNG.sync.read(reference);
@@ -194,6 +217,12 @@ test('layout proof rejects a blanked mobile hero slice', () => {
 test('layout proof rejects a partially replaced mobile contribution slice', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
   const proof = evaluateLayoutProof(replaceRange(reference, 0.18, 0.32, 0.46, 0.73), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects a mobile contribution slice replaced by another contribution slice', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const proof = evaluateLayoutProof(replaceBandSlice(reference, 4, 1, 0), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
 
