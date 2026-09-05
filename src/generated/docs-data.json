@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T17:09:45.084Z",
+  "updatedAt": "2026-09-05T18:02:28.948Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -55,6 +55,34 @@
       "relativePath": "how-it-works.md",
       "slug": "how-it-works",
       "href": "/docs/how-it-works/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
+      "title": "Markdown features",
+      "description": "MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors.",
+      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Images and accordions",
+          "slug": "images-and-accordions"
+        },
+        {
+          "depth": 2,
+          "text": "Code blocks",
+          "slug": "code-blocks"
+        }
+      ],
+      "file": "content/portal/markdown-features.md",
+      "relativePath": "markdown-features.md",
+      "slug": "markdown-features",
+      "href": "/docs/markdown-features/",
       "category": "Portal",
       "sourceId": "portal",
       "sourceName": "MSP Portal",
@@ -189,6 +217,8 @@
       "description": "Reusable Power Apps components, UI guidance, and implementation patterns.",
       "repo": "company/powerapps-ui",
       "repoUrl": "https://github.com/company/powerapps-ui",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "powerapps",
         "ui",
@@ -250,6 +280,8 @@
       "description": "Agent design patterns, workflows, and operating guidance for production systems.",
       "repo": "company/agent-engineering",
       "repoUrl": "https://github.com/company/agent-engineering",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "ai",
         "agents",
@@ -311,6 +343,8 @@
       "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -513,6 +547,33 @@
               "depth": 3,
               "text": "Where it fits",
               "slug": "where-it-fits"
+            }
+          ]
+        },
+        {
+          "title": "Firstmate skills",
+          "href": "/docs/sources/firstmate-docs/skills/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Skill types",
+              "slug": "skill-types"
+            },
+            {
+              "depth": 2,
+              "text": "Skill catalog",
+              "slug": "skill-catalog"
+            },
+            {
+              "depth": 2,
+              "text": "Public skills",
+              "slug": "public-skills"
+            },
+            {
+              "depth": 2,
+              "text": "How the catalog fits together",
+              "slug": "how-the-catalog-fits-together"
             }
           ]
         },
@@ -1109,37 +1170,27 @@
           ]
         },
         {
-          "title": "Firstmate skills",
-          "href": "/docs/sources/firstmate-docs/skills/",
-          "section": "overview",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Skill types",
-              "slug": "skill-types"
-            },
-            {
-              "depth": 2,
-              "text": "Skill catalog",
-              "slug": "skill-catalog"
-            },
-            {
-              "depth": 2,
-              "text": "Public skills",
-              "slug": "public-skills"
-            },
-            {
-              "depth": 2,
-              "text": "How the catalog fits together",
-              "slug": "how-the-catalog-fits-together"
-            }
-          ]
-        },
-        {
           "title": "Reference",
           "href": "/docs/sources/firstmate-docs/reference/",
           "section": "overview",
           "headings": []
+        },
+        {
+          "title": "Firstmate documentation",
+          "href": "/docs/sources/firstmate-docs/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Fast path for readers",
+              "slug": "fast-path-for-readers"
+            },
+            {
+              "depth": 2,
+              "text": "Section map",
+              "slug": "section-map"
+            }
+          ]
         },
         {
           "title": "Patterns",
@@ -1194,23 +1245,6 @@
           "href": "/docs/sources/firstmate-docs/architecture/",
           "section": "overview",
           "headings": []
-        },
-        {
-          "title": "Firstmate documentation",
-          "href": "/docs/sources/firstmate-docs/",
-          "section": "overview",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Fast path for readers",
-              "slug": "fast-path-for-readers"
-            },
-            {
-              "depth": 2,
-              "text": "Section map",
-              "slug": "section-map"
-            }
-          ]
         },
         {
           "title": "Firstmate core and soul",
@@ -1717,6 +1751,8 @@
           "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
           "repo": "Leonard-Data/firstmate-docs",
           "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+          "defaultBranch": "main",
+          "docsPath": "docs",
           "tags": [
             "firstmate",
             "agents",
@@ -1919,6 +1955,33 @@
                   "depth": 3,
                   "text": "Where it fits",
                   "slug": "where-it-fits"
+                }
+              ]
+            },
+            {
+              "title": "Firstmate skills",
+              "href": "/docs/sources/firstmate-docs/skills/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Skill types",
+                  "slug": "skill-types"
+                },
+                {
+                  "depth": 2,
+                  "text": "Skill catalog",
+                  "slug": "skill-catalog"
+                },
+                {
+                  "depth": 2,
+                  "text": "Public skills",
+                  "slug": "public-skills"
+                },
+                {
+                  "depth": 2,
+                  "text": "How the catalog fits together",
+                  "slug": "how-the-catalog-fits-together"
                 }
               ]
             },
@@ -2515,37 +2578,27 @@
               ]
             },
             {
-              "title": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/",
-              "section": "overview",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Skill types",
-                  "slug": "skill-types"
-                },
-                {
-                  "depth": 2,
-                  "text": "Skill catalog",
-                  "slug": "skill-catalog"
-                },
-                {
-                  "depth": 2,
-                  "text": "Public skills",
-                  "slug": "public-skills"
-                },
-                {
-                  "depth": 2,
-                  "text": "How the catalog fits together",
-                  "slug": "how-the-catalog-fits-together"
-                }
-              ]
-            },
-            {
               "title": "Reference",
               "href": "/docs/sources/firstmate-docs/reference/",
               "section": "overview",
               "headings": []
+            },
+            {
+              "title": "Firstmate documentation",
+              "href": "/docs/sources/firstmate-docs/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Fast path for readers",
+                  "slug": "fast-path-for-readers"
+                },
+                {
+                  "depth": 2,
+                  "text": "Section map",
+                  "slug": "section-map"
+                }
+              ]
             },
             {
               "title": "Patterns",
@@ -2600,23 +2653,6 @@
               "href": "/docs/sources/firstmate-docs/architecture/",
               "section": "overview",
               "headings": []
-            },
-            {
-              "title": "Firstmate documentation",
-              "href": "/docs/sources/firstmate-docs/",
-              "section": "overview",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Fast path for readers",
-                  "slug": "fast-path-for-readers"
-                },
-                {
-                  "depth": 2,
-                  "text": "Section map",
-                  "slug": "section-map"
-                }
-              ]
             },
             {
               "title": "Firstmate core and soul",
@@ -3123,6 +3159,8 @@
           "description": "Agent design patterns, workflows, and operating guidance for production systems.",
           "repo": "company/agent-engineering",
           "repoUrl": "https://github.com/company/agent-engineering",
+          "defaultBranch": "main",
+          "docsPath": "docs",
           "tags": [
             "ai",
             "agents",
@@ -3189,6 +3227,8 @@
           "description": "Reusable Power Apps components, UI guidance, and implementation patterns.",
           "repo": "company/powerapps-ui",
           "repoUrl": "https://github.com/company/powerapps-ui",
+          "defaultBranch": "main",
+          "docsPath": "docs",
           "tags": [
             "powerapps",
             "ui",
@@ -3259,6 +3299,10 @@
           "href": "/docs/how-it-works/"
         },
         {
+          "label": "Markdown features",
+          "href": "/docs/markdown-features/"
+        },
+        {
           "label": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
           "href": "/docs/orches-harness/"
         }
@@ -3294,6 +3338,10 @@
             {
               "label": "/secondmate-provisioning",
               "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
+            },
+            {
+              "label": "Firstmate skills",
+              "href": "/docs/sources/firstmate-docs/skills/"
             },
             {
               "label": "/quota-array-dispatch",
@@ -3360,12 +3408,12 @@
               "href": "/docs/sources/firstmate-docs/skills/afk/"
             },
             {
-              "label": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/"
-            },
-            {
               "label": "Reference",
               "href": "/docs/sources/firstmate-docs/reference/"
+            },
+            {
+              "label": "Firstmate documentation",
+              "href": "/docs/sources/firstmate-docs/"
             },
             {
               "label": "Patterns",
@@ -3394,10 +3442,6 @@
             {
               "label": "Architecture",
               "href": "/docs/sources/firstmate-docs/architecture/"
-            },
-            {
-              "label": "Firstmate documentation",
-              "href": "/docs/sources/firstmate-docs/"
             },
             {
               "label": "Firstmate core and soul",
@@ -3582,6 +3626,34 @@
     },
     {
       "kind": "portal",
+      "title": "Markdown features",
+      "description": "MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors.",
+      "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Images and accordions",
+          "slug": "images-and-accordions"
+        },
+        {
+          "depth": 2,
+          "text": "Code blocks",
+          "slug": "code-blocks"
+        }
+      ],
+      "file": "content/portal/markdown-features.md",
+      "relativePath": "markdown-features.md",
+      "slug": "markdown-features",
+      "href": "/docs/markdown-features/",
+      "category": "Portal",
+      "sourceId": "portal",
+      "sourceName": "MSP Portal",
+      "tags": [
+        "portal"
+      ]
+    },
+    {
+      "kind": "portal",
       "title": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
       "description": "This guide recreates the public workflow Kun demonstrated in the podcast:",
       "content": "Replicate Kun Chen's FirstMate + Herdr + Pi setup This guide recreates the public workflow Kun demonstrated in the podcast: The end result is one normal directory, ~/kun agent workspace. Start Herdr there, run Pi in its first pane, and Pi becomes the FirstMate coordinator because it reads the cloned repository's AGENTS.md instructions and extensions. Scope: macOS or Linux. Herdr's stable releases support both. Windows support is preview only; use WSL if you want a Linux setup on Windows. What each part does Tool Job FirstMate https://github.com/kunchenguid/firstmate The coordinator instructions, skills, scripts, and local state Pi https://pi.dev/docs/latest The coding agent harness that runs FirstMate and its crewmates Herdr https://herdr.dev/docs/ Persistent terminal workspaces, tabs, panes, and agent status Treehouse https://github.com/kunchenguid/treehouse A clean Git worktree for every parallel task No Mistakes https://github.com/kunchenguid/no mistakes Optional review, test, PR, and CI gate AXI tools Agent friendly GitHub, browser, visual review, task, and quota commands WezTerm is optional. Kun uses it as his terminal emulator, but Herdr works in any modern terminal. 1. Install the basic system tools You need Git, GitHub CLI, jq, curl, Node.js LTS, and npm. macOS with Homebrew Install Homebrew https://brew.sh/ first if brew is not already available, then run: Linux Install Git, GitHub CLI, jq, curl, and the current Node.js LTS release using your distribution's package manager. Official links: GitHub CLI installation https://github.com/cli/cli/blob/trunk/docs/install linux.md Node.js downloads https://nodejs.org/en/download For Debian or Ubuntu, the basic packages are: Install gh and Node.js LTS from the official links above if your distribution does not provide current versions. Keep user installed commands out of sudo The installers below use ~/.local/bin. Make sure that directory is on PATH: Make that permanent by adding the export line to ~/.zshrc if you use Zsh or ~/.bashrc if you use Bash. Open a new terminal afterward. Tell npm to use the same user owned location. Do not run global npm installs with sudo: 2. Install Pi and Herdr Install the current Pi package used by FirstMate: Install the current stable Herdr binary: Install Herdr's Pi integration. This is what lets the Herdr sidebar show whether Pi is working, blocked, or done: 3. Install FirstMate's supporting tools Treehouse gives each crewmate an isolated worktree, so parallel agents do not edit the same checkout: No Mistakes provides the optional validation and PR gate: Install the agent friendly helper commands required by FirstMate's bootstrap: 4. Create the one directory you will launch from Clone FirstMate directly into a clearly named workspace: The two files in config/ are local and Git ignored. They make Herdr the session backend and Pi the default crewmate harness. Use a name such as kun agent workspace, not exactly firstmate. FirstMate reserves the Herdr workspace label firstmate for its own crew; a different directory name avoids an unnecessary label collision. 5. Authenticate GitHub Choose GitHub.com, then HTTPS or SSH according to your normal Git setup. Browser login is easiest for most people. 6. Verify everything before launch Run this from a normal terminal: Every command v entry should print a path. The Herdr integration report should show Pi as installed. FirstMate currently requires Herdr protocol 14 or newer. 7. Launch the setup From now on, this is the host terminal entry point: On Herdr's first launch, complete its short onboarding flow. In the initial Herdr pane, run: On Pi's first launch: 1. Approve trust for ~/kun agent workspace. This allows the repository's two tracked .pi/extensions/ .ts files to load. 2. Type /login in Pi. 3. Choose the model provider covered by your subscription, such as ChatGPT, Claude, or GitHub Copilot, and finish authentication. Then send this first message to Pi: Pi is now the FirstMate coordinator. You talk to this one session; it delegates long tasks to crewmates in separate Herdr tabs and Treehouse worktrees. 8. Give it a first project Start safely with local only mode so nothing is pushed or merged automatically: After you trust the workflow, ask FirstMate to use direct PR mode or initialize No Mistakes for the full review and CI gate. Do not start with the optional +yolo mode. Daily use Attach or reattach from the same directory: If the existing Pi screen appears, continue talking to it. Do not start a second coordinator. If the pane is only a shell because Pi exited, run pi c to continue the latest session. Detach without stopping the agents by pressing Ctrl b, then q. Reattach later by running herdr again from the workspace directory. In Herdr, Ctrl b w opens workspace navigation, Ctrl b g opens the agent navigator, and Ctrl b 1 through 9 switch tabs. Closing or detaching the terminal does not stop the Herdr server or the agents inside it. Do not run herdr server stop unless you intend to stop those pane processes. Updates Update one layer at a time, then verify it before updating the next: After a Herdr update, refresh its Pi integration in case the integration changed: Fast troubleshooting command not found Open a new terminal and confirm this line is in your shell configuration: Pi did not load the FirstMate extensions Inside Pi, run /trust, approve the project, then quit and restart Pi from ~/kun agent workspace. FirstMate reports a missing tool Let it show the exact install command, review that command, approve it, then ask it to rerun session startup. FirstMate's bootstrap is designed to detect missing or incompatible dependencies. Herdr does not show Pi's agent status Restart Pi afterward. Security boundary Pi and its extensions run with your user account's filesystem and process permissions. Use a dedicated OS user, container, or sandbox if you do not want agents to have your normal account's access. Never paste secrets into chat; authenticate through the provider and GitHub login flows instead. Last verified against the public FirstMate, Pi, and Herdr documentation on 2026 07 15. These projects move quickly, so prefer their current official installers and re run the verification section after updates.",
@@ -3726,6 +3798,8 @@
       "section": "overview",
       "repo": "company/powerapps-ui",
       "repoUrl": "https://github.com/company/powerapps-ui",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "powerapps",
         "ui",
@@ -3760,6 +3834,8 @@
       "section": "guides",
       "repo": "company/powerapps-ui",
       "repoUrl": "https://github.com/company/powerapps-ui",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "powerapps",
         "ui",
@@ -3789,6 +3865,8 @@
       "section": "patterns",
       "repo": "company/powerapps-ui",
       "repoUrl": "https://github.com/company/powerapps-ui",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "powerapps",
         "ui",
@@ -3818,6 +3896,8 @@
       "section": "overview",
       "repo": "company/agent-engineering",
       "repoUrl": "https://github.com/company/agent-engineering",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "ai",
         "agents",
@@ -3852,6 +3932,8 @@
       "section": "concepts",
       "repo": "company/agent-engineering",
       "repoUrl": "https://github.com/company/agent-engineering",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "ai",
         "agents",
@@ -3886,6 +3968,8 @@
       "section": "guides",
       "repo": "company/agent-engineering",
       "repoUrl": "https://github.com/company/agent-engineering",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "ai",
         "agents",
@@ -3909,6 +3993,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -3954,6 +4040,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -3989,6 +4077,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4044,6 +4134,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4099,6 +4191,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4154,6 +4248,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4209,6 +4305,55 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate skills",
+      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
+      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Skill types",
+          "slug": "skill-types"
+        },
+        {
+          "depth": 2,
+          "text": "Skill catalog",
+          "slug": "skill-catalog"
+        },
+        {
+          "depth": 2,
+          "text": "Public skills",
+          "slug": "public-skills"
+        },
+        {
+          "depth": 2,
+          "text": "How the catalog fits together",
+          "slug": "how-the-catalog-fits-together"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
+      "relativePath": "skills/README.md",
+      "slug": "sources/firstmate-docs/skills",
+      "href": "/docs/sources/firstmate-docs/skills/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4264,6 +4409,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4319,6 +4466,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4374,6 +4523,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4429,6 +4580,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4484,6 +4637,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4539,6 +4694,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4594,6 +4751,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4649,6 +4808,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4704,6 +4865,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4759,6 +4922,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4814,6 +4979,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4869,6 +5036,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4924,6 +5093,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -4979,6 +5150,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5034,6 +5207,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5089,51 +5264,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Firstmate skills",
-      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
-      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Skill types",
-          "slug": "skill-types"
-        },
-        {
-          "depth": 2,
-          "text": "Skill catalog",
-          "slug": "skill-catalog"
-        },
-        {
-          "depth": 2,
-          "text": "Public skills",
-          "slug": "public-skills"
-        },
-        {
-          "depth": 2,
-          "text": "How the catalog fits together",
-          "slug": "how-the-catalog-fits-together"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
-      "relativePath": "skills/README.md",
-      "slug": "sources/firstmate-docs/skills",
-      "href": "/docs/sources/firstmate-docs/skills/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5158,186 +5290,8 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Patterns",
-      "description": "Patterns are reusable choices that keep Firstmate work predictable.",
-      "content": "Patterns Patterns are reusable choices that keep Firstmate work predictable. Prefer these patterns One owner for each contract. Small linked pages over giant manuals. Guarded scripts over remembered command chains. Scout first when uncertainty changes what should be built. Direct implementation when the desired change is clear. Durable records over chat memory. Related page: Firstmate core and soul ../concepts/firstmate core.md .",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Prefer these patterns",
-          "slug": "prefer-these-patterns"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/patterns/README.md",
-      "relativePath": "patterns/README.md",
-      "slug": "sources/firstmate-docs/patterns",
-      "href": "/docs/sources/firstmate-docs/patterns/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Guides",
-      "description": "Step-by-step pages for setup and daily use.",
-      "content": "Guides Step by step pages for setup and daily use. Setup setup.md Working well with Firstmate working with firstmate.md",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/guides/README.md",
-      "relativePath": "guides/README.md",
-      "slug": "sources/firstmate-docs/guides",
-      "href": "/docs/sources/firstmate-docs/guides/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Examples",
-      "description": "Captain asks:",
-      "content": "Examples Multi project request examples multi project requests.md Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Create a documentation source for MSP",
-          "slug": "create-a-documentation-source-for-msp"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/examples/README.md",
-      "relativePath": "examples/README.md",
-      "slug": "sources/firstmate-docs/examples",
-      "href": "/docs/sources/firstmate-docs/examples/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Concepts",
-      "description": "Use these pages to understand the words and values behind Firstmate.",
-      "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Multi project operations multi project operations.md Operating contract operating contract.md Safety model safety model.md",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/concepts/README.md",
-      "relativePath": "concepts/README.md",
-      "slug": "sources/firstmate-docs/concepts",
-      "href": "/docs/sources/firstmate-docs/concepts/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Components",
-      "description": "These pages explain the reusable parts of Firstmate.",
-      "content": "Components These pages explain the reusable parts of Firstmate. Harnesses harnesses.md Skills ../skills/README.md Scripts scripts.md Tools tools.md",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/components/README.md",
-      "relativePath": "components/README.md",
-      "slug": "sources/firstmate-docs/components",
-      "href": "/docs/sources/firstmate-docs/components/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Assets",
-      "description": "Store diagrams and images here when Markdown alone is not enough.",
-      "content": "Assets Store diagrams and images here when Markdown alone is not enough. Prefer SVG for architecture diagrams and compressed PNG or WebP for screenshots. Always include useful alt text from the page that embeds an asset.",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/assets/README.md",
-      "relativePath": "assets/README.md",
-      "slug": "sources/firstmate-docs/assets",
-      "href": "/docs/sources/firstmate-docs/assets/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Architecture",
-      "description": "Use these pages to understand how Firstmate is structured.",
-      "content": "Architecture Use these pages to understand how Firstmate is structured. System map system map.md State and records state and records.md MSP documentation sync ../workflows/documentation sync.md",
-      "headings": [],
-      "file": ".tmp/aggregated/firstmate-docs/architecture/README.md",
-      "relativePath": "architecture/README.md",
-      "slug": "sources/firstmate-docs/architecture",
-      "href": "/docs/sources/firstmate-docs/architecture/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5373,6 +5327,202 @@
       "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Patterns",
+      "description": "Patterns are reusable choices that keep Firstmate work predictable.",
+      "content": "Patterns Patterns are reusable choices that keep Firstmate work predictable. Prefer these patterns One owner for each contract. Small linked pages over giant manuals. Guarded scripts over remembered command chains. Scout first when uncertainty changes what should be built. Direct implementation when the desired change is clear. Durable records over chat memory. Related page: Firstmate core and soul ../concepts/firstmate core.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Prefer these patterns",
+          "slug": "prefer-these-patterns"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/patterns/README.md",
+      "relativePath": "patterns/README.md",
+      "slug": "sources/firstmate-docs/patterns",
+      "href": "/docs/sources/firstmate-docs/patterns/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Guides",
+      "description": "Step-by-step pages for setup and daily use.",
+      "content": "Guides Step by step pages for setup and daily use. Setup setup.md Working well with Firstmate working with firstmate.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/guides/README.md",
+      "relativePath": "guides/README.md",
+      "slug": "sources/firstmate-docs/guides",
+      "href": "/docs/sources/firstmate-docs/guides/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Examples",
+      "description": "Captain asks:",
+      "content": "Examples Multi project request examples multi project requests.md Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Create a documentation source for MSP",
+          "slug": "create-a-documentation-source-for-msp"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/examples/README.md",
+      "relativePath": "examples/README.md",
+      "slug": "sources/firstmate-docs/examples",
+      "href": "/docs/sources/firstmate-docs/examples/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Concepts",
+      "description": "Use these pages to understand the words and values behind Firstmate.",
+      "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Multi project operations multi project operations.md Operating contract operating contract.md Safety model safety model.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/README.md",
+      "relativePath": "concepts/README.md",
+      "slug": "sources/firstmate-docs/concepts",
+      "href": "/docs/sources/firstmate-docs/concepts/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Components",
+      "description": "These pages explain the reusable parts of Firstmate.",
+      "content": "Components These pages explain the reusable parts of Firstmate. Harnesses harnesses.md Skills ../skills/README.md Scripts scripts.md Tools tools.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/components/README.md",
+      "relativePath": "components/README.md",
+      "slug": "sources/firstmate-docs/components",
+      "href": "/docs/sources/firstmate-docs/components/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Assets",
+      "description": "Store diagrams and images here when Markdown alone is not enough.",
+      "content": "Assets Store diagrams and images here when Markdown alone is not enough. Prefer SVG for architecture diagrams and compressed PNG or WebP for screenshots. Always include useful alt text from the page that embeds an asset.",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/assets/README.md",
+      "relativePath": "assets/README.md",
+      "slug": "sources/firstmate-docs/assets",
+      "href": "/docs/sources/firstmate-docs/assets/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Architecture",
+      "description": "Use these pages to understand how Firstmate is structured.",
+      "content": "Architecture Use these pages to understand how Firstmate is structured. System map system map.md State and records state and records.md MSP documentation sync ../workflows/documentation sync.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/architecture/README.md",
+      "relativePath": "architecture/README.md",
+      "slug": "sources/firstmate-docs/architecture",
+      "href": "/docs/sources/firstmate-docs/architecture/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5418,6 +5568,8 @@
       "section": "concepts",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5458,6 +5610,8 @@
       "section": "concepts",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5513,6 +5667,8 @@
       "section": "concepts",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5553,6 +5709,8 @@
       "section": "concepts",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5593,6 +5751,8 @@
       "section": "architecture",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5638,6 +5798,8 @@
       "section": "architecture",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5683,6 +5845,8 @@
       "section": "guides",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5728,6 +5892,8 @@
       "section": "guides",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5773,6 +5939,8 @@
       "section": "workflows",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5823,6 +5991,8 @@
       "section": "workflows",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5878,6 +6048,8 @@
       "section": "workflows",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5918,6 +6090,8 @@
       "section": "components",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5958,6 +6132,8 @@
       "section": "components",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -5982,6 +6158,8 @@
       "section": "components",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -6017,6 +6195,8 @@
       "section": "components",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -6062,6 +6242,8 @@
       "section": "examples",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -6112,6 +6294,8 @@
       "section": "reference",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -6182,6 +6366,8 @@
       "section": "reference",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",
@@ -6206,6 +6392,8 @@
       "section": "skills",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
       "tags": [
         "firstmate",
         "agents",

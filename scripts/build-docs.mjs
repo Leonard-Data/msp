@@ -22,6 +22,8 @@ for (const source of sources) {
     description: source.description,
     repo: source.repo,
     repoUrl: source.repoUrl,
+    defaultBranch: source.defaultBranch || 'main',
+    docsPath: source.docsPath || 'docs',
     tags: source.tags,
     pages: pages.map(({ title, href, section, headings }) => ({ title, href, section, headings }))
   });
@@ -106,6 +108,8 @@ async function buildSourcePage(source, file) {
     section: isReadmePage(relativePath) ? 'overview' : relativePath.split('/')[0],
     repo: source.repo,
     repoUrl: source.repoUrl,
+    defaultBranch: source.defaultBranch || 'main',
+    docsPath: source.docsPath || 'docs',
     tags: source.tags
   };
 }

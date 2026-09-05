@@ -21,7 +21,13 @@ export function getStaticPaths() {
 const { page } = Astro.props;
 page.raw = await fs.readFile(`${process.cwd()}/${page.file}`, 'utf8');
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const editUrl = githubEditUrl(page.kind === 'source' ? page.repoUrl : repoUrl, page.defaultBranch || process.env.GITHUB_REF_NAME || 'main', page.kind === 'source' ? `${page.docsPath || 'docs'}/${page.relativePath}` : page.file);
 const toc = page.headings.filter((item) => item.depth <= 3);
+
+function githubEditUrl(repository, branch, file) {
+  const path = file.split('/').map(encodeURIComponent).join('/');
+  return `${repository.replace(/\/$/, '')}/edit/${encodeURIComponent(branch)}/${path}`;
+}
 ---
 <DocsLayout title={`${page.title} · MSP Docs`} description={page.description} sidebar={docsData.sidebar} toc={toc} repoUrl={repoUrl} currentPath={page.href}>
   <header class="doc-header">
@@ -32,12 +38,11 @@ const toc = page.headings.filter((item) => item.depth <= 3);
     </div>
     <h1>{page.title}</h1>
     <p class="lead">{page.description}</p>
-    {page.kind === 'source' ? (
-      <div class="doc-actions">
-        <span class="meta-label">Source repository</span>
-        <a class="button button--ghost button--sm" href={page.repoUrl} target="_blank" rel="noreferrer">Open source repository</a>
-      </div>
-    ) : null}
+    <div class="doc-actions">
+      {page.kind === 'source' ? <span class="meta-label">Source repository</span> : <span class="meta-label">Portal page</span>}
+      {page.kind === 'source' ? <a class="button button--ghost button--sm" href={page.repoUrl} target="_blank" rel="noreferrer">Open source repository</a> : null}
+      <a class="button button--ghost button--sm" href={editUrl} target="_blank" rel="noreferrer">Edit on GitHub</a>
+    </div>
   </header>
   <MarkdownContent page={page} />
 </DocsLayout>

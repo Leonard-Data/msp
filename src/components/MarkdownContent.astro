@@ -25,7 +25,37 @@ renderer.image = ({ href = '', text = '', title }) => {
   const src = rewriteAssetHref(href, page);
   const alt = escapeHtml(text || '');
   const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
-  return `<img src="${escapeHtml(src)}" alt="${alt}"${titleAttr} loading="lazy" />`;
+  return `<button type="button" class="markdown-image" data-image-zoom data-image-src="${escapeHtml(src)}" data-image-alt="${alt}" aria-label="Zoom image"><img src="${escapeHtml(src)}" alt="${alt}"${titleAttr} loading="lazy" /></button>`;
+};
+
+renderer.code = ({ text = '', lang = '', escaped = false }) => {
+  const [rawLanguage = 'text', ...flags] = lang.trim().split(/\s+/).filter(Boolean);
+  const language = normalizeLanguage(rawLanguage);
+  const languageLabel = languageName(language);
+  const source = escaped ? text : escapeHtml(text);
+
+  if (language === 'jsfiddle') return renderJsFiddle(text);
+
+  const preview = language === 'html' && (flags.includes('preview') || flags.includes('demo'));
+  const previewMarkup = preview
+    ? `<iframe class="code-preview__frame" title="Live HTML preview" data-preview-srcdoc="${escapeHtml(text)}" sandbox="allow-scripts"></iframe>`
+    : '';
+  const fiddleMarkup = ['html', 'css', 'javascript', 'typescript', 'js', 'ts'].includes(language)
+    ? renderJsFiddleForm(text, language)
+    : '';
+
+  return `<div class="code-block" data-code-block data-language="${language}">
+    <div class="code-block__toolbar">
+      <span class="code-block__language">${languageLabel}</span>
+      <span class="code-block__actions">
+        <button type="button" class="code-block__button" data-copy-code>Copy code</button>
+        ${preview ? '<button type="button" class="code-block__button" data-preview-toggle>Hide preview</button>' : ''}
+        ${fiddleMarkup}
+      </span>
+    </div>
+    <pre><code class="language-${language}">${highlightCode(source, language)}</code></pre>
+    ${previewMarkup}
+  </div>`;
 };
 
 marked.setOptions({ gfm: true, breaks: false, renderer });
@@ -37,6 +67,57 @@ function plainText(tokens = []) {
 
 function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function normalizeLanguage(value) {
+  const aliases = { js: 'javascript', ts: 'typescript', sh: 'shell', bash: 'shell', md: 'markdown', yml: 'yaml', html5: 'html' };
+  return aliases[value.toLowerCase()] || value.toLowerCase() || 'text';
+}
+
+function languageName(language) {
+  return { javascript: 'JavaScript', typescript: 'TypeScript', html: 'HTML', css: 'CSS', shell: 'Shell', markdown: 'Markdown', yaml: 'YAML', json: 'JSON', jsfiddle: 'JSFiddle', text: 'Text' }[language] || language.toUpperCase();
+}
+
+function highlightCode(source, language) {
+  const slots = [];
+  const protect = (value, className) => {
+    const index = slots.push(`<span class="code-token ${className}">${value}</span>`) - 1;
+    return `\uE000${index}\uE001`;
+  };
+
+  let output = source.replace(/(&lt;!--[\s\S]*?--&gt;|\/\/.*|#[^\n]*)/g, (value) => protect(value, 'code-token--comment'));
+  output = output.replace(/(&quot;(?:\\.|[^&])*?&quot;|&#39;(?:\\.|[^&])*?&#39;|`[^`]*`)/g, (value) => protect(value, 'code-token--string'));
+
+  if (language === 'html') {
+    output = output.replace(/(&lt;\/?)([A-Za-z][\w:-]*)/g, '$1<span class="code-token code-token--tag">$2</span>');
+  } else if (['javascript', 'typescript', 'css', 'json', 'shell', 'yaml'].includes(language)) {
+    const keywords = language === 'css' ? /\b(?:@media|@keyframes|display|position|color|background|font-size|padding|margin|grid|flex)\b/g : /\b(?:const|let|var|function|return|if|else|for|while|new|class|import|from|export|async|await|true|false|null|interface|type|echo|npm|run)\b/g;
+    output = output.replace(keywords, (value) => protect(value, 'code-token--keyword'));
+  }
+
+  return output.replace(/\uE000(\d+)\uE001/g, (_, index) => slots[index]);
+}
+
+function renderJsFiddle(value) {
+  const url = jsFiddleUrl(value.trim());
+  if (!url) return '<p class="code-error">Use a valid https://jsfiddle.net/ URL in this code block.</p>';
+  return `<div class="jsfiddle-embed" data-jsfiddle><iframe src="${escapeHtml(url)}" title="JSFiddle demo" loading="lazy" allow="fullscreen"></iframe><a href="${escapeHtml(value.trim())}" target="_blank" rel="noreferrer">Open in JSFiddle</a></div>`;
+}
+
+function renderJsFiddleForm(value, language) {
+  const field = language === 'css' ? 'css' : ['javascript', 'typescript'].includes(language) ? 'js' : 'html';
+  return `<form class="code-block__fiddle" action="https://jsfiddle.net/api/post/library/pure/" method="post" target="_blank"><input type="hidden" name="${field}" value="${escapeHtml(value)}" /><button type="submit" class="code-block__button">Open in JSFiddle</button></form>`;
+}
+
+function jsFiddleUrl(value) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || !/(^|\.)jsfiddle\.net$/i.test(url.hostname)) return '';
+    const path = url.pathname.replace(/\/+$/, '');
+    return `${url.origin}${path || ''}/embedded/`;
+  } catch {
+    return '';
+  }
 }
 
 function rewriteHref(href, page) {
@@ -107,11 +188,81 @@ function pathHasExtension(value) {
 }
 
 function escapeHtml(value) {
-  return value
+  return String(value)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 ---
-<div class="prose" set:html={html} />
+<div class="prose"><div data-markdown-content set:html={html} /></div>
+
+<script is:inline>
+  document.querySelectorAll('[data-markdown-content]').forEach((root) => {
+    if (root.dataset.enhanced) return;
+    root.dataset.enhanced = 'true';
+
+    root.querySelectorAll('[data-preview-srcdoc]').forEach((frame) => {
+      frame.srcdoc = frame.dataset.previewSrcdoc || '';
+    });
+
+    const copy = async (button, value) => {
+      const original = button.textContent;
+      if (!navigator.clipboard?.writeText) {
+        button.textContent = 'Clipboard unavailable';
+        window.setTimeout(() => { button.textContent = original; }, 1400);
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        button.textContent = 'Copy failed';
+        window.setTimeout(() => { button.textContent = original; }, 1400);
+        return;
+      }
+      button.textContent = 'Copied';
+      window.setTimeout(() => { button.textContent = original; }, 1400);
+    };
+
+    root.addEventListener('click', (event) => {
+      const copyButton = event.target.closest('[data-copy-code], [data-copy-to-clipboard]');
+      if (copyButton) {
+        event.preventDefault();
+        const block = copyButton.closest('[data-code-block]');
+        const value = copyButton.dataset.copyToClipboard || block?.querySelector('pre code')?.textContent || '';
+        copy(copyButton, value);
+        return;
+      }
+
+      const previewButton = event.target.closest('[data-preview-toggle]');
+      if (previewButton) {
+        const frame = previewButton.closest('[data-code-block]')?.querySelector('[data-preview-srcdoc]');
+        if (frame) {
+          frame.hidden = !frame.hidden;
+          previewButton.textContent = frame.hidden ? 'Preview' : 'Hide preview';
+        }
+        return;
+      }
+
+      const image = event.target.closest('[data-image-zoom]');
+      if (!image) return;
+      event.preventDefault();
+      let dialog = document.querySelector('[data-image-lightbox]');
+      if (!dialog) {
+        dialog = document.createElement('dialog');
+        dialog.className = 'image-lightbox';
+        dialog.dataset.imageLightbox = 'true';
+        dialog.innerHTML = '<button type="button" class="image-lightbox__close" data-image-close aria-label="Close image">×</button><img alt="" data-image-lightbox-image />';
+        document.body.append(dialog);
+        dialog.addEventListener('click', (closeEvent) => {
+          if (closeEvent.target === dialog || closeEvent.target.closest('[data-image-close]')) dialog.close();
+        });
+      }
+      const largeImage = dialog.querySelector('[data-image-lightbox-image]');
+      largeImage.src = image.dataset.imageSrc;
+      largeImage.alt = image.dataset.imageAlt || '';
+      dialog.showModal();
+    });
+  });
+</script>

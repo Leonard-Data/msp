@@ -24,6 +24,18 @@
     "content": "How it works The portal keeps documentation in the owning repositories and pulls copies into the Astro site at build time. Pipeline ADD REGISTER SYNC VALIDATE INDEX PUBLISH Source contract Every source repository should contain: docs/ .docs source.yml Why this model Docs stay close to the code The portal stays small Search and navigation stay centralized"
   },
   {
+    "title": "Markdown features",
+    "href": "/docs/markdown-features/",
+    "description": "MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors.",
+    "category": "Portal",
+    "sourceName": "MSP Portal",
+    "tags": [
+      "portal"
+    ],
+    "headings": "Images and accordions Code blocks",
+    "content": "Markdown features MSP keeps Markdown readable while adding small, progressively enhanced helpers for documentation authors. Images and accordions ! Documentation sync flow / sources/firstmate docs/assets/portal sync flow.svg \"Documentation sync flow\" Click an image to open it at full size. Native details elements provide accessible accordions without a dependency: <details <summary Show the authoring notes</summary The image zoom, copy buttons, and previews work without changing the source repository's Markdown ownership. </details Code blocks Fenced code blocks show their language and include copy and preview actions. Add preview after html for an instant sandboxed preview: A saved JSFiddle can be embedded with a jsfiddle fenced block containing its URL: <button type=\"button\" class=\"button button ghost button sm\" data copy to clipboard=\"npm run check\" Copy to clipboard</button"
+  },
+  {
     "title": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
     "href": "/docs/orches-harness/",
     "description": "This guide recreates the public workflow Kun demonstrated in the podcast:",
@@ -223,6 +235,21 @@
     ],
     "headings": "What it does When to reach for it How it behaves Common questions It's working if Where it fits",
     "content": "/secondmate provisioning Skill type: Agent only Upstream path: .agents/skills/secondmate provisioning/SKILL.md The lifecycle for persistent delegated Firstmate homes. What it does secondmate provisioning owns persistent secondmate setup, routing table records, seeding, launching, synchronization, inherited configuration, backlog handoff, recovery, and retirement. A second mate is not just another worker. It has a durable home, charter, domain scope, backlog, local or remote placement, and its own supervised crews. When to reach for it Load it when creating, seeding, validating, launching, recovering, handing backlog to, synchronizing, or retiring a second mate, and before editing data/secondmates.md. How it behaves Routing is based on natural language scope:. The projects: field is a clone list, not ownership. Local secondmate homes can be durably leased. Whole remote homes use an explicit remote route and are readiness checked before seed or launch. Tracked Firstmate updates converge into the persistent home through guarded fast forward rules. A declared set of gitignored configuration and shared captain preference material is propagated separately, with ownership and read only rules preserved. The secondmate's own launch harness can be pinned independently from the harness its crewmates inherit. Common questions Does a project listed under a second mate mean that mate owns every related request? No. Scope is authoritative; the project list is not. Can Firstmate edit a secondmate copy of shared captain preferences and sync it back? No. The primary home is authoritative for the shared preference file. It's working if Domain routing follows declared scope. Persistent homes survive restart without losing their charter or backlog. Dirty or divergent homes are never force updated. Remote routes preserve their placement and do not silently fall back to local work. Inherited material converges without overwriting unrelated local state. Where it fits This is the persistent delegation layer above ordinary crewmates. It works with harness adapters, project management, updatefirstmate, and the remote event/supervision paths. Upstream: .agents/skills/secondmate provisioning/SKILL.md https://github.com/kunchenguid/firstmate/blob/main/.agents/skills/secondmate provisioning/SKILL.md"
+  },
+  {
+    "title": "Firstmate skills",
+    "href": "/docs/sources/firstmate-docs/skills/",
+    "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
+    "category": "Agent Harness",
+    "sourceName": "Firstmate",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Skill types Skill catalog Public skills How the catalog fits together",
+    "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract."
   },
   {
     "title": "/quota-array-dispatch",
@@ -465,21 +492,6 @@
     "content": "/afk Skill type: Captain invocable Upstream path: .agents/skills/afk/SKILL.md Away mode supervision for when the captain steps away. What it does afk changes the supervision strategy while the captain is absent. It creates durable away mode state, keeps the sub supervisor running, lets routine wakes be handled without spending a full Firstmate model turn, and batches captain relevant events into concise escalations. The important distinction is that away mode changes notification and supervision cadence , not approval authority. A merge, destructive action, credential request, or unresolved captain decision still waits for the captain. When to reach for it Use /afk when the captain is leaving the terminal for a while and wants the fleet to keep moving without waking Firstmate's LLM for every routine event. The same lifecycle is also loaded when Firstmate detects the durable away marker or an away supervisor operational message. How it behaves Entering away mode starts or confirms the tracked supervision daemon through the guarded Firstmate launch path. The daemon classifies wakes, self handles routine heartbeats and normal progress, buffers higher value events, and injects only when the captain pane is safe to receive input. Returning does not require a /back command. The first genuine captain message exits away mode, performs catch up and blocker checks, and restores normal per wake responsiveness. Common questions Does /afk give Firstmate more authority? No. It only changes how often and how compactly information is surfaced. Can the daemon type into a busy composer? It is designed to fail closed. Busy or uncertain composer state defers delivery instead of risking mixed input. It's working if Routine progress continues without repeated captain facing interruptions. Decisions, failures, credentials, and other captain relevant outcomes still surface. A real captain message exits away mode automatically. Returning to the session produces a clean catch up rather than losing buffered events. Where it fits afk is the supervision mode for walk away periods. It works beside process event sources, captain hold lifecycle, and the ordinary watcher rather than replacing their authority. Upstream: .agents/skills/afk/SKILL.md https://github.com/kunchenguid/firstmate/blob/main/.agents/skills/afk/SKILL.md"
   },
   {
-    "title": "Firstmate skills",
-    "href": "/docs/sources/firstmate-docs/skills/",
-    "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
-    "category": "Agent Harness",
-    "sourceName": "Firstmate",
-    "tags": [
-      "firstmate",
-      "agents",
-      "operations",
-      "documentation"
-    ],
-    "headings": "Skill types Skill catalog Public skills How the catalog fits together",
-    "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract."
-  },
-  {
     "title": "Reference",
     "href": "/docs/sources/firstmate-docs/reference/",
     "description": "Lookup pages for exact terms and commands.",
@@ -493,6 +505,21 @@
     ],
     "headings": "",
     "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md"
+  },
+  {
+    "title": "Firstmate documentation",
+    "href": "/docs/sources/firstmate-docs/",
+    "description": "Firstmate is the captain's operating layer for software work across projects.",
+    "category": "Agent Harness",
+    "sourceName": "Firstmate",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Fast path for readers Section map",
+    "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup."
   },
   {
     "title": "Patterns",
@@ -598,21 +625,6 @@
     ],
     "headings": "",
     "content": "Architecture Use these pages to understand how Firstmate is structured. System map system map.md State and records state and records.md MSP documentation sync ../workflows/documentation sync.md"
-  },
-  {
-    "title": "Firstmate documentation",
-    "href": "/docs/sources/firstmate-docs/",
-    "description": "Firstmate is the captain's operating layer for software work across projects.",
-    "category": "Agent Harness",
-    "sourceName": "Firstmate",
-    "tags": [
-      "firstmate",
-      "agents",
-      "operations",
-      "documentation"
-    ],
-    "headings": "Fast path for readers Section map",
-    "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup."
   },
   {
     "title": "Firstmate core and soul",

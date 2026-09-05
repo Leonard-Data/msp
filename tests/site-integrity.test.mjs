@@ -17,7 +17,9 @@ function countMatches(value, pattern) {
 
 function buildSite(env = {}) {
   rmSync('dist', { recursive: true, force: true });
-  execFileSync('npm', ['run', 'build'], {
+  const command = process.platform === 'win32' ? process.env.ComSpec || 'cmd.exe' : 'npm';
+  const args = process.platform === 'win32' ? ['/d', '/s', '/c', 'npm run build'] : ['run', 'build'];
+  execFileSync(command, args, {
     stdio: 'pipe',
     encoding: 'utf8',
     env: { ...process.env, ...env },
@@ -61,7 +63,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.match(home, new RegExp(`<a class="brand" href="${escapeRegex(base)}">[\\s\\S]*?<img[\\s\\S]*?<span>MSP Docs<\\/span>[\\s\\S]*?<\\/a>`), 'brand should wrap its visible content and keep the configured base');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(docsHref)}"[^>]*>Library<\\/a>`, 'g')), 1, 'library should have one header owner');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(howItWorksHref)}"[^>]*>How it works<\\/a>`, 'g')), 1, 'how-it-works should have one header owner');
-  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 2, 'search should stay reachable from the nav and hero action');
+  assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 1, 'search should stay reachable from the nav');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one header action owner');
   assert.match(home, new RegExp(`href="${escapeRegex(aiCategoryHref)}"[^>]*>[\\s\\S]*?<h3>AI<\\/h3>`), 'AI category card should link into the existing search route');
   assert.match(home, new RegExp(`href="${escapeRegex(powerPlatformCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Power Platform<\\/h3>`), 'Power Platform category card should link into the existing search route');
@@ -76,7 +78,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
   assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');
-  assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
+  assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 2, 'docs navigation should render one interactive and one no-script overview owner');
   assert.match(sourceDoc, /Source repository/, 'docs page should label source metadata clearly');
   assert.match(sourceDoc, /Open source repository/, 'docs page should expose the source repository action');
   assert.match(portalDoc, /Keep user-installed commands out of\s*<code>sudo<\/code>/, 'inline code inside headings should render');

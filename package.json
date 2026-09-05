@@ -12,13 +12,13 @@
     "sync": "node scripts/sync-sources.mjs",
     "validate:sources": "node scripts/validate-sources.mjs",
     "new:doc-page": "node scripts/new-doc-page.mjs",
-    "e2e": "playwright test tests/e2e/homepage-smoke.spec.mjs tests/e2e/search-discovery.spec.mjs",
+    "e2e": "playwright test tests/e2e/homepage-smoke.spec.mjs tests/e2e/search-discovery.spec.mjs tests/e2e/markdown-features.spec.mjs",
     "e2e:reference": "playwright test tests/e2e/reference-layout.spec.mjs",
     "e2e:all": "playwright test",
     "e2e:install": "playwright install chromium"
   },
   "dependencies": {
-    "astro": "^4.16.18",
+    "astro": "^7.3.1",
     "marked": "^13.0.3",
     "yaml": "^2.5.0"
   },

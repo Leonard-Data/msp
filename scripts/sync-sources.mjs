@@ -48,6 +48,7 @@ for (const source of sources) {
     navigation: metadata.navigation || [],
     repo: source.repo,
     repoUrl: source.repoUrl || `https://github.com/${source.repo}`,
+    defaultBranch: source.defaultBranch || 'main',
     docsPath,
     sourceDir: path.relative(root, targetDir).replace(/\\/g, '/'),
     publicDir: path.relative(root, publicDir).replace(/\\/g, '/'),

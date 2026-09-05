@@ -9,6 +9,7 @@ import { withBase } from '../../lib/base-path';
 const page = docsData.pages.find((entry) => entry.href === '/docs/');
 page.raw = await fs.readFile(`${process.cwd()}/${page.file}`, 'utf8');
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
+const editUrl = `${repoUrl}/edit/${encodeURIComponent(process.env.GITHUB_REF_NAME || 'main')}/${page.file.split('/').map(encodeURIComponent).join('/')}`;
 const base = import.meta.env.BASE_URL;
 ---
 <DocsLayout title={`${page.title} · MSP Docs`} description={page.description} sidebar={docsData.sidebar} toc={page.headings} repoUrl={repoUrl} currentPath="/docs/">
@@ -19,6 +20,10 @@ const base = import.meta.env.BASE_URL;
     </div>
     <h1>{page.title}</h1>
     <p class="lead">{page.description}</p>
+    <div class="doc-actions">
+      <span class="meta-label">Portal page</span>
+      <a class="button button--ghost button--sm" href={editUrl} target="_blank" rel="noreferrer">Edit on GitHub</a>
+    </div>
   </header>
 
   <section class="inline-panel inline-panel--search">
