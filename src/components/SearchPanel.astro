@@ -86,14 +86,17 @@ const searchPageHref = withBase(base, 'search/');
       if (!loadPromise) {
         if (results) results.innerHTML = '<p class="muted">Loading…</p>';
         loadPromise = fetch(searchIndexUrl)
-          .then((response) => (response.ok ? response.json() : []))
+          .then((response) => {
+            if (!response.ok) throw new Error(`Search index request failed: ${response.status}`);
+            return response.json();
+          })
           .then((data) => {
             index = Array.isArray(data) ? data : [];
             return index;
           })
-          .catch(() => {
-            index = [];
-            return index;
+          .catch((error) => {
+            loadPromise = undefined;
+            throw error;
           });
       }
       return loadPromise;
@@ -166,7 +169,14 @@ const searchPageHref = withBase(base, 'search/');
     async function refresh() {
       const query = input?.value.trim() || '';
       const category = selectedCategory();
-      const items = await loadIndex();
+      let items;
+      try {
+        items = await loadIndex();
+      } catch {
+        syncActiveCategory(query);
+        render([], query);
+        return;
+      }
       syncActiveCategory(query);
       if (!query && !category) {
         render(items.slice(0, 8), '');

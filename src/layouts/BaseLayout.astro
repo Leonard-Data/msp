@@ -61,6 +61,7 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
               type="button"
               class="button button--ghost button--sm search-trigger"
               data-search-open
+              data-search-href={searchHref}
               aria-haspopup="dialog"
               aria-controls="site-search-dialog"
               aria-label="Open search dialog"
@@ -94,8 +95,12 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
       const searchCloser = searchDialog?.querySelector('[data-search-close]');
       const searchPanel = searchDialog?.querySelector('[data-search-root]');
 
-      const openSearchDialog = () => {
-        if (!searchDialog?.showModal) return;
+      const openSearchDialog = (event) => {
+        if (!searchDialog?.showModal) {
+          const href = event.currentTarget?.dataset.searchHref;
+          if (href) window.location.assign(href);
+          return;
+        }
         searchDialog.showModal();
         searchPanel?.dispatchEvent(new CustomEvent('search:focus'));
       };

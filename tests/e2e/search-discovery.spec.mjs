@@ -36,6 +36,38 @@ test('global search dialog lazy-loads the index and routes to the source page', 
   }
 });
 
+test('search retries after an initial index fetch failure', async ({ page }) => {
+  let requests = 0;
+  await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
+    requests += 1;
+    if (requests === 1) {
+      await route.fulfill({ status: 503, contentType: 'application/json', body: '[]' });
+      return;
+    }
+    await route.continue();
+  });
+
+  await page.goto('/search/');
+
+  const pageSearch = page.locator('main [data-search-root]').first();
+  await expect(page.getByText(/^No results\.$/)).toBeVisible();
+
+  await pageSearch.getByLabel('Search the library').fill('Concepts');
+  await expect(pageSearch.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();
+  expect(requests).toBeGreaterThanOrEqual(2);
+});
+
+
+test('search button falls back to the search page without dialog support', async ({ page }) => {
+  await page.addInitScript(() => {
+    delete HTMLDialogElement.prototype.showModal;
+  });
+
+  await page.goto('/');
+  await page.getByRole('button', { name: /open search dialog/i }).click();
+  await expect(page).toHaveURL('/search/');
+});
+
 test('legacy README source URLs still resolve to the source doc', async ({ page }) => {
   await page.goto('/docs/sources/firstmate-docs/workflows/README/');
 
