@@ -37,10 +37,10 @@ async function writeReport(testInfo, proof, localFile, referenceFile) {
       `- Band scores: ${proof.bandScores.map((score) => score.toFixed(4)).join(', ')}`,
       `- Band energies: ${proof.bandEnergies.map((energy) => energy.toFixed(4)).join(', ')}`,
       `- Low-variance row runs: ${proof.lowVarianceRuns.join(', ')}`,
-      ...proof.profileChecks.flatMap(({ label, score, otherScore }) => [
-        `- ${label} profile score: ${score.toFixed(4)}`,
-        otherScore == null ? null : `- ${label} cross-band score: ${otherScore.toFixed(4)}`,
-      ]),
+      ...proof.identityChecks.map(({ label, score, maxOtherScore, margin, otherScores }) => {
+        const closest = otherScores[0];
+        return `- ${label} identity score: ${score.toFixed(4)} (closest alternate: ${closest.label} ${maxOtherScore.toFixed(4)}, margin ${margin.toFixed(4)})`;
+      }),
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',

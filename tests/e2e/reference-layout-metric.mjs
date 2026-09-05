@@ -3,31 +3,27 @@ import { PNG } from 'pngjs';
 const GRID_SIZE = 96;
 const LAYOUT_THRESHOLD = 0.9;
 const LOW_VARIANCE_THRESHOLD = 0.0003;
+const BAND_FINGERPRINT_ROWS = 12;
+const BAND_FINGERPRINT_COLS = 12;
 
 const PROJECT_RULES = {
   'desktop-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
-    minBandScores: [0.895, 0.887, 0.91, 0.95, 0.91],
+    minBandScores: [0.926, 0.905, 0.942, 0.95, 0.91],
     minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
-    profileChecks: [
-      { label: 'hero/search', bandIndex: 0, minScore: 0.936, maxAgainstBandIndex: 4, maxOtherScore: 0.965 },
-      { label: 'stats', bandIndex: 1, minScore: 0.926 },
-      { label: 'contribution', bandIndex: 4, minScore: 0.959 },
-    ],
+    minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
+    minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
-    minBandScores: [0.89, 0.85, 0.84, 0.91, 0.91],
+    minBandScores: [0.921, 0.893, 0.878, 0.91, 0.91],
     minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
-    profileChecks: [
-      { label: 'hero/search', bandIndex: 0, minScore: 0.92, maxAgainstBandIndex: 4, maxOtherScore: 0.96 },
-      { label: 'featured-shelf', bandIndex: 3, maxAgainstBandIndex: 4, maxOtherScore: 0.945 },
-      { label: 'contribution', bandIndex: 4, minScore: 0.94 },
-    ],
+    minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
+    minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
   },
 };
 
@@ -41,30 +37,48 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const bandScores = regionSimilarityScores(leftGrid, rightGrid, rule.bands);
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
   const lowVarianceRuns = regionLowVarianceRuns(leftGrid, rule.bands);
+  const identityChecks = rule.labels.map((label, bandIndex) => {
+    const score = bandFingerprintSimilarity(
+      leftGrid,
+      rightGrid,
+      rule.bands[bandIndex],
+      rule.bands[bandIndex + 1],
+    );
+    const otherScores = rule.labels
+      .map((otherLabel, otherBandIndex) => {
+        if (otherBandIndex === bandIndex) return null;
+        return {
+          label: otherLabel,
+          score: bandFingerprintSimilarity(
+            leftGrid,
+            rightGrid,
+            rule.bands[bandIndex],
+            rule.bands[bandIndex + 1],
+            rule.bands[otherBandIndex],
+            rule.bands[otherBandIndex + 1],
+          ),
+        };
+      })
+      .filter(Boolean)
+      .sort((left, right) => right.score - left.score);
 
-  const profileChecks = (rule.profileChecks || []).map((check) => ({
-    ...check,
-    score: profileSimilarity(leftGrid, rightGrid, rule.bands[check.bandIndex], rule.bands[check.bandIndex + 1]),
-    otherScore: check.maxAgainstBandIndex == null
-      ? null
-      : profileSimilarity(
-          leftGrid,
-          rightGrid,
-          rule.bands[check.bandIndex],
-          rule.bands[check.bandIndex + 1],
-          rule.bands[check.maxAgainstBandIndex],
-          rule.bands[check.maxAgainstBandIndex + 1],
-        ),
-  }));
+    return {
+      label,
+      bandIndex,
+      score,
+      maxOtherScore: otherScores[0]?.score ?? 0,
+      margin: score - (otherScores[0]?.score ?? 0),
+      otherScores,
+    };
+  });
 
   const passes =
     overallScore >= LAYOUT_THRESHOLD &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
     bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]) &&
     lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]) &&
-    profileChecks.every(({ minScore, score, maxOtherScore, otherScore }) =>
-      (minScore == null || score >= minScore) &&
-      (maxOtherScore == null || otherScore <= maxOtherScore),
+    identityChecks.every(({ score, margin }, index) =>
+      score >= rule.minIdentityScores[index] && margin >= rule.minIdentityMargins[index],
     );
 
   return {
@@ -72,7 +86,7 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     bandScores,
     bandEnergies,
     lowVarianceRuns,
-    profileChecks,
+    identityChecks,
     labels: rule.labels,
     passes,
   };
@@ -202,40 +216,51 @@ function regionLowVarianceRuns(grid, bands, size = GRID_SIZE) {
   return runs;
 }
 
-function profileSimilarity(leftGrid, rightGrid, leftStart, leftEnd, rightStart = leftStart, rightEnd = leftEnd) {
-  const leftProfile = gradientProfile(leftGrid, leftStart, leftEnd);
-  const rightProfile = gradientProfile(rightGrid, rightStart, rightEnd);
-  return similarity(leftProfile, rightProfile);
+function bandFingerprintSimilarity(leftGrid, rightGrid, leftStart, leftEnd, rightStart = leftStart, rightEnd = leftEnd) {
+  return similarity(
+    bandFingerprint(leftGrid, leftStart, leftEnd),
+    bandFingerprint(rightGrid, rightStart, rightEnd),
+  );
 }
 
-function gradientProfile(grid, start, end, size = GRID_SIZE, samples = 12) {
-  const s = Math.floor(size * start);
-  const e = Math.max(s + 1, Math.floor(size * end));
-  const rows = e - s;
-  const steps = Math.min(samples, rows);
-  const profile = [];
+function bandFingerprint(grid, start, end, size = GRID_SIZE, rows = BAND_FINGERPRINT_ROWS, cols = BAND_FINGERPRINT_COLS) {
+  const startRow = Math.floor(size * start);
+  const endRow = Math.max(startRow + 1, Math.floor(size * end));
+  const totalRows = endRow - startRow;
+  const fingerprint = [];
 
-  for (let index = 0; index < steps; index += 1) {
-    const startRow = s + Math.floor((index * rows) / steps);
-    const endRow = s + Math.max(1, Math.floor(((index + 1) * rows) / steps));
-    let total = 0;
-    let count = 0;
+  for (let row = 0; row < rows; row += 1) {
+    const sampleStart = startRow + Math.floor((row * totalRows) / rows);
+    const sampleEnd = startRow + Math.max(1, Math.floor(((row + 1) * totalRows) / rows));
 
-    for (let row = startRow; row < Math.min(e, endRow); row += 1) {
-      for (let col = 0; col < size; col += 1) {
-        total += grid[row * size + col];
-        count += 1;
+    for (let col = 0; col < cols; col += 1) {
+      const sampleLeft = Math.floor((col * size) / cols);
+      const sampleRight = Math.max(sampleLeft + 1, Math.floor(((col + 1) * size) / cols));
+      let luminanceTotal = 0;
+      let luminanceCount = 0;
+      let edgeTotal = 0;
+      let edgeCount = 0;
+
+      for (let y = sampleStart; y < Math.min(endRow, sampleEnd); y += 1) {
+        for (let x = sampleLeft; x < sampleRight; x += 1) {
+          const offset = y * size + x;
+          luminanceTotal += grid[offset];
+          luminanceCount += 1;
+          if (x + 1 < sampleRight) {
+            edgeTotal += Math.abs(grid[offset] - grid[offset + 1]);
+            edgeCount += 1;
+          }
+          if (y + 1 < Math.min(endRow, sampleEnd)) {
+            edgeTotal += Math.abs(grid[offset] - grid[offset + size]);
+            edgeCount += 1;
+          }
+        }
       }
+
+      fingerprint.push(luminanceTotal / Math.max(1, luminanceCount));
+      fingerprint.push(edgeTotal / Math.max(1, edgeCount));
     }
-
-    profile.push(total / count);
   }
 
-  if (profile.length === 1) return [0];
-
-  const gradients = [];
-  for (let index = 0; index < profile.length - 1; index += 1) {
-    gradients.push(profile[index + 1] - profile[index]);
-  }
-  return gradients;
+  return fingerprint;
 }

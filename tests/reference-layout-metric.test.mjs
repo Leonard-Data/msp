@@ -7,6 +7,33 @@ import { PNG } from 'pngjs';
 import { evaluateLayoutProof } from './e2e/reference-layout-metric.mjs';
 
 const fixtureDir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'e2e', 'fixtures');
+const BAND_BREAKS = [0, 0.08, 0.16, 0.18, 0.46, 1];
+const BAND_LABELS = ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'];
+
+function replaceBand(reference, fromIndex, toIndex) {
+  const src = PNG.sync.read(reference);
+  const replaced = PNG.sync.read(reference);
+  const fromStart = Math.floor(src.height * BAND_BREAKS[fromIndex]);
+  const fromEnd = Math.floor(src.height * BAND_BREAKS[fromIndex + 1]);
+  const toStart = Math.floor(src.height * BAND_BREAKS[toIndex]);
+  const toEnd = Math.floor(src.height * BAND_BREAKS[toIndex + 1]);
+  const fromHeight = Math.max(1, fromEnd - fromStart);
+  const toHeight = Math.max(1, toEnd - toStart);
+
+  for (let y = 0; y < toHeight; y += 1) {
+    for (let x = 0; x < src.width; x += 1) {
+      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
+      const from = (src.width * sourceY + x) << 2;
+      const to = (src.width * (toStart + y) + x) << 2;
+      replaced.data[to] = src.data[from];
+      replaced.data[to + 1] = src.data[from + 1];
+      replaced.data[to + 2] = src.data[from + 2];
+      replaced.data[to + 3] = src.data[from + 3];
+    }
+  }
+
+  return PNG.sync.write(replaced);
+}
 
 for (const [projectName, fixture] of [
   ['desktop-chromium', 'reference-home-desktop.png'],
@@ -374,4 +401,25 @@ test('layout proof rejects a mirrored mobile reference', () => {
   const proof = evaluateLayoutProof(PNG.sync.write(mirrored), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
+
+for (const [projectName, fixture] of [
+  ['desktop-chromium', 'reference-home-desktop.png'],
+  ['mobile-chromium', 'reference-home-mobile.png'],
+]) {
+  test(`layout proof rejects every named band substitution for ${projectName}`, () => {
+    const reference = readFileSync(path.join(fixtureDir, fixture));
+
+    for (let toIndex = 0; toIndex < BAND_LABELS.length; toIndex += 1) {
+      for (let fromIndex = 0; fromIndex < BAND_LABELS.length; fromIndex += 1) {
+        if (fromIndex === toIndex) continue;
+        const proof = evaluateLayoutProof(replaceBand(reference, fromIndex, toIndex), reference, projectName);
+        assert.equal(
+          proof.passes,
+          false,
+          `${projectName} should reject ${BAND_LABELS[fromIndex]} -> ${BAND_LABELS[toIndex]} but passed with ${proof.overallScore.toFixed(4)}`,
+        );
+      }
+    }
+  });
+}
 
