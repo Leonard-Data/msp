@@ -63,7 +63,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
 
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
-  assert.doesNotMatch(docsHome, /mini-source-card/, 'docs landing should not repeat the homepage featured shelf');
+  assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');
   assert.equal(countMatches(sourceDoc, new RegExp(`href="${escapeRegex(overviewHref)}"[^>]*>Overview<\\/a>`, 'g')), 1, 'docs navigation should render one overview owner');
   assert.match(sourceDoc, /Source repository/, 'docs page should label source metadata clearly');
   assert.match(sourceDoc, /Open source repository/, 'docs page should expose the source repository action');
