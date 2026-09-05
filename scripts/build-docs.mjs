@@ -105,7 +105,7 @@ async function buildSourcePage(source, file) {
     sourceId: source.id,
     sourceName: source.name,
     sourceDescription: source.description,
-    section: isReadmePage(relativePath) ? 'overview' : relativePath.split('/')[0],
+    section: isRootReadme(relativePath) ? 'overview' : relativePath.split('/')[0],
     repo: source.repo,
     repoUrl: source.repoUrl,
     defaultBranch: source.defaultBranch || 'main',
@@ -132,6 +132,10 @@ function isReadmePage(relativePath) {
   return /(^|\/)README\.md$/i.test(relativePath);
 }
 
+function isRootReadme(relativePath) {
+  return /^README\.md$/i.test(relativePath);
+}
+
 function groupCategories(groups) {
   const map = new Map();
   for (const source of groups) {
@@ -145,7 +149,7 @@ function groupCategories(groups) {
 }
 
 function buildSidebar(portalPages, categories) {
-  const homeItems = portalPages.map((page) => ({ label: page.title, href: page.href }));
+  const homeItems = portalPages.map((page) => ({ label: page.title, href: page.href })).sort(byLabel);
   return [
     { label: 'Portal', items: homeItems },
     ...categories.map((category) => ({
@@ -153,10 +157,29 @@ function buildSidebar(portalPages, categories) {
       items: category.sources.map((source) => ({
         label: source.name,
         href: source.pages[0]?.href || '#',
-        children: source.pages.slice(1).map((page) => ({ label: page.title, href: page.href }))
-      }))
+        children: groupChildrenBySection(source.pages.slice(1))
+      })).sort(byLabel)
     }))
   ];
+}
+
+function byLabel(a, b) {
+  return a.label.localeCompare(b.label);
+}
+
+function groupChildrenBySection(pages) {
+  const groups = new Map();
+  for (const page of pages) {
+    const section = page.section || 'other';
+    if (!groups.has(section)) groups.set(section, []);
+    groups.get(section).push({ label: page.title, href: page.href });
+  }
+  for (const items of groups.values()) items.sort(byLabel);
+  if (groups.size <= 1) return [...groups.values()][0] || [];
+  const entries = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
+  return entries.map(([section, items]) =>
+    items.length === 1 ? items[0] : { label: section.charAt(0).toUpperCase() + section.slice(1), children: items }
+  );
 }
 
 async function walkMarkdown(dir) {

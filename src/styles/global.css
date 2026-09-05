@@ -113,6 +113,8 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .sidebar details summary { list-style: none; cursor: pointer; font-weight: 600; }
 .sidebar details summary::-webkit-details-marker { display: none; }
 .sidebar__children { margin: 4px 0 4px 12px; padding-left: 8px; border-left: 1px solid var(--line-strong); }
+.sidebar__subsection { margin: 2px 0; }
+.sidebar__subsection > summary { font-weight: 500; font-size: 12px; opacity: .7; text-transform: uppercase; letter-spacing: .04em; }
 .toc__links { display: grid; gap: 5px; border-left: 1px solid var(--line-strong); }
 .toc__links a { border-radius: 0; padding: 3px 0 3px 14px; font-size: 13px; }
 
@@ -168,6 +170,10 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .prose details summary { padding: 12px 14px; color: var(--ink); font-weight: 600; cursor: pointer; }
 .prose details[open] summary { border-bottom: 1px solid var(--line); }
 .prose details > :not(summary) { margin-right: 14px; margin-left: 14px; }
+.youtube-embed { position: relative; width: 100%; margin: 1.5rem 0; aspect-ratio: 16 / 9; }
+.youtube-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 8px; border: 1px solid var(--line); }
+.markdown-svg { display: block; margin: 1.5rem 0; }
+.markdown-svg svg { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 7px; }
 .image-lightbox { width: min(92vw, 1200px); max-width: none; max-height: 92vh; padding: 42px 18px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
 .image-lightbox::backdrop { background: rgba(23, 25, 29, .72); }
 .image-lightbox img { display: block; max-width: 100%; max-height: calc(92vh - 60px); margin: auto; object-fit: contain; }

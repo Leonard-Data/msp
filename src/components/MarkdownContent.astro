@@ -1,5 +1,7 @@
 ---
 // @ts-nocheck
+import fs from 'node:fs';
+import path from 'node:path';
 import { marked } from 'marked';
 import { withBase } from '../lib/base-path';
 
@@ -18,13 +20,30 @@ renderer.link = ({ href = '', title, tokens }) => {
   const text = escapeHtml(plainText(tokens).trim());
   const safeHref = rewriteHref(href, page);
   const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
-  return `<a href="${escapeHtml(safeHref)}"${titleAttr}>${text}</a>`;
+  const youtubeId = getYoutubeId(safeHref);
+  if (youtubeId) {
+    return `<div class="youtube-embed"><iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}" title="${escapeHtml(title || text || 'YouTube video')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+  }
+  const isExternal = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(safeHref) && !safeHref.startsWith(base) && !safeHref.startsWith('/');
+  const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+  return `<a href="${escapeHtml(safeHref)}"${titleAttr}${targetAttr}>${text}</a>`;
 };
 
 renderer.image = ({ href = '', text = '', title }) => {
   const src = rewriteAssetHref(href, page);
   const alt = escapeHtml(text || '');
   const titleAttr = title ? ` title="${escapeHtml(title)}"` : '';
+  if (/\.svg$/i.test(src) && !src.startsWith('http') && !src.startsWith('//')) {
+    try {
+      const cleanPath = src.replace(new RegExp('^' + base.replace(/\/$/, '') + '/'), '').replace(/^\/+/, '');
+      const svgPath = path.join(process.cwd(), 'public', cleanPath);
+      const svgContent = fs.readFileSync(svgPath, 'utf8');
+      const inlineSvg = svgContent.replace('<svg', `<svg role="img" aria-label="${alt}"`);
+      return `<span class="markdown-svg">${inlineSvg}</span>`;
+    } catch {
+      // fallback to img tag
+    }
+  }
   return `<button type="button" class="markdown-image" data-image-zoom data-image-src="${escapeHtml(src)}" data-image-alt="${alt}" aria-label="Zoom image"><img src="${escapeHtml(src)}" alt="${alt}"${titleAttr} loading="lazy" /></button>`;
 };
 
@@ -35,6 +54,12 @@ renderer.code = ({ text = '', lang = '', escaped = false }) => {
   const source = escaped ? text : escapeHtml(text);
 
   if (language === 'jsfiddle') return renderJsFiddle(text);
+
+  const embedMatch = rawLanguage.match(/^embed:(\w+)$/);
+  if (embedMatch) {
+    const filePath = text.trim();
+    return renderEmbedFile(filePath, embedMatch[1], page);
+  }
 
   const preview = language === 'html' && (flags.includes('preview') || flags.includes('demo'));
   const previewMarkup = preview
@@ -185,6 +210,42 @@ function resolvePath(fromFile, target) {
 
 function pathHasExtension(value) {
   return /\.[a-z0-9]+$/i.test(value);
+}
+
+function renderEmbedFile(filePath, lang, page) {
+  const resolved = path.resolve(process.cwd(), filePath);
+  let content;
+  try {
+    content = fs.readFileSync(resolved, 'utf8');
+  } catch {
+    return `<p class="code-error">Could not read file: ${escapeHtml(filePath)}</p>`;
+  }
+  const escaped = escapeHtml(content);
+  const codeLang = lang === 'js' ? 'javascript' : lang === 'py' ? 'python' : lang;
+  const label = { javascript: 'JavaScript', python: 'Python', svg: 'SVG', css: 'CSS', html: 'HTML', json: 'JSON', yaml: 'YAML', shell: 'Shell' }[codeLang] || codeLang.toUpperCase();
+  return `<div class="code-block" data-code-block data-language="${codeLang}">
+    <div class="code-block__toolbar">
+      <span class="code-block__language">${label}</span>
+      <span class="code-block__actions">
+        <button type="button" class="code-block__button" data-copy-code>Copy code</button>
+        <a class="code-block__button" href="${escapeHtml(filePath)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Open raw</a>
+      </span>
+    </div>
+    <pre><code class="language-${codeLang}">${highlightCode(escaped, codeLang)}</code></pre>
+  </div>`;
+}
+
+function getYoutubeId(href) {
+  if (!href) return null;
+  try {
+    const url = new URL(href);
+    if (/(^|\.)(youtube\.com|youtu\.be)$/i.test(url.hostname)) {
+      if (url.pathname === '/watch') return url.searchParams.get('v');
+      if (url.hostname === 'youtu.be') return url.pathname.replace(/^\//, '').split('/')[0] || null;
+      if (url.pathname.startsWith('/embed/')) return url.pathname.replace('/embed/', '').split('/')[0] || null;
+    }
+  } catch {}
+  return null;
 }
 
 function escapeHtml(value) {

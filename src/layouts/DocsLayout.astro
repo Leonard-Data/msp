@@ -23,7 +23,16 @@ const hrefFor = (href) => withBase(base, href);
                       <summary>{item.label}</summary>
                       <div class="sidebar__children">
                         <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
-                        {item.children.map((child) => (
+                        {item.children.map((child) => child.children?.length ? (
+                          <details class="sidebar__subsection" open={currentPath.startsWith(child.href || child.children[0]?.href)}>
+                            <summary>{child.label}</summary>
+                            <div class="sidebar__children">
+                              {child.children.map((sub) => (
+                                <a href={hrefFor(sub.href)} class={currentPath === sub.href ? 'active' : undefined}>{sub.label}</a>
+                              ))}
+                            </div>
+                          </details>
+                        ) : (
                           <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
                         ))}
                       </div>
@@ -48,7 +57,16 @@ const hrefFor = (href) => withBase(base, href);
                       <summary>{item.label}</summary>
                       <div class="sidebar__children">
                         <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
-                        {item.children.map((child) => (
+                        {item.children.map((child) => child.children?.length ? (
+                          <details class="sidebar__subsection" open={currentPath.startsWith(child.href || child.children[0]?.href)}>
+                            <summary>{child.label}</summary>
+                            <div class="sidebar__children">
+                              {child.children.map((sub) => (
+                                <a href={hrefFor(sub.href)} class={currentPath === sub.href ? 'active' : undefined}>{sub.label}</a>
+                              ))}
+                            </div>
+                          </details>
+                        ) : (
                           <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
                         ))}
                       </div>

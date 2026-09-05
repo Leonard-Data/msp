@@ -36,3 +36,29 @@ https://jsfiddle.net/
 ```
 
 <button type="button" class="button button--ghost button--sm" data-copy-to-clipboard="npm run check">Copy to clipboard</button>
+
+## External links and embeds
+
+External links automatically open in a new tab:
+
+See the [Astro documentation](https://astro.build/) for more about the static site generator.
+
+YouTube links turn into embedded video players. Just write a normal markdown link:
+
+[Building with Astro — overview](https://www.youtube.com/watch?v=gxBkghlglTg)
+
+## File embeds
+
+Embed a source file's content directly in the page using `embed:` followed by the language:
+
+```embed:js
+scripts/sync-sources.mjs
+```
+
+```embed:yaml
+example-sources/agent-engineering/.docs-source.yml
+```
+
+SVG images in the project are rendered inline so you can style them with CSS:
+
+![Documentation sync flow](/_sources/firstmate-docs/assets/portal-sync-flow.svg "Documentation sync flow")
