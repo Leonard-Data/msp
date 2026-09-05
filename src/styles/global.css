@@ -73,13 +73,13 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .page, .library-home, .search-page { width: min(1800px, calc(100% - 2 * var(--gutter))); margin: 0 auto; }
 .content { min-width: 0; padding: 42px 0 72px; }
 .docs-page { position: relative; display: block; min-height: calc(100vh - var(--nav-height)); }
-.sidebar, .toc { position: absolute; top: 0; height: calc(100vh - var(--nav-height)); max-height: none; overflow: auto; padding: 24px 16px; background: var(--paper-strong); }
-.sidebar { left: 0; width: var(--sidebar-w); border-right: 1px solid var(--line); }
-.toc { right: 0; width: var(--toc-w); border-left: 1px solid var(--line); background: var(--paper); padding-left: 18px; }
+.sidebar, .toc { position: fixed; top: var(--nav-height); height: calc(100vh - var(--nav-height)); max-height: none; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; background: var(--paper-strong); }
+.sidebar { left: max(0px, calc((100vw - 1800px) / 2)); width: var(--sidebar-w); border-right: 1px solid var(--line); }
+.toc { right: max(0px, calc((100vw - 1800px) / 2)); width: var(--toc-w); border-left: 1px solid var(--line); background: var(--paper); padding-left: 18px; }
 .docs-content { margin: 0 var(--toc-w) 0 var(--sidebar-w); padding: 42px clamp(24px, 4vw, 60px) 72px; }
-.sidebar__section + .sidebar__section { margin-top: 30px; }
+.sidebar__section + .sidebar__section { margin-top: 20px; }
 .sidebar__label, .toc__label, .metric__label, .meta-label, .library-kicker { display: block; margin-bottom: 12px; color: var(--ink-soft); font: 600 var(--fs-xs)/1.4 var(--font-mono); letter-spacing: .04em; }
-.sidebar__links > a, .sidebar details summary, .sidebar__children a, .toc__links a { display: block; margin: 2px 0; padding: 8px 12px; border-radius: 6px; color: var(--ink-soft); text-decoration: none; font-size: 14px; }
+.sidebar__links > a, .sidebar details summary, .sidebar__children a, .toc__links a { display: block; margin: 1px 0; padding: 5px 10px; border-radius: 6px; color: var(--ink-soft); text-decoration: none; font-size: 13px; line-height: 1.35; }
 .sidebar__links > a:hover, .sidebar details summary:hover, .sidebar__children a:hover, .toc__links a:hover { background: #e9ebed; color: var(--ink); }
 .sidebar a.active { background: #1b1d21; color: #fff; font-weight: 600; }
 .sidebar details { margin-top: 5px; }
@@ -96,7 +96,7 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .library-hero h1, .search-hero h1, .doc-header h1, .prose h1, .prose h2, .prose h3, .prose h4, .section-heading h2, .inline-panel h2 { margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: -.055em; }
 .library-hero h1, .search-hero h1, .doc-header h1, .prose h1 { font-size: var(--fs-h1); line-height: 1.03; max-width: 16ch; text-wrap: balance; }
 .section-heading h2, .prose h2, .inline-panel h2 { font-size: var(--fs-h2); line-height: 1.1; }
-.prose h2 { margin: 2.3em 0 .65em; }
+.prose h2 { margin: 1.7em 0 .45em; }
 .prose h3 { font-size: var(--fs-h3); margin: 1.8em 0 .5em; }
 .lead { color: var(--ink-soft); font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.55; max-width: 58ch; }
 .muted { color: var(--ink-muted); }
@@ -129,12 +129,12 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .doc-header { margin-bottom: 0; padding: 0 0 48px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
 .doc-header h1 { max-width: none; }
 .doc-meta { color: var(--ink-muted); font-size: 13px; }
-.prose { max-width: var(--prose); padding-top: 36px; color: var(--ink-soft); font-size: 1.14rem; line-height: 1.72; }
+.prose { max-width: var(--prose); padding-top: 26px; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
 .prose strong { font-weight: 600; color: var(--ink); }
 .prose p, .prose li, .prose blockquote, .prose table { color: var(--ink-soft); }
-.prose p { margin: 0 0 1.2em; }
-.prose ul, .prose ol { padding-left: 1.25rem; margin: 0 0 1.2em; }
-.prose li + li { margin-top: .45em; }
+.prose p { margin: 0 0 .8em; }
+.prose ul, .prose ol { padding-left: 1.15rem; margin: 0 0 .8em; }
+.prose li + li { margin-top: .2em; }
 .prose img { border: 1px solid var(--line); border-radius: 7px; }
 .prose blockquote { margin: 1.7em 0; padding: 1em 1.2em; border-left: 3px solid var(--accent); background: var(--paper-strong); }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.6em 0; }
