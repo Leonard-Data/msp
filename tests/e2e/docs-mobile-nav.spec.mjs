@@ -27,7 +27,7 @@ test('desktop docs pages let readers collapse and reopen the sidebar from the he
   }
 });
 
-test('mobile docs pages stay closed without scripts', async ({ browser }, testInfo) => {
+test('mobile docs pages keep a native navigation fallback without scripts', async ({ browser }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile-chromium', 'mobile-only regression check');
 
   const context = await browser.newContext({
@@ -41,8 +41,15 @@ test('mobile docs pages stay closed without scripts', async ({ browser }, testIn
   for (const path of docsPaths) {
     await page.goto(path);
 
-    await expect(page.locator('[aria-label="Documentation navigation"]')).toBeHidden();
-    await expect(page.getByRole('button', { name: /close documentation navigation/i })).toBeHidden();
+    const fallback = page.locator('.docs-nav-fallback');
+    const summary = fallback.locator(':scope > summary');
+    const navigation = fallback.locator('[aria-label="Documentation navigation fallback"]');
+
+    await expect(summary).toBeVisible();
+    await expect(navigation).toBeHidden();
+
+    await summary.click();
+    await expect(navigation).toBeVisible();
   }
 
   await context.close();

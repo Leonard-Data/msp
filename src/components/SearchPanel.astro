@@ -158,15 +158,7 @@ const searchPageHref = withBase(base, 'search/');
     }
 
     function renderLoadError() {
-      results.innerHTML = `
-        <div class="search-panel__footer">
-          <p class="muted">Search is unavailable right now. Try again.</p>
-          <button type="button" class="button button--ghost button--sm" data-search-retry>Retry</button>
-        </div>
-      `;
-      results.querySelector('[data-search-retry]')?.addEventListener('click', () => {
-        void refresh();
-      });
+      results.innerHTML = '<p class="muted">Search is unavailable right now.</p>';
     }
 
     async function refresh() {

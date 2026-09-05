@@ -36,7 +36,7 @@ test('global search dialog lazy-loads the index and routes to the source page', 
   }
 });
 
-test('search shows a retryable load error before succeeding after an initial index fetch failure', async ({ page }) => {
+test('search shows a simple load error before succeeding after an initial index fetch failure', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
@@ -50,7 +50,8 @@ test('search shows a retryable load error before succeeding after an initial ind
   await page.goto('/search/');
 
   const pageSearch = page.locator('main [data-search-root]').first();
-  await expect(page.getByText(/Search is unavailable right now\. Try again\./i)).toBeVisible();
+  await expect(page.getByText(/Search is unavailable right now\./i)).toBeVisible();
+  await expect(page.getByRole('button', { name: /retry/i })).toHaveCount(0);
   await expect(page.getByText(/^No results\.$/)).toHaveCount(0);
 
   await pageSearch.getByLabel('Search the library').fill('Concepts');
@@ -78,7 +79,7 @@ test('search link falls back to the search page without JavaScript', async ({ br
 });
 
 
-test('keyboard retry keeps the search dialog open', async ({ page }) => {
+test('search dialog stays open when keyboard navigation retries by typing again', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
@@ -94,13 +95,12 @@ test('keyboard retry keeps the search dialog open', async ({ page }) => {
 
   const dialog = page.getByRole('dialog', { name: /search the library/i });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText(/Search is unavailable right now\. Try again\./i)).toBeVisible();
+  await expect(dialog.getByText(/Search is unavailable right now\./i)).toBeVisible();
 
-  await page.keyboard.press('Tab');
-  await page.keyboard.press('Enter');
+  await dialog.getByLabel('Search the library').fill('Concepts');
 
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText(/Search is unavailable right now\. Try again\./i)).toHaveCount(0);
+  await expect(dialog.getByText(/Search is unavailable right now\./i)).toHaveCount(0);
   expect(requests).toBeGreaterThanOrEqual(2);
 });
 

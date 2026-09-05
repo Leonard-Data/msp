@@ -11,6 +11,31 @@ const hrefFor = (href) => withBase(base, href);
   <div class="page docs-page" data-docs-shell data-sidebar-open="false">
     {sidebar.length ? (
       <>
+        <details class="docs-nav-fallback">
+          <summary>Browse docs</summary>
+          <nav class="sidebar sidebar--fallback" aria-label="Documentation navigation fallback">
+            {sidebar.map((section) => (
+              <section class="sidebar__section">
+                <div class="sidebar__label">{section.label}</div>
+                <div class="sidebar__links">
+                  {section.items.map((item) => item.children?.length ? (
+                    <details open={currentPath.startsWith(item.href)}>
+                      <summary>{item.label}</summary>
+                      <div class="sidebar__children">
+                        <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                        {item.children.map((child) => (
+                          <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </nav>
+        </details>
         <button type="button" class="docs-nav__backdrop" data-docs-nav-close aria-label="Close documentation navigation" hidden disabled></button>
         <aside class="docs-nav" data-docs-nav-shell>
           <nav id="docs-sidebar" class="sidebar" aria-label="Documentation navigation">
