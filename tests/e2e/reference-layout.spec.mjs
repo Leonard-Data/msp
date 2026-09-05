@@ -62,6 +62,7 @@ async function writeReport(testInfo, proof, localFile, referenceFile) {
       `- Bands: ${proof.labels.join(', ')}`,
       `- Band scores: ${proof.bandScores.map((score) => score.toFixed(4)).join(', ')}`,
       `- Band energies: ${proof.bandEnergies.map((energy) => energy.toFixed(4)).join(', ')}`,
+      `- Low-variance row runs: ${proof.lowVarianceRuns.join(', ')}`,
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',

@@ -79,13 +79,14 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
   };
   const tempPage = 'content/portal/review-link-check.md';
 
-  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n');
+  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n\nStay [here](?mode=raw).\n');
 
   try {
     buildSite(env);
     const built = readFileSync('dist/docs/review-link-check/index.html', 'utf8');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/#pipeline\?x=1">How it works<\/a>/, 'portal pages should preserve fragments and query strings when rewriting relative docs links');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/search\/\?q=abc#top">Search<\/a>/, 'portal pages should preserve based root-absolute links with fragments and query strings');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/review-link-check\/\?mode=raw">here<\/a>/, 'query-only links should stay on the current page under the configured base path');
   } finally {
     rmSync(tempPage, { force: true });
   }

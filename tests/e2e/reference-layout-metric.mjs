@@ -1,20 +1,23 @@
 import { PNG } from 'pngjs';
-import { passesLayoutThreshold } from './reference-layout-threshold.mjs';
 
 const GRID_SIZE = 96;
+const LAYOUT_THRESHOLD = 0.9;
+const LOW_VARIANCE_THRESHOLD = 0.0003;
 
 const PROJECT_RULES = {
   'desktop-chromium': {
-    bands: [0, 0.08, 0.16, 0.2, 0.62, 1],
+    bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
-    minBandScores: [0.895, 0.887, 0.92, 0.93, 0.91],
-    minBandEnergies: [0.008, 0.008, 0.01, 0.005, 0.001],
+    minBandScores: [0.895, 0.887, 0.91, 0.95, 0.91],
+    minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
+    maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
   },
   'mobile-chromium': {
-    bands: [0, 0.08, 0.16, 0.2, 0.62, 1],
+    bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
-    minBandScores: [0.89, 0.85, 0.89, 0.91, 0.91],
+    minBandScores: [0.89, 0.85, 0.84, 0.91, 0.91],
     minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
+    maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
   },
 };
 
@@ -27,16 +30,19 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const overallScore = similarity(leftGrid, rightGrid);
   const bandScores = regionSimilarityScores(leftGrid, rightGrid, rule.bands);
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
+  const lowVarianceRuns = regionLowVarianceRuns(leftGrid, rule.bands);
 
   const passes =
-    passesLayoutThreshold(overallScore) &&
+    overallScore >= LAYOUT_THRESHOLD &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
-    bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]);
+    bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]) &&
+    lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]);
 
   return {
     overallScore,
     bandScores,
     bandEnergies,
+    lowVarianceRuns,
     labels: rule.labels,
     passes,
   };
@@ -135,5 +141,34 @@ function regionEdgeEnergies(grid, bands, size = GRID_SIZE) {
   }
 
   return energies;
+}
+
+function regionLowVarianceRuns(grid, bands, size = GRID_SIZE) {
+  const runs = [];
+
+  for (let index = 0; index < bands.length - 1; index += 1) {
+    const startRow = Math.floor(size * bands[index]);
+    const endRow = Math.max(startRow + 1, Math.floor(size * bands[index + 1]));
+    let best = 0;
+    let current = 0;
+
+    for (let row = startRow; row < endRow; row += 1) {
+      const values = [];
+      for (let col = 0; col < size; col += 1) values.push(grid[row * size + col]);
+      const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+      const variance = values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / values.length;
+
+      if (variance < LOW_VARIANCE_THRESHOLD) {
+        current += 1;
+        best = Math.max(best, current);
+      } else {
+        current = 0;
+      }
+    }
+
+    runs.push(best);
+  }
+
+  return runs;
 }
 

@@ -66,6 +66,23 @@ test('layout proof rejects a blank top half on desktop', () => {
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a blanked 30%-50% desktop region', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const blanked = PNG.sync.read(reference);
+  for (let y = Math.floor(blanked.height * 0.3); y < Math.floor(blanked.height * 0.5); y += 1) {
+    for (let x = 0; x < blanked.width; x += 1) {
+      const index = (blanked.width * y + x) << 2;
+      blanked.data[index] = 245;
+      blanked.data[index + 1] = 245;
+      blanked.data[index + 2] = 245;
+      blanked.data[index + 3] = 255;
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(blanked), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects a blank lower half on desktop', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
   const blanked = PNG.sync.read(reference);
@@ -124,6 +141,33 @@ test('layout proof rejects a downward shift on mobile', () => {
   }
 
   const proof = evaluateLayoutProof(PNG.sync.write(shifted), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects a mobile category band replaced by hero structure', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const src = PNG.sync.read(reference);
+  const replaced = PNG.sync.read(reference);
+  const fromStart = 0;
+  const fromEnd = Math.floor(src.height * 0.08);
+  const toStart = Math.floor(src.height * 0.16);
+  const toEnd = Math.floor(src.height * 0.18);
+  const fromHeight = fromEnd - fromStart;
+  const toHeight = toEnd - toStart;
+
+  for (let y = 0; y < toHeight; y += 1) {
+    for (let x = 0; x < src.width; x += 1) {
+      const sourceY = fromStart + Math.min(fromHeight - 1, Math.floor((y * fromHeight) / toHeight));
+      const from = (src.width * sourceY + x) << 2;
+      const to = (src.width * (toStart + y) + x) << 2;
+      replaced.data[to] = src.data[from];
+      replaced.data[to + 1] = src.data[from + 1];
+      replaced.data[to + 2] = src.data[from + 2];
+      replaced.data[to + 3] = src.data[from + 3];
+    }
+  }
+
+  const proof = evaluateLayoutProof(PNG.sync.write(replaced), reference, 'mobile-chromium');
   assert.equal(proof.passes, false);
 });
 
