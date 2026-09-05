@@ -63,6 +63,8 @@ async function writeReport(testInfo, proof, localFile, referenceFile) {
       `- Band scores: ${proof.bandScores.map((score) => score.toFixed(4)).join(', ')}`,
       `- Band energies: ${proof.bandEnergies.map((energy) => energy.toFixed(4)).join(', ')}`,
       `- Low-variance row runs: ${proof.lowVarianceRuns.join(', ')}`,
+      proof.contributionProfileScore == null ? null : `- Contribution profile score: ${proof.contributionProfileScore.toFixed(4)}`,
+      proof.contributionShelfScore == null ? null : `- Contribution vs shelf score: ${proof.contributionShelfScore.toFixed(4)}`,
       `- Local screenshot: ${path.basename(localFile)}`,
       `- Reference screenshot: ${path.basename(referenceFile)}`,
       '',

@@ -18,6 +18,7 @@ const PROJECT_RULES = {
     minBandScores: [0.89, 0.85, 0.84, 0.91, 0.91],
     minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
+    contributionProfileMin: 0.94,
   },
 };
 
@@ -32,17 +33,27 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
   const lowVarianceRuns = regionLowVarianceRuns(leftGrid, rule.bands);
 
+  const contributionProfileScore = rule.contributionProfileMin == null
+    ? null
+    : profileSimilarity(leftGrid, rightGrid, rule.bands.at(-2), rule.bands.at(-1));
+  const contributionShelfScore = rule.contributionProfileMin == null
+    ? null
+    : profileSimilarity(leftGrid, rightGrid, rule.bands.at(-2), rule.bands.at(-2), rule.bands.at(-3), rule.bands.at(-2));
+
   const passes =
     overallScore >= LAYOUT_THRESHOLD &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
     bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]) &&
-    lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]);
+    lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]) &&
+    (contributionProfileScore == null || contributionProfileScore >= rule.contributionProfileMin);
 
   return {
     overallScore,
     bandScores,
     bandEnergies,
     lowVarianceRuns,
+    contributionProfileScore,
+    contributionShelfScore,
     labels: rule.labels,
     passes,
   };
@@ -172,3 +183,37 @@ function regionLowVarianceRuns(grid, bands, size = GRID_SIZE) {
   return runs;
 }
 
+function profileSimilarity(leftGrid, rightGrid, leftStart, leftEnd, rightStart = leftStart, rightEnd = leftEnd) {
+  const leftProfile = gradientProfile(leftGrid, leftStart, leftEnd);
+  const rightProfile = gradientProfile(rightGrid, rightStart, rightEnd);
+  return similarity(leftProfile, rightProfile);
+}
+
+function gradientProfile(grid, start, end, size = GRID_SIZE, samples = 12) {
+  const s = Math.floor(size * start);
+  const e = Math.max(s + 1, Math.floor(size * end));
+  const rows = e - s;
+  const profile = [];
+
+  for (let index = 0; index < samples; index += 1) {
+    const startRow = s + Math.floor((index * rows) / samples);
+    const endRow = s + Math.max(1, Math.floor(((index + 1) * rows) / samples));
+    let total = 0;
+    let count = 0;
+
+    for (let row = startRow; row < Math.min(e, endRow); row += 1) {
+      for (let col = 0; col < size; col += 1) {
+        total += grid[row * size + col];
+        count += 1;
+      }
+    }
+
+    profile.push(total / count);
+  }
+
+  const gradients = [];
+  for (let index = 0; index < profile.length - 1; index += 1) {
+    gradients.push(profile[index + 1] - profile[index]);
+  }
+  return gradients;
+}
