@@ -404,6 +404,17 @@ input, textarea, button, select { font: inherit; caret-color: var(--accent); }
   color: var(--ink);
 }
 .search-hint { font-size: 14px; color: var(--ink-muted); }
+.search-active-filter {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.search-active-filter__content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
 .grid { display: grid; gap: 18px; }
 .grid--stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .metric { padding: 20px; }

@@ -42,7 +42,7 @@ function slugify(value) {
 function rewriteHref(href, page) {
   if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
   const { path: hrefPath, suffix } = splitHref(href);
-  if (!hrefPath || hrefPath === '.') return `${currentPageHref(page)}${suffix}`;
+  if (isCurrentPagePath(hrefPath)) return `${currentPageHref(page)}${suffix}`;
   if (hrefPath.startsWith('/')) return `${withBase(base, hrefPath.slice(1))}${suffix}`;
   const resolved = resolvePath(page.relativePath, hrefPath);
   if (page.kind === 'source') {
@@ -70,7 +70,7 @@ function portalDocHref(resolved) {
 function rewriteAssetHref(href, page) {
   if (!href || /^(?:[a-z]+:|\/\/|#)/i.test(href)) return href;
   const { path: hrefPath, suffix } = splitHref(href);
-  if (!hrefPath || hrefPath === '.') return `${currentPageHref(page)}${suffix}`;
+  if (isCurrentPagePath(hrefPath)) return `${currentPageHref(page)}${suffix}`;
   if (hrefPath.startsWith('/')) return `${withBase(base, hrefPath.slice(1))}${suffix}`;
   if (page.kind !== 'source') return href;
   return `${withBase(base, `_sources/${page.sourceId}/${resolvePath(page.relativePath, hrefPath)}`)}${suffix}`;
@@ -84,6 +84,10 @@ function splitHref(value) {
   const index = value.search(/[?#]/);
   if (index === -1) return { path: value, suffix: '' };
   return { path: value.slice(0, index), suffix: value.slice(index) };
+}
+
+function isCurrentPagePath(value) {
+  return !value || value === '.' || value === './';
 }
 
 function resolvePath(fromFile, target) {

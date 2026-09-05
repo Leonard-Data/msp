@@ -26,6 +26,13 @@ const categories = docsData.categories.map((category) => category.name);
       <label class="meta-label" for="search-box">Search the library</label>
       <input id="search-box" type="search" placeholder="Search for topics, snippets, workflows, or errors" />
       <div class="search-hint">Results pull from titles, descriptions, headings, page content, source names, and category labels.</div>
+      <div class="search-active-filter" data-search-active-filter hidden>
+        <span class="meta-label">Active category</span>
+        <div class="search-active-filter__content">
+          <span class="pill" data-search-active-filter-label></span>
+          <a class="text-link" data-search-clear-category href={`${base}search/`}>Clear category</a>
+        </div>
+      </div>
       <div class="search-results" data-search-results></div>
     </section>
   </main>
@@ -34,12 +41,19 @@ const categories = docsData.categories.map((category) => category.name);
     const root = document.querySelector('[data-search-root]');
     const input = root?.querySelector('input');
     const results = root?.querySelector('[data-search-results]');
+    const activeFilter = root?.querySelector('[data-search-active-filter]');
+    const activeFilterLabel = root?.querySelector('[data-search-active-filter-label]');
+    const clearCategoryLink = root?.querySelector('[data-search-clear-category]');
     const index = JSON.parse(root?.dataset.searchIndex || '[]');
     const base = document.documentElement.dataset.base || '/';
     const params = new URLSearchParams(window.location.search);
 
+    function selectedCategoryValue() {
+      return (params.get('category') || '').trim();
+    }
+
     function selectedCategory() {
-      return (params.get('category') || '').trim().toLowerCase();
+      return selectedCategoryValue().toLowerCase();
     }
 
     function rank(query, item) {
@@ -86,7 +100,19 @@ const categories = docsData.categories.map((category) => category.name);
       render(items, '');
     }
 
+    function syncActiveCategory(query) {
+      if (!activeFilter || !activeFilterLabel || !clearCategoryLink) return;
+      const category = selectedCategoryValue();
+      activeFilter.hidden = !category;
+      if (!category) return;
+      activeFilterLabel.textContent = category;
+      const next = new URLSearchParams();
+      if (query) next.set('q', query);
+      clearCategoryLink.href = `${base}search/${next.toString() ? `?${next.toString()}` : ''}`;
+    }
+
     function render(items, query) {
+      const category = selectedCategoryValue();
       results.innerHTML = items.length ? items.map((item) => `
         <a class="search-result-card" href="${base}${item.href.replace(/^\//, '')}">
           <div class="search-result-card__meta">
@@ -96,12 +122,13 @@ const categories = docsData.categories.map((category) => category.name);
           <strong>${escapeHtml(item.title)}</strong>
           <p>${escapeHtml(snippetFor(query, item))}</p>
         </a>
-      `).join('') : '<p class="muted">No results.</p>';
+      `).join('') : `<p class="muted">No results${category ? ` in ${escapeHtml(category)}` : ''}.</p>`;
     }
 
     function refresh() {
       const query = input?.value.trim() || '';
       const category = selectedCategory();
+      syncActiveCategory(query);
       if (!query && !category) {
         renderDefault();
         return;

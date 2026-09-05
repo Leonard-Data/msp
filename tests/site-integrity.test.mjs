@@ -52,6 +52,7 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const home = readFileSync('dist/index.html', 'utf8');
   const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
   const docsHome = readFileSync('dist/docs/index.html', 'utf8');
+  const searchPage = readFileSync('dist/search/index.html', 'utf8');
   const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
   const generatedDocs = JSON.parse(readFileSync('src/generated/docs-data.json', 'utf8'));
   const generatedSearch = JSON.parse(readFileSync('src/generated/search-index.json', 'utf8'));
@@ -73,6 +74,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   assert.equal(generatedDocs.pages.some((page) => page.slug === 'review-link-check' || page.href === '/docs/review-link-check/'), false, 'generated pages should not include the review-link-check page');
   assert.equal(collectSidebarHrefs(generatedDocs.sidebar).includes('/docs/review-link-check/'), false, 'generated sidebar should not include the review-link-check page');
   assert.equal(generatedSearch.some((item) => item.href === '/docs/review-link-check/'), false, 'generated search index should not include the review-link-check page');
+  assert.match(searchPage, /data-search-active-filter/, 'search page should render a visible active-filter surface');
+  assert.match(searchPage, /data-search-clear-category/, 'search page should render a clear-category control');
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
   assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');
@@ -93,7 +96,7 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
   const originalDocsData = readFileSync('src/generated/docs-data.json', 'utf8');
   const originalSearchIndex = readFileSync('src/generated/search-index.json', 'utf8');
 
-  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n\nStay [here](?mode=raw).\n');
+  writeFileSync(tempPage, '# Review link check\n\nSee [How it works](how-it-works.md#pipeline?x=1).\n\nOpen [Search](/search/?q=abc#top).\n\nStay [here](?mode=raw).\n\nStay [here too](./?mode=raw2).\n');
 
   try {
     buildSite(env);
@@ -101,6 +104,7 @@ test('portal markdown preserves root links and rewrites relative doc links', () 
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/how-it-works\/#pipeline\?x=1">How it works<\/a>/, 'portal pages should preserve fragments and query strings when rewriting relative docs links');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/search\/\?q=abc#top">Search<\/a>/, 'portal pages should preserve based root-absolute links with fragments and query strings');
     assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/review-link-check\/\?mode=raw">here<\/a>/, 'query-only links should stay on the current page under the configured base path');
+    assert.match(built, /<div class="prose">[\s\S]*?<a href="\/msp-portal\/docs\/review-link-check\/\?mode=raw2">here too<\/a>/, 'dot-slash query-only links should stay on the current page under the configured base path');
   } finally {
     rmSync(tempPage, { force: true });
     writeFileSync('src/generated/docs-data.json', originalDocsData);
