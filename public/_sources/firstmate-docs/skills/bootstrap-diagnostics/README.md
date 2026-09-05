@@ -1,4 +1,4 @@
-# `bootstrap-diagnostics`
+# /bootstrap-diagnostics
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/bootstrap-diagnostics/SKILL.md`

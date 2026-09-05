@@ -1,4 +1,4 @@
-# `afk`
+# /afk
 
 > **Skill type:** Captain-invocable  
 > **Upstream path:** `.agents/skills/afk/SKILL.md`

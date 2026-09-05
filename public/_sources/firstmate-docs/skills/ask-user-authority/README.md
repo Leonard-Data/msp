@@ -1,4 +1,4 @@
-# `ask-user-authority`
+# /ask-user-authority
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/ask-user-authority/SKILL.md`

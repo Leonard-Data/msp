@@ -1,4 +1,4 @@
-# `stuck-crewmate-recovery`
+# /stuck-crewmate-recovery
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/stuck-crewmate-recovery/SKILL.md`

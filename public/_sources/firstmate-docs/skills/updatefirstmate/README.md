@@ -1,4 +1,4 @@
-# `updatefirstmate`
+# /updatefirstmate
 
 > **Skill type:** Captain-invocable  
 > **Upstream path:** `.agents/skills/updatefirstmate/SKILL.md`

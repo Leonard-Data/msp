@@ -1,4 +1,4 @@
-# `fmx-respond`
+# /fmx-respond
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/fmx-respond/SKILL.md`

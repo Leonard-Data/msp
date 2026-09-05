@@ -1,4 +1,4 @@
-# `firstmate-orca`
+# /firstmate-orca
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/firstmate-orca/SKILL.md`

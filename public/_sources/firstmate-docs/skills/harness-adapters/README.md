@@ -1,4 +1,4 @@
-# `harness-adapters`
+# /harness-adapters
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/harness-adapters/SKILL.md`

@@ -1,4 +1,4 @@
-# `stow`
+# /stow
 
 > **Skill type:** Captain-invocable  
 > **Upstream path:** `.agents/skills/stow/SKILL.md`

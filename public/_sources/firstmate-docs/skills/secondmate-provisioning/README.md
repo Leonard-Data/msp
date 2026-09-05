@@ -1,4 +1,4 @@
-# `secondmate-provisioning`
+# /secondmate-provisioning
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/secondmate-provisioning/SKILL.md`

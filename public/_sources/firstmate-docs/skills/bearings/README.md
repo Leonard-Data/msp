@@ -1,4 +1,4 @@
-# `bearings`
+# /bearings
 
 > **Skill type:** Captain-invocable  
 > **Upstream path:** `.agents/skills/bearings/SKILL.md`

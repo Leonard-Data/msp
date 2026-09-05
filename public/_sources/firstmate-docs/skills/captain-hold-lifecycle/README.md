@@ -1,4 +1,4 @@
-# `captain-hold-lifecycle`
+# /captain-hold-lifecycle
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/captain-hold-lifecycle/SKILL.md`

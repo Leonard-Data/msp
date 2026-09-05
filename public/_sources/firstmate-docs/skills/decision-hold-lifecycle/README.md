@@ -1,4 +1,4 @@
-# `decision-hold-lifecycle`
+# /decision-hold-lifecycle
 
 > **Skill type:** Compatibility pointer  
 > **Upstream path:** `.agents/skills/decision-hold-lifecycle/SKILL.md`

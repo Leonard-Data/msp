@@ -1,4 +1,4 @@
-# `process-event-sources`
+# /process-event-sources
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/process-event-sources/SKILL.md`

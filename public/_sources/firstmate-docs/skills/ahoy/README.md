@@ -1,4 +1,4 @@
-# `ahoy`
+# /ahoy
 
 > **Skill type:** Captain-invocable  
 > **Upstream path:** `.agents/skills/ahoy/SKILL.md`

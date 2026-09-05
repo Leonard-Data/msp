@@ -1,4 +1,4 @@
-# `project-management`
+# /project-management
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/project-management/SKILL.md`

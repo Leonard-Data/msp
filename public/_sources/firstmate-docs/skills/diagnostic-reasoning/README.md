@@ -1,4 +1,4 @@
-# `diagnostic-reasoning`
+# /diagnostic-reasoning
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/diagnostic-reasoning/SKILL.md`

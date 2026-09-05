@@ -1,4 +1,4 @@
-# `firstmate-coding-guidelines`
+# /firstmate-coding-guidelines
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/firstmate-coding-guidelines/SKILL.md`

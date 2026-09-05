@@ -1,4 +1,4 @@
-# `firstmate-codexapp`
+# /firstmate-codexapp
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/firstmate-codexapp/SKILL.md`

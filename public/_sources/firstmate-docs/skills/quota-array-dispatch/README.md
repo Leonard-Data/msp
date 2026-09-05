@@ -1,4 +1,4 @@
-# `quota-array-dispatch`
+# /quota-array-dispatch
 
 > **Skill type:** Agent-only  
 > **Upstream path:** `.agents/skills/quota-array-dispatch/SKILL.md`
