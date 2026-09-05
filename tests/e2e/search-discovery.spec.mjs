@@ -36,7 +36,7 @@ test('global search dialog lazy-loads the index and routes to the source page', 
   }
 });
 
-test('search retries after an initial index fetch failure', async ({ page }) => {
+test('search shows a retryable load error before succeeding after an initial index fetch failure', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
@@ -50,7 +50,8 @@ test('search retries after an initial index fetch failure', async ({ page }) => 
   await page.goto('/search/');
 
   const pageSearch = page.locator('main [data-search-root]').first();
-  await expect(page.getByText(/^No results\.$/)).toBeVisible();
+  await expect(page.getByText(/Search is unavailable right now\. Try again\./i)).toBeVisible();
+  await expect(page.getByText(/^No results\.$/)).toHaveCount(0);
 
   await pageSearch.getByLabel('Search the library').fill('Concepts');
   await expect(pageSearch.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();
