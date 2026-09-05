@@ -11,6 +11,7 @@ test('desktop docs pages keep the sidebar rail', async ({ page }, testInfo) => {
   for (const path of docsPaths) {
     await page.goto(path);
     await expect(page.locator('.sidebar')).toBeVisible();
+    await expect(page.locator('[aria-label="Documentation navigation"]')).toHaveCount(1);
   }
 });
 
@@ -24,7 +25,8 @@ test('mobile docs pages expose a browse-docs affordance', async ({ page }, testI
     await expect(browseDocs).toBeVisible();
     await browseDocs.click();
 
-    const navigation = page.locator('[aria-label="Documentation navigation"]:visible');
+    const navigation = page.locator('[aria-label="Documentation navigation"]');
+    await expect(navigation).toHaveCount(1);
     await expect(navigation).toBeVisible();
 
     const linkCount = await navigation.locator('a:visible').count();

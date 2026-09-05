@@ -9,57 +9,35 @@ const hrefFor = (href) => withBase(base, href);
 ---
 <BaseLayout title={title} description={description} repoUrl={repoUrl}>
   <div class="page docs-page">
-    <aside class="sidebar" aria-label="Documentation navigation">
-      {sidebar.map((section) => (
-        <section class="sidebar__section">
-          <div class="sidebar__label">{section.label}</div>
-          <div class="sidebar__links">
-            {section.items.map((item) => item.children?.length ? (
-              <details open={currentPath.startsWith(item.href)}>
-                <summary>{item.label}</summary>
-                <div class="sidebar__children">
-                  <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
-                  {item.children.map((child) => (
-                    <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
-                  ))}
-                </div>
-              </details>
-            ) : (
-              <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
-            ))}
-          </div>
-        </section>
-      ))}
-    </aside>
+    {sidebar.length ? (
+      <details class="docs-nav" open data-docs-nav>
+        <summary>Browse docs</summary>
+        <nav class="sidebar" aria-label="Documentation navigation">
+          {sidebar.map((section) => (
+            <section class="sidebar__section">
+              <div class="sidebar__label">{section.label}</div>
+              <div class="sidebar__links">
+                {section.items.map((item) => item.children?.length ? (
+                  <details open={currentPath.startsWith(item.href)}>
+                    <summary>{item.label}</summary>
+                    <div class="sidebar__children">
+                      <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                      {item.children.map((child) => (
+                        <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+                ))}
+              </div>
+            </section>
+          ))}
+        </nav>
+      </details>
+    ) : null}
 
     <main class="content docs-content">
-      {sidebar.length ? (
-        <details class="mobile-sidebar">
-          <summary>Browse docs</summary>
-          <nav class="mobile-sidebar__panel" aria-label="Documentation navigation">
-            {sidebar.map((section) => (
-              <section class="sidebar__section">
-                <div class="sidebar__label">{section.label}</div>
-                <div class="sidebar__links">
-                  {section.items.map((item) => item.children?.length ? (
-                    <details open={currentPath.startsWith(item.href)}>
-                      <summary>{item.label}</summary>
-                      <div class="sidebar__children">
-                        <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
-                        {item.children.map((child) => (
-                          <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
-                        ))}
-                      </div>
-                    </details>
-                  ) : (
-                    <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </nav>
-        </details>
-      ) : null}
       <slot />
       <footer class="footer">MSP keeps documentation with its source repository and publishes one searchable library.</footer>
     </main>
@@ -75,4 +53,17 @@ const hrefFor = (href) => withBase(base, href);
       </section>
     </aside>
   </div>
+
+  <script is:inline>
+    const docsNav = document.querySelector('[data-docs-nav]');
+    const mobileDocsNav = window.matchMedia('(max-width: 900px)');
+    const syncDocsNav = () => {
+      if (!docsNav) return;
+      docsNav.open = !mobileDocsNav.matches;
+    };
+
+    syncDocsNav();
+    if (mobileDocsNav.addEventListener) mobileDocsNav.addEventListener('change', syncDocsNav);
+    else mobileDocsNav.addListener(syncDocsNav);
+  </script>
 </BaseLayout>
