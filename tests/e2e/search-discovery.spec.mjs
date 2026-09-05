@@ -65,8 +65,36 @@ test('search button falls back to the search page without dialog support', async
   });
 
   await page.goto('/');
+  await expect(page.locator('[data-search-dialog]')).toBeHidden();
   await page.getByRole('button', { name: /open search dialog/i }).click();
   await expect(page).toHaveURL('/search/');
+});
+
+
+test('keyboard retry keeps the search dialog open', async ({ page }) => {
+  let requests = 0;
+  await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
+    requests += 1;
+    if (requests === 1) {
+      await route.fulfill({ status: 503, contentType: 'application/json', body: '[]' });
+      return;
+    }
+    await route.continue();
+  });
+
+  await page.goto('/');
+  await page.getByRole('button', { name: /open search dialog/i }).click();
+
+  const dialog = page.getByRole('dialog', { name: /search the library/i });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByText(/Search is unavailable right now\. Try again\./i)).toBeVisible();
+
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Enter');
+
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByText(/Search is unavailable right now\. Try again\./i)).toHaveCount(0);
+  expect(requests).toBeGreaterThanOrEqual(2);
 });
 
 test('header keeps only the dialog search affordance', async ({ page }) => {

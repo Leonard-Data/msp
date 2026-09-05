@@ -107,10 +107,7 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
       searchOpeners.forEach((button) => button.addEventListener('click', openSearchDialog));
       searchCloser?.addEventListener('click', () => searchDialog?.close());
       searchDialog?.addEventListener('click', (event) => {
-        const bounds = searchDialog.getBoundingClientRect();
-        const inside = event.clientX >= bounds.left && event.clientX <= bounds.right
-          && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
-        if (!inside) searchDialog.close();
+        if (event.target === searchDialog) searchDialog.close();
       });
     </script>
   </body>
