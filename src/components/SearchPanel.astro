@@ -73,12 +73,8 @@ const searchPageHref = withBase(base, 'search/');
       return normalizeCategory(selectedCategoryValue());
     }
 
-    function canonicalHref(value) {
-      return String(value || '/').replace(/\/README\/$/i, '/');
-    }
-
     function resultHref(item) {
-      return withBase(canonicalHref(item.href));
+      return withBase(item.href || '/');
     }
 
     async function loadIndex() {
