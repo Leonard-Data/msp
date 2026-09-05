@@ -56,17 +56,16 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
             <a href={howItWorksHref}>How it works</a>
           </nav>
           <div class="topbar__actions">
-            <button
-              type="button"
+            <a
               class="button button--ghost button--sm search-trigger"
+              href={searchHref}
               data-search-open
-              data-search-href={searchHref}
               aria-haspopup="dialog"
               aria-controls="site-search-dialog"
               aria-label="Open search dialog"
             >
               Search
-            </button>
+            </a>
             <a class="button button--ghost" href={repoUrl} target="_blank" rel="noreferrer">GitHub</a>
             <a class="button button--primary" href={addDocsHref} target="_blank" rel="noreferrer">Add documentation</a>
           </div>
@@ -95,11 +94,8 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
       const searchPanel = searchDialog?.querySelector('[data-search-root]');
 
       const openSearchDialog = (event) => {
-        if (!searchDialog?.showModal) {
-          const href = event.currentTarget?.dataset.searchHref;
-          if (href) window.location.assign(href);
-          return;
-        }
+        if (!searchDialog?.showModal) return;
+        event.preventDefault();
         searchDialog.showModal();
         searchPanel?.dispatchEvent(new CustomEvent('search:focus'));
       };

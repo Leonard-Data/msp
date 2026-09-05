@@ -27,6 +27,27 @@ test('desktop docs pages let readers collapse and reopen the sidebar from the he
   }
 });
 
+test('mobile docs pages stay closed without scripts', async ({ browser }, testInfo) => {
+  test.skip(testInfo.project.name !== 'mobile-chromium', 'mobile-only regression check');
+
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 412, height: 915 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+
+  for (const path of docsPaths) {
+    await page.goto(path);
+
+    await expect(page.locator('[aria-label="Documentation navigation"]')).toBeHidden();
+    await expect(page.getByRole('button', { name: /close documentation navigation/i })).toBeHidden();
+  }
+
+  await context.close();
+});
+
 test('mobile docs pages use the header toggle to open and close the sidebar drawer', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile-chromium', 'mobile-only regression check');
 

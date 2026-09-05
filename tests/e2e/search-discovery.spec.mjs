@@ -16,7 +16,7 @@ test('global search dialog lazy-loads the index and routes to the source page', 
   for (const [index, path] of globalSearchPaths.entries()) {
     await page.goto(path);
 
-    const openSearch = page.getByRole('button', { name: /open search dialog/i });
+    const openSearch = page.getByRole('link', { name: /open search dialog/i });
     await expect(openSearch).toBeVisible();
 
     const indexResponse = index === 0
@@ -59,15 +59,22 @@ test('search shows a retryable load error before succeeding after an initial ind
 });
 
 
-test('search button falls back to the search page without dialog support', async ({ page }) => {
-  await page.addInitScript(() => {
-    delete HTMLDialogElement.prototype.showModal;
+test('search link falls back to the search page without JavaScript', async ({ browser }, testInfo) => {
+  const mobile = testInfo.project.name === 'mobile-chromium';
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: mobile ? { width: 412, height: 915 } : { width: 1440, height: 1200 },
+    isMobile: mobile,
+    hasTouch: mobile,
   });
+  const page = await context.newPage();
 
   await page.goto('/');
   await expect(page.locator('[data-search-dialog]')).toBeHidden();
-  await page.getByRole('button', { name: /open search dialog/i }).click();
+  await page.getByRole('link', { name: /open search dialog/i }).click();
   await expect(page).toHaveURL('/search/');
+
+  await context.close();
 });
 
 
@@ -83,7 +90,7 @@ test('keyboard retry keeps the search dialog open', async ({ page }) => {
   });
 
   await page.goto('/');
-  await page.getByRole('button', { name: /open search dialog/i }).click();
+  await page.getByRole('link', { name: /open search dialog/i }).click();
 
   const dialog = page.getByRole('dialog', { name: /search the library/i });
   await expect(dialog).toBeVisible();
@@ -101,14 +108,14 @@ test('header keeps only the dialog search affordance', async ({ page }) => {
   await page.goto('/');
 
   const topbar = page.locator('.topbar');
-  await expect(topbar.getByRole('button', { name: /open search dialog/i })).toBeVisible();
+  await expect(topbar.getByRole('link', { name: /open search dialog/i })).toBeVisible();
   await expect(topbar.getByRole('link', { name: /^Search$/i })).toHaveCount(0);
 });
 
 test('dialog search stays focused without a full-page footer link', async ({ page }) => {
   await page.goto('/');
 
-  await page.getByRole('button', { name: /open search dialog/i }).click();
+  await page.getByRole('link', { name: /open search dialog/i }).click();
   const dialog = page.getByRole('dialog', { name: /search the library/i });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('link', { name: /open the full search page/i })).toHaveCount(0);
