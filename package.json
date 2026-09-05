@@ -6,6 +6,7 @@
     "dev": "npm run prepare:docs && astro dev",
     "prepare:docs": "node scripts/sync-sources.mjs && node scripts/build-docs.mjs",
     "build": "npm run prepare:docs && astro build",
+    "build:static": "astro build",
     "preview": "astro preview",
     "check": "npm run prepare:docs && astro check",
     "sync": "node scripts/sync-sources.mjs",
