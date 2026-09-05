@@ -24,6 +24,14 @@ function buildSite(env = {}) {
   });
 }
 
+function collectSidebarHrefs(items, hrefs = []) {
+  for (const item of items || []) {
+    if (item.href) hrefs.push(item.href);
+    if (item.items) collectSidebarHrefs(item.items, hrefs);
+  }
+  return hrefs;
+}
+
 test('site builds with semantic heading rendering and base-aware single-owner navigation', () => {
   const env = {
     GITHUB_ACTIONS: '1',
@@ -45,6 +53,8 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
   const docsHome = readFileSync('dist/docs/index.html', 'utf8');
   const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
+  const generatedDocs = JSON.parse(readFileSync('src/generated/docs-data.json', 'utf8'));
+  const generatedSearch = JSON.parse(readFileSync('src/generated/search-index.json', 'utf8'));
 
   assert.doesNotMatch(home, /href="\/\//, 'base-prefixed links should not become protocol-relative');
   assert.doesNotMatch(home, /src="\/\//, 'base-prefixed assets should not become protocol-relative');
@@ -59,6 +69,10 @@ test('site builds with semantic heading rendering and base-aware single-owner na
 
   assert.equal(existsSync('dist/docs/review-link-check/index.html'), false, 'site should not ship the review-link-check page');
   assert.doesNotMatch(docsHome, /href="\/msp-portal\/docs\/review-link-check\//, 'docs landing should not link a review-link-check page');
+  assert.equal(generatedDocs.portalPages.some((page) => page.slug === 'review-link-check' || page.href === '/docs/review-link-check/'), false, 'generated docs data should not include the review-link-check page');
+  assert.equal(generatedDocs.pages.some((page) => page.slug === 'review-link-check' || page.href === '/docs/review-link-check/'), false, 'generated pages should not include the review-link-check page');
+  assert.equal(collectSidebarHrefs(generatedDocs.sidebar).includes('/docs/review-link-check/'), false, 'generated sidebar should not include the review-link-check page');
+  assert.equal(generatedSearch.some((item) => item.href === '/docs/review-link-check/'), false, 'generated search index should not include the review-link-check page');
   assert.match(sourceDoc, /aria-label="Documentation navigation"/, 'docs pages should render documentation navigation');
   assert.match(docsHome, /Jump straight into the library/, 'docs landing should keep the search CTA');
   assert.equal(countMatches(docsHome, /href="[^"]*">Open source<\/a>/g), 0, 'docs landing should not repeat the homepage featured shelf actions');

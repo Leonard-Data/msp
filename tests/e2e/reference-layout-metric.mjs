@@ -20,6 +20,7 @@ const PROJECT_RULES = {
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
     minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceEnergyRatios: [0.7, 0.7, 0.7, 0.7, 0.7],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -31,6 +32,7 @@ const PROJECT_RULES = {
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.9, 0.9, 0.9],
     minSliceIdentityMargins: [0.005, 0.005, 0.005, 0.005, 0.005],
+    minSliceEnergyRatios: [0.7, 0.7, 0.7, 0.7, 0.7],
   },
 };
 
@@ -81,6 +83,9 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const sliceIdentityChecks = rule.labels.flatMap((label, bandIndex) =>
     sliceRanges(rule.bands[bandIndex], rule.bands[bandIndex + 1]).map(({ start, end }, sliceIndex) => {
       const score = sliceFingerprintSimilarity(leftGrid, rightGrid, start, end);
+      const energy = regionEdgeEnergy(leftGrid, start, end);
+      const referenceEnergy = regionEdgeEnergy(rightGrid, start, end);
+      const energyRatio = energy / Math.max(referenceEnergy, Number.EPSILON);
       const otherScores = rule.labels
         .flatMap((otherLabel, otherBandIndex) =>
           sliceRanges(rule.bands[otherBandIndex], rule.bands[otherBandIndex + 1])
@@ -100,6 +105,9 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
         bandIndex,
         sliceIndex,
         score,
+        energy,
+        referenceEnergy,
+        energyRatio,
         maxOtherScore: otherScores[0]?.score ?? 0,
         margin: score - (otherScores[0]?.score ?? 0),
         otherScores,
@@ -115,8 +123,10 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     identityChecks.every(({ score, margin }, index) =>
       score >= rule.minIdentityScores[index] && margin >= rule.minIdentityMargins[index],
     ) &&
-    sliceIdentityChecks.every(({ bandIndex, score, margin }) =>
-      score >= rule.minSliceIdentityScores[bandIndex] && margin >= rule.minSliceIdentityMargins[bandIndex],
+    sliceIdentityChecks.every(({ bandIndex, score, margin, energyRatio }) =>
+      score >= rule.minSliceIdentityScores[bandIndex] &&
+      margin >= rule.minSliceIdentityMargins[bandIndex] &&
+      energyRatio >= rule.minSliceEnergyRatios[bandIndex],
     );
 
   return {
@@ -198,32 +208,30 @@ function regionSimilarityScores(leftGrid, rightGrid, bands, size = GRID_SIZE) {
 }
 
 function regionEdgeEnergies(grid, bands, size = GRID_SIZE) {
-  const energies = [];
+  return bands.slice(0, -1).map((start, index) => regionEdgeEnergy(grid, start, bands[index + 1], size));
+}
 
-  for (let index = 0; index < bands.length - 1; index += 1) {
-    const startRow = Math.floor(size * bands[index]);
-    const endRow = Math.max(startRow + 1, Math.floor(size * bands[index + 1]));
-    let total = 0;
-    let count = 0;
+function regionEdgeEnergy(grid, start, end, size = GRID_SIZE) {
+  const startRow = Math.floor(size * start);
+  const endRow = Math.max(startRow + 1, Math.floor(size * end));
+  let total = 0;
+  let count = 0;
 
-    for (let row = startRow; row < endRow; row += 1) {
-      for (let col = 0; col < size; col += 1) {
-        const offset = row * size + col;
-        if (col + 1 < size) {
-          total += Math.abs(grid[offset] - grid[offset + 1]);
-          count += 1;
-        }
-        if (row + 1 < endRow) {
-          total += Math.abs(grid[offset] - grid[offset + size]);
-          count += 1;
-        }
+  for (let row = startRow; row < endRow; row += 1) {
+    for (let col = 0; col < size; col += 1) {
+      const offset = row * size + col;
+      if (col + 1 < size) {
+        total += Math.abs(grid[offset] - grid[offset + 1]);
+        count += 1;
+      }
+      if (row + 1 < endRow) {
+        total += Math.abs(grid[offset] - grid[offset + size]);
+        count += 1;
       }
     }
-
-    energies.push(total / Math.max(1, count));
   }
 
-  return energies;
+  return total / Math.max(1, count);
 }
 
 function regionLowVarianceRuns(grid, bands, size = GRID_SIZE) {

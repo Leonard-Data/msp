@@ -238,6 +238,18 @@ test('layout proof rejects a mobile hero slice replaced by another hero slice', 
   assert.equal(proof.passes, false);
 });
 
+test('layout proof rejects a blanked interior contribution slice on desktop', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-desktop.png'));
+  const proof = evaluateLayoutProof(blankRange(reference, 0.5, 0.62), reference, 'desktop-chromium');
+  assert.equal(proof.passes, false);
+});
+
+test('layout proof rejects a blanked interior contribution slice on mobile', () => {
+  const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
+  const proof = evaluateLayoutProof(blankRange(reference, 0.5, 0.62), reference, 'mobile-chromium');
+  assert.equal(proof.passes, false);
+});
+
 test('layout proof rejects swapped top quarter-bands on mobile', () => {
   const reference = readFileSync(path.join(fixtureDir, 'reference-home-mobile.png'));
   const png = PNG.sync.read(reference);
