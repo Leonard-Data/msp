@@ -77,6 +77,15 @@ test('header keeps only the dialog search affordance', async ({ page }) => {
   await expect(topbar.getByRole('link', { name: /^Search$/i })).toHaveCount(0);
 });
 
+test('dialog search stays focused without a full-page footer link', async ({ page }) => {
+  await page.goto('/');
+
+  await page.getByRole('button', { name: /open search dialog/i }).click();
+  const dialog = page.getByRole('dialog', { name: /search the library/i });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('link', { name: /open the full search page/i })).toHaveCount(0);
+});
+
 test('legacy README source URLs still resolve to the source doc', async ({ page }) => {
   await page.goto('/docs/sources/firstmate-docs/workflows/README/');
 

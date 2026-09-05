@@ -30,11 +30,6 @@ const searchPageHref = withBase(base, 'search/');
       <a class="text-link" data-search-clear-category href={searchPageHref}>Clear category</a>
     </div>
   </div>
-  {dialogMode ? (
-    <div class="search-panel__footer">
-      <a class="text-link" href={searchPageHref}>Open the full search page</a>
-    </div>
-  ) : null}
   <div class="search-results" data-search-results></div>
 </section>
 
