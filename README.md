@@ -46,7 +46,7 @@ Register sources in `sources.yml`.
 ## Commands
 
 - `npm run sync` — sync source repositories
-- `npm run prepare` — sync + build generated docs metadata
+- `npm run prepare:docs` — sync + build generated docs metadata
 - `npm run build` — prepare and build Astro
 - `npm run validate:sources` — validate source definitions
 

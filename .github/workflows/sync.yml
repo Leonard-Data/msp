@@ -21,7 +21,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run prepare
+      - run: npm run prepare:docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.MSP_SYNC_TOKEN || secrets.GITHUB_TOKEN }}
