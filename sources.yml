@@ -6,3 +6,6 @@ sources:
   - repo: company/agent-engineering
     localPath: example-sources/agent-engineering
     defaultBranch: main
+
+  - repo: Leonard-Data/firstmate-docs
+    defaultBranch: main

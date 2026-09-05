@@ -118,5 +118,410 @@
     ],
     "headings": "Review items Notes",
     "content": "Workflow review checklist Use this checklist before enabling a workflow in production. Review items Clear owner Bounded permissions Failure handling Observable logs Human escalation path Notes A workflow is easier to trust when each stage has one clear responsibility."
+  },
+  {
+    "title": "Firstmate documentation",
+    "href": "/docs/sources/firstmate-docs/",
+    "description": "Firstmate is the captain's operating layer for software work across projects.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Fast path for readers Section map",
+    "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read System map architecture/system map.md for the architecture. 3. Read Setup guides/setup.md to install or verify a home. 4. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 5. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths. Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup."
+  },
+  {
+    "title": "Firstmate core and soul",
+    "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/",
+    "description": "Firstmate exists to keep software delivery calm, safe, and legible.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Core idea The soul Why this matters What good feels like",
+    "content": "Firstmate core and soul Firstmate exists to keep software delivery calm, safe, and legible. The captain should be able to ask for outcomes, not manage a pile of terminals, branches, checks, and reminders. Core idea Firstmate is the captain's single point of contact. It translates intent into safe work, routes that work to the right worker, supervises progress, and reports outcomes in plain language. The soul Firstmate is not a chatbot that edits files whenever it can. It is an operating discipline: protect unlanded work keep project changes isolated preserve approval boundaries record decisions durably validate before claiming success report failures honestly use the smallest workflow that safely works Why this matters Agent work fails when invisible state matters more than durable records. Firstmate reverses that failure mode. The durable records are the source of truth, and the conversation is only the captain facing surface. What good feels like A good Firstmate session feels boring: the captain says what outcome they want Firstmate chooses the right path workers do the project specific work in isolated copies validation and pull requests are handled by the selected workflow the captain only hears about decisions, blockers, review ready work, and finished outcomes Related pages: Operating contract operating contract.md , Safety model safety model.md , Working well with Firstmate ../guides/working with firstmate.md ."
+  },
+  {
+    "title": "Operating contract",
+    "href": "/docs/sources/firstmate-docs/concepts/operating-contract/",
+    "description": "Firstmate has clear roles so work stays understandable.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Captain Firstmate Worker Scout Second mate Practical rule",
+    "content": "Operating contract Firstmate has clear roles so work stays understandable. Captain The captain owns intent, priorities, approvals, and final calls. The captain should describe the desired outcome and any hard constraints. Firstmate Firstmate owns intake, routing, supervision, safety boundaries, and captain facing communication. Firstmate keeps the captain updated only when action or useful outcome exists. Worker A worker owns one scoped project task in an isolated copy. It implements, investigates, validates, or reports according to its instructions. Scout A scout investigates without shipping code. It leaves a durable report that can later be promoted into implementation if the captain approves. Second mate A second mate is a persistent delegated Firstmate home for a domain. It is idle by default and acts only when routed work fits its charter. Practical rule If a question affects product direction, destructive action, security, credentials, or merging, Firstmate brings it back to the captain."
+  },
+  {
+    "title": "Concepts",
+    "href": "/docs/sources/firstmate-docs/concepts/README/",
+    "description": "Use these pages to understand the words and values behind Firstmate.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Operating contract operating contract.md Safety model safety model.md"
+  },
+  {
+    "title": "Safety model",
+    "href": "/docs/sources/firstmate-docs/concepts/safety-model/",
+    "description": "Firstmate's safety model is simple: never make hidden, irreversible, or unapproved changes look routine.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Non-negotiables Durable records over memory Isolation over convenience",
+    "content": "Safety model Firstmate's safety model is simple: never make hidden, irreversible, or unapproved changes look routine. Non negotiables Do not discard unlanded work without explicit authority. Do not merge without explicit authority unless the project has standing merge autonomy. Do not treat a stopped check as success. Do not turn a diagnostic finding into implementation without approval. Do not expose internal machinery as captain facing progress. Durable records over memory Firstmate records work, decisions, state, and outcomes on disk. That makes restart and context loss recoverable. Isolation over convenience Project work happens in isolated copies so the primary local copy stays safe. This costs a little setup time and avoids expensive cleanup later. Related pages: State and records ../architecture/state and records.md , Task lifecycle ../workflows/task lifecycle.md ."
+  },
+  {
+    "title": "Architecture",
+    "href": "/docs/sources/firstmate-docs/architecture/README/",
+    "description": "Use these pages to understand how Firstmate is structured.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Architecture Use these pages to understand how Firstmate is structured. System map system map.md State and records state and records.md MSP documentation sync ../workflows/documentation sync.md"
+  },
+  {
+    "title": "State and records",
+    "href": "/docs/sources/firstmate-docs/architecture/state-and-records/",
+    "description": "Firstmate is restartable because important facts are recorded outside the chat.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Main record families Important distinction Why not just remember?",
+    "content": "State and records Firstmate is restartable because important facts are recorded outside the chat. Main record families data/ keeps durable private knowledge, backlog, project registry, and captain preferences. state/ keeps runtime records, notifications, task metadata, and worker status events. projects/ keeps local clones of repositories. bin/ keeps guarded scripts that mutate state safely. .agents/skills/ keeps operating playbooks for specialized procedures. Important distinction A status event is not the same as current truth. When action depends on live state, Firstmate asks the current state script or the relevant tool instead of trusting the last visible line. Why not just remember? Context windows end, terminals restart, and agents crash. Durable records let Firstmate recover without inventing what happened."
+  },
+  {
+    "title": "System map",
+    "href": "/docs/sources/firstmate-docs/architecture/system-map/",
+    "description": "Firstmate is a small orchestration layer around projects, workers, tools, and durable records.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Boundaries Control flow Data flow",
+    "content": "System map Firstmate is a small orchestration layer around projects, workers, tools, and durable records. Boundaries Firstmate reads projects to understand them. Workers change projects. Direct project changes by Firstmate require a concrete captain approved operation. Control flow 1. Session start verifies the home and prints the current fleet state. 2. Intake resolves the project, delivery path, and required approval level. 3. A brief records the task specific intent and constraints. 4. A worker or second mate handles the project work. 5. Firstmate supervises notifications, decisions, validation, and pull requests. 6. Firstmate reports the outcome to the captain. Data flow Project specific content stays in each project. Reusable Firstmate knowledge belongs in Firstmate docs or skills. Captain preferences and fleet state stay private to the Firstmate home."
+  },
+  {
+    "title": "Guides",
+    "href": "/docs/sources/firstmate-docs/guides/README/",
+    "description": "Step-by-step pages for setup and daily use.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Guides Step by step pages for setup and daily use. Setup setup.md Working well with Firstmate working with firstmate.md"
+  },
+  {
+    "title": "Setup",
+    "href": "/docs/sources/firstmate-docs/guides/setup/",
+    "description": "This guide describes the shape of a healthy Firstmate home.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Prerequisites Home layout First startup check Add a documentation source",
+    "content": "Setup This guide describes the shape of a healthy Firstmate home. Exact installation commands may vary by environment, so treat this page as the checklist. Prerequisites Git is installed and authenticated for the required repositories. GitHub access is available through gh axi. The chosen agent runtime is installed and authenticated. no mistakes is available for projects that require the full validation path. MSP Portal can read documentation source repositories that should be published. Home layout A Firstmate home contains: data/ for durable private records state/ for runtime records projects/ for local repository clones bin/ for guarded scripts .agents/skills/ for internal skills First startup check Run the session start command for the home and read the digest it prints. Resolve any missing tools or authentication blockers before dispatching work. Add a documentation source 1. Create or clone the source repository. 2. Ensure it has .docs source.yml and docs/. 3. Add the repository to MSP Portal's sources.yml. 4. Run MSP Portal source validation and build checks. 5. Open a pull request for the portal registration. Related page: MSP documentation sync ../workflows/documentation sync.md ."
+  },
+  {
+    "title": "Working well with Firstmate",
+    "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/",
+    "description": "Good requests give Firstmate enough intent to choose the smallest safe workflow.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Strong request shape What Firstmate will ask back What Firstmate should not bother you with Best habit",
+    "content": "Working well with Firstmate Good requests give Firstmate enough intent to choose the smallest safe workflow. Strong request shape Say: the project or product area the outcome you want constraints that matter whether you want investigation only or implementation any deadline, risk, or approval preference Example: What Firstmate will ask back Firstmate asks when the project is unclear, when authority is missing, or when a decision changes product behavior. What Firstmate should not bother you with Firstmate should not report routine waiting, internal retries, or unchanged monitoring. You should hear about review ready work, decisions, blockers, failures, and finished outcomes. Best habit Give the outcome first. Implementation details are welcome, but they should not hide the goal."
+  },
+  {
+    "title": "MSP documentation sync",
+    "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/",
+    "description": "MSP Portal can publish documentation from multiple source repositories.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Source repository contract Portal registration Sync flow Documentation quality rule",
+    "content": "MSP documentation sync MSP Portal can publish documentation from multiple source repositories. Each source owns its docs, and the portal owns aggregation, navigation, search, and deployment. Source repository contract A source repository needs: .docs source.yml a docs/ directory relative links inside Markdown local assets under docs/assets/ or a documented subfolder Portal registration MSP Portal registers a source in sources.yml. A remote source entry normally names: Sync flow 1. MSP Portal reads sources.yml. 2. It clones each remote source or reads each configured local source. 3. It reads .docs source.yml from each source. 4. It copies the source docs/ tree into generated portal content. 5. It builds source navigation and search metadata. Documentation quality rule Make each source useful on GitHub before relying on the portal. The portal should improve discovery, not rescue unclear content."
+  },
+  {
+    "title": "Workflows",
+    "href": "/docs/sources/firstmate-docs/workflows/README/",
+    "description": "Repeatable end-to-end paths.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Workflows Repeatable end to end paths. Task lifecycle task lifecycle.md MSP documentation sync documentation sync.md"
+  },
+  {
+    "title": "Task lifecycle",
+    "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/",
+    "description": "Most work follows the same loop.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "1. Intake 2. Instructions 3. Isolated work 4. Validation 5. Decision or landing 6. Cleanup",
+    "content": "Task lifecycle Most work follows the same loop. 1. Intake Firstmate identifies the project, task type, delivery path, and approval needs. If the work is only investigation, it becomes a scout task. If the work should change a project, it becomes a ship task. 2. Instructions Firstmate writes task specific instructions with the captain's intent and safety constraints. 3. Isolated work A worker uses an isolated local copy so unfinished project work does not pollute the primary copy. 4. Validation The selected delivery path owns validation. For strict paths, automated review, tests, pull request creation, and CI are handled as one flow. 5. Decision or landing If a decision is needed, Firstmate brings it to the captain. If work is ready, Firstmate reports the pull request or asks for merge approval when required. 6. Cleanup Cleanup happens only after landing is confirmed or after the captain explicitly discards work."
+  },
+  {
+    "title": "Patterns",
+    "href": "/docs/sources/firstmate-docs/patterns/README/",
+    "description": "Patterns are reusable choices that keep Firstmate work predictable.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Prefer these patterns",
+    "content": "Patterns Patterns are reusable choices that keep Firstmate work predictable. Prefer these patterns One owner for each contract. Small linked pages over giant manuals. Guarded scripts over remembered command chains. Scout first when uncertainty changes what should be built. Direct implementation when the desired change is clear. Durable records over chat memory. Related page: Firstmate core and soul ../concepts/firstmate core.md ."
+  },
+  {
+    "title": "Harnesses",
+    "href": "/docs/sources/firstmate-docs/components/harnesses/",
+    "description": "A harness is the worker runtime Firstmate uses to run an agent session.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Harness philosophy Practical rule What Firstmate standardizes",
+    "content": "Harnesses A harness is the worker runtime Firstmate uses to run an agent session. Different harnesses have different strengths, limits, authentication models, and supervision behavior. Harness philosophy Use the harness as a tool, not as the architecture. Firstmate keeps the operating contract stable while the underlying runtime can vary. Good harness selection considers: task complexity model capability available quota authentication state required tool access reliability for the specific job Practical rule Do not pick a harness because it is fashionable. Pick the smallest reliable runtime that can complete the task safely. What Firstmate standardizes Firstmate standardizes the lifecycle around the harness: spawn trust handling steering interruption recovery status interpretation cleanup Related pages: Scripts scripts.md , Task lifecycle ../workflows/task lifecycle.md ."
+  },
+  {
+    "title": "Components",
+    "href": "/docs/sources/firstmate-docs/components/README/",
+    "description": "These pages explain the reusable parts of Firstmate.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Components These pages explain the reusable parts of Firstmate. Harnesses harnesses.md Skills skills.md Scripts scripts.md Tools tools.md"
+  },
+  {
+    "title": "Scripts",
+    "href": "/docs/sources/firstmate-docs/components/scripts/",
+    "description": "Scripts are the guarded hands of Firstmate.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Script philosophy Common script families Operating rule",
+    "content": "Scripts Scripts are the guarded hands of Firstmate. They perform state changing operations with checks that are easy to forget in chat. Script philosophy Prefer one guarded script over five remembered shell commands. A script can validate inputs, refuse unsafe states, and leave useful evidence. Common script families session start and supervision spawning and steering workers backlog transitions project mode and registry lookup fleet sync pull request checks and merges local cleanup Operating rule Read a script's header before first use. The header owns exact arguments, state files, and refusal behavior."
+  },
+  {
+    "title": "Skills",
+    "href": "/docs/sources/firstmate-docs/components/skills/",
+    "description": "Skills are focused operating playbooks.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "When skills help Good skill design Reader shortcut",
+    "content": "Skills Skills are focused operating playbooks. They keep specialized procedures out of the main instructions while making those procedures easy to load when needed. When skills help Use a skill when a task has a repeatable safety contract or decision process, such as: project management stuck worker recovery second mate provisioning ask user decisions diagnostic reasoning self update documentation polish Good skill design A good skill has one owner, one trigger, and one clear procedure. It should not duplicate a script's exact contract or another skill's decision policy. Reader shortcut If a process feels too detailed to remember, it probably belongs in a skill or script rather than in chat memory."
+  },
+  {
+    "title": "Tools",
+    "href": "/docs/sources/firstmate-docs/components/tools/",
+    "description": "Firstmate uses external tools when they are the right owner for an action.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Common tools Tool selection rule",
+    "content": "Tools Firstmate uses external tools when they are the right owner for an action. Common tools Git and GitHub for source control and pull requests gh axi for GitHub operations no mistakes for guarded validation and review browser tools for UI inspection MSP Portal for publishing documentation sources Tool selection rule Use the authoritative tool for the job. Do not recreate GitHub, validation, or browser behavior in ad hoc scripts unless the existing tool cannot do the work."
+  },
+  {
+    "title": "Examples",
+    "href": "/docs/sources/firstmate-docs/examples/README/",
+    "description": "Captain asks:",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Create a documentation source for MSP",
+    "content": "Examples Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval"
+  },
+  {
+    "title": "Snippets",
+    "href": "/docs/sources/firstmate-docs/snippets/README/",
+    "description": "Small reusable text blocks.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Good captain request Documentation source metadata",
+    "content": "Snippets Small reusable text blocks. Good captain request Documentation source metadata"
+  },
+  {
+    "title": "Troubleshooting",
+    "href": "/docs/sources/firstmate-docs/troubleshooting/README/",
+    "description": "If GitHub says the source is not a template repository, create the destination repository normally and seed it from the local template copy.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Repo creation from template fails MSP cannot sync a source A worker appears stuck A pull request is ready but not merged",
+    "content": "Troubleshooting Repo creation from template fails If GitHub says the source is not a template repository, create the destination repository normally and seed it from the local template copy. The file structure is the important contract for MSP Portal. MSP cannot sync a source Check: the source repo exists and is accessible to the build token .docs source.yml exists at the repository root docs path points to an existing directory sources.yml has the correct repo and defaultBranch A worker appears stuck Do not guess from silence. Use the current state path for the worker, then recover through the guarded recovery procedure. A pull request is ready but not merged Check whether the project has standing merge autonomy. If not, the captain must approve the merge explicitly."
+  },
+  {
+    "title": "Commands",
+    "href": "/docs/sources/firstmate-docs/reference/commands/",
+    "description": "This page lists common Firstmate-related commands by purpose.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Session and fleet Project mode Workers Pull requests and landing MSP Portal",
+    "content": "Commands This page lists common Firstmate related commands by purpose. Run each command's help or read its script header before first use. Session and fleet Project mode Workers Pull requests and landing MSP Portal"
+  },
+  {
+    "title": "Glossary",
+    "href": "/docs/sources/firstmate-docs/reference/glossary/",
+    "description": "The human owner of intent, priority, and approvals.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Captain Firstmate Worker Scout Second mate Harness Skill Delivery path MSP Portal",
+    "content": "Glossary Captain The human owner of intent, priority, and approvals. Firstmate The orchestration layer that turns captain intent into safe software work. Worker An agent session assigned to one scoped task. Scout A worker assigned to investigate and report without shipping code. Second mate A persistent delegated Firstmate home for a specific domain. Harness The runtime used to run an agent session. Skill A focused operating playbook for a specialized procedure. Delivery path The selected route from task intake to validation, pull request, and landing. MSP Portal The Astro documentation portal that syncs docs from registered source repositories."
+  },
+  {
+    "title": "Reference",
+    "href": "/docs/sources/firstmate-docs/reference/README/",
+    "description": "Lookup pages for exact terms and commands.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md"
+  },
+  {
+    "title": "Assets",
+    "href": "/docs/sources/firstmate-docs/assets/README/",
+    "description": "Store diagrams and images here when Markdown alone is not enough.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "",
+    "content": "Assets Store diagrams and images here when Markdown alone is not enough. Prefer SVG for architecture diagrams and compressed PNG or WebP for screenshots. Always include useful alt text from the page that embeds an asset."
   }
 ]

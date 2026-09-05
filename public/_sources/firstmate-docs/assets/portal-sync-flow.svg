@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="180" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">Portal sync flow</title>
+  <desc id="desc">A simple diagram showing a source repository syncing documentation into MSP Portal.</desc>
+  <rect width="760" height="180" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1f2937" text-anchor="middle">
+    <rect x="40" y="50" width="180" height="80" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="130" y="82">Source repository</text>
+    <text x="130" y="108">docs/ + metadata</text>
+
+    <rect x="290" y="50" width="180" height="80" rx="12" fill="#ecfccb" stroke="#65a30d" stroke-width="2"/>
+    <text x="380" y="82">MSP sync step</text>
+    <text x="380" y="108">copy + normalize</text>
+
+    <rect x="540" y="50" width="180" height="80" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="630" y="82">MSP Portal</text>
+    <text x="630" y="108">search + navigation</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none">
+    <path d="M220 90 H280"/>
+    <path d="M470 90 H530"/>
+  </g>
+  <g fill="#64748b">
+    <polygon points="280,90 268,84 268,96"/>
+    <polygon points="530,90 518,84 518,96"/>
+  </g>
+</svg>
