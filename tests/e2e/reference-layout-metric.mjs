@@ -11,7 +11,10 @@ const PROJECT_RULES = {
     minBandScores: [0.895, 0.887, 0.91, 0.95, 0.91],
     minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
-    profileChecks: [{ label: 'contribution', bandIndex: 4, minScore: 0.959 }],
+    profileChecks: [
+      { label: 'hero/search', bandIndex: 0, maxAgainstBandIndex: 4, maxOtherScore: 0.965 },
+      { label: 'contribution', bandIndex: 4, minScore: 0.959 },
+    ],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
@@ -20,7 +23,8 @@ const PROJECT_RULES = {
     minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
     profileChecks: [
-      { label: 'hero/search', bandIndex: 0, minScore: 0.92 },
+      { label: 'hero/search', bandIndex: 0, minScore: 0.92, maxAgainstBandIndex: 4, maxOtherScore: 0.96 },
+      { label: 'featured-shelf', bandIndex: 3, maxAgainstBandIndex: 4, maxOtherScore: 0.945 },
       { label: 'contribution', bandIndex: 4, minScore: 0.94 },
     ],
   },
@@ -37,26 +41,37 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
   const bandEnergies = regionEdgeEnergies(leftGrid, rule.bands);
   const lowVarianceRuns = regionLowVarianceRuns(leftGrid, rule.bands);
 
-  const profileScores = Object.fromEntries(
-    (rule.profileChecks || []).map(({ label, bandIndex }) => [
-      label,
-      profileSimilarity(leftGrid, rightGrid, rule.bands[bandIndex], rule.bands[bandIndex + 1]),
-    ]),
-  );
+  const profileChecks = (rule.profileChecks || []).map((check) => ({
+    ...check,
+    score: profileSimilarity(leftGrid, rightGrid, rule.bands[check.bandIndex], rule.bands[check.bandIndex + 1]),
+    otherScore: check.maxAgainstBandIndex == null
+      ? null
+      : profileSimilarity(
+          leftGrid,
+          rightGrid,
+          rule.bands[check.bandIndex],
+          rule.bands[check.bandIndex + 1],
+          rule.bands[check.maxAgainstBandIndex],
+          rule.bands[check.maxAgainstBandIndex + 1],
+        ),
+  }));
 
   const passes =
     overallScore >= LAYOUT_THRESHOLD &&
     bandScores.every((score, index) => score >= rule.minBandScores[index]) &&
     bandEnergies.every((energy, index) => energy >= rule.minBandEnergies[index]) &&
     lowVarianceRuns.every((run, index) => run <= rule.maxLowVarianceRuns[index]) &&
-    (rule.profileChecks || []).every(({ label, minScore }) => profileScores[label] >= minScore);
+    profileChecks.every(({ minScore, score, maxOtherScore, otherScore }) =>
+      (minScore == null || score >= minScore) &&
+      (maxOtherScore == null || otherScore <= maxOtherScore),
+    );
 
   return {
     overallScore,
     bandScores,
     bandEnergies,
     lowVarianceRuns,
-    profileScores,
+    profileChecks,
     labels: rule.labels,
     passes,
   };
