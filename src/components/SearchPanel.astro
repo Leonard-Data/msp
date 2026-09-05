@@ -8,6 +8,7 @@ const {
   panelLabel = 'Search the library',
   syncUrl = false,
   dialogMode = false,
+  inlineIndex = '',
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -17,6 +18,7 @@ const searchPageHref = withBase(base, 'search/');
   class:list={['search-panel', dialogMode && 'search-panel--dialog']}
   data-search-root
   data-search-index-url={searchIndexUrl}
+  data-search-index={inlineIndex}
   data-search-page-href={searchPageHref}
   data-sync-url={syncUrl ? 'true' : 'false'}
 >
@@ -48,7 +50,7 @@ const searchPageHref = withBase(base, 'search/');
     const searchPageHref = root.dataset.searchPageHref || `${base}search/`;
     const searchIndexUrl = root.dataset.searchIndexUrl || '';
     const params = syncUrl ? new URLSearchParams(window.location.search) : new URLSearchParams();
-    let index;
+    let index = root.dataset.searchIndex ? JSON.parse(root.dataset.searchIndex) : null;
     let loadPromise;
 
     function withBase(path) {

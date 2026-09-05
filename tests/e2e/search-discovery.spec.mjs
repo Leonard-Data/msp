@@ -36,27 +36,18 @@ test('global search dialog lazy-loads the index and routes to the source page', 
   }
 });
 
-test('search shows a simple load error before succeeding after an initial index fetch failure', async ({ page }) => {
+test('standalone search page keeps working without fetching the index asset', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
-    if (requests === 1) {
-      await route.fulfill({ status: 503, contentType: 'application/json', body: '[]' });
-      return;
-    }
-    await route.continue();
+    await route.abort();
   });
 
-  await page.goto('/search/');
+  await page.goto('/search/?q=Concepts');
 
   const pageSearch = page.locator('main [data-search-root]').first();
-  await expect(page.getByText(/Search is unavailable right now\./i)).toBeVisible();
-  await expect(page.getByRole('button', { name: /retry/i })).toHaveCount(0);
-  await expect(page.getByText(/^No results\.$/)).toHaveCount(0);
-
-  await pageSearch.getByLabel('Search the library').fill('Concepts');
   await expect(pageSearch.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();
-  expect(requests).toBeGreaterThanOrEqual(2);
+  expect(requests).toBe(0);
 });
 
 
@@ -79,7 +70,7 @@ test('search link falls back to the search page without JavaScript', async ({ br
 });
 
 
-test('search dialog stays open when keyboard navigation retries by typing again', async ({ page }) => {
+test('search dialog shows a simple load error before succeeding after an initial index fetch failure', async ({ page }) => {
   let requests = 0;
   await page.route(/search-index.*\.json(?:\?|$)/, async (route) => {
     requests += 1;
@@ -101,6 +92,7 @@ test('search dialog stays open when keyboard navigation retries by typing again'
 
   await expect(dialog).toBeVisible();
   await expect(dialog.getByText(/Search is unavailable right now\./i)).toHaveCount(0);
+  await expect(dialog.getByRole('link', { name: /Concepts/i }).first()).toBeVisible();
   expect(requests).toBeGreaterThanOrEqual(2);
 });
 

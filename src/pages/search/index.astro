@@ -1,11 +1,13 @@
 ---
 // @ts-nocheck
 import docsData from '../../generated/docs-data.json';
+import searchIndex from '../../generated/search-index.json';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SearchPanel from '../../components/SearchPanel.astro';
 
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
 const categories = docsData.categories.map((category) => category.name);
+const serializedSearchIndex = JSON.stringify(searchIndex);
 ---
 <BaseLayout title="Search · MSP Docs" description="Search across every synced documentation repository" repoUrl={repoUrl}>
   <main class="content search-page">
@@ -20,6 +22,6 @@ const categories = docsData.categories.map((category) => category.name);
       </div>
     </section>
 
-    <SearchPanel inputId="search-page-box" syncUrl={true} />
+    <SearchPanel inputId="search-page-box" syncUrl={true} inlineIndex={serializedSearchIndex} />
   </main>
 </BaseLayout>
