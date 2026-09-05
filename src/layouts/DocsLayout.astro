@@ -33,6 +33,33 @@ const hrefFor = (href) => withBase(base, href);
     </aside>
 
     <main class="content docs-content">
+      {sidebar.length ? (
+        <details class="mobile-sidebar">
+          <summary>Browse docs</summary>
+          <nav class="mobile-sidebar__panel" aria-label="Documentation navigation">
+            {sidebar.map((section) => (
+              <section class="sidebar__section">
+                <div class="sidebar__label">{section.label}</div>
+                <div class="sidebar__links">
+                  {section.items.map((item) => item.children?.length ? (
+                    <details open={currentPath.startsWith(item.href)}>
+                      <summary>{item.label}</summary>
+                      <div class="sidebar__children">
+                        <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                        {item.children.map((child) => (
+                          <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </nav>
+        </details>
+      ) : null}
       <slot />
       <footer class="footer">MSP keeps documentation with its source repository and publishes one searchable library.</footer>
     </main>
