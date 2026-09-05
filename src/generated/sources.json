@@ -40,5 +40,35 @@
     "sourceDir": ".tmp/aggregated/agent-engineering",
     "publicDir": "public/_sources/agent-engineering",
     "local": true
+  },
+  {
+    "id": "firstmate-docs",
+    "name": "Firstmate Docs",
+    "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+    "category": "Agent Operations",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "navigation": [
+      "concepts",
+      "architecture",
+      "guides",
+      "workflows",
+      "patterns",
+      "components",
+      "examples",
+      "snippets",
+      "troubleshooting",
+      "reference"
+    ],
+    "repo": "Leonard-Data/firstmate-docs",
+    "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+    "docsPath": "docs",
+    "sourceDir": ".tmp/aggregated/firstmate-docs",
+    "publicDir": "public/_sources/firstmate-docs",
+    "local": false
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T06:23:38.142Z",
+  "updatedAt": "2026-09-05T07:04:29.837Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -303,9 +303,1302 @@
           ]
         }
       ]
+    },
+    {
+      "id": "firstmate-docs",
+      "name": "Firstmate Docs",
+      "category": "Agent Operations",
+      "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ],
+      "pages": [
+        {
+          "title": "Firstmate documentation",
+          "href": "/docs/sources/firstmate-docs/",
+          "section": "overview",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Fast path for readers",
+              "slug": "fast-path-for-readers"
+            },
+            {
+              "depth": 2,
+              "text": "Section map",
+              "slug": "section-map"
+            }
+          ]
+        },
+        {
+          "title": "Firstmate core and soul",
+          "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/",
+          "section": "concepts",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Core idea",
+              "slug": "core-idea"
+            },
+            {
+              "depth": 2,
+              "text": "The soul",
+              "slug": "the-soul"
+            },
+            {
+              "depth": 2,
+              "text": "Why this matters",
+              "slug": "why-this-matters"
+            },
+            {
+              "depth": 2,
+              "text": "What good feels like",
+              "slug": "what-good-feels-like"
+            }
+          ]
+        },
+        {
+          "title": "Multi-project operations",
+          "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/",
+          "section": "concepts",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "What Firstmate can control",
+              "slug": "what-firstmate-can-control"
+            },
+            {
+              "depth": 2,
+              "text": "Project routing",
+              "slug": "project-routing"
+            },
+            {
+              "depth": 2,
+              "text": "Why projects stay separate",
+              "slug": "why-projects-stay-separate"
+            }
+          ]
+        },
+        {
+          "title": "Operating contract",
+          "href": "/docs/sources/firstmate-docs/concepts/operating-contract/",
+          "section": "concepts",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Captain",
+              "slug": "captain"
+            },
+            {
+              "depth": 2,
+              "text": "Firstmate",
+              "slug": "firstmate"
+            },
+            {
+              "depth": 2,
+              "text": "Worker",
+              "slug": "worker"
+            },
+            {
+              "depth": 2,
+              "text": "Scout",
+              "slug": "scout"
+            },
+            {
+              "depth": 2,
+              "text": "Second mate",
+              "slug": "second-mate"
+            },
+            {
+              "depth": 2,
+              "text": "Practical rule",
+              "slug": "practical-rule"
+            }
+          ]
+        },
+        {
+          "title": "Concepts",
+          "href": "/docs/sources/firstmate-docs/concepts/README/",
+          "section": "concepts",
+          "headings": []
+        },
+        {
+          "title": "Safety model",
+          "href": "/docs/sources/firstmate-docs/concepts/safety-model/",
+          "section": "concepts",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Non-negotiables",
+              "slug": "non-negotiables"
+            },
+            {
+              "depth": 2,
+              "text": "Durable records over memory",
+              "slug": "durable-records-over-memory"
+            },
+            {
+              "depth": 2,
+              "text": "Isolation over convenience",
+              "slug": "isolation-over-convenience"
+            }
+          ]
+        },
+        {
+          "title": "Architecture",
+          "href": "/docs/sources/firstmate-docs/architecture/README/",
+          "section": "architecture",
+          "headings": []
+        },
+        {
+          "title": "State and records",
+          "href": "/docs/sources/firstmate-docs/architecture/state-and-records/",
+          "section": "architecture",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Main record families",
+              "slug": "main-record-families"
+            },
+            {
+              "depth": 2,
+              "text": "Important distinction",
+              "slug": "important-distinction"
+            },
+            {
+              "depth": 2,
+              "text": "Why not just remember?",
+              "slug": "why-not-just-remember"
+            }
+          ]
+        },
+        {
+          "title": "System map",
+          "href": "/docs/sources/firstmate-docs/architecture/system-map/",
+          "section": "architecture",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Boundaries",
+              "slug": "boundaries"
+            },
+            {
+              "depth": 2,
+              "text": "Control flow",
+              "slug": "control-flow"
+            },
+            {
+              "depth": 2,
+              "text": "Data flow",
+              "slug": "data-flow"
+            },
+            {
+              "depth": 2,
+              "text": "Multi-repository work",
+              "slug": "multi-repository-work"
+            }
+          ]
+        },
+        {
+          "title": "Guides",
+          "href": "/docs/sources/firstmate-docs/guides/README/",
+          "section": "guides",
+          "headings": []
+        },
+        {
+          "title": "Setup",
+          "href": "/docs/sources/firstmate-docs/guides/setup/",
+          "section": "guides",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Prerequisites",
+              "slug": "prerequisites"
+            },
+            {
+              "depth": 2,
+              "text": "Home layout",
+              "slug": "home-layout"
+            },
+            {
+              "depth": 2,
+              "text": "First startup check",
+              "slug": "first-startup-check"
+            },
+            {
+              "depth": 2,
+              "text": "Add a documentation source",
+              "slug": "add-a-documentation-source"
+            }
+          ]
+        },
+        {
+          "title": "Working well with Firstmate",
+          "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/",
+          "section": "guides",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Strong request shape",
+              "slug": "strong-request-shape"
+            },
+            {
+              "depth": 2,
+              "text": "What Firstmate will ask back",
+              "slug": "what-firstmate-will-ask-back"
+            },
+            {
+              "depth": 2,
+              "text": "What Firstmate should not bother you with",
+              "slug": "what-firstmate-should-not-bother-you-with"
+            },
+            {
+              "depth": 2,
+              "text": "Best habit",
+              "slug": "best-habit"
+            }
+          ]
+        },
+        {
+          "title": "MSP documentation sync",
+          "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/",
+          "section": "workflows",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Source repository contract",
+              "slug": "source-repository-contract"
+            },
+            {
+              "depth": 2,
+              "text": "Portal registration",
+              "slug": "portal-registration"
+            },
+            {
+              "depth": 2,
+              "text": "Sync flow",
+              "slug": "sync-flow"
+            },
+            {
+              "depth": 2,
+              "text": "Documentation quality rule",
+              "slug": "documentation-quality-rule"
+            }
+          ]
+        },
+        {
+          "title": "Workflows",
+          "href": "/docs/sources/firstmate-docs/workflows/README/",
+          "section": "workflows",
+          "headings": []
+        },
+        {
+          "title": "Routing and assignment",
+          "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/",
+          "section": "workflows",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "1. Resolve the project",
+              "slug": "1-resolve-the-project"
+            },
+            {
+              "depth": 2,
+              "text": "2. Choose the work type",
+              "slug": "2-choose-the-work-type"
+            },
+            {
+              "depth": 2,
+              "text": "3. Choose the delivery path",
+              "slug": "3-choose-the-delivery-path"
+            },
+            {
+              "depth": 2,
+              "text": "4. Assign the work",
+              "slug": "4-assign-the-work"
+            },
+            {
+              "depth": 2,
+              "text": "5. Supervise and report",
+              "slug": "5-supervise-and-report"
+            }
+          ]
+        },
+        {
+          "title": "Task lifecycle",
+          "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/",
+          "section": "workflows",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "1. Intake",
+              "slug": "1-intake"
+            },
+            {
+              "depth": 2,
+              "text": "2. Instructions",
+              "slug": "2-instructions"
+            },
+            {
+              "depth": 2,
+              "text": "3. Isolated work",
+              "slug": "3-isolated-work"
+            },
+            {
+              "depth": 2,
+              "text": "4. Validation",
+              "slug": "4-validation"
+            },
+            {
+              "depth": 2,
+              "text": "5. Decision or landing",
+              "slug": "5-decision-or-landing"
+            },
+            {
+              "depth": 2,
+              "text": "6. Cleanup",
+              "slug": "6-cleanup"
+            }
+          ]
+        },
+        {
+          "title": "Patterns",
+          "href": "/docs/sources/firstmate-docs/patterns/README/",
+          "section": "patterns",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Prefer these patterns",
+              "slug": "prefer-these-patterns"
+            }
+          ]
+        },
+        {
+          "title": "Harnesses",
+          "href": "/docs/sources/firstmate-docs/components/harnesses/",
+          "section": "components",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Harness philosophy",
+              "slug": "harness-philosophy"
+            },
+            {
+              "depth": 2,
+              "text": "Practical rule",
+              "slug": "practical-rule"
+            },
+            {
+              "depth": 2,
+              "text": "What Firstmate standardizes",
+              "slug": "what-firstmate-standardizes"
+            }
+          ]
+        },
+        {
+          "title": "Components",
+          "href": "/docs/sources/firstmate-docs/components/README/",
+          "section": "components",
+          "headings": []
+        },
+        {
+          "title": "Scripts",
+          "href": "/docs/sources/firstmate-docs/components/scripts/",
+          "section": "components",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Script philosophy",
+              "slug": "script-philosophy"
+            },
+            {
+              "depth": 2,
+              "text": "Common script families",
+              "slug": "common-script-families"
+            },
+            {
+              "depth": 2,
+              "text": "Operating rule",
+              "slug": "operating-rule"
+            }
+          ]
+        },
+        {
+          "title": "Skills",
+          "href": "/docs/sources/firstmate-docs/components/skills/",
+          "section": "components",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "When skills help",
+              "slug": "when-skills-help"
+            },
+            {
+              "depth": 2,
+              "text": "Good skill design",
+              "slug": "good-skill-design"
+            },
+            {
+              "depth": 2,
+              "text": "Reader shortcut",
+              "slug": "reader-shortcut"
+            }
+          ]
+        },
+        {
+          "title": "Tools",
+          "href": "/docs/sources/firstmate-docs/components/tools/",
+          "section": "components",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Common tools",
+              "slug": "common-tools"
+            },
+            {
+              "depth": 2,
+              "text": "Tool selection rule",
+              "slug": "tool-selection-rule"
+            }
+          ]
+        },
+        {
+          "title": "Multi-project request examples",
+          "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/",
+          "section": "examples",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Add a documentation source to MSP",
+              "slug": "add-a-documentation-source-to-msp"
+            },
+            {
+              "depth": 2,
+              "text": "Split investigation from implementation",
+              "slug": "split-investigation-from-implementation"
+            },
+            {
+              "depth": 2,
+              "text": "Assign domain work to a second mate",
+              "slug": "assign-domain-work-to-a-second-mate"
+            },
+            {
+              "depth": 2,
+              "text": "Parallel independent changes",
+              "slug": "parallel-independent-changes"
+            }
+          ]
+        },
+        {
+          "title": "Examples",
+          "href": "/docs/sources/firstmate-docs/examples/README/",
+          "section": "examples",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Create a documentation source for MSP",
+              "slug": "create-a-documentation-source-for-msp"
+            }
+          ]
+        },
+        {
+          "title": "Snippets",
+          "href": "/docs/sources/firstmate-docs/snippets/README/",
+          "section": "snippets",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Good captain request",
+              "slug": "good-captain-request"
+            },
+            {
+              "depth": 2,
+              "text": "Documentation source metadata",
+              "slug": "documentation-source-metadata"
+            }
+          ]
+        },
+        {
+          "title": "Troubleshooting",
+          "href": "/docs/sources/firstmate-docs/troubleshooting/README/",
+          "section": "troubleshooting",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Repo creation from template fails",
+              "slug": "repo-creation-from-template-fails"
+            },
+            {
+              "depth": 2,
+              "text": "MSP cannot sync a source",
+              "slug": "msp-cannot-sync-a-source"
+            },
+            {
+              "depth": 2,
+              "text": "A worker appears stuck",
+              "slug": "a-worker-appears-stuck"
+            },
+            {
+              "depth": 2,
+              "text": "A pull request is ready but not merged",
+              "slug": "a-pull-request-is-ready-but-not-merged"
+            }
+          ]
+        },
+        {
+          "title": "Commands",
+          "href": "/docs/sources/firstmate-docs/reference/commands/",
+          "section": "reference",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Session and fleet",
+              "slug": "session-and-fleet"
+            },
+            {
+              "depth": 2,
+              "text": "Project mode",
+              "slug": "project-mode"
+            },
+            {
+              "depth": 2,
+              "text": "Workers",
+              "slug": "workers"
+            },
+            {
+              "depth": 2,
+              "text": "Pull requests and landing",
+              "slug": "pull-requests-and-landing"
+            },
+            {
+              "depth": 2,
+              "text": "MSP Portal",
+              "slug": "msp-portal"
+            }
+          ]
+        },
+        {
+          "title": "Glossary",
+          "href": "/docs/sources/firstmate-docs/reference/glossary/",
+          "section": "reference",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Captain",
+              "slug": "captain"
+            },
+            {
+              "depth": 2,
+              "text": "Firstmate",
+              "slug": "firstmate"
+            },
+            {
+              "depth": 2,
+              "text": "Worker",
+              "slug": "worker"
+            },
+            {
+              "depth": 2,
+              "text": "Scout",
+              "slug": "scout"
+            },
+            {
+              "depth": 2,
+              "text": "Second mate",
+              "slug": "second-mate"
+            },
+            {
+              "depth": 2,
+              "text": "Harness",
+              "slug": "harness"
+            },
+            {
+              "depth": 2,
+              "text": "Skill",
+              "slug": "skill"
+            },
+            {
+              "depth": 2,
+              "text": "Delivery path",
+              "slug": "delivery-path"
+            },
+            {
+              "depth": 2,
+              "text": "MSP Portal",
+              "slug": "msp-portal"
+            }
+          ]
+        },
+        {
+          "title": "Reference",
+          "href": "/docs/sources/firstmate-docs/reference/README/",
+          "section": "reference",
+          "headings": []
+        },
+        {
+          "title": "Assets",
+          "href": "/docs/sources/firstmate-docs/assets/README/",
+          "section": "assets",
+          "headings": []
+        }
+      ]
     }
   ],
   "categories": [
+    {
+      "name": "Agent Operations",
+      "sources": [
+        {
+          "id": "firstmate-docs",
+          "name": "Firstmate Docs",
+          "category": "Agent Operations",
+          "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+          "repo": "Leonard-Data/firstmate-docs",
+          "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+          "tags": [
+            "firstmate",
+            "agents",
+            "operations",
+            "documentation"
+          ],
+          "pages": [
+            {
+              "title": "Firstmate documentation",
+              "href": "/docs/sources/firstmate-docs/",
+              "section": "overview",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Fast path for readers",
+                  "slug": "fast-path-for-readers"
+                },
+                {
+                  "depth": 2,
+                  "text": "Section map",
+                  "slug": "section-map"
+                }
+              ]
+            },
+            {
+              "title": "Firstmate core and soul",
+              "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/",
+              "section": "concepts",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Core idea",
+                  "slug": "core-idea"
+                },
+                {
+                  "depth": 2,
+                  "text": "The soul",
+                  "slug": "the-soul"
+                },
+                {
+                  "depth": 2,
+                  "text": "Why this matters",
+                  "slug": "why-this-matters"
+                },
+                {
+                  "depth": 2,
+                  "text": "What good feels like",
+                  "slug": "what-good-feels-like"
+                }
+              ]
+            },
+            {
+              "title": "Multi-project operations",
+              "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/",
+              "section": "concepts",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "What Firstmate can control",
+                  "slug": "what-firstmate-can-control"
+                },
+                {
+                  "depth": 2,
+                  "text": "Project routing",
+                  "slug": "project-routing"
+                },
+                {
+                  "depth": 2,
+                  "text": "Why projects stay separate",
+                  "slug": "why-projects-stay-separate"
+                }
+              ]
+            },
+            {
+              "title": "Operating contract",
+              "href": "/docs/sources/firstmate-docs/concepts/operating-contract/",
+              "section": "concepts",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Captain",
+                  "slug": "captain"
+                },
+                {
+                  "depth": 2,
+                  "text": "Firstmate",
+                  "slug": "firstmate"
+                },
+                {
+                  "depth": 2,
+                  "text": "Worker",
+                  "slug": "worker"
+                },
+                {
+                  "depth": 2,
+                  "text": "Scout",
+                  "slug": "scout"
+                },
+                {
+                  "depth": 2,
+                  "text": "Second mate",
+                  "slug": "second-mate"
+                },
+                {
+                  "depth": 2,
+                  "text": "Practical rule",
+                  "slug": "practical-rule"
+                }
+              ]
+            },
+            {
+              "title": "Concepts",
+              "href": "/docs/sources/firstmate-docs/concepts/README/",
+              "section": "concepts",
+              "headings": []
+            },
+            {
+              "title": "Safety model",
+              "href": "/docs/sources/firstmate-docs/concepts/safety-model/",
+              "section": "concepts",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Non-negotiables",
+                  "slug": "non-negotiables"
+                },
+                {
+                  "depth": 2,
+                  "text": "Durable records over memory",
+                  "slug": "durable-records-over-memory"
+                },
+                {
+                  "depth": 2,
+                  "text": "Isolation over convenience",
+                  "slug": "isolation-over-convenience"
+                }
+              ]
+            },
+            {
+              "title": "Architecture",
+              "href": "/docs/sources/firstmate-docs/architecture/README/",
+              "section": "architecture",
+              "headings": []
+            },
+            {
+              "title": "State and records",
+              "href": "/docs/sources/firstmate-docs/architecture/state-and-records/",
+              "section": "architecture",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Main record families",
+                  "slug": "main-record-families"
+                },
+                {
+                  "depth": 2,
+                  "text": "Important distinction",
+                  "slug": "important-distinction"
+                },
+                {
+                  "depth": 2,
+                  "text": "Why not just remember?",
+                  "slug": "why-not-just-remember"
+                }
+              ]
+            },
+            {
+              "title": "System map",
+              "href": "/docs/sources/firstmate-docs/architecture/system-map/",
+              "section": "architecture",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Boundaries",
+                  "slug": "boundaries"
+                },
+                {
+                  "depth": 2,
+                  "text": "Control flow",
+                  "slug": "control-flow"
+                },
+                {
+                  "depth": 2,
+                  "text": "Data flow",
+                  "slug": "data-flow"
+                },
+                {
+                  "depth": 2,
+                  "text": "Multi-repository work",
+                  "slug": "multi-repository-work"
+                }
+              ]
+            },
+            {
+              "title": "Guides",
+              "href": "/docs/sources/firstmate-docs/guides/README/",
+              "section": "guides",
+              "headings": []
+            },
+            {
+              "title": "Setup",
+              "href": "/docs/sources/firstmate-docs/guides/setup/",
+              "section": "guides",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Prerequisites",
+                  "slug": "prerequisites"
+                },
+                {
+                  "depth": 2,
+                  "text": "Home layout",
+                  "slug": "home-layout"
+                },
+                {
+                  "depth": 2,
+                  "text": "First startup check",
+                  "slug": "first-startup-check"
+                },
+                {
+                  "depth": 2,
+                  "text": "Add a documentation source",
+                  "slug": "add-a-documentation-source"
+                }
+              ]
+            },
+            {
+              "title": "Working well with Firstmate",
+              "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/",
+              "section": "guides",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Strong request shape",
+                  "slug": "strong-request-shape"
+                },
+                {
+                  "depth": 2,
+                  "text": "What Firstmate will ask back",
+                  "slug": "what-firstmate-will-ask-back"
+                },
+                {
+                  "depth": 2,
+                  "text": "What Firstmate should not bother you with",
+                  "slug": "what-firstmate-should-not-bother-you-with"
+                },
+                {
+                  "depth": 2,
+                  "text": "Best habit",
+                  "slug": "best-habit"
+                }
+              ]
+            },
+            {
+              "title": "MSP documentation sync",
+              "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/",
+              "section": "workflows",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Source repository contract",
+                  "slug": "source-repository-contract"
+                },
+                {
+                  "depth": 2,
+                  "text": "Portal registration",
+                  "slug": "portal-registration"
+                },
+                {
+                  "depth": 2,
+                  "text": "Sync flow",
+                  "slug": "sync-flow"
+                },
+                {
+                  "depth": 2,
+                  "text": "Documentation quality rule",
+                  "slug": "documentation-quality-rule"
+                }
+              ]
+            },
+            {
+              "title": "Workflows",
+              "href": "/docs/sources/firstmate-docs/workflows/README/",
+              "section": "workflows",
+              "headings": []
+            },
+            {
+              "title": "Routing and assignment",
+              "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/",
+              "section": "workflows",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "1. Resolve the project",
+                  "slug": "1-resolve-the-project"
+                },
+                {
+                  "depth": 2,
+                  "text": "2. Choose the work type",
+                  "slug": "2-choose-the-work-type"
+                },
+                {
+                  "depth": 2,
+                  "text": "3. Choose the delivery path",
+                  "slug": "3-choose-the-delivery-path"
+                },
+                {
+                  "depth": 2,
+                  "text": "4. Assign the work",
+                  "slug": "4-assign-the-work"
+                },
+                {
+                  "depth": 2,
+                  "text": "5. Supervise and report",
+                  "slug": "5-supervise-and-report"
+                }
+              ]
+            },
+            {
+              "title": "Task lifecycle",
+              "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/",
+              "section": "workflows",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "1. Intake",
+                  "slug": "1-intake"
+                },
+                {
+                  "depth": 2,
+                  "text": "2. Instructions",
+                  "slug": "2-instructions"
+                },
+                {
+                  "depth": 2,
+                  "text": "3. Isolated work",
+                  "slug": "3-isolated-work"
+                },
+                {
+                  "depth": 2,
+                  "text": "4. Validation",
+                  "slug": "4-validation"
+                },
+                {
+                  "depth": 2,
+                  "text": "5. Decision or landing",
+                  "slug": "5-decision-or-landing"
+                },
+                {
+                  "depth": 2,
+                  "text": "6. Cleanup",
+                  "slug": "6-cleanup"
+                }
+              ]
+            },
+            {
+              "title": "Patterns",
+              "href": "/docs/sources/firstmate-docs/patterns/README/",
+              "section": "patterns",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Prefer these patterns",
+                  "slug": "prefer-these-patterns"
+                }
+              ]
+            },
+            {
+              "title": "Harnesses",
+              "href": "/docs/sources/firstmate-docs/components/harnesses/",
+              "section": "components",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Harness philosophy",
+                  "slug": "harness-philosophy"
+                },
+                {
+                  "depth": 2,
+                  "text": "Practical rule",
+                  "slug": "practical-rule"
+                },
+                {
+                  "depth": 2,
+                  "text": "What Firstmate standardizes",
+                  "slug": "what-firstmate-standardizes"
+                }
+              ]
+            },
+            {
+              "title": "Components",
+              "href": "/docs/sources/firstmate-docs/components/README/",
+              "section": "components",
+              "headings": []
+            },
+            {
+              "title": "Scripts",
+              "href": "/docs/sources/firstmate-docs/components/scripts/",
+              "section": "components",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Script philosophy",
+                  "slug": "script-philosophy"
+                },
+                {
+                  "depth": 2,
+                  "text": "Common script families",
+                  "slug": "common-script-families"
+                },
+                {
+                  "depth": 2,
+                  "text": "Operating rule",
+                  "slug": "operating-rule"
+                }
+              ]
+            },
+            {
+              "title": "Skills",
+              "href": "/docs/sources/firstmate-docs/components/skills/",
+              "section": "components",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "When skills help",
+                  "slug": "when-skills-help"
+                },
+                {
+                  "depth": 2,
+                  "text": "Good skill design",
+                  "slug": "good-skill-design"
+                },
+                {
+                  "depth": 2,
+                  "text": "Reader shortcut",
+                  "slug": "reader-shortcut"
+                }
+              ]
+            },
+            {
+              "title": "Tools",
+              "href": "/docs/sources/firstmate-docs/components/tools/",
+              "section": "components",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Common tools",
+                  "slug": "common-tools"
+                },
+                {
+                  "depth": 2,
+                  "text": "Tool selection rule",
+                  "slug": "tool-selection-rule"
+                }
+              ]
+            },
+            {
+              "title": "Multi-project request examples",
+              "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/",
+              "section": "examples",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Add a documentation source to MSP",
+                  "slug": "add-a-documentation-source-to-msp"
+                },
+                {
+                  "depth": 2,
+                  "text": "Split investigation from implementation",
+                  "slug": "split-investigation-from-implementation"
+                },
+                {
+                  "depth": 2,
+                  "text": "Assign domain work to a second mate",
+                  "slug": "assign-domain-work-to-a-second-mate"
+                },
+                {
+                  "depth": 2,
+                  "text": "Parallel independent changes",
+                  "slug": "parallel-independent-changes"
+                }
+              ]
+            },
+            {
+              "title": "Examples",
+              "href": "/docs/sources/firstmate-docs/examples/README/",
+              "section": "examples",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Create a documentation source for MSP",
+                  "slug": "create-a-documentation-source-for-msp"
+                }
+              ]
+            },
+            {
+              "title": "Snippets",
+              "href": "/docs/sources/firstmate-docs/snippets/README/",
+              "section": "snippets",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Good captain request",
+                  "slug": "good-captain-request"
+                },
+                {
+                  "depth": 2,
+                  "text": "Documentation source metadata",
+                  "slug": "documentation-source-metadata"
+                }
+              ]
+            },
+            {
+              "title": "Troubleshooting",
+              "href": "/docs/sources/firstmate-docs/troubleshooting/README/",
+              "section": "troubleshooting",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Repo creation from template fails",
+                  "slug": "repo-creation-from-template-fails"
+                },
+                {
+                  "depth": 2,
+                  "text": "MSP cannot sync a source",
+                  "slug": "msp-cannot-sync-a-source"
+                },
+                {
+                  "depth": 2,
+                  "text": "A worker appears stuck",
+                  "slug": "a-worker-appears-stuck"
+                },
+                {
+                  "depth": 2,
+                  "text": "A pull request is ready but not merged",
+                  "slug": "a-pull-request-is-ready-but-not-merged"
+                }
+              ]
+            },
+            {
+              "title": "Commands",
+              "href": "/docs/sources/firstmate-docs/reference/commands/",
+              "section": "reference",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Session and fleet",
+                  "slug": "session-and-fleet"
+                },
+                {
+                  "depth": 2,
+                  "text": "Project mode",
+                  "slug": "project-mode"
+                },
+                {
+                  "depth": 2,
+                  "text": "Workers",
+                  "slug": "workers"
+                },
+                {
+                  "depth": 2,
+                  "text": "Pull requests and landing",
+                  "slug": "pull-requests-and-landing"
+                },
+                {
+                  "depth": 2,
+                  "text": "MSP Portal",
+                  "slug": "msp-portal"
+                }
+              ]
+            },
+            {
+              "title": "Glossary",
+              "href": "/docs/sources/firstmate-docs/reference/glossary/",
+              "section": "reference",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Captain",
+                  "slug": "captain"
+                },
+                {
+                  "depth": 2,
+                  "text": "Firstmate",
+                  "slug": "firstmate"
+                },
+                {
+                  "depth": 2,
+                  "text": "Worker",
+                  "slug": "worker"
+                },
+                {
+                  "depth": 2,
+                  "text": "Scout",
+                  "slug": "scout"
+                },
+                {
+                  "depth": 2,
+                  "text": "Second mate",
+                  "slug": "second-mate"
+                },
+                {
+                  "depth": 2,
+                  "text": "Harness",
+                  "slug": "harness"
+                },
+                {
+                  "depth": 2,
+                  "text": "Skill",
+                  "slug": "skill"
+                },
+                {
+                  "depth": 2,
+                  "text": "Delivery path",
+                  "slug": "delivery-path"
+                },
+                {
+                  "depth": 2,
+                  "text": "MSP Portal",
+                  "slug": "msp-portal"
+                }
+              ]
+            },
+            {
+              "title": "Reference",
+              "href": "/docs/sources/firstmate-docs/reference/README/",
+              "section": "reference",
+              "headings": []
+            },
+            {
+              "title": "Assets",
+              "href": "/docs/sources/firstmate-docs/assets/README/",
+              "section": "assets",
+              "headings": []
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "AI",
       "sources": [
@@ -454,6 +1747,133 @@
         {
           "label": "Replicate Kun Chen's FirstMate + Herdr + Pi setup",
           "href": "/docs/orches-harness/"
+        }
+      ]
+    },
+    {
+      "label": "Agent Operations",
+      "items": [
+        {
+          "label": "Firstmate Docs",
+          "href": "/docs/sources/firstmate-docs/",
+          "children": [
+            {
+              "label": "Firstmate core and soul",
+              "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/"
+            },
+            {
+              "label": "Multi-project operations",
+              "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/"
+            },
+            {
+              "label": "Operating contract",
+              "href": "/docs/sources/firstmate-docs/concepts/operating-contract/"
+            },
+            {
+              "label": "Concepts",
+              "href": "/docs/sources/firstmate-docs/concepts/README/"
+            },
+            {
+              "label": "Safety model",
+              "href": "/docs/sources/firstmate-docs/concepts/safety-model/"
+            },
+            {
+              "label": "Architecture",
+              "href": "/docs/sources/firstmate-docs/architecture/README/"
+            },
+            {
+              "label": "State and records",
+              "href": "/docs/sources/firstmate-docs/architecture/state-and-records/"
+            },
+            {
+              "label": "System map",
+              "href": "/docs/sources/firstmate-docs/architecture/system-map/"
+            },
+            {
+              "label": "Guides",
+              "href": "/docs/sources/firstmate-docs/guides/README/"
+            },
+            {
+              "label": "Setup",
+              "href": "/docs/sources/firstmate-docs/guides/setup/"
+            },
+            {
+              "label": "Working well with Firstmate",
+              "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/"
+            },
+            {
+              "label": "MSP documentation sync",
+              "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/"
+            },
+            {
+              "label": "Workflows",
+              "href": "/docs/sources/firstmate-docs/workflows/README/"
+            },
+            {
+              "label": "Routing and assignment",
+              "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/"
+            },
+            {
+              "label": "Task lifecycle",
+              "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/"
+            },
+            {
+              "label": "Patterns",
+              "href": "/docs/sources/firstmate-docs/patterns/README/"
+            },
+            {
+              "label": "Harnesses",
+              "href": "/docs/sources/firstmate-docs/components/harnesses/"
+            },
+            {
+              "label": "Components",
+              "href": "/docs/sources/firstmate-docs/components/README/"
+            },
+            {
+              "label": "Scripts",
+              "href": "/docs/sources/firstmate-docs/components/scripts/"
+            },
+            {
+              "label": "Skills",
+              "href": "/docs/sources/firstmate-docs/components/skills/"
+            },
+            {
+              "label": "Tools",
+              "href": "/docs/sources/firstmate-docs/components/tools/"
+            },
+            {
+              "label": "Multi-project request examples",
+              "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/"
+            },
+            {
+              "label": "Examples",
+              "href": "/docs/sources/firstmate-docs/examples/README/"
+            },
+            {
+              "label": "Snippets",
+              "href": "/docs/sources/firstmate-docs/snippets/README/"
+            },
+            {
+              "label": "Troubleshooting",
+              "href": "/docs/sources/firstmate-docs/troubleshooting/README/"
+            },
+            {
+              "label": "Commands",
+              "href": "/docs/sources/firstmate-docs/reference/commands/"
+            },
+            {
+              "label": "Glossary",
+              "href": "/docs/sources/firstmate-docs/reference/glossary/"
+            },
+            {
+              "label": "Reference",
+              "href": "/docs/sources/firstmate-docs/reference/README/"
+            },
+            {
+              "label": "Assets",
+              "href": "/docs/sources/firstmate-docs/assets/README/"
+            }
+          ]
         }
       ]
     },
@@ -868,6 +2288,1174 @@
         "ai",
         "agents",
         "workflows"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate documentation",
+      "description": "Firstmate is the captain's operating layer for software work across projects.",
+      "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Fast path for readers",
+          "slug": "fast-path-for-readers"
+        },
+        {
+          "depth": 2,
+          "text": "Section map",
+          "slug": "section-map"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/README.md",
+      "relativePath": "README.md",
+      "slug": "sources/firstmate-docs",
+      "href": "/docs/sources/firstmate-docs/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate core and soul",
+      "description": "Firstmate exists to keep software delivery calm, safe, and legible.",
+      "content": "Firstmate core and soul Firstmate exists to keep software delivery calm, safe, and legible. The captain should be able to ask for outcomes, not manage a pile of terminals, branches, checks, and reminders. Core idea Firstmate is the captain's single point of contact. It translates intent into safe work, routes that work to the right worker, supervises progress, and reports outcomes in plain language. The soul Firstmate is not a chatbot that edits files whenever it can. It is an operating discipline: protect unlanded work keep project changes isolated preserve approval boundaries record decisions durably validate before claiming success report failures honestly use the smallest workflow that safely works Why this matters Agent work fails when invisible state matters more than durable records. Firstmate reverses that failure mode. The durable records are the source of truth, and the conversation is only the captain facing surface. What good feels like A good Firstmate session feels boring: the captain says what outcome they want Firstmate chooses the right path workers do the project specific work in isolated copies validation and pull requests are handled by the selected workflow the captain only hears about decisions, blockers, review ready work, and finished outcomes Related pages: Operating contract operating contract.md , Safety model safety model.md , Working well with Firstmate ../guides/working with firstmate.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Core idea",
+          "slug": "core-idea"
+        },
+        {
+          "depth": 2,
+          "text": "The soul",
+          "slug": "the-soul"
+        },
+        {
+          "depth": 2,
+          "text": "Why this matters",
+          "slug": "why-this-matters"
+        },
+        {
+          "depth": 2,
+          "text": "What good feels like",
+          "slug": "what-good-feels-like"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/firstmate-core.md",
+      "relativePath": "concepts/firstmate-core.md",
+      "slug": "sources/firstmate-docs/concepts/firstmate-core",
+      "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "concepts",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Multi-project operations",
+      "description": "Firstmate can coordinate work across many repositories without making the captain manage each repository by hand.",
+      "content": "Multi project operations Firstmate can coordinate work across many repositories without making the captain manage each repository by hand. The important idea is that Firstmate treats every request as project specific at intake, even when the captain describes a bigger outcome. What Firstmate can control Firstmate can keep track of: multiple registered projects each project's delivery posture local clones used for reading and safe coordination isolated worker copies for implementation pull requests and validation state second mates that own durable domains This lets one captain facing conversation coordinate several repositories while each repository still keeps its own code, docs, tests, and review path. Project routing A request can name a project directly: It can also name a product area or outcome: Firstmate then matches the request against the project registry, active work, known source code, and second mate scopes. If the match is unclear, Firstmate asks one clarifying question instead of guessing. Why projects stay separate Keeping repositories separate protects ownership: MSP Portal owns aggregation and publishing. A docs source owns its own Markdown and metadata. Firstmate owns orchestration and safety records. A worker owns one scoped change at a time. Cross repo work is normal, but each repo still lands through its own review and validation path. Related pages: Routing and assignment ../workflows/routing and assignment.md , System map ../architecture/system map.md , Multi project examples ../examples/multi project requests.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "What Firstmate can control",
+          "slug": "what-firstmate-can-control"
+        },
+        {
+          "depth": 2,
+          "text": "Project routing",
+          "slug": "project-routing"
+        },
+        {
+          "depth": 2,
+          "text": "Why projects stay separate",
+          "slug": "why-projects-stay-separate"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/multi-project-operations.md",
+      "relativePath": "concepts/multi-project-operations.md",
+      "slug": "sources/firstmate-docs/concepts/multi-project-operations",
+      "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "concepts",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Operating contract",
+      "description": "Firstmate has clear roles so work stays understandable.",
+      "content": "Operating contract Firstmate has clear roles so work stays understandable. Captain The captain owns intent, priorities, approvals, and final calls. The captain should describe the desired outcome and any hard constraints. Firstmate Firstmate owns intake, routing, supervision, safety boundaries, and captain facing communication. Firstmate keeps the captain updated only when action or useful outcome exists. Worker A worker owns one scoped project task in an isolated copy. It implements, investigates, validates, or reports according to its instructions. Scout A scout investigates without shipping code. It leaves a durable report that can later be promoted into implementation if the captain approves. Second mate A second mate is a persistent delegated Firstmate home for a domain. It is idle by default and acts only when routed work fits its charter. Practical rule If a question affects product direction, destructive action, security, credentials, or merging, Firstmate brings it back to the captain.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Captain",
+          "slug": "captain"
+        },
+        {
+          "depth": 2,
+          "text": "Firstmate",
+          "slug": "firstmate"
+        },
+        {
+          "depth": 2,
+          "text": "Worker",
+          "slug": "worker"
+        },
+        {
+          "depth": 2,
+          "text": "Scout",
+          "slug": "scout"
+        },
+        {
+          "depth": 2,
+          "text": "Second mate",
+          "slug": "second-mate"
+        },
+        {
+          "depth": 2,
+          "text": "Practical rule",
+          "slug": "practical-rule"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/operating-contract.md",
+      "relativePath": "concepts/operating-contract.md",
+      "slug": "sources/firstmate-docs/concepts/operating-contract",
+      "href": "/docs/sources/firstmate-docs/concepts/operating-contract/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "concepts",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Concepts",
+      "description": "Use these pages to understand the words and values behind Firstmate.",
+      "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Multi project operations multi project operations.md Operating contract operating contract.md Safety model safety model.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/README.md",
+      "relativePath": "concepts/README.md",
+      "slug": "sources/firstmate-docs/concepts/README",
+      "href": "/docs/sources/firstmate-docs/concepts/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "concepts",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Safety model",
+      "description": "Firstmate's safety model is simple: never make hidden, irreversible, or unapproved changes look routine.",
+      "content": "Safety model Firstmate's safety model is simple: never make hidden, irreversible, or unapproved changes look routine. Non negotiables Do not discard unlanded work without explicit authority. Do not merge without explicit authority unless the project has standing merge autonomy. Do not treat a stopped check as success. Do not turn a diagnostic finding into implementation without approval. Do not expose internal machinery as captain facing progress. Durable records over memory Firstmate records work, decisions, state, and outcomes on disk. That makes restart and context loss recoverable. Isolation over convenience Project work happens in isolated copies so the primary local copy stays safe. This costs a little setup time and avoids expensive cleanup later. Related pages: State and records ../architecture/state and records.md , Task lifecycle ../workflows/task lifecycle.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Non-negotiables",
+          "slug": "non-negotiables"
+        },
+        {
+          "depth": 2,
+          "text": "Durable records over memory",
+          "slug": "durable-records-over-memory"
+        },
+        {
+          "depth": 2,
+          "text": "Isolation over convenience",
+          "slug": "isolation-over-convenience"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/concepts/safety-model.md",
+      "relativePath": "concepts/safety-model.md",
+      "slug": "sources/firstmate-docs/concepts/safety-model",
+      "href": "/docs/sources/firstmate-docs/concepts/safety-model/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "concepts",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Architecture",
+      "description": "Use these pages to understand how Firstmate is structured.",
+      "content": "Architecture Use these pages to understand how Firstmate is structured. System map system map.md State and records state and records.md MSP documentation sync ../workflows/documentation sync.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/architecture/README.md",
+      "relativePath": "architecture/README.md",
+      "slug": "sources/firstmate-docs/architecture/README",
+      "href": "/docs/sources/firstmate-docs/architecture/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "architecture",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "State and records",
+      "description": "Firstmate is restartable because important facts are recorded outside the chat.",
+      "content": "State and records Firstmate is restartable because important facts are recorded outside the chat. Main record families data/ keeps durable private knowledge, backlog, project registry, and captain preferences. state/ keeps runtime records, notifications, task metadata, and worker status events. projects/ keeps local clones of repositories. bin/ keeps guarded scripts that mutate state safely. .agents/skills/ keeps operating playbooks for specialized procedures. Important distinction A status event is not the same as current truth. When action depends on live state, Firstmate asks the current state script or the relevant tool instead of trusting the last visible line. Why not just remember? Context windows end, terminals restart, and agents crash. Durable records let Firstmate recover without inventing what happened.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Main record families",
+          "slug": "main-record-families"
+        },
+        {
+          "depth": 2,
+          "text": "Important distinction",
+          "slug": "important-distinction"
+        },
+        {
+          "depth": 2,
+          "text": "Why not just remember?",
+          "slug": "why-not-just-remember"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/architecture/state-and-records.md",
+      "relativePath": "architecture/state-and-records.md",
+      "slug": "sources/firstmate-docs/architecture/state-and-records",
+      "href": "/docs/sources/firstmate-docs/architecture/state-and-records/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "architecture",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "System map",
+      "description": "Firstmate is a small orchestration layer around projects, workers, tools, and durable records.",
+      "content": "System map Firstmate is a small orchestration layer around projects, workers, tools, and durable records. Boundaries Firstmate reads projects to understand them. Workers change projects. Direct project changes by Firstmate require a concrete captain approved operation. Control flow 1. Session start verifies the home and prints the current fleet state. 2. Intake resolves the project, delivery path, and required approval level. 3. A brief records the task specific intent and constraints. 4. A worker or second mate handles the project work. 5. Firstmate supervises notifications, decisions, validation, and pull requests. 6. Firstmate reports the outcome to the captain. Data flow Project specific content stays in each project. Reusable Firstmate knowledge belongs in Firstmate docs or skills. Captain preferences and fleet state stay private to the Firstmate home. Multi repository work Firstmate can coordinate several repositories in one captain facing request. It still resolves and lands each repository change separately so ownership, validation, and review stay clear. Example: a docs source repository can own Markdown while MSP Portal owns the source registration and generated portal output. Related pages: Multi project operations ../concepts/multi project operations.md , Routing and assignment ../workflows/routing and assignment.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Boundaries",
+          "slug": "boundaries"
+        },
+        {
+          "depth": 2,
+          "text": "Control flow",
+          "slug": "control-flow"
+        },
+        {
+          "depth": 2,
+          "text": "Data flow",
+          "slug": "data-flow"
+        },
+        {
+          "depth": 2,
+          "text": "Multi-repository work",
+          "slug": "multi-repository-work"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/architecture/system-map.md",
+      "relativePath": "architecture/system-map.md",
+      "slug": "sources/firstmate-docs/architecture/system-map",
+      "href": "/docs/sources/firstmate-docs/architecture/system-map/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "architecture",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Guides",
+      "description": "Step-by-step pages for setup and daily use.",
+      "content": "Guides Step by step pages for setup and daily use. Setup setup.md Working well with Firstmate working with firstmate.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/guides/README.md",
+      "relativePath": "guides/README.md",
+      "slug": "sources/firstmate-docs/guides/README",
+      "href": "/docs/sources/firstmate-docs/guides/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "guides",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Setup",
+      "description": "This guide describes the shape of a healthy Firstmate home.",
+      "content": "Setup This guide describes the shape of a healthy Firstmate home. Exact installation commands may vary by environment, so treat this page as the checklist. Prerequisites Git is installed and authenticated for the required repositories. GitHub access is available through gh axi. The chosen agent runtime is installed and authenticated. no mistakes is available for projects that require the full validation path. MSP Portal can read documentation source repositories that should be published. Home layout A Firstmate home contains: data/ for durable private records state/ for runtime records projects/ for local repository clones bin/ for guarded scripts .agents/skills/ for internal skills First startup check Run the session start command for the home and read the digest it prints. Resolve any missing tools or authentication blockers before dispatching work. Add a documentation source 1. Create or clone the source repository. 2. Ensure it has .docs source.yml and docs/. 3. Add the repository to MSP Portal's sources.yml. 4. Run MSP Portal source validation and build checks. 5. Open a pull request for the portal registration. Related page: MSP documentation sync ../workflows/documentation sync.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Prerequisites",
+          "slug": "prerequisites"
+        },
+        {
+          "depth": 2,
+          "text": "Home layout",
+          "slug": "home-layout"
+        },
+        {
+          "depth": 2,
+          "text": "First startup check",
+          "slug": "first-startup-check"
+        },
+        {
+          "depth": 2,
+          "text": "Add a documentation source",
+          "slug": "add-a-documentation-source"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/guides/setup.md",
+      "relativePath": "guides/setup.md",
+      "slug": "sources/firstmate-docs/guides/setup",
+      "href": "/docs/sources/firstmate-docs/guides/setup/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "guides",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Working well with Firstmate",
+      "description": "Good requests give Firstmate enough intent to choose the smallest safe workflow.",
+      "content": "Working well with Firstmate Good requests give Firstmate enough intent to choose the smallest safe workflow. Strong request shape Say: the project or product area the outcome you want constraints that matter whether you want investigation only or implementation any deadline, risk, or approval preference Example: What Firstmate will ask back Firstmate asks when the project is unclear, when authority is missing, or when a decision changes product behavior. What Firstmate should not bother you with Firstmate should not report routine waiting, internal retries, or unchanged monitoring. You should hear about review ready work, decisions, blockers, failures, and finished outcomes. Best habit Give the outcome first. Implementation details are welcome, but they should not hide the goal.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Strong request shape",
+          "slug": "strong-request-shape"
+        },
+        {
+          "depth": 2,
+          "text": "What Firstmate will ask back",
+          "slug": "what-firstmate-will-ask-back"
+        },
+        {
+          "depth": 2,
+          "text": "What Firstmate should not bother you with",
+          "slug": "what-firstmate-should-not-bother-you-with"
+        },
+        {
+          "depth": 2,
+          "text": "Best habit",
+          "slug": "best-habit"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/guides/working-with-firstmate.md",
+      "relativePath": "guides/working-with-firstmate.md",
+      "slug": "sources/firstmate-docs/guides/working-with-firstmate",
+      "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "guides",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "MSP documentation sync",
+      "description": "MSP Portal can publish documentation from multiple source repositories.",
+      "content": "MSP documentation sync MSP Portal can publish documentation from multiple source repositories. Each source owns its docs, and the portal owns aggregation, navigation, search, and deployment. Source repository contract A source repository needs: .docs source.yml a docs/ directory relative links inside Markdown local assets under docs/assets/ or a documented subfolder Portal registration MSP Portal registers a source in sources.yml. A remote source entry normally names: Sync flow 1. MSP Portal reads sources.yml. 2. It clones each remote source or reads each configured local source. 3. It reads .docs source.yml from each source. 4. It copies the source docs/ tree into generated portal content. 5. It builds source navigation and search metadata. Documentation quality rule Make each source useful on GitHub before relying on the portal. The portal should improve discovery, not rescue unclear content.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Source repository contract",
+          "slug": "source-repository-contract"
+        },
+        {
+          "depth": 2,
+          "text": "Portal registration",
+          "slug": "portal-registration"
+        },
+        {
+          "depth": 2,
+          "text": "Sync flow",
+          "slug": "sync-flow"
+        },
+        {
+          "depth": 2,
+          "text": "Documentation quality rule",
+          "slug": "documentation-quality-rule"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/workflows/documentation-sync.md",
+      "relativePath": "workflows/documentation-sync.md",
+      "slug": "sources/firstmate-docs/workflows/documentation-sync",
+      "href": "/docs/sources/firstmate-docs/workflows/documentation-sync/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "workflows",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Workflows",
+      "description": "Repeatable end-to-end paths.",
+      "content": "Workflows Repeatable end to end paths. Task lifecycle task lifecycle.md Routing and assignment routing and assignment.md MSP documentation sync documentation sync.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/workflows/README.md",
+      "relativePath": "workflows/README.md",
+      "slug": "sources/firstmate-docs/workflows/README",
+      "href": "/docs/sources/firstmate-docs/workflows/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "workflows",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Routing and assignment",
+      "description": "Routing is how Firstmate turns a captain request into the right project, worker, scout, or second mate.",
+      "content": "Routing and assignment Routing is how Firstmate turns a captain request into the right project, worker, scout, or second mate. 1. Resolve the project Firstmate checks the request against: the named project, if the captain gave one the project registry work already under way source code or README clues second mate scopes If exactly one project fits, Firstmate names it and proceeds. If more than one project fits, Firstmate asks for the missing choice. 2. Choose the work type Firstmate chooses the smallest safe type of work: use a worker when the change should ship use a scout when investigation could change what should be built use a second mate when a persistent delegated domain owns the work answer directly when existing evidence already resolves the question 3. Choose the delivery path The project's standing posture sets the default rigor. Product facing or uncertain work gets stricter validation. Internal only documentation, tooling, or operator process can often use the faster path when the project allows it. 4. Assign the work A worker receives task specific instructions with: captain intent project context expected done state validation requirements safety boundaries The worker should not need to infer the captain's goal from chat history. 5. Supervise and report Firstmate supervises the assignment and reports only useful outcomes: review ready pull request decision needed blocker failure finished result Routine waiting and internal retries should stay quiet. Related pages: Task lifecycle task lifecycle.md , Multi project operations ../concepts/multi project operations.md , Working well with Firstmate ../guides/working with firstmate.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "1. Resolve the project",
+          "slug": "1-resolve-the-project"
+        },
+        {
+          "depth": 2,
+          "text": "2. Choose the work type",
+          "slug": "2-choose-the-work-type"
+        },
+        {
+          "depth": 2,
+          "text": "3. Choose the delivery path",
+          "slug": "3-choose-the-delivery-path"
+        },
+        {
+          "depth": 2,
+          "text": "4. Assign the work",
+          "slug": "4-assign-the-work"
+        },
+        {
+          "depth": 2,
+          "text": "5. Supervise and report",
+          "slug": "5-supervise-and-report"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/workflows/routing-and-assignment.md",
+      "relativePath": "workflows/routing-and-assignment.md",
+      "slug": "sources/firstmate-docs/workflows/routing-and-assignment",
+      "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "workflows",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Task lifecycle",
+      "description": "Most work follows the same loop.",
+      "content": "Task lifecycle Most work follows the same loop. 1. Intake Firstmate identifies the project, task type, delivery path, and approval needs. If the work is only investigation, it becomes a scout task. If the work should change a project, it becomes a ship task. 2. Instructions Firstmate writes task specific instructions with the captain's intent and safety constraints. 3. Isolated work A worker uses an isolated local copy so unfinished project work does not pollute the primary copy. 4. Validation The selected delivery path owns validation. For strict paths, automated review, tests, pull request creation, and CI are handled as one flow. 5. Decision or landing If a decision is needed, Firstmate brings it to the captain. If work is ready, Firstmate reports the pull request or asks for merge approval when required. 6. Cleanup Cleanup happens only after landing is confirmed or after the captain explicitly discards work.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "1. Intake",
+          "slug": "1-intake"
+        },
+        {
+          "depth": 2,
+          "text": "2. Instructions",
+          "slug": "2-instructions"
+        },
+        {
+          "depth": 2,
+          "text": "3. Isolated work",
+          "slug": "3-isolated-work"
+        },
+        {
+          "depth": 2,
+          "text": "4. Validation",
+          "slug": "4-validation"
+        },
+        {
+          "depth": 2,
+          "text": "5. Decision or landing",
+          "slug": "5-decision-or-landing"
+        },
+        {
+          "depth": 2,
+          "text": "6. Cleanup",
+          "slug": "6-cleanup"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/workflows/task-lifecycle.md",
+      "relativePath": "workflows/task-lifecycle.md",
+      "slug": "sources/firstmate-docs/workflows/task-lifecycle",
+      "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "workflows",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Patterns",
+      "description": "Patterns are reusable choices that keep Firstmate work predictable.",
+      "content": "Patterns Patterns are reusable choices that keep Firstmate work predictable. Prefer these patterns One owner for each contract. Small linked pages over giant manuals. Guarded scripts over remembered command chains. Scout first when uncertainty changes what should be built. Direct implementation when the desired change is clear. Durable records over chat memory. Related page: Firstmate core and soul ../concepts/firstmate core.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Prefer these patterns",
+          "slug": "prefer-these-patterns"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/patterns/README.md",
+      "relativePath": "patterns/README.md",
+      "slug": "sources/firstmate-docs/patterns/README",
+      "href": "/docs/sources/firstmate-docs/patterns/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "patterns",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Harnesses",
+      "description": "A harness is the worker runtime Firstmate uses to run an agent session.",
+      "content": "Harnesses A harness is the worker runtime Firstmate uses to run an agent session. Different harnesses have different strengths, limits, authentication models, and supervision behavior. Harness philosophy Use the harness as a tool, not as the architecture. Firstmate keeps the operating contract stable while the underlying runtime can vary. Good harness selection considers: task complexity model capability available quota authentication state required tool access reliability for the specific job Practical rule Do not pick a harness because it is fashionable. Pick the smallest reliable runtime that can complete the task safely. What Firstmate standardizes Firstmate standardizes the lifecycle around the harness: spawn trust handling steering interruption recovery status interpretation cleanup Related pages: Scripts scripts.md , Task lifecycle ../workflows/task lifecycle.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Harness philosophy",
+          "slug": "harness-philosophy"
+        },
+        {
+          "depth": 2,
+          "text": "Practical rule",
+          "slug": "practical-rule"
+        },
+        {
+          "depth": 2,
+          "text": "What Firstmate standardizes",
+          "slug": "what-firstmate-standardizes"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/components/harnesses.md",
+      "relativePath": "components/harnesses.md",
+      "slug": "sources/firstmate-docs/components/harnesses",
+      "href": "/docs/sources/firstmate-docs/components/harnesses/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "components",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Components",
+      "description": "These pages explain the reusable parts of Firstmate.",
+      "content": "Components These pages explain the reusable parts of Firstmate. Harnesses harnesses.md Skills skills.md Scripts scripts.md Tools tools.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/components/README.md",
+      "relativePath": "components/README.md",
+      "slug": "sources/firstmate-docs/components/README",
+      "href": "/docs/sources/firstmate-docs/components/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "components",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Scripts",
+      "description": "Scripts are the guarded hands of Firstmate.",
+      "content": "Scripts Scripts are the guarded hands of Firstmate. They perform state changing operations with checks that are easy to forget in chat. Script philosophy Prefer one guarded script over five remembered shell commands. A script can validate inputs, refuse unsafe states, and leave useful evidence. Common script families session start and supervision spawning and steering workers backlog transitions project mode and registry lookup fleet sync pull request checks and merges local cleanup Operating rule Read a script's header before first use. The header owns exact arguments, state files, and refusal behavior.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Script philosophy",
+          "slug": "script-philosophy"
+        },
+        {
+          "depth": 2,
+          "text": "Common script families",
+          "slug": "common-script-families"
+        },
+        {
+          "depth": 2,
+          "text": "Operating rule",
+          "slug": "operating-rule"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/components/scripts.md",
+      "relativePath": "components/scripts.md",
+      "slug": "sources/firstmate-docs/components/scripts",
+      "href": "/docs/sources/firstmate-docs/components/scripts/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "components",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Skills",
+      "description": "Skills are focused operating playbooks.",
+      "content": "Skills Skills are focused operating playbooks. They keep specialized procedures out of the main instructions while making those procedures easy to load when needed. When skills help Use a skill when a task has a repeatable safety contract or decision process, such as: project management stuck worker recovery second mate provisioning ask user decisions diagnostic reasoning self update documentation polish Good skill design A good skill has one owner, one trigger, and one clear procedure. It should not duplicate a script's exact contract or another skill's decision policy. Reader shortcut If a process feels too detailed to remember, it probably belongs in a skill or script rather than in chat memory.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "When skills help",
+          "slug": "when-skills-help"
+        },
+        {
+          "depth": 2,
+          "text": "Good skill design",
+          "slug": "good-skill-design"
+        },
+        {
+          "depth": 2,
+          "text": "Reader shortcut",
+          "slug": "reader-shortcut"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/components/skills.md",
+      "relativePath": "components/skills.md",
+      "slug": "sources/firstmate-docs/components/skills",
+      "href": "/docs/sources/firstmate-docs/components/skills/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "components",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Tools",
+      "description": "Firstmate uses external tools when they are the right owner for an action.",
+      "content": "Tools Firstmate uses external tools when they are the right owner for an action. Common tools Git and GitHub for source control and pull requests gh axi for GitHub operations no mistakes for guarded validation and review browser tools for UI inspection MSP Portal for publishing documentation sources Tool selection rule Use the authoritative tool for the job. Do not recreate GitHub, validation, or browser behavior in ad hoc scripts unless the existing tool cannot do the work.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Common tools",
+          "slug": "common-tools"
+        },
+        {
+          "depth": 2,
+          "text": "Tool selection rule",
+          "slug": "tool-selection-rule"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/components/tools.md",
+      "relativePath": "components/tools.md",
+      "slug": "sources/firstmate-docs/components/tools",
+      "href": "/docs/sources/firstmate-docs/components/tools/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "components",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Multi-project request examples",
+      "description": "These examples show how to ask Firstmate for cross-repository work without micromanaging the internals.",
+      "content": "Multi project request examples These examples show how to ask Firstmate for cross repository work without micromanaging the internals. Add a documentation source to MSP Captain says: Firstmate does: 1. creates the private source repository 2. seeds the documentation structure 3. pushes the source content 4. updates MSP Portal sources.yml 5. runs source validation and build checks 6. opens the MSP registration pull request Why this is multi project: the source repo owns the docs, while MSP owns the portal registration and generated output. Split investigation from implementation Captain says: Firstmate should assign a scout first because the cause may be source metadata, sync, search indexing, or generated routing. After the report, the captain can approve implementation in the correct repository. Assign domain work to a second mate Captain says: Firstmate should route the task to the second mate whose charter covers Power Platform. The second mate handles its own project copy and returns the outcome through the parent channel. Parallel independent changes Captain says: Firstmate can split this into two workers when the files and outcomes are independent: one worker changes the docs source one worker changes MSP Portal copy Firstmate still reports the results together when the work reaches review. Related pages: Routing and assignment ../workflows/routing and assignment.md , Multi project operations ../concepts/multi project operations.md .",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Add a documentation source to MSP",
+          "slug": "add-a-documentation-source-to-msp"
+        },
+        {
+          "depth": 2,
+          "text": "Split investigation from implementation",
+          "slug": "split-investigation-from-implementation"
+        },
+        {
+          "depth": 2,
+          "text": "Assign domain work to a second mate",
+          "slug": "assign-domain-work-to-a-second-mate"
+        },
+        {
+          "depth": 2,
+          "text": "Parallel independent changes",
+          "slug": "parallel-independent-changes"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/examples/multi-project-requests.md",
+      "relativePath": "examples/multi-project-requests.md",
+      "slug": "sources/firstmate-docs/examples/multi-project-requests",
+      "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "examples",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Examples",
+      "description": "Captain asks:",
+      "content": "Examples Multi project request examples multi project requests.md Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Create a documentation source for MSP",
+          "slug": "create-a-documentation-source-for-msp"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/examples/README.md",
+      "relativePath": "examples/README.md",
+      "slug": "sources/firstmate-docs/examples/README",
+      "href": "/docs/sources/firstmate-docs/examples/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "examples",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Snippets",
+      "description": "Small reusable text blocks.",
+      "content": "Snippets Small reusable text blocks. Good captain request Documentation source metadata",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Good captain request",
+          "slug": "good-captain-request"
+        },
+        {
+          "depth": 2,
+          "text": "Documentation source metadata",
+          "slug": "documentation-source-metadata"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/snippets/README.md",
+      "relativePath": "snippets/README.md",
+      "slug": "sources/firstmate-docs/snippets/README",
+      "href": "/docs/sources/firstmate-docs/snippets/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "snippets",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Troubleshooting",
+      "description": "If GitHub says the source is not a template repository, create the destination repository normally and seed it from the local template copy.",
+      "content": "Troubleshooting Repo creation from template fails If GitHub says the source is not a template repository, create the destination repository normally and seed it from the local template copy. The file structure is the important contract for MSP Portal. MSP cannot sync a source Check: the source repo exists and is accessible to the build token .docs source.yml exists at the repository root docs path points to an existing directory sources.yml has the correct repo and defaultBranch A worker appears stuck Do not guess from silence. Use the current state path for the worker, then recover through the guarded recovery procedure. A pull request is ready but not merged Check whether the project has standing merge autonomy. If not, the captain must approve the merge explicitly.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Repo creation from template fails",
+          "slug": "repo-creation-from-template-fails"
+        },
+        {
+          "depth": 2,
+          "text": "MSP cannot sync a source",
+          "slug": "msp-cannot-sync-a-source"
+        },
+        {
+          "depth": 2,
+          "text": "A worker appears stuck",
+          "slug": "a-worker-appears-stuck"
+        },
+        {
+          "depth": 2,
+          "text": "A pull request is ready but not merged",
+          "slug": "a-pull-request-is-ready-but-not-merged"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/troubleshooting/README.md",
+      "relativePath": "troubleshooting/README.md",
+      "slug": "sources/firstmate-docs/troubleshooting/README",
+      "href": "/docs/sources/firstmate-docs/troubleshooting/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "troubleshooting",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Commands",
+      "description": "This page lists common Firstmate-related commands by purpose.",
+      "content": "Commands This page lists common Firstmate related commands by purpose. Run each command's help or read its script header before first use. Session and fleet Project mode Workers Pull requests and landing MSP Portal",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Session and fleet",
+          "slug": "session-and-fleet"
+        },
+        {
+          "depth": 2,
+          "text": "Project mode",
+          "slug": "project-mode"
+        },
+        {
+          "depth": 2,
+          "text": "Workers",
+          "slug": "workers"
+        },
+        {
+          "depth": 2,
+          "text": "Pull requests and landing",
+          "slug": "pull-requests-and-landing"
+        },
+        {
+          "depth": 2,
+          "text": "MSP Portal",
+          "slug": "msp-portal"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/reference/commands.md",
+      "relativePath": "reference/commands.md",
+      "slug": "sources/firstmate-docs/reference/commands",
+      "href": "/docs/sources/firstmate-docs/reference/commands/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "reference",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Glossary",
+      "description": "The human owner of intent, priority, and approvals.",
+      "content": "Glossary Captain The human owner of intent, priority, and approvals. Firstmate The orchestration layer that turns captain intent into safe software work. Worker An agent session assigned to one scoped task. Scout A worker assigned to investigate and report without shipping code. Second mate A persistent delegated Firstmate home for a specific domain. Harness The runtime used to run an agent session. Skill A focused operating playbook for a specialized procedure. Delivery path The selected route from task intake to validation, pull request, and landing. MSP Portal The Astro documentation portal that syncs docs from registered source repositories.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Captain",
+          "slug": "captain"
+        },
+        {
+          "depth": 2,
+          "text": "Firstmate",
+          "slug": "firstmate"
+        },
+        {
+          "depth": 2,
+          "text": "Worker",
+          "slug": "worker"
+        },
+        {
+          "depth": 2,
+          "text": "Scout",
+          "slug": "scout"
+        },
+        {
+          "depth": 2,
+          "text": "Second mate",
+          "slug": "second-mate"
+        },
+        {
+          "depth": 2,
+          "text": "Harness",
+          "slug": "harness"
+        },
+        {
+          "depth": 2,
+          "text": "Skill",
+          "slug": "skill"
+        },
+        {
+          "depth": 2,
+          "text": "Delivery path",
+          "slug": "delivery-path"
+        },
+        {
+          "depth": 2,
+          "text": "MSP Portal",
+          "slug": "msp-portal"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/reference/glossary.md",
+      "relativePath": "reference/glossary.md",
+      "slug": "sources/firstmate-docs/reference/glossary",
+      "href": "/docs/sources/firstmate-docs/reference/glossary/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "reference",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Reference",
+      "description": "Lookup pages for exact terms and commands.",
+      "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/reference/README.md",
+      "relativePath": "reference/README.md",
+      "slug": "sources/firstmate-docs/reference/README",
+      "href": "/docs/sources/firstmate-docs/reference/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "reference",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Assets",
+      "description": "Store diagrams and images here when Markdown alone is not enough.",
+      "content": "Assets Store diagrams and images here when Markdown alone is not enough. Prefer SVG for architecture diagrams and compressed PNG or WebP for screenshots. Always include useful alt text from the page that embeds an asset.",
+      "headings": [],
+      "file": ".tmp/aggregated/firstmate-docs/assets/README.md",
+      "relativePath": "assets/README.md",
+      "slug": "sources/firstmate-docs/assets/README",
+      "href": "/docs/sources/firstmate-docs/assets/README/",
+      "category": "Agent Operations",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate Docs",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "assets",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
       ]
     }
   ]
