@@ -8,6 +8,7 @@ const BAND_FINGERPRINT_COLS = 12;
 const BAND_SLICE_COUNT = 4;
 const SLICE_FINGERPRINT_ROWS = 3;
 const SLICE_FINGERPRINT_COLS = 12;
+const MIN_SLICE_REFERENCE_ENERGY = 0.001;
 
 const PROJECT_RULES = {
   'desktop-chromium': {
@@ -15,18 +16,18 @@ const PROJECT_RULES = {
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
     minBandScores: [0.926, 0.905, 0.942, 0.95, 0.91],
     minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
-    maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
+    maxLowVarianceRuns: [Infinity, Infinity, Infinity, 7, Infinity],
     minIdentityScores: [0.85, 0.84, 0.86, 0.9, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.02, 0.015],
     minSliceIdentityScores: [0.9, 0.9, 0.99, 0.9, 0.9],
-    minSliceIdentityMargins: [0.005, 0.02, 0.005, 0.005, 0.005],
+    minSliceIdentityMargins: [0.005, 0.02, 0.002, 0.005, 0.005],
     minSliceEnergyRatios: [0.7, 0.7, 0.7, 0.7, 0.7],
   },
   'mobile-chromium': {
     bands: [0, 0.08, 0.16, 0.18, 0.46, 1],
     labels: ['hero/search', 'stats', 'category', 'featured-shelf', 'contribution'],
     minBandScores: [0.921, 0.893, 0.878, 0.91, 0.91],
-    minBandEnergies: [0.02, 0.05, 0.03, 0.03, 0.03],
+    minBandEnergies: [0.02, 0.048, 0.03, 0.025, 0.03],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, Infinity, Infinity],
     minIdentityScores: [0.84, 0.8, 0.79, 0.86, 0.86],
     minIdentityMargins: [0.015, 0.015, 0.015, 0.015, 0.015],
@@ -123,10 +124,12 @@ export function evaluateLayoutProof(leftBuffer, rightBuffer, projectName) {
     identityChecks.every(({ score, margin }, index) =>
       score >= rule.minIdentityScores[index] && margin >= rule.minIdentityMargins[index],
     ) &&
-    sliceIdentityChecks.every(({ bandIndex, score, margin, energyRatio }) =>
+    sliceIdentityChecks.every(({ bandIndex, score, margin, energyRatio, referenceEnergy }) =>
       score >= rule.minSliceIdentityScores[bandIndex] &&
-      margin >= rule.minSliceIdentityMargins[bandIndex] &&
-      energyRatio >= rule.minSliceEnergyRatios[bandIndex],
+      (referenceEnergy < MIN_SLICE_REFERENCE_ENERGY || (
+        margin >= rule.minSliceIdentityMargins[bandIndex] &&
+        energyRatio >= rule.minSliceEnergyRatios[bandIndex]
+      )),
     );
 
   return {

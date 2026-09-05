@@ -1,0 +1,202 @@
+---
+// @ts-nocheck
+import searchIndexUrl from '../generated/search-index.json?url';
+import { withBase } from '../lib/base-path';
+
+const {
+  inputId = 'search-box',
+  panelLabel = 'Search the library',
+  syncUrl = false,
+  dialogMode = false,
+  inlineIndex = '',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const searchPageHref = withBase(base, 'search/');
+---
+<section
+  class:list={['search-panel', dialogMode && 'search-panel--dialog']}
+  data-search-root
+  data-search-index-url={searchIndexUrl}
+  data-search-index={inlineIndex}
+  data-search-page-href={searchPageHref}
+  data-sync-url={syncUrl ? 'true' : 'false'}
+>
+  <label class="meta-label" for={inputId}>{panelLabel}</label>
+  <input id={inputId} type="search" placeholder="Search for topics, snippets, workflows, or errors" />
+  <div class="search-hint">Results pull from titles, descriptions, headings, page content, source names, and category labels.</div>
+  <div class="search-active-filter" data-search-active-filter hidden>
+    <span class="meta-label">Active category</span>
+    <div class="search-active-filter__content">
+      <span class="pill" data-search-active-filter-label></span>
+      <a class="text-link" data-search-clear-category href={searchPageHref}>Clear category</a>
+    </div>
+  </div>
+  <div class="search-results" data-search-results></div>
+</section>
+
+<script is:inline>
+  (() => {
+    const root = document.currentScript?.previousElementSibling;
+    if (!(root instanceof HTMLElement)) return;
+
+    const input = root.querySelector('input');
+    const results = root.querySelector('[data-search-results]');
+    const activeFilter = root.querySelector('[data-search-active-filter]');
+    const activeFilterLabel = root.querySelector('[data-search-active-filter-label]');
+    const clearCategoryLink = root.querySelector('[data-search-clear-category]');
+    const base = document.documentElement.dataset.base || '/';
+    const syncUrl = root.dataset.syncUrl === 'true';
+    const searchPageHref = root.dataset.searchPageHref || `${base}search/`;
+    const searchIndexUrl = root.dataset.searchIndexUrl || '';
+    const params = syncUrl ? new URLSearchParams(window.location.search) : new URLSearchParams();
+    let index = root.dataset.searchIndex ? JSON.parse(root.dataset.searchIndex) : null;
+    let loadPromise;
+
+    function withBase(path) {
+      const prefix = base.endsWith('/') ? base : `${base}/`;
+      return `${prefix}${String(path || '').replace(/^\/+/, '')}`;
+    }
+
+    function normalizeCategory(value) {
+      return (value || '').trim().toLowerCase();
+    }
+
+    function selectedCategoryValue() {
+      return syncUrl ? (params.get('category') || '').trim() : '';
+    }
+
+    function selectedCategory() {
+      return normalizeCategory(selectedCategoryValue());
+    }
+
+    function resultHref(item) {
+      return withBase(item.href || '/');
+    }
+
+    async function loadIndex() {
+      if (index) return index;
+      if (!loadPromise) {
+        if (results) results.innerHTML = '<p class="muted">Loading…</p>';
+        loadPromise = fetch(searchIndexUrl)
+          .then((response) => {
+            if (!response.ok) throw new Error(`Search index request failed: ${response.status}`);
+            return response.json();
+          })
+          .then((data) => {
+            index = Array.isArray(data) ? data : [];
+            return index;
+          })
+          .catch((error) => {
+            loadPromise = undefined;
+            throw error;
+          });
+      }
+      return loadPromise;
+    }
+
+    function rank(query, item) {
+      const q = query.toLowerCase();
+      const title = (item.title || '').toLowerCase();
+      const headings = (item.headings || '').toLowerCase();
+      const category = normalizeCategory(item.category || '');
+      const sourceName = (item.sourceName || '').toLowerCase();
+      const content = (item.content || '').toLowerCase();
+      const haystack = `${title} ${item.description || ''} ${headings} ${content} ${sourceName} ${category}`.toLowerCase();
+      if (!q) return 1;
+      if (!haystack.includes(q)) return 0;
+      let score = 1;
+      if (title.includes(q)) score += 8;
+      if (headings.includes(q)) score += 4;
+      if (sourceName.includes(q) || category.includes(q)) score += 2;
+      if ((item.description || '').toLowerCase().includes(q)) score += 2;
+      return score;
+    }
+
+    function snippetFor(query, item) {
+      if (!query) return item.description || '';
+      const content = item.content || item.description || '';
+      const lower = content.toLowerCase();
+      const index = lower.indexOf(query.toLowerCase());
+      if (index === -1) return item.description || '';
+      const start = Math.max(0, index - 70);
+      const end = Math.min(content.length, index + query.length + 90);
+      const prefix = start > 0 ? '…' : '';
+      const suffix = end < content.length ? '…' : '';
+      return `${prefix}${content.slice(start, end).trim()}${suffix}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function syncActiveCategory(query) {
+      if (!activeFilter || !activeFilterLabel || !clearCategoryLink) return;
+      const category = selectedCategoryValue();
+      activeFilter.hidden = !category;
+      if (!category) return;
+      activeFilterLabel.textContent = category;
+      const next = new URLSearchParams();
+      if (query) next.set('q', query);
+      clearCategoryLink.href = `${searchPageHref}${next.toString() ? `?${next.toString()}` : ''}`;
+    }
+
+    function render(items, query) {
+      const category = selectedCategoryValue();
+      results.innerHTML = items.length ? items.map((item) => `
+        <a class="search-result-card" href="${escapeHtml(resultHref(item))}">
+          <div class="search-result-card__meta">
+            <span class="pill">${escapeHtml(item.category || 'General')}</span>
+            <span>${escapeHtml(item.sourceName || 'MSP')}</span>
+          </div>
+          <strong>${escapeHtml(item.title)}</strong>
+          <p>${escapeHtml(snippetFor(query, item))}</p>
+        </a>
+      `).join('') : `<p class="muted">No results${category ? ` in ${escapeHtml(category)}.` : '.'}</p>`;
+    }
+
+    async function refresh() {
+      const query = input?.value.trim() || '';
+      const category = selectedCategory();
+      let items;
+      try {
+        items = await loadIndex();
+      } catch {
+        syncActiveCategory(query);
+        results.innerHTML = '';
+        return;
+      }
+      syncActiveCategory(query);
+      if (!query && !category) {
+        render(items.slice(0, 8), '');
+        return;
+      }
+      const matches = items
+        .filter((item) => !category || normalizeCategory(item.category || '') === category)
+        .map((item) => ({ item, score: query ? rank(query, item) : 1 }))
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 25)
+        .map((entry) => entry.item);
+      render(matches, query);
+    }
+
+    root.addEventListener('search:focus', () => {
+      input?.focus();
+      input?.select();
+      void refresh();
+    });
+
+    if (input) {
+      input.value = syncUrl ? (params.get('q') || '') : '';
+      input.addEventListener('input', () => {
+        void refresh();
+      });
+      if (syncUrl) void refresh();
+    }
+  })();
+</script>

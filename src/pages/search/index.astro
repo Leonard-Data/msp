@@ -3,11 +3,11 @@
 import docsData from '../../generated/docs-data.json';
 import searchIndex from '../../generated/search-index.json';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SearchPanel from '../../components/SearchPanel.astro';
 
 const repoUrl = `https://github.com/${process.env.GITHUB_REPOSITORY || 'company/MSP-Portal'}`;
-const base = import.meta.env.BASE_URL;
-const serialized = JSON.stringify(searchIndex);
 const categories = docsData.categories.map((category) => category.name);
+const serializedSearchIndex = JSON.stringify(searchIndex);
 ---
 <BaseLayout title="Search · MSP Docs" description="Search across every synced documentation repository" repoUrl={repoUrl}>
   <main class="content search-page">
@@ -22,135 +22,6 @@ const categories = docsData.categories.map((category) => category.name);
       </div>
     </section>
 
-    <section class="search-panel" data-search-root data-search-index={serialized}>
-      <label class="meta-label" for="search-box">Search the library</label>
-      <input id="search-box" type="search" placeholder="Search for topics, snippets, workflows, or errors" />
-      <div class="search-hint">Results pull from titles, descriptions, headings, page content, source names, and category labels.</div>
-      <div class="search-active-filter" data-search-active-filter hidden>
-        <span class="meta-label">Active category</span>
-        <div class="search-active-filter__content">
-          <span class="pill" data-search-active-filter-label></span>
-          <a class="text-link" data-search-clear-category href={`${base}search/`}>Clear category</a>
-        </div>
-      </div>
-      <div class="search-results" data-search-results></div>
-    </section>
+    <SearchPanel inputId="search-page-box" syncUrl={true} inlineIndex={serializedSearchIndex} />
   </main>
-
-  <script is:inline>
-    const root = document.querySelector('[data-search-root]');
-    const input = root?.querySelector('input');
-    const results = root?.querySelector('[data-search-results]');
-    const activeFilter = root?.querySelector('[data-search-active-filter]');
-    const activeFilterLabel = root?.querySelector('[data-search-active-filter-label]');
-    const clearCategoryLink = root?.querySelector('[data-search-clear-category]');
-    const index = JSON.parse(root?.dataset.searchIndex || '[]');
-    const base = document.documentElement.dataset.base || '/';
-    const params = new URLSearchParams(window.location.search);
-
-    function normalizeCategory(value) {
-      return (value || '').trim().toLowerCase();
-    }
-
-    function selectedCategoryValue() {
-      return (params.get('category') || '').trim();
-    }
-
-    function selectedCategory() {
-      return normalizeCategory(selectedCategoryValue());
-    }
-
-    function rank(query, item) {
-      const q = query.toLowerCase();
-      const title = (item.title || '').toLowerCase();
-      const headings = (item.headings || '').toLowerCase();
-      const category = normalizeCategory(item.category || '');
-      const sourceName = (item.sourceName || '').toLowerCase();
-      const content = (item.content || '').toLowerCase();
-      const haystack = `${title} ${item.description || ''} ${headings} ${content} ${sourceName} ${category}`.toLowerCase();
-      if (!q) return 1;
-      if (!haystack.includes(q)) return 0;
-      let score = 1;
-      if (title.includes(q)) score += 8;
-      if (headings.includes(q)) score += 4;
-      if (sourceName.includes(q) || category.includes(q)) score += 2;
-      if ((item.description || '').toLowerCase().includes(q)) score += 2;
-      return score;
-    }
-
-    function snippetFor(query, item) {
-      if (!query) return item.description || '';
-      const content = item.content || item.description || '';
-      const lower = content.toLowerCase();
-      const index = lower.indexOf(query.toLowerCase());
-      if (index === -1) return item.description || '';
-      const start = Math.max(0, index - 70);
-      const end = Math.min(content.length, index + query.length + 90);
-      const prefix = start > 0 ? '…' : '';
-      const suffix = end < content.length ? '…' : '';
-      return `${prefix}${content.slice(start, end).trim()}${suffix}`;
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-    }
-
-    function renderDefault() {
-      const items = index.slice(0, 8);
-      render(items, '');
-    }
-
-    function syncActiveCategory(query) {
-      if (!activeFilter || !activeFilterLabel || !clearCategoryLink) return;
-      const category = selectedCategoryValue();
-      activeFilter.hidden = !category;
-      if (!category) return;
-      activeFilterLabel.textContent = category;
-      const next = new URLSearchParams();
-      if (query) next.set('q', query);
-      clearCategoryLink.href = `${base}search/${next.toString() ? `?${next.toString()}` : ''}`;
-    }
-
-    function render(items, query) {
-      const category = selectedCategoryValue();
-      results.innerHTML = items.length ? items.map((item) => `
-        <a class="search-result-card" href="${base}${item.href.replace(/^\//, '')}">
-          <div class="search-result-card__meta">
-            <span class="pill">${escapeHtml(item.category || 'General')}</span>
-            <span>${escapeHtml(item.sourceName || 'MSP')}</span>
-          </div>
-          <strong>${escapeHtml(item.title)}</strong>
-          <p>${escapeHtml(snippetFor(query, item))}</p>
-        </a>
-      `).join('') : `<p class="muted">No results${category ? ` in ${escapeHtml(category)}` : ''}.</p>`;
-    }
-
-    function refresh() {
-      const query = input?.value.trim() || '';
-      const category = selectedCategory();
-      syncActiveCategory(query);
-      if (!query && !category) {
-        renderDefault();
-        return;
-      }
-      const matches = index
-        .filter((item) => !category || normalizeCategory(item.category || '') === category)
-        .map((item) => ({ item, score: query ? rank(query, item) : 1 }))
-        .filter((entry) => entry.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 25)
-        .map((entry) => entry.item);
-      render(matches, query);
-    }
-
-    if (input) {
-      input.value = params.get('q') || '';
-      input.addEventListener('input', refresh);
-      refresh();
-    }
-  </script>
 </BaseLayout>

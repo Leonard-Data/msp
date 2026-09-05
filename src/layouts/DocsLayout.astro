@@ -7,34 +7,61 @@ const { title, description, sidebar = [], toc = [], repoUrl, currentPath = '/' }
 const base = import.meta.env.BASE_URL;
 const hrefFor = (href) => withBase(base, href);
 ---
-<BaseLayout title={title} description={description} repoUrl={repoUrl}>
-  <div class="page docs-page">
+<BaseLayout title={title} description={description} repoUrl={repoUrl} docsNavToggle={sidebar.length > 0}>
+  <div class="page docs-page" data-docs-shell data-sidebar-open="false">
     {sidebar.length ? (
-      <details class="docs-nav" open data-docs-nav>
-        <summary>Browse docs</summary>
-        <nav class="sidebar" aria-label="Documentation navigation">
-          {sidebar.map((section) => (
-            <section class="sidebar__section">
-              <div class="sidebar__label">{section.label}</div>
-              <div class="sidebar__links">
-                {section.items.map((item) => item.children?.length ? (
-                  <details open={currentPath.startsWith(item.href)}>
-                    <summary>{item.label}</summary>
-                    <div class="sidebar__children">
-                      <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
-                      {item.children.map((child) => (
-                        <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
-                      ))}
-                    </div>
-                  </details>
-                ) : (
-                  <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
-                ))}
-              </div>
-            </section>
-          ))}
-        </nav>
-      </details>
+      <>
+        <details class="docs-nav-fallback">
+          <summary>Browse docs</summary>
+          <nav class="sidebar sidebar--fallback" aria-label="Documentation navigation fallback">
+            {sidebar.map((section) => (
+              <section class="sidebar__section">
+                <div class="sidebar__label">{section.label}</div>
+                <div class="sidebar__links">
+                  {section.items.map((item) => item.children?.length ? (
+                    <details open={currentPath.startsWith(item.href)}>
+                      <summary>{item.label}</summary>
+                      <div class="sidebar__children">
+                        <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                        {item.children.map((child) => (
+                          <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </nav>
+        </details>
+        <button type="button" class="docs-nav__backdrop" data-docs-nav-close aria-label="Close documentation navigation" hidden disabled></button>
+        <aside class="docs-nav" data-docs-nav-shell>
+          <nav id="docs-sidebar" class="sidebar" aria-label="Documentation navigation">
+            {sidebar.map((section) => (
+              <section class="sidebar__section">
+                <div class="sidebar__label">{section.label}</div>
+                <div class="sidebar__links">
+                  {section.items.map((item) => item.children?.length ? (
+                    <details open={currentPath.startsWith(item.href)}>
+                      <summary>{item.label}</summary>
+                      <div class="sidebar__children">
+                        <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>Overview</a>
+                        {item.children.map((child) => (
+                          <a href={hrefFor(child.href)} class={currentPath === child.href ? 'active' : undefined}>{child.label}</a>
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <a href={hrefFor(item.href)} class={currentPath === item.href ? 'active' : undefined}>{item.label}</a>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </nav>
+        </aside>
+      </>
     ) : null}
 
     <main class="content docs-content">
@@ -55,15 +82,52 @@ const hrefFor = (href) => withBase(base, href);
   </div>
 
   <script is:inline>
-    const docsNav = document.querySelector('[data-docs-nav]');
+    const docsShell = document.querySelector('[data-docs-shell]');
+    const docsNav = docsShell?.querySelector('#docs-sidebar');
+    const docsNavClose = docsShell?.querySelector('[data-docs-nav-close]');
+    const docsNavToggles = document.querySelectorAll('[data-docs-nav-toggle]');
+    const topbar = document.querySelector('.topbar');
     const mobileDocsNav = window.matchMedia('(max-width: 900px)');
-    const syncDocsNav = () => {
-      if (!docsNav) return;
-      docsNav.open = !mobileDocsNav.matches;
-    };
 
-    syncDocsNav();
-    if ('addEventListener' in mobileDocsNav) mobileDocsNav.addEventListener('change', syncDocsNav);
-    else mobileDocsNav.onchange = syncDocsNav;
+    if (docsShell && docsNav && docsNavToggles.length) {
+      docsShell.dataset.navReady = 'true';
+
+      const syncTopbarHeight = () => {
+        const topbarHeight = Math.ceil(topbar?.getBoundingClientRect().height || 0);
+        if (topbarHeight) docsShell.style.setProperty('--nav-height', `${topbarHeight}px`);
+      };
+
+      const syncDocsNav = (open) => {
+        docsShell.dataset.sidebarOpen = open ? 'true' : 'false';
+        docsNav.setAttribute('aria-hidden', String(!open));
+        docsNavToggles.forEach((button) => button.setAttribute('aria-expanded', String(open)));
+        const overlayOpen = mobileDocsNav.matches && open;
+        if (docsNavClose instanceof HTMLButtonElement) {
+          docsNavClose.hidden = !overlayOpen;
+          docsNavClose.disabled = !overlayOpen;
+          docsNavClose.setAttribute('aria-hidden', String(!overlayOpen));
+        }
+      };
+
+      const setResponsiveDefault = () => {
+        syncTopbarHeight();
+        syncDocsNav(!mobileDocsNav.matches);
+      };
+      const toggleDocsNav = () => syncDocsNav(docsShell.dataset.sidebarOpen !== 'true');
+
+      docsNavToggles.forEach((button) => button.addEventListener('click', toggleDocsNav));
+      docsNavClose?.addEventListener('click', () => syncDocsNav(false));
+      docsNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        if (mobileDocsNav.matches) syncDocsNav(false);
+      }));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && docsShell.dataset.sidebarOpen === 'true') syncDocsNav(false);
+      });
+      window.addEventListener('resize', syncTopbarHeight);
+
+      setResponsiveDefault();
+      if ('addEventListener' in mobileDocsNav) mobileDocsNav.addEventListener('change', setResponsiveDefault);
+      else mobileDocsNav.onchange = setResponsiveDefault;
+    }
   </script>
 </BaseLayout>

@@ -87,7 +87,7 @@ async function buildSourcePage(source, file) {
   const relativePath = path.relative(sourceRoot, file).replace(/\\/g, '/');
   const raw = await fs.readFile(file, 'utf8');
   const slugBits = ['sources', source.id, ...relativePath.replace(/\.md$/i, '').split('/')];
-  if (relativePath.toLowerCase() === 'readme.md') slugBits.pop();
+  if (isReadmePage(relativePath)) slugBits.pop();
   const href = `/docs/${slugBits.join('/')}/`;
   return {
     kind: 'source',
@@ -103,7 +103,7 @@ async function buildSourcePage(source, file) {
     sourceId: source.id,
     sourceName: source.name,
     sourceDescription: source.description,
-    section: relativePath.split('/')[0] === 'README.md' ? 'overview' : relativePath.split('/')[0],
+    section: isReadmePage(relativePath) ? 'overview' : relativePath.split('/')[0],
     repo: source.repo,
     repoUrl: source.repoUrl,
     tags: source.tags
@@ -117,11 +117,15 @@ function compareSourcePages(source) {
     const bSection = b.section || 'zzz';
     const aRank = order.has(aSection) ? order.get(aSection) : Number.MAX_SAFE_INTEGER;
     const bRank = order.has(bSection) ? order.get(bSection) : Number.MAX_SAFE_INTEGER;
-    if (a.relativePath.toLowerCase() === 'readme.md') return -1;
-    if (b.relativePath.toLowerCase() === 'readme.md') return 1;
+    if (isReadmePage(a.relativePath)) return -1;
+    if (isReadmePage(b.relativePath)) return 1;
     if (aRank !== bRank) return aRank - bRank;
     return a.href.localeCompare(b.href);
   };
+}
+
+function isReadmePage(relativePath) {
+  return /(^|\/)README\.md$/i.test(relativePath);
 }
 
 function groupCategories(groups) {
