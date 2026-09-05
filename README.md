@@ -47,12 +47,14 @@ Register sources in `sources.yml`.
 
 - `npm run sync` — sync source repositories
 - `npm run prepare:docs` — sync + build generated docs metadata
-- `npm run build` — prepare and build Astro
+- `npm run build` — sync sources, prepare generated docs, and build Astro
+- `npm run build:static` — build from committed generated docs without cloning sources
 - `npm run validate:sources` — validate source definitions
 
 ## GitHub Pages
 
-`deploy.yml` builds Astro and deploys `dist/` to GitHub Pages.
+`deploy.yml` builds Astro from committed generated docs and deploys `dist/` to GitHub Pages.
+Use the scheduled source-sync workflow to refresh cloned source content.
 
 ## V1 automation notes
 

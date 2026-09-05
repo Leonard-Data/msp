@@ -30,10 +30,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.MSP_SYNC_TOKEN || secrets.GITHUB_TOKEN }}
+      - run: npm run build:static
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
