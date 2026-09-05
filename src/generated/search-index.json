@@ -132,7 +132,7 @@
       "documentation"
     ],
     "headings": "Fast path for readers Section map",
-    "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read System map architecture/system map.md for the architecture. 3. Read Setup guides/setup.md to install or verify a home. 4. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 5. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths. Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup."
+    "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup."
   },
   {
     "title": "Firstmate core and soul",
@@ -148,6 +148,21 @@
     ],
     "headings": "Core idea The soul Why this matters What good feels like",
     "content": "Firstmate core and soul Firstmate exists to keep software delivery calm, safe, and legible. The captain should be able to ask for outcomes, not manage a pile of terminals, branches, checks, and reminders. Core idea Firstmate is the captain's single point of contact. It translates intent into safe work, routes that work to the right worker, supervises progress, and reports outcomes in plain language. The soul Firstmate is not a chatbot that edits files whenever it can. It is an operating discipline: protect unlanded work keep project changes isolated preserve approval boundaries record decisions durably validate before claiming success report failures honestly use the smallest workflow that safely works Why this matters Agent work fails when invisible state matters more than durable records. Firstmate reverses that failure mode. The durable records are the source of truth, and the conversation is only the captain facing surface. What good feels like A good Firstmate session feels boring: the captain says what outcome they want Firstmate chooses the right path workers do the project specific work in isolated copies validation and pull requests are handled by the selected workflow the captain only hears about decisions, blockers, review ready work, and finished outcomes Related pages: Operating contract operating contract.md , Safety model safety model.md , Working well with Firstmate ../guides/working with firstmate.md ."
+  },
+  {
+    "title": "Multi-project operations",
+    "href": "/docs/sources/firstmate-docs/concepts/multi-project-operations/",
+    "description": "Firstmate can coordinate work across many repositories without making the captain manage each repository by hand.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "What Firstmate can control Project routing Why projects stay separate",
+    "content": "Multi project operations Firstmate can coordinate work across many repositories without making the captain manage each repository by hand. The important idea is that Firstmate treats every request as project specific at intake, even when the captain describes a bigger outcome. What Firstmate can control Firstmate can keep track of: multiple registered projects each project's delivery posture local clones used for reading and safe coordination isolated worker copies for implementation pull requests and validation state second mates that own durable domains This lets one captain facing conversation coordinate several repositories while each repository still keeps its own code, docs, tests, and review path. Project routing A request can name a project directly: It can also name a product area or outcome: Firstmate then matches the request against the project registry, active work, known source code, and second mate scopes. If the match is unclear, Firstmate asks one clarifying question instead of guessing. Why projects stay separate Keeping repositories separate protects ownership: MSP Portal owns aggregation and publishing. A docs source owns its own Markdown and metadata. Firstmate owns orchestration and safety records. A worker owns one scoped change at a time. Cross repo work is normal, but each repo still lands through its own review and validation path. Related pages: Routing and assignment ../workflows/routing and assignment.md , System map ../architecture/system map.md , Multi project examples ../examples/multi project requests.md ."
   },
   {
     "title": "Operating contract",
@@ -177,7 +192,7 @@
       "documentation"
     ],
     "headings": "",
-    "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Operating contract operating contract.md Safety model safety model.md"
+    "content": "Concepts Use these pages to understand the words and values behind Firstmate. Firstmate core and soul firstmate core.md Multi project operations multi project operations.md Operating contract operating contract.md Safety model safety model.md"
   },
   {
     "title": "Safety model",
@@ -236,8 +251,8 @@
       "operations",
       "documentation"
     ],
-    "headings": "Boundaries Control flow Data flow",
-    "content": "System map Firstmate is a small orchestration layer around projects, workers, tools, and durable records. Boundaries Firstmate reads projects to understand them. Workers change projects. Direct project changes by Firstmate require a concrete captain approved operation. Control flow 1. Session start verifies the home and prints the current fleet state. 2. Intake resolves the project, delivery path, and required approval level. 3. A brief records the task specific intent and constraints. 4. A worker or second mate handles the project work. 5. Firstmate supervises notifications, decisions, validation, and pull requests. 6. Firstmate reports the outcome to the captain. Data flow Project specific content stays in each project. Reusable Firstmate knowledge belongs in Firstmate docs or skills. Captain preferences and fleet state stay private to the Firstmate home."
+    "headings": "Boundaries Control flow Data flow Multi-repository work",
+    "content": "System map Firstmate is a small orchestration layer around projects, workers, tools, and durable records. Boundaries Firstmate reads projects to understand them. Workers change projects. Direct project changes by Firstmate require a concrete captain approved operation. Control flow 1. Session start verifies the home and prints the current fleet state. 2. Intake resolves the project, delivery path, and required approval level. 3. A brief records the task specific intent and constraints. 4. A worker or second mate handles the project work. 5. Firstmate supervises notifications, decisions, validation, and pull requests. 6. Firstmate reports the outcome to the captain. Data flow Project specific content stays in each project. Reusable Firstmate knowledge belongs in Firstmate docs or skills. Captain preferences and fleet state stay private to the Firstmate home. Multi repository work Firstmate can coordinate several repositories in one captain facing request. It still resolves and lands each repository change separately so ownership, validation, and review stay clear. Example: a docs source repository can own Markdown while MSP Portal owns the source registration and generated portal output. Related pages: Multi project operations ../concepts/multi project operations.md , Routing and assignment ../workflows/routing and assignment.md ."
   },
   {
     "title": "Guides",
@@ -312,7 +327,22 @@
       "documentation"
     ],
     "headings": "",
-    "content": "Workflows Repeatable end to end paths. Task lifecycle task lifecycle.md MSP documentation sync documentation sync.md"
+    "content": "Workflows Repeatable end to end paths. Task lifecycle task lifecycle.md Routing and assignment routing and assignment.md MSP documentation sync documentation sync.md"
+  },
+  {
+    "title": "Routing and assignment",
+    "href": "/docs/sources/firstmate-docs/workflows/routing-and-assignment/",
+    "description": "Routing is how Firstmate turns a captain request into the right project, worker, scout, or second mate.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "1. Resolve the project 2. Choose the work type 3. Choose the delivery path 4. Assign the work 5. Supervise and report",
+    "content": "Routing and assignment Routing is how Firstmate turns a captain request into the right project, worker, scout, or second mate. 1. Resolve the project Firstmate checks the request against: the named project, if the captain gave one the project registry work already under way source code or README clues second mate scopes If exactly one project fits, Firstmate names it and proceeds. If more than one project fits, Firstmate asks for the missing choice. 2. Choose the work type Firstmate chooses the smallest safe type of work: use a worker when the change should ship use a scout when investigation could change what should be built use a second mate when a persistent delegated domain owns the work answer directly when existing evidence already resolves the question 3. Choose the delivery path The project's standing posture sets the default rigor. Product facing or uncertain work gets stricter validation. Internal only documentation, tooling, or operator process can often use the faster path when the project allows it. 4. Assign the work A worker receives task specific instructions with: captain intent project context expected done state validation requirements safety boundaries The worker should not need to infer the captain's goal from chat history. 5. Supervise and report Firstmate supervises the assignment and reports only useful outcomes: review ready pull request decision needed blocker failure finished result Routine waiting and internal retries should stay quiet. Related pages: Task lifecycle task lifecycle.md , Multi project operations ../concepts/multi project operations.md , Working well with Firstmate ../guides/working with firstmate.md ."
   },
   {
     "title": "Task lifecycle",
@@ -420,6 +450,21 @@
     "content": "Tools Firstmate uses external tools when they are the right owner for an action. Common tools Git and GitHub for source control and pull requests gh axi for GitHub operations no mistakes for guarded validation and review browser tools for UI inspection MSP Portal for publishing documentation sources Tool selection rule Use the authoritative tool for the job. Do not recreate GitHub, validation, or browser behavior in ad hoc scripts unless the existing tool cannot do the work."
   },
   {
+    "title": "Multi-project request examples",
+    "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/",
+    "description": "These examples show how to ask Firstmate for cross-repository work without micromanaging the internals.",
+    "category": "Agent Operations",
+    "sourceName": "Firstmate Docs",
+    "tags": [
+      "firstmate",
+      "agents",
+      "operations",
+      "documentation"
+    ],
+    "headings": "Add a documentation source to MSP Split investigation from implementation Assign domain work to a second mate Parallel independent changes",
+    "content": "Multi project request examples These examples show how to ask Firstmate for cross repository work without micromanaging the internals. Add a documentation source to MSP Captain says: Firstmate does: 1. creates the private source repository 2. seeds the documentation structure 3. pushes the source content 4. updates MSP Portal sources.yml 5. runs source validation and build checks 6. opens the MSP registration pull request Why this is multi project: the source repo owns the docs, while MSP owns the portal registration and generated output. Split investigation from implementation Captain says: Firstmate should assign a scout first because the cause may be source metadata, sync, search indexing, or generated routing. After the report, the captain can approve implementation in the correct repository. Assign domain work to a second mate Captain says: Firstmate should route the task to the second mate whose charter covers Power Platform. The second mate handles its own project copy and returns the outcome through the parent channel. Parallel independent changes Captain says: Firstmate can split this into two workers when the files and outcomes are independent: one worker changes the docs source one worker changes MSP Portal copy Firstmate still reports the results together when the work reaches review. Related pages: Routing and assignment ../workflows/routing and assignment.md , Multi project operations ../concepts/multi project operations.md ."
+  },
+  {
     "title": "Examples",
     "href": "/docs/sources/firstmate-docs/examples/README/",
     "description": "Captain asks:",
@@ -432,7 +477,7 @@
       "documentation"
     ],
     "headings": "Create a documentation source for MSP",
-    "content": "Examples Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval"
+    "content": "Examples Multi project request examples multi project requests.md Create a documentation source for MSP Captain asks: Firstmate should: 1. confirm outward facing repo details if they were not explicit 2. create the private GitHub repository 3. seed it with the MSP documentation source contract 4. add .docs source.yml and small linked docs pages 5. register the source in MSP Portal sources.yml 6. run validation and build checks 7. report the registration pull request and any required approval"
   },
   {
     "title": "Snippets",

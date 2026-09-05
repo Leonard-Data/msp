@@ -15,6 +15,7 @@ Firstmate home
   |
   +--> worker sessions for project tasks
   +--> second mate homes for delegated domains
+  +--> many project repositories
   +--> GitHub, validation tools, browser tools, and MSP Portal
 ```
 
@@ -38,3 +39,12 @@ Direct project changes by Firstmate require a concrete captain-approved operatio
 Project-specific content stays in each project.
 Reusable Firstmate knowledge belongs in Firstmate docs or skills.
 Captain preferences and fleet state stay private to the Firstmate home.
+
+## Multi-repository work
+
+Firstmate can coordinate several repositories in one captain-facing request.
+It still resolves and lands each repository change separately so ownership, validation, and review stay clear.
+
+Example: a docs source repository can own Markdown while MSP Portal owns the source registration and generated portal output.
+
+Related pages: [Multi-project operations](../concepts/multi-project-operations.md), [Routing and assignment](../workflows/routing-and-assignment.md).

@@ -1,5 +1,7 @@
 # Examples
 
+- [Multi-project request examples](multi-project-requests.md)
+
 ## Create a documentation source for MSP
 
 Captain asks:
