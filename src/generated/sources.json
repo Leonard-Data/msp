@@ -43,9 +43,9 @@
   },
   {
     "id": "firstmate-docs",
-    "name": "Firstmate Docs",
+    "name": "Firstmate",
     "description": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-    "category": "Agent Operations",
+    "category": "Agent Harness",
     "tags": [
       "firstmate",
       "agents",
@@ -62,7 +62,8 @@
       "examples",
       "snippets",
       "troubleshooting",
-      "reference"
+      "reference",
+      "skills"
     ],
     "repo": "Leonard-Data/firstmate-docs",
     "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
