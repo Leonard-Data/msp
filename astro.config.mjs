@@ -7,5 +7,10 @@ const site = process.env.PUBLIC_SITE_URL ?? (process.env.GITHUB_REPOSITORY_OWNER
 export default defineConfig({
   site,
   base,
-  output: 'static'
+  output: 'static',
+  vite: {
+    server: {
+      allowedHosts: true
+    }
+  }
 });
