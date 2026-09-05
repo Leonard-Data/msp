@@ -6,7 +6,7 @@ Reusable Astro documentation portal for GitHub Pages.
 
 - Aggregates markdown from multiple repositories listed in `sources.yml`
 - Keeps docs in the owning repo
-- Generates sidebar + table of contents automatically
+- Generates docs navigation automatically
 - Builds a static searchable portal
 - Uses GitHub issue forms and Actions for V1 source requests
 
