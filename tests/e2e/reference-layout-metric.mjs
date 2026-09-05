@@ -12,7 +12,8 @@ const PROJECT_RULES = {
     minBandEnergies: [0.008, 0.008, 0.015, 0.01, 0.005],
     maxLowVarianceRuns: [Infinity, Infinity, Infinity, 4, Infinity],
     profileChecks: [
-      { label: 'hero/search', bandIndex: 0, maxAgainstBandIndex: 4, maxOtherScore: 0.965 },
+      { label: 'hero/search', bandIndex: 0, minScore: 0.936, maxAgainstBandIndex: 4, maxOtherScore: 0.965 },
+      { label: 'stats', bandIndex: 1, minScore: 0.926 },
       { label: 'contribution', bandIndex: 4, minScore: 0.959 },
     ],
   },
