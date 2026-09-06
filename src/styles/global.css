@@ -114,7 +114,7 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .sidebar details summary::-webkit-details-marker { display: none; }
 .sidebar__children { margin: 4px 0 4px 12px; padding-left: 8px; border-left: 1px solid var(--line-strong); }
 .sidebar__subsection { margin: 2px 0; }
-.sidebar__subsection > summary { font-weight: 500; font-size: 12px; opacity: .7; text-transform: uppercase; letter-spacing: .04em; }
+.sidebar__subsection > summary { font-weight: 600; font-size: 13px; }
 .toc__links { display: grid; gap: 5px; border-left: 1px solid var(--line-strong); }
 .toc__links a { border-radius: 0; padding: 3px 0 3px 14px; font-size: 13px; }
 

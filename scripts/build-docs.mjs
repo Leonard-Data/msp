@@ -25,7 +25,8 @@ for (const source of sources) {
     defaultBranch: source.defaultBranch || 'main',
     docsPath: source.docsPath || 'docs',
     tags: source.tags,
-    pages: pages.map(({ title, href, section, headings }) => ({ title, href, section, headings }))
+    pages: pages.map(({ title, href, section, headings, relativePath }) => ({ title, href, section, headings, relativePath })),
+    navigation: source.navigation
   });
   sourcePages.push(...pages);
 }
@@ -157,7 +158,7 @@ function buildSidebar(portalPages, categories) {
       items: category.sources.map((source) => ({
         label: source.name,
         href: source.pages[0]?.href || '#',
-        children: groupChildrenBySection(source.pages.slice(1))
+        children: buildSourceTree(source)
       })).sort(byLabel)
     }))
   ];
@@ -167,19 +168,87 @@ function byLabel(a, b) {
   return a.label.localeCompare(b.label);
 }
 
-function groupChildrenBySection(pages) {
-  const groups = new Map();
+function buildSourceTree(source) {
+  // Find and skip the root README (overview), not just pages[0]
+  const rootIdx = source.pages.findIndex((p) => isRootReadme(p.relativePath));
+  const pages = rootIdx >= 0
+    ? [...source.pages.slice(0, rootIdx), ...source.pages.slice(rootIdx + 1)]
+    : source.pages;
+  const navOrder = source.navigation || [];
+  const navIndex = new Map(navOrder.map((key, i) => [key, i]));
+
+  // Build a path-keyed tree from page relative paths.
+  // Each node has:
+  //   __href   — overview href from the README in this dir (if any)
+  //   __pages  — non-README pages at this level
+  //   <key>    — child directory node
+  const tree = {};
+
   for (const page of pages) {
-    const section = page.section || 'other';
-    if (!groups.has(section)) groups.set(section, []);
-    groups.get(section).push({ label: page.title, href: page.href });
+    const segments = page.relativePath.replace(/\.md$/i, '').split('/');
+    const isReadme = isReadmePage(page.relativePath);
+
+    if (isReadme) segments.pop(); // README -> the directory itself
+
+    let node = tree;
+    for (let i = 0; i < segments.length - 1; i++) {
+      if (!node[segments[i]]) node[segments[i]] = {};
+      node = node[segments[i]];
+    }
+
+    if (isReadme) {
+      // This is the overview for the directory itself
+      // For READMEs, we need to traverse ALL segments (no -1) since the
+      // last segment names the directory, not a file within it
+      let dirNode = tree;
+      for (let i = 0; i < segments.length; i++) {
+        if (!dirNode[segments[i]]) dirNode[segments[i]] = {};
+        dirNode = dirNode[segments[i]];
+      }
+      dirNode.__href = page.href;
+      dirNode.__label = page.title;
+    } else {
+      if (!node.__pages) node.__pages = [];
+      node.__pages.push({ label: page.title, href: page.href });
+    }
   }
-  for (const items of groups.values()) items.sort(byLabel);
-  if (groups.size <= 1) return [...groups.values()][0] || [];
-  const entries = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b));
-  return entries.map(([section, items]) =>
-    items.length === 1 ? items[0] : { label: section.charAt(0).toUpperCase() + section.slice(1), children: items }
-  );
+
+  return flattenTree(tree, navIndex);
+}
+
+function flattenTree(node, navIndex) {
+  const keys = Object.keys(node).filter((k) => !k.startsWith('__'));
+  const pages = (node.__pages || []).slice().sort(byLabel);
+
+  if (!keys.length) return pages;
+
+  keys.sort((a, b) => {
+    const aRank = navIndex.has(a) ? navIndex.get(a) : Number.MAX_SAFE_INTEGER;
+    const bRank = navIndex.has(b) ? navIndex.get(b) : Number.MAX_SAFE_INTEGER;
+    if (aRank !== bRank) return aRank - bRank;
+    return a.localeCompare(b);
+  });
+
+  const result = [];
+
+  for (const key of keys) {
+    const child = flattenTree(node[key], navIndex);
+
+    // Leaf directory with single page and no overview: emit as plain link
+    if (!node[key].__href && child.length === 1 && 'href' in child[0]) {
+      result.push(child[0]);
+    } else {
+      const label = node[key].__label || key.charAt(0).toUpperCase() + key.slice(1);
+      const entry = { label, children: child };
+      if (node[key].__href) entry.href = node[key].__href;
+      result.push(entry);
+    }
+  }
+
+  // Append any remaining leaf pages at this level
+  result.push(...pages);
+
+  return result;
 }
 
 async function walkMarkdown(dir) {

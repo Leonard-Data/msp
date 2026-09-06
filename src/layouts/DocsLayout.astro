@@ -106,6 +106,39 @@ const hrefFor = (href) => withBase(base, href);
     const docsNavToggles = document.querySelectorAll('[data-docs-nav-toggle]');
     const topbar = document.querySelector('.topbar');
     const mobileDocsNav = window.matchMedia('(max-width: 900px)');
+    const SIDEBAR_STATE_KEY = 'msp:sidebar-state';
+
+    // Restore sidebar <details> open/closed state from sessionStorage
+    const restoreSidebarState = () => {
+      if (!docsNav) return;
+      try {
+        const saved = sessionStorage.getItem(SIDEBAR_STATE_KEY);
+        if (!saved) return;
+        const state = JSON.parse(saved);
+        detailsMap = state;
+        docsNav.querySelectorAll('details').forEach((d) => {
+          const key = summaryKey(d);
+          if (key && state[key] === false) d.open = false;
+        });
+      } catch {}
+    };
+
+    let detailsMap = {};
+    const summaryKey = (details) => {
+      const summary = details.querySelector(':scope > summary');
+      return summary ? summary.textContent.trim() : null;
+    };
+
+    const saveSidebarState = () => {
+      if (!docsNav) return;
+      try {
+        docsNav.querySelectorAll('details').forEach((d) => {
+          const key = summaryKey(d);
+          if (key) detailsMap[key] = d.open;
+        });
+        sessionStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(detailsMap));
+      } catch {}
+    };
 
     if (docsShell && docsNav && docsNavToggles.length) {
       docsShell.dataset.navReady = 'true';
@@ -132,6 +165,12 @@ const hrefFor = (href) => withBase(base, href);
         syncDocsNav(!mobileDocsNav.matches);
       };
       const toggleDocsNav = () => syncDocsNav(docsShell.dataset.sidebarOpen !== 'true');
+
+      // Restore expanded state from previous navigation
+      restoreSidebarState();
+
+      // Save state whenever a details toggle happens
+      docsNav.addEventListener('toggle', saveSidebarState);
 
       docsNavToggles.forEach((button) => button.addEventListener('click', toggleDocsNav));
       docsNavClose?.addEventListener('click', () => syncDocsNav(false));

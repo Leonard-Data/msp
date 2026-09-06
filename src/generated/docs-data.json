@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T00:57:46.518Z",
+  "updatedAt": "2026-09-06T02:42:10.648Z",
   "portalPages": [
     {
       "kind": "portal",
@@ -250,7 +250,8 @@
               "text": "Start here",
               "slug": "start-here"
             }
-          ]
+          ],
+          "relativePath": "README.md"
         },
         {
           "title": "Component standards",
@@ -267,7 +268,8 @@
               "text": "Example",
               "slug": "example"
             }
-          ]
+          ],
+          "relativePath": "guides/component-standards.md"
         },
         {
           "title": "Responsive forms",
@@ -279,8 +281,13 @@
               "text": "Checklist",
               "slug": "checklist"
             }
-          ]
+          ],
+          "relativePath": "patterns/responsive-forms.md"
         }
+      ],
+      "navigation": [
+        "guides",
+        "patterns"
       ]
     },
     {
@@ -308,7 +315,8 @@
               "text": "Sections",
               "slug": "sections"
             }
-          ]
+          ],
+          "relativePath": "README.md"
         },
         {
           "title": "Execution model",
@@ -325,7 +333,8 @@
               "text": "Failure modes",
               "slug": "failure-modes"
             }
-          ]
+          ],
+          "relativePath": "concepts/execution-model.md"
         },
         {
           "title": "Workflow review checklist",
@@ -342,8 +351,13 @@
               "text": "Notes",
               "slug": "notes"
             }
-          ]
+          ],
+          "relativePath": "guides/workflow-review-checklist.md"
         }
+      ],
+      "navigation": [
+        "concepts",
+        "guides"
       ]
     },
     {
@@ -366,7 +380,8 @@
           "title": "Workflows",
           "href": "/docs/sources/firstmate-docs/workflows/",
           "section": "workflows",
-          "headings": []
+          "headings": [],
+          "relativePath": "workflows/README.md"
         },
         {
           "title": "Troubleshooting",
@@ -393,7 +408,8 @@
               "text": "A pull request is ready but not merged",
               "slug": "a-pull-request-is-ready-but-not-merged"
             }
-          ]
+          ],
+          "relativePath": "troubleshooting/README.md"
         },
         {
           "title": "Snippets",
@@ -410,7 +426,8 @@
               "text": "Documentation source metadata",
               "slug": "documentation-source-metadata"
             }
-          ]
+          ],
+          "relativePath": "snippets/README.md"
         },
         {
           "title": "/updatefirstmate",
@@ -447,7 +464,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/updatefirstmate/README.md"
         },
         {
           "title": "/stuck-crewmate-recovery",
@@ -484,7 +502,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/stuck-crewmate-recovery/README.md"
         },
         {
           "title": "/stow",
@@ -521,7 +540,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/stow/README.md"
         },
         {
           "title": "/secondmate-provisioning",
@@ -558,7 +578,36 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/secondmate-provisioning/README.md"
+        },
+        {
+          "title": "Firstmate skills",
+          "href": "/docs/sources/firstmate-docs/skills/",
+          "section": "skills",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Skill types",
+              "slug": "skill-types"
+            },
+            {
+              "depth": 2,
+              "text": "Skill catalog",
+              "slug": "skill-catalog"
+            },
+            {
+              "depth": 2,
+              "text": "Public skills",
+              "slug": "public-skills"
+            },
+            {
+              "depth": 2,
+              "text": "How the catalog fits together",
+              "slug": "how-the-catalog-fits-together"
+            }
+          ],
+          "relativePath": "skills/README.md"
         },
         {
           "title": "/quota-array-dispatch",
@@ -595,7 +644,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/quota-array-dispatch/README.md"
         },
         {
           "title": "/project-management",
@@ -632,7 +682,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/project-management/README.md"
         },
         {
           "title": "/process-event-sources",
@@ -669,7 +720,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/process-event-sources/README.md"
         },
         {
           "title": "/harness-adapters",
@@ -706,7 +758,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/harness-adapters/README.md"
         },
         {
           "title": "/fmx-respond",
@@ -743,7 +796,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/fmx-respond/README.md"
         },
         {
           "title": "/firstmate-orca",
@@ -780,7 +834,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/firstmate-orca/README.md"
         },
         {
           "title": "/firstmate-coding-guidelines",
@@ -817,7 +872,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/firstmate-coding-guidelines/README.md"
         },
         {
           "title": "/firstmate-codexapp",
@@ -854,7 +910,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/firstmate-codexapp/README.md"
         },
         {
           "title": "/diagnostic-reasoning",
@@ -891,7 +948,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/diagnostic-reasoning/README.md"
         },
         {
           "title": "/decision-hold-lifecycle",
@@ -928,7 +986,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/decision-hold-lifecycle/README.md"
         },
         {
           "title": "/captain-hold-lifecycle",
@@ -965,7 +1024,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/captain-hold-lifecycle/README.md"
         },
         {
           "title": "/bootstrap-diagnostics",
@@ -1002,7 +1062,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/bootstrap-diagnostics/README.md"
         },
         {
           "title": "/bearings",
@@ -1039,7 +1100,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/bearings/README.md"
         },
         {
           "title": "/ask-user-authority",
@@ -1076,7 +1138,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/ask-user-authority/README.md"
         },
         {
           "title": "/ahoy",
@@ -1113,7 +1176,8 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
+          ],
+          "relativePath": "skills/ahoy/README.md"
         },
         {
           "title": "/afk",
@@ -1150,94 +1214,15 @@
               "text": "Where it fits",
               "slug": "where-it-fits"
             }
-          ]
-        },
-        {
-          "title": "Firstmate skills",
-          "href": "/docs/sources/firstmate-docs/skills/",
-          "section": "skills",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Skill types",
-              "slug": "skill-types"
-            },
-            {
-              "depth": 2,
-              "text": "Skill catalog",
-              "slug": "skill-catalog"
-            },
-            {
-              "depth": 2,
-              "text": "Public skills",
-              "slug": "public-skills"
-            },
-            {
-              "depth": 2,
-              "text": "How the catalog fits together",
-              "slug": "how-the-catalog-fits-together"
-            }
-          ]
+          ],
+          "relativePath": "skills/afk/README.md"
         },
         {
           "title": "Reference",
           "href": "/docs/sources/firstmate-docs/reference/",
           "section": "reference",
-          "headings": []
-        },
-        {
-          "title": "Patterns",
-          "href": "/docs/sources/firstmate-docs/patterns/",
-          "section": "patterns",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Prefer these patterns",
-              "slug": "prefer-these-patterns"
-            }
-          ]
-        },
-        {
-          "title": "Guides",
-          "href": "/docs/sources/firstmate-docs/guides/",
-          "section": "guides",
-          "headings": []
-        },
-        {
-          "title": "Examples",
-          "href": "/docs/sources/firstmate-docs/examples/",
-          "section": "examples",
-          "headings": [
-            {
-              "depth": 2,
-              "text": "Create a documentation source for MSP",
-              "slug": "create-a-documentation-source-for-msp"
-            }
-          ]
-        },
-        {
-          "title": "Concepts",
-          "href": "/docs/sources/firstmate-docs/concepts/",
-          "section": "concepts",
-          "headings": []
-        },
-        {
-          "title": "Components",
-          "href": "/docs/sources/firstmate-docs/components/",
-          "section": "components",
-          "headings": []
-        },
-        {
-          "title": "Assets",
-          "href": "/docs/sources/firstmate-docs/assets/",
-          "section": "assets",
-          "headings": []
-        },
-        {
-          "title": "Architecture",
-          "href": "/docs/sources/firstmate-docs/architecture/",
-          "section": "architecture",
-          "headings": []
+          "headings": [],
+          "relativePath": "reference/README.md"
         },
         {
           "title": "Firstmate documentation",
@@ -1254,7 +1239,69 @@
               "text": "Section map",
               "slug": "section-map"
             }
-          ]
+          ],
+          "relativePath": "README.md"
+        },
+        {
+          "title": "Patterns",
+          "href": "/docs/sources/firstmate-docs/patterns/",
+          "section": "patterns",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Prefer these patterns",
+              "slug": "prefer-these-patterns"
+            }
+          ],
+          "relativePath": "patterns/README.md"
+        },
+        {
+          "title": "Guides",
+          "href": "/docs/sources/firstmate-docs/guides/",
+          "section": "guides",
+          "headings": [],
+          "relativePath": "guides/README.md"
+        },
+        {
+          "title": "Examples",
+          "href": "/docs/sources/firstmate-docs/examples/",
+          "section": "examples",
+          "headings": [
+            {
+              "depth": 2,
+              "text": "Create a documentation source for MSP",
+              "slug": "create-a-documentation-source-for-msp"
+            }
+          ],
+          "relativePath": "examples/README.md"
+        },
+        {
+          "title": "Concepts",
+          "href": "/docs/sources/firstmate-docs/concepts/",
+          "section": "concepts",
+          "headings": [],
+          "relativePath": "concepts/README.md"
+        },
+        {
+          "title": "Components",
+          "href": "/docs/sources/firstmate-docs/components/",
+          "section": "components",
+          "headings": [],
+          "relativePath": "components/README.md"
+        },
+        {
+          "title": "Assets",
+          "href": "/docs/sources/firstmate-docs/assets/",
+          "section": "assets",
+          "headings": [],
+          "relativePath": "assets/README.md"
+        },
+        {
+          "title": "Architecture",
+          "href": "/docs/sources/firstmate-docs/architecture/",
+          "section": "architecture",
+          "headings": [],
+          "relativePath": "architecture/README.md"
         },
         {
           "title": "Firstmate core and soul",
@@ -1281,7 +1328,8 @@
               "text": "What good feels like",
               "slug": "what-good-feels-like"
             }
-          ]
+          ],
+          "relativePath": "concepts/firstmate-core.md"
         },
         {
           "title": "Multi-project operations",
@@ -1303,7 +1351,8 @@
               "text": "Why projects stay separate",
               "slug": "why-projects-stay-separate"
             }
-          ]
+          ],
+          "relativePath": "concepts/multi-project-operations.md"
         },
         {
           "title": "Operating contract",
@@ -1340,7 +1389,8 @@
               "text": "Practical rule",
               "slug": "practical-rule"
             }
-          ]
+          ],
+          "relativePath": "concepts/operating-contract.md"
         },
         {
           "title": "Safety model",
@@ -1362,7 +1412,8 @@
               "text": "Isolation over convenience",
               "slug": "isolation-over-convenience"
             }
-          ]
+          ],
+          "relativePath": "concepts/safety-model.md"
         },
         {
           "title": "State and records",
@@ -1384,7 +1435,8 @@
               "text": "Why not just remember?",
               "slug": "why-not-just-remember"
             }
-          ]
+          ],
+          "relativePath": "architecture/state-and-records.md"
         },
         {
           "title": "System map",
@@ -1411,7 +1463,8 @@
               "text": "Multi-repository work",
               "slug": "multi-repository-work"
             }
-          ]
+          ],
+          "relativePath": "architecture/system-map.md"
         },
         {
           "title": "Setup",
@@ -1438,7 +1491,8 @@
               "text": "Add a documentation source",
               "slug": "add-a-documentation-source"
             }
-          ]
+          ],
+          "relativePath": "guides/setup.md"
         },
         {
           "title": "Working well with Firstmate",
@@ -1465,7 +1519,8 @@
               "text": "Best habit",
               "slug": "best-habit"
             }
-          ]
+          ],
+          "relativePath": "guides/working-with-firstmate.md"
         },
         {
           "title": "MSP documentation sync",
@@ -1492,7 +1547,8 @@
               "text": "Documentation quality rule",
               "slug": "documentation-quality-rule"
             }
-          ]
+          ],
+          "relativePath": "workflows/documentation-sync.md"
         },
         {
           "title": "Routing and assignment",
@@ -1524,7 +1580,8 @@
               "text": "5. Supervise and report",
               "slug": "5-supervise-and-report"
             }
-          ]
+          ],
+          "relativePath": "workflows/routing-and-assignment.md"
         },
         {
           "title": "Task lifecycle",
@@ -1561,7 +1618,8 @@
               "text": "6. Cleanup",
               "slug": "6-cleanup"
             }
-          ]
+          ],
+          "relativePath": "workflows/task-lifecycle.md"
         },
         {
           "title": "Harnesses",
@@ -1583,7 +1641,8 @@
               "text": "What Firstmate standardizes",
               "slug": "what-firstmate-standardizes"
             }
-          ]
+          ],
+          "relativePath": "components/harnesses.md"
         },
         {
           "title": "Scripts",
@@ -1605,13 +1664,15 @@
               "text": "Operating rule",
               "slug": "operating-rule"
             }
-          ]
+          ],
+          "relativePath": "components/scripts.md"
         },
         {
           "title": "Skills",
           "href": "/docs/sources/firstmate-docs/components/skills/",
           "section": "components",
-          "headings": []
+          "headings": [],
+          "relativePath": "components/skills.md"
         },
         {
           "title": "Tools",
@@ -1628,7 +1689,8 @@
               "text": "Tool selection rule",
               "slug": "tool-selection-rule"
             }
-          ]
+          ],
+          "relativePath": "components/tools.md"
         },
         {
           "title": "Multi-project request examples",
@@ -1655,7 +1717,8 @@
               "text": "Parallel independent changes",
               "slug": "parallel-independent-changes"
             }
-          ]
+          ],
+          "relativePath": "examples/multi-project-requests.md"
         },
         {
           "title": "Commands",
@@ -1687,7 +1750,8 @@
               "text": "MSP Portal",
               "slug": "msp-portal"
             }
-          ]
+          ],
+          "relativePath": "reference/commands.md"
         },
         {
           "title": "Glossary",
@@ -1739,14 +1803,29 @@
               "text": "MSP Portal",
               "slug": "msp-portal"
             }
-          ]
+          ],
+          "relativePath": "reference/glossary.md"
         },
         {
           "title": "Public installer-facing `stow`",
           "href": "/docs/sources/firstmate-docs/skills/stow/public/",
           "section": "skills",
-          "headings": []
+          "headings": [],
+          "relativePath": "skills/stow/public.md"
         }
+      ],
+      "navigation": [
+        "concepts",
+        "architecture",
+        "guides",
+        "workflows",
+        "patterns",
+        "components",
+        "examples",
+        "snippets",
+        "troubleshooting",
+        "reference",
+        "skills"
       ]
     }
   ],
@@ -1774,7 +1853,8 @@
               "title": "Workflows",
               "href": "/docs/sources/firstmate-docs/workflows/",
               "section": "workflows",
-              "headings": []
+              "headings": [],
+              "relativePath": "workflows/README.md"
             },
             {
               "title": "Troubleshooting",
@@ -1801,7 +1881,8 @@
                   "text": "A pull request is ready but not merged",
                   "slug": "a-pull-request-is-ready-but-not-merged"
                 }
-              ]
+              ],
+              "relativePath": "troubleshooting/README.md"
             },
             {
               "title": "Snippets",
@@ -1818,7 +1899,8 @@
                   "text": "Documentation source metadata",
                   "slug": "documentation-source-metadata"
                 }
-              ]
+              ],
+              "relativePath": "snippets/README.md"
             },
             {
               "title": "/updatefirstmate",
@@ -1855,7 +1937,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/updatefirstmate/README.md"
             },
             {
               "title": "/stuck-crewmate-recovery",
@@ -1892,7 +1975,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/stuck-crewmate-recovery/README.md"
             },
             {
               "title": "/stow",
@@ -1929,7 +2013,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/stow/README.md"
             },
             {
               "title": "/secondmate-provisioning",
@@ -1966,7 +2051,36 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/secondmate-provisioning/README.md"
+            },
+            {
+              "title": "Firstmate skills",
+              "href": "/docs/sources/firstmate-docs/skills/",
+              "section": "skills",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Skill types",
+                  "slug": "skill-types"
+                },
+                {
+                  "depth": 2,
+                  "text": "Skill catalog",
+                  "slug": "skill-catalog"
+                },
+                {
+                  "depth": 2,
+                  "text": "Public skills",
+                  "slug": "public-skills"
+                },
+                {
+                  "depth": 2,
+                  "text": "How the catalog fits together",
+                  "slug": "how-the-catalog-fits-together"
+                }
+              ],
+              "relativePath": "skills/README.md"
             },
             {
               "title": "/quota-array-dispatch",
@@ -2003,7 +2117,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/quota-array-dispatch/README.md"
             },
             {
               "title": "/project-management",
@@ -2040,7 +2155,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/project-management/README.md"
             },
             {
               "title": "/process-event-sources",
@@ -2077,7 +2193,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/process-event-sources/README.md"
             },
             {
               "title": "/harness-adapters",
@@ -2114,7 +2231,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/harness-adapters/README.md"
             },
             {
               "title": "/fmx-respond",
@@ -2151,7 +2269,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/fmx-respond/README.md"
             },
             {
               "title": "/firstmate-orca",
@@ -2188,7 +2307,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/firstmate-orca/README.md"
             },
             {
               "title": "/firstmate-coding-guidelines",
@@ -2225,7 +2345,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/firstmate-coding-guidelines/README.md"
             },
             {
               "title": "/firstmate-codexapp",
@@ -2262,7 +2383,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/firstmate-codexapp/README.md"
             },
             {
               "title": "/diagnostic-reasoning",
@@ -2299,7 +2421,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/diagnostic-reasoning/README.md"
             },
             {
               "title": "/decision-hold-lifecycle",
@@ -2336,7 +2459,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/decision-hold-lifecycle/README.md"
             },
             {
               "title": "/captain-hold-lifecycle",
@@ -2373,7 +2497,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/captain-hold-lifecycle/README.md"
             },
             {
               "title": "/bootstrap-diagnostics",
@@ -2410,7 +2535,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/bootstrap-diagnostics/README.md"
             },
             {
               "title": "/bearings",
@@ -2447,7 +2573,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/bearings/README.md"
             },
             {
               "title": "/ask-user-authority",
@@ -2484,7 +2611,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/ask-user-authority/README.md"
             },
             {
               "title": "/ahoy",
@@ -2521,7 +2649,8 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
+              ],
+              "relativePath": "skills/ahoy/README.md"
             },
             {
               "title": "/afk",
@@ -2558,94 +2687,15 @@
                   "text": "Where it fits",
                   "slug": "where-it-fits"
                 }
-              ]
-            },
-            {
-              "title": "Firstmate skills",
-              "href": "/docs/sources/firstmate-docs/skills/",
-              "section": "skills",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Skill types",
-                  "slug": "skill-types"
-                },
-                {
-                  "depth": 2,
-                  "text": "Skill catalog",
-                  "slug": "skill-catalog"
-                },
-                {
-                  "depth": 2,
-                  "text": "Public skills",
-                  "slug": "public-skills"
-                },
-                {
-                  "depth": 2,
-                  "text": "How the catalog fits together",
-                  "slug": "how-the-catalog-fits-together"
-                }
-              ]
+              ],
+              "relativePath": "skills/afk/README.md"
             },
             {
               "title": "Reference",
               "href": "/docs/sources/firstmate-docs/reference/",
               "section": "reference",
-              "headings": []
-            },
-            {
-              "title": "Patterns",
-              "href": "/docs/sources/firstmate-docs/patterns/",
-              "section": "patterns",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Prefer these patterns",
-                  "slug": "prefer-these-patterns"
-                }
-              ]
-            },
-            {
-              "title": "Guides",
-              "href": "/docs/sources/firstmate-docs/guides/",
-              "section": "guides",
-              "headings": []
-            },
-            {
-              "title": "Examples",
-              "href": "/docs/sources/firstmate-docs/examples/",
-              "section": "examples",
-              "headings": [
-                {
-                  "depth": 2,
-                  "text": "Create a documentation source for MSP",
-                  "slug": "create-a-documentation-source-for-msp"
-                }
-              ]
-            },
-            {
-              "title": "Concepts",
-              "href": "/docs/sources/firstmate-docs/concepts/",
-              "section": "concepts",
-              "headings": []
-            },
-            {
-              "title": "Components",
-              "href": "/docs/sources/firstmate-docs/components/",
-              "section": "components",
-              "headings": []
-            },
-            {
-              "title": "Assets",
-              "href": "/docs/sources/firstmate-docs/assets/",
-              "section": "assets",
-              "headings": []
-            },
-            {
-              "title": "Architecture",
-              "href": "/docs/sources/firstmate-docs/architecture/",
-              "section": "architecture",
-              "headings": []
+              "headings": [],
+              "relativePath": "reference/README.md"
             },
             {
               "title": "Firstmate documentation",
@@ -2662,7 +2712,69 @@
                   "text": "Section map",
                   "slug": "section-map"
                 }
-              ]
+              ],
+              "relativePath": "README.md"
+            },
+            {
+              "title": "Patterns",
+              "href": "/docs/sources/firstmate-docs/patterns/",
+              "section": "patterns",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Prefer these patterns",
+                  "slug": "prefer-these-patterns"
+                }
+              ],
+              "relativePath": "patterns/README.md"
+            },
+            {
+              "title": "Guides",
+              "href": "/docs/sources/firstmate-docs/guides/",
+              "section": "guides",
+              "headings": [],
+              "relativePath": "guides/README.md"
+            },
+            {
+              "title": "Examples",
+              "href": "/docs/sources/firstmate-docs/examples/",
+              "section": "examples",
+              "headings": [
+                {
+                  "depth": 2,
+                  "text": "Create a documentation source for MSP",
+                  "slug": "create-a-documentation-source-for-msp"
+                }
+              ],
+              "relativePath": "examples/README.md"
+            },
+            {
+              "title": "Concepts",
+              "href": "/docs/sources/firstmate-docs/concepts/",
+              "section": "concepts",
+              "headings": [],
+              "relativePath": "concepts/README.md"
+            },
+            {
+              "title": "Components",
+              "href": "/docs/sources/firstmate-docs/components/",
+              "section": "components",
+              "headings": [],
+              "relativePath": "components/README.md"
+            },
+            {
+              "title": "Assets",
+              "href": "/docs/sources/firstmate-docs/assets/",
+              "section": "assets",
+              "headings": [],
+              "relativePath": "assets/README.md"
+            },
+            {
+              "title": "Architecture",
+              "href": "/docs/sources/firstmate-docs/architecture/",
+              "section": "architecture",
+              "headings": [],
+              "relativePath": "architecture/README.md"
             },
             {
               "title": "Firstmate core and soul",
@@ -2689,7 +2801,8 @@
                   "text": "What good feels like",
                   "slug": "what-good-feels-like"
                 }
-              ]
+              ],
+              "relativePath": "concepts/firstmate-core.md"
             },
             {
               "title": "Multi-project operations",
@@ -2711,7 +2824,8 @@
                   "text": "Why projects stay separate",
                   "slug": "why-projects-stay-separate"
                 }
-              ]
+              ],
+              "relativePath": "concepts/multi-project-operations.md"
             },
             {
               "title": "Operating contract",
@@ -2748,7 +2862,8 @@
                   "text": "Practical rule",
                   "slug": "practical-rule"
                 }
-              ]
+              ],
+              "relativePath": "concepts/operating-contract.md"
             },
             {
               "title": "Safety model",
@@ -2770,7 +2885,8 @@
                   "text": "Isolation over convenience",
                   "slug": "isolation-over-convenience"
                 }
-              ]
+              ],
+              "relativePath": "concepts/safety-model.md"
             },
             {
               "title": "State and records",
@@ -2792,7 +2908,8 @@
                   "text": "Why not just remember?",
                   "slug": "why-not-just-remember"
                 }
-              ]
+              ],
+              "relativePath": "architecture/state-and-records.md"
             },
             {
               "title": "System map",
@@ -2819,7 +2936,8 @@
                   "text": "Multi-repository work",
                   "slug": "multi-repository-work"
                 }
-              ]
+              ],
+              "relativePath": "architecture/system-map.md"
             },
             {
               "title": "Setup",
@@ -2846,7 +2964,8 @@
                   "text": "Add a documentation source",
                   "slug": "add-a-documentation-source"
                 }
-              ]
+              ],
+              "relativePath": "guides/setup.md"
             },
             {
               "title": "Working well with Firstmate",
@@ -2873,7 +2992,8 @@
                   "text": "Best habit",
                   "slug": "best-habit"
                 }
-              ]
+              ],
+              "relativePath": "guides/working-with-firstmate.md"
             },
             {
               "title": "MSP documentation sync",
@@ -2900,7 +3020,8 @@
                   "text": "Documentation quality rule",
                   "slug": "documentation-quality-rule"
                 }
-              ]
+              ],
+              "relativePath": "workflows/documentation-sync.md"
             },
             {
               "title": "Routing and assignment",
@@ -2932,7 +3053,8 @@
                   "text": "5. Supervise and report",
                   "slug": "5-supervise-and-report"
                 }
-              ]
+              ],
+              "relativePath": "workflows/routing-and-assignment.md"
             },
             {
               "title": "Task lifecycle",
@@ -2969,7 +3091,8 @@
                   "text": "6. Cleanup",
                   "slug": "6-cleanup"
                 }
-              ]
+              ],
+              "relativePath": "workflows/task-lifecycle.md"
             },
             {
               "title": "Harnesses",
@@ -2991,7 +3114,8 @@
                   "text": "What Firstmate standardizes",
                   "slug": "what-firstmate-standardizes"
                 }
-              ]
+              ],
+              "relativePath": "components/harnesses.md"
             },
             {
               "title": "Scripts",
@@ -3013,13 +3137,15 @@
                   "text": "Operating rule",
                   "slug": "operating-rule"
                 }
-              ]
+              ],
+              "relativePath": "components/scripts.md"
             },
             {
               "title": "Skills",
               "href": "/docs/sources/firstmate-docs/components/skills/",
               "section": "components",
-              "headings": []
+              "headings": [],
+              "relativePath": "components/skills.md"
             },
             {
               "title": "Tools",
@@ -3036,7 +3162,8 @@
                   "text": "Tool selection rule",
                   "slug": "tool-selection-rule"
                 }
-              ]
+              ],
+              "relativePath": "components/tools.md"
             },
             {
               "title": "Multi-project request examples",
@@ -3063,7 +3190,8 @@
                   "text": "Parallel independent changes",
                   "slug": "parallel-independent-changes"
                 }
-              ]
+              ],
+              "relativePath": "examples/multi-project-requests.md"
             },
             {
               "title": "Commands",
@@ -3095,7 +3223,8 @@
                   "text": "MSP Portal",
                   "slug": "msp-portal"
                 }
-              ]
+              ],
+              "relativePath": "reference/commands.md"
             },
             {
               "title": "Glossary",
@@ -3147,14 +3276,29 @@
                   "text": "MSP Portal",
                   "slug": "msp-portal"
                 }
-              ]
+              ],
+              "relativePath": "reference/glossary.md"
             },
             {
               "title": "Public installer-facing `stow`",
               "href": "/docs/sources/firstmate-docs/skills/stow/public/",
               "section": "skills",
-              "headings": []
+              "headings": [],
+              "relativePath": "skills/stow/public.md"
             }
+          ],
+          "navigation": [
+            "concepts",
+            "architecture",
+            "guides",
+            "workflows",
+            "patterns",
+            "components",
+            "examples",
+            "snippets",
+            "troubleshooting",
+            "reference",
+            "skills"
           ]
         }
       ]
@@ -3187,7 +3331,8 @@
                   "text": "Sections",
                   "slug": "sections"
                 }
-              ]
+              ],
+              "relativePath": "README.md"
             },
             {
               "title": "Execution model",
@@ -3204,7 +3349,8 @@
                   "text": "Failure modes",
                   "slug": "failure-modes"
                 }
-              ]
+              ],
+              "relativePath": "concepts/execution-model.md"
             },
             {
               "title": "Workflow review checklist",
@@ -3221,8 +3367,13 @@
                   "text": "Notes",
                   "slug": "notes"
                 }
-              ]
+              ],
+              "relativePath": "guides/workflow-review-checklist.md"
             }
+          ],
+          "navigation": [
+            "concepts",
+            "guides"
           ]
         }
       ]
@@ -3260,7 +3411,8 @@
                   "text": "Start here",
                   "slug": "start-here"
                 }
-              ]
+              ],
+              "relativePath": "README.md"
             },
             {
               "title": "Component standards",
@@ -3277,7 +3429,8 @@
                   "text": "Example",
                   "slug": "example"
                 }
-              ]
+              ],
+              "relativePath": "guides/component-standards.md"
             },
             {
               "title": "Responsive forms",
@@ -3289,8 +3442,13 @@
                   "text": "Checklist",
                   "slug": "checklist"
                 }
-              ]
+              ],
+              "relativePath": "patterns/responsive-forms.md"
             }
+          ],
+          "navigation": [
+            "guides",
+            "patterns"
           ]
         }
       ]
@@ -3326,58 +3484,8 @@
           "href": "/docs/sources/firstmate-docs/workflows/",
           "children": [
             {
-              "label": "Architecture",
-              "children": [
-                {
-                  "label": "Architecture",
-                  "href": "/docs/sources/firstmate-docs/architecture/"
-                },
-                {
-                  "label": "State and records",
-                  "href": "/docs/sources/firstmate-docs/architecture/state-and-records/"
-                },
-                {
-                  "label": "System map",
-                  "href": "/docs/sources/firstmate-docs/architecture/system-map/"
-                }
-              ]
-            },
-            {
-              "label": "Assets",
-              "href": "/docs/sources/firstmate-docs/assets/"
-            },
-            {
-              "label": "Components",
-              "children": [
-                {
-                  "label": "Components",
-                  "href": "/docs/sources/firstmate-docs/components/"
-                },
-                {
-                  "label": "Harnesses",
-                  "href": "/docs/sources/firstmate-docs/components/harnesses/"
-                },
-                {
-                  "label": "Scripts",
-                  "href": "/docs/sources/firstmate-docs/components/scripts/"
-                },
-                {
-                  "label": "Skills",
-                  "href": "/docs/sources/firstmate-docs/components/skills/"
-                },
-                {
-                  "label": "Tools",
-                  "href": "/docs/sources/firstmate-docs/components/tools/"
-                }
-              ]
-            },
-            {
               "label": "Concepts",
               "children": [
-                {
-                  "label": "Concepts",
-                  "href": "/docs/sources/firstmate-docs/concepts/"
-                },
                 {
                   "label": "Firstmate core and soul",
                   "href": "/docs/sources/firstmate-docs/concepts/firstmate-core/"
@@ -3394,28 +3502,26 @@
                   "label": "Safety model",
                   "href": "/docs/sources/firstmate-docs/concepts/safety-model/"
                 }
-              ]
+              ],
+              "href": "/docs/sources/firstmate-docs/concepts/"
             },
             {
-              "label": "Examples",
+              "label": "Architecture",
               "children": [
                 {
-                  "label": "Examples",
-                  "href": "/docs/sources/firstmate-docs/examples/"
+                  "label": "State and records",
+                  "href": "/docs/sources/firstmate-docs/architecture/state-and-records/"
                 },
                 {
-                  "label": "Multi-project request examples",
-                  "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/"
+                  "label": "System map",
+                  "href": "/docs/sources/firstmate-docs/architecture/system-map/"
                 }
-              ]
+              ],
+              "href": "/docs/sources/firstmate-docs/architecture/"
             },
             {
               "label": "Guides",
               "children": [
-                {
-                  "label": "Guides",
-                  "href": "/docs/sources/firstmate-docs/guides/"
-                },
                 {
                   "label": "Setup",
                   "href": "/docs/sources/firstmate-docs/guides/setup/"
@@ -3424,133 +3530,8 @@
                   "label": "Working well with Firstmate",
                   "href": "/docs/sources/firstmate-docs/guides/working-with-firstmate/"
                 }
-              ]
-            },
-            {
-              "label": "Firstmate documentation",
-              "href": "/docs/sources/firstmate-docs/"
-            },
-            {
-              "label": "Patterns",
-              "href": "/docs/sources/firstmate-docs/patterns/"
-            },
-            {
-              "label": "Reference",
-              "children": [
-                {
-                  "label": "Commands",
-                  "href": "/docs/sources/firstmate-docs/reference/commands/"
-                },
-                {
-                  "label": "Glossary",
-                  "href": "/docs/sources/firstmate-docs/reference/glossary/"
-                },
-                {
-                  "label": "Reference",
-                  "href": "/docs/sources/firstmate-docs/reference/"
-                }
-              ]
-            },
-            {
-              "label": "Skills",
-              "children": [
-                {
-                  "label": "/afk",
-                  "href": "/docs/sources/firstmate-docs/skills/afk/"
-                },
-                {
-                  "label": "/ahoy",
-                  "href": "/docs/sources/firstmate-docs/skills/ahoy/"
-                },
-                {
-                  "label": "/ask-user-authority",
-                  "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/"
-                },
-                {
-                  "label": "/bearings",
-                  "href": "/docs/sources/firstmate-docs/skills/bearings/"
-                },
-                {
-                  "label": "/bootstrap-diagnostics",
-                  "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/"
-                },
-                {
-                  "label": "/captain-hold-lifecycle",
-                  "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/"
-                },
-                {
-                  "label": "/decision-hold-lifecycle",
-                  "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/"
-                },
-                {
-                  "label": "/diagnostic-reasoning",
-                  "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/"
-                },
-                {
-                  "label": "/firstmate-codexapp",
-                  "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/"
-                },
-                {
-                  "label": "/firstmate-coding-guidelines",
-                  "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/"
-                },
-                {
-                  "label": "/firstmate-orca",
-                  "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/"
-                },
-                {
-                  "label": "/fmx-respond",
-                  "href": "/docs/sources/firstmate-docs/skills/fmx-respond/"
-                },
-                {
-                  "label": "/harness-adapters",
-                  "href": "/docs/sources/firstmate-docs/skills/harness-adapters/"
-                },
-                {
-                  "label": "/process-event-sources",
-                  "href": "/docs/sources/firstmate-docs/skills/process-event-sources/"
-                },
-                {
-                  "label": "/project-management",
-                  "href": "/docs/sources/firstmate-docs/skills/project-management/"
-                },
-                {
-                  "label": "/quota-array-dispatch",
-                  "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/"
-                },
-                {
-                  "label": "/secondmate-provisioning",
-                  "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
-                },
-                {
-                  "label": "/stow",
-                  "href": "/docs/sources/firstmate-docs/skills/stow/"
-                },
-                {
-                  "label": "/stuck-crewmate-recovery",
-                  "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/"
-                },
-                {
-                  "label": "/updatefirstmate",
-                  "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/"
-                },
-                {
-                  "label": "Firstmate skills",
-                  "href": "/docs/sources/firstmate-docs/skills/"
-                },
-                {
-                  "label": "Public installer-facing `stow`",
-                  "href": "/docs/sources/firstmate-docs/skills/stow/public/"
-                }
-              ]
-            },
-            {
-              "label": "Snippets",
-              "href": "/docs/sources/firstmate-docs/snippets/"
-            },
-            {
-              "label": "Troubleshooting",
-              "href": "/docs/sources/firstmate-docs/troubleshooting/"
+              ],
+              "href": "/docs/sources/firstmate-docs/guides/"
             },
             {
               "label": "Workflows",
@@ -3567,7 +3548,185 @@
                   "label": "Task lifecycle",
                   "href": "/docs/sources/firstmate-docs/workflows/task-lifecycle/"
                 }
-              ]
+              ],
+              "href": "/docs/sources/firstmate-docs/workflows/"
+            },
+            {
+              "label": "Patterns",
+              "children": [],
+              "href": "/docs/sources/firstmate-docs/patterns/"
+            },
+            {
+              "label": "Components",
+              "children": [
+                {
+                  "label": "Harnesses",
+                  "href": "/docs/sources/firstmate-docs/components/harnesses/"
+                },
+                {
+                  "label": "Scripts",
+                  "href": "/docs/sources/firstmate-docs/components/scripts/"
+                },
+                {
+                  "label": "Skills",
+                  "href": "/docs/sources/firstmate-docs/components/skills/"
+                },
+                {
+                  "label": "Tools",
+                  "href": "/docs/sources/firstmate-docs/components/tools/"
+                }
+              ],
+              "href": "/docs/sources/firstmate-docs/components/"
+            },
+            {
+              "label": "Examples",
+              "children": [
+                {
+                  "label": "Multi-project request examples",
+                  "href": "/docs/sources/firstmate-docs/examples/multi-project-requests/"
+                }
+              ],
+              "href": "/docs/sources/firstmate-docs/examples/"
+            },
+            {
+              "label": "Snippets",
+              "children": [],
+              "href": "/docs/sources/firstmate-docs/snippets/"
+            },
+            {
+              "label": "Troubleshooting",
+              "children": [],
+              "href": "/docs/sources/firstmate-docs/troubleshooting/"
+            },
+            {
+              "label": "Reference",
+              "children": [
+                {
+                  "label": "Commands",
+                  "href": "/docs/sources/firstmate-docs/reference/commands/"
+                },
+                {
+                  "label": "Glossary",
+                  "href": "/docs/sources/firstmate-docs/reference/glossary/"
+                }
+              ],
+              "href": "/docs/sources/firstmate-docs/reference/"
+            },
+            {
+              "label": "Firstmate skills",
+              "children": [
+                {
+                  "label": "/afk",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/afk/"
+                },
+                {
+                  "label": "/ahoy",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/ahoy/"
+                },
+                {
+                  "label": "/ask-user-authority",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/ask-user-authority/"
+                },
+                {
+                  "label": "/bearings",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/bearings/"
+                },
+                {
+                  "label": "/bootstrap-diagnostics",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/bootstrap-diagnostics/"
+                },
+                {
+                  "label": "/captain-hold-lifecycle",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/captain-hold-lifecycle/"
+                },
+                {
+                  "label": "/decision-hold-lifecycle",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/decision-hold-lifecycle/"
+                },
+                {
+                  "label": "/diagnostic-reasoning",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/diagnostic-reasoning/"
+                },
+                {
+                  "label": "/firstmate-codexapp",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-codexapp/"
+                },
+                {
+                  "label": "/firstmate-coding-guidelines",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-coding-guidelines/"
+                },
+                {
+                  "label": "/firstmate-orca",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/firstmate-orca/"
+                },
+                {
+                  "label": "/fmx-respond",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/fmx-respond/"
+                },
+                {
+                  "label": "/harness-adapters",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/harness-adapters/"
+                },
+                {
+                  "label": "/process-event-sources",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/process-event-sources/"
+                },
+                {
+                  "label": "/project-management",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/project-management/"
+                },
+                {
+                  "label": "/quota-array-dispatch",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/quota-array-dispatch/"
+                },
+                {
+                  "label": "/secondmate-provisioning",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/"
+                },
+                {
+                  "label": "/stow",
+                  "children": [
+                    {
+                      "label": "Public installer-facing `stow`",
+                      "href": "/docs/sources/firstmate-docs/skills/stow/public/"
+                    }
+                  ],
+                  "href": "/docs/sources/firstmate-docs/skills/stow/"
+                },
+                {
+                  "label": "/stuck-crewmate-recovery",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/stuck-crewmate-recovery/"
+                },
+                {
+                  "label": "/updatefirstmate",
+                  "children": [],
+                  "href": "/docs/sources/firstmate-docs/skills/updatefirstmate/"
+                }
+              ],
+              "href": "/docs/sources/firstmate-docs/skills/"
+            },
+            {
+              "label": "Assets",
+              "children": [],
+              "href": "/docs/sources/firstmate-docs/assets/"
             }
           ]
         }
@@ -4358,6 +4517,53 @@
       "relativePath": "skills/secondmate-provisioning/README.md",
       "slug": "sources/firstmate-docs/skills/secondmate-provisioning",
       "href": "/docs/sources/firstmate-docs/skills/secondmate-provisioning/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "skills",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate skills",
+      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
+      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Skill types",
+          "slug": "skill-types"
+        },
+        {
+          "depth": 2,
+          "text": "Skill catalog",
+          "slug": "skill-catalog"
+        },
+        {
+          "depth": 2,
+          "text": "Public skills",
+          "slug": "public-skills"
+        },
+        {
+          "depth": 2,
+          "text": "How the catalog fits together",
+          "slug": "how-the-catalog-fits-together"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
+      "relativePath": "skills/README.md",
+      "slug": "sources/firstmate-docs/skills",
+      "href": "/docs/sources/firstmate-docs/skills/",
       "category": "Agent Harness",
       "sourceId": "firstmate-docs",
       "sourceName": "Firstmate",
@@ -5288,53 +5494,6 @@
     },
     {
       "kind": "source",
-      "title": "Firstmate skills",
-      "description": "Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed.",
-      "content": "Firstmate skills Firstmate skills are focused operating playbooks loaded only when a particular procedure, decision boundary, or recovery path is needed. This section mirrors the upstream Firstmate skill tree: The mirrored directory layout keeps each skill independently readable, makes future skill specific examples and assets easy to colocate, and keeps the MSP Portal route stable as /skills/<skill /. Skill types Captain invocable the captain can intentionally invoke the behavior. Agent only Firstmate loads the procedure when its trigger occurs. Compatibility pointer retained temporarily so older briefs continue to resolve. Installer facing public skill standalone skill shipped outside the internal .agents/skills/ runtime tree. Skill catalog Skill Type When it matters afk afk/README.md Captain invocable The captain is stepping away and routine supervision should be batched. ahoy ahoy/README.md Captain invocable The captain wants a recap of visible session events and unanswered decisions. ask user authority ask user authority/README.md Agent only A validation finding asks for a decision and Firstmate must judge whether escalation is truly required. bearings bearings/README.md Captain invocable The captain wants a fresh fleet level catch up or status report. bootstrap diagnostics bootstrap diagnostics/README.md Agent only Session startup reports an actionable dependency, network, sync, or reconciliation problem. captain hold lifecycle captain hold lifecycle/README.md Agent only Work discovers a question only the captain can answer, or the captain's answer must be recorded. decision hold lifecycle decision hold lifecycle/README.md Compatibility pointer An older brief still points to the former decision hold name. diagnostic reasoning diagnostic reasoning/README.md Agent only A reported bug needs causal diagnosis before implementation is scoped. firstmate codexapp firstmate codexapp/README.md Agent only Firstmate is coordinating a visible Codex Desktop thread. firstmate coding guidelines firstmate coding guidelines/README.md Agent only Tracked Firstmate material itself is being changed. firstmate orca firstmate orca/README.md Agent only Orca is being selected, supervised, smoke tested, or recovered as a runtime backend. fmx respond fmx respond/README.md Agent only Relay delivers a public mention or follow up wake. harness adapters harness adapters/README.md Agent only A harness specific launch, control, recovery, trust, model, or verification fact is needed. process event sources process event sources/README.md Agent only Firstmate needs to arm or handle a durable event from a blocking external process. project management project management/README.md Agent only A project is being added, cloned, created, initialized, registered, or removed. quota array dispatch quota array dispatch/README.md Agent only A dispatch rule resolves to multiple model/harness candidates. secondmate provisioning secondmate provisioning/README.md Agent only A persistent second mate is being created, synchronized, routed, recovered, or retired. stow stow/README.md Captain invocable The session is about to reset or durable knowledge needs to be curated to disk. stuck crewmate recovery stuck crewmate recovery/README.md Agent only An ordinary direct report is stale, confused, missing, wedged, or failed to receive a steer. updatefirstmate updatefirstmate/README.md Captain invocable The captain wants the running Firstmate fleet updated to the latest tracked Firstmate code. Public skills The upstream repository currently also exposes a standalone public stow skill under skills/stow/SKILL.md. stow internal Firstmate version stow/README.md stow public installer facing version stow/public.md These are deliberately separate implementations. The public skill cannot assume a Firstmate home, Firstmate scripts, or Firstmate private state. How the catalog fits together The architectural rule across the catalog is one owner per contract . A skill owns the reasoning or procedure associated with its trigger. Scripts own exact command mechanics. Other documentation points to the owner rather than duplicating the same operating contract.",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Skill types",
-          "slug": "skill-types"
-        },
-        {
-          "depth": 2,
-          "text": "Skill catalog",
-          "slug": "skill-catalog"
-        },
-        {
-          "depth": 2,
-          "text": "Public skills",
-          "slug": "public-skills"
-        },
-        {
-          "depth": 2,
-          "text": "How the catalog fits together",
-          "slug": "how-the-catalog-fits-together"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/skills/README.md",
-      "relativePath": "skills/README.md",
-      "slug": "sources/firstmate-docs/skills",
-      "href": "/docs/sources/firstmate-docs/skills/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "skills",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "defaultBranch": "main",
-      "docsPath": "docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
       "title": "Reference",
       "description": "Lookup pages for exact terms and commands.",
       "content": "Reference Lookup pages for exact terms and commands. Commands commands.md Glossary glossary.md",
@@ -5348,6 +5507,43 @@
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
       "section": "reference",
+      "repo": "Leonard-Data/firstmate-docs",
+      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
+      "defaultBranch": "main",
+      "docsPath": "docs",
+      "tags": [
+        "firstmate",
+        "agents",
+        "operations",
+        "documentation"
+      ]
+    },
+    {
+      "kind": "source",
+      "title": "Firstmate documentation",
+      "description": "Firstmate is the captain's operating layer for software work across projects.",
+      "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup.",
+      "headings": [
+        {
+          "depth": 2,
+          "text": "Fast path for readers",
+          "slug": "fast-path-for-readers"
+        },
+        {
+          "depth": 2,
+          "text": "Section map",
+          "slug": "section-map"
+        }
+      ],
+      "file": ".tmp/aggregated/firstmate-docs/README.md",
+      "relativePath": "README.md",
+      "slug": "sources/firstmate-docs",
+      "href": "/docs/sources/firstmate-docs/",
+      "category": "Agent Harness",
+      "sourceId": "firstmate-docs",
+      "sourceName": "Firstmate",
+      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
+      "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
@@ -5542,43 +5738,6 @@
       "sourceName": "Firstmate",
       "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
       "section": "architecture",
-      "repo": "Leonard-Data/firstmate-docs",
-      "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
-      "defaultBranch": "main",
-      "docsPath": "docs",
-      "tags": [
-        "firstmate",
-        "agents",
-        "operations",
-        "documentation"
-      ]
-    },
-    {
-      "kind": "source",
-      "title": "Firstmate documentation",
-      "description": "Firstmate is the captain's operating layer for software work across projects.",
-      "content": "Firstmate documentation Firstmate is the captain's operating layer for software work across projects. It keeps the captain facing conversation simple while coordinating project work, safety checks, validation, documentation, and follow up. Fast path for readers 1. Read Firstmate core and soul concepts/firstmate core.md for the philosophy. 2. Read Multi project operations concepts/multi project operations.md for how one Firstmate coordinates many repositories. 3. Read System map architecture/system map.md for the architecture. 4. Read Setup guides/setup.md to install or verify a home. 5. Read Working well with Firstmate guides/working with firstmate.md to get better outcomes. 6. Use Commands reference reference/commands.md when operating the system. Section map Concepts concepts/README.md define the mental model. Architecture architecture/README.md explains the system shape and durable records. Guides guides/README.md give setup and daily use steps. Workflows workflows/README.md show repeatable end to end paths, including routing and assignment workflows/routing and assignment.md . Patterns patterns/README.md capture reusable operating choices. Components components/README.md explain harnesses, skills, scripts, and tools. Examples examples/README.md show complete scenarios. Snippets snippets/README.md provide small reusable text blocks. Troubleshooting troubleshooting/README.md handles common failures. Reference reference/README.md is for exact lookup.",
-      "headings": [
-        {
-          "depth": 2,
-          "text": "Fast path for readers",
-          "slug": "fast-path-for-readers"
-        },
-        {
-          "depth": 2,
-          "text": "Section map",
-          "slug": "section-map"
-        }
-      ],
-      "file": ".tmp/aggregated/firstmate-docs/README.md",
-      "relativePath": "README.md",
-      "slug": "sources/firstmate-docs",
-      "href": "/docs/sources/firstmate-docs/",
-      "category": "Agent Harness",
-      "sourceId": "firstmate-docs",
-      "sourceName": "Firstmate",
-      "sourceDescription": "Shared documentation for Firstmate: operating philosophy, architecture, harnesses, skills, scripts, workflows, setup, and collaboration practices.\n",
-      "section": "overview",
       "repo": "Leonard-Data/firstmate-docs",
       "repoUrl": "https://github.com/Leonard-Data/firstmate-docs",
       "defaultBranch": "main",
