@@ -32,7 +32,7 @@ jobs:
       - run: npm ci
       - run: node scripts/restore-generated-sources.mjs
       - run: node scripts/build-docs.mjs
-      - run: astro build
+      - run: npx astro build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
