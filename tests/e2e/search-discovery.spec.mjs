@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 const globalSearchPaths = ['/', '/docs/sources/firstmate-docs/'];
 
 test('search matches category and source labels', async ({ page }) => {
-  await page.goto('/search/?q=Power%20Platform');
+  await page.goto('/search/?q=Agent%20Harness');
 
   const pageSearch = page.locator('main [data-search-root]').first();
-  await expect(pageSearch.getByRole('link', { name: /Power Apps UI/i }).first()).toBeVisible();
+  await expect(pageSearch.getByRole('link', { name: /Firstmate/i }).first()).toBeVisible();
 
-  await pageSearch.getByLabel('Search the library').fill('Agent Engineering');
-  await expect(pageSearch.getByRole('link', { name: /Agent Engineering/i }).first()).toBeVisible();
+  await pageSearch.getByLabel('Search the library').fill('Firstmate');
+  await expect(pageSearch.getByRole('link', { name: /Firstmate/i }).first()).toBeVisible();
 });
 
 test('global search dialog lazy-loads the index and routes to the source page', async ({ page }) => {
@@ -119,28 +119,28 @@ test('legacy README source URLs still resolve to the source doc', async ({ page 
   await expect(page.getByRole('link', { name: /Open source repository/i })).toBeVisible();
 });
 
-test('category browsing stays exact for AI results', async ({ page }) => {
-  await page.goto('/search/?category=AI');
+test('category browsing stays exact for source results', async ({ page }) => {
+  await page.goto('/search/?category=Agent%20Harness');
 
   const results = page.locator('main [data-search-results]').first();
-  await expect(results.getByRole('link', { name: /Agent Engineering/i }).first()).toBeVisible();
+  await expect(results.getByRole('link', { name: /Firstmate/i }).first()).toBeVisible();
   await expect(results.getByRole('link', { name: /How it works/i })).toHaveCount(0);
 });
 
 test('category browsing surfaces the active filter and clear path', async ({ page }) => {
-  await page.goto('/search/?category=AI');
+  await page.goto('/search/?category=Agent%20Harness');
 
   const pageSearch = page.locator('main [data-search-root]').first();
   const activeFilter = page.locator('main [data-search-active-filter]').first();
   await expect(activeFilter.getByText('Active category')).toBeVisible();
-  await expect(activeFilter.getByText(/^AI$/)).toBeVisible();
+  await expect(activeFilter.getByText(/^Agent Harness$/)).toBeVisible();
   await expect(activeFilter.getByRole('link', { name: /Clear category/i })).toBeVisible();
 
-  await pageSearch.getByLabel('Search the library').fill('Power Apps UI');
-  await expect(page.getByText(/No results in AI\./i)).toBeVisible();
+  await pageSearch.getByLabel('Search the library').fill('How it works');
+  await expect(page.getByText(/No results in Agent Harness\./i)).toBeVisible();
 
   await activeFilter.getByRole('link', { name: /Clear category/i }).click();
-  await expect(page).toHaveURL(/\/search\/\?q=Power\+Apps\+UI$/);
-  await expect(page.getByRole('link', { name: /Power Apps UI/i }).first()).toBeVisible();
+  await expect(page).toHaveURL(/\/search\/\?q=How\+it\+works$/);
+  await expect(page.getByRole('link', { name: /How it works/i }).first()).toBeVisible();
 });
 

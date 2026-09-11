@@ -141,8 +141,6 @@ const hrefFor = (href) => withBase(base, href);
     };
 
     if (docsShell && docsNav && docsNavToggles.length) {
-      docsShell.dataset.navReady = 'true';
-
       const syncTopbarHeight = () => {
         const topbarHeight = Math.ceil(topbar?.getBoundingClientRect().height || 0);
         if (topbarHeight) docsShell.style.setProperty('--nav-height', `${topbarHeight}px`);
@@ -183,6 +181,7 @@ const hrefFor = (href) => withBase(base, href);
       window.addEventListener('resize', syncTopbarHeight);
 
       setResponsiveDefault();
+      docsShell.dataset.navReady = 'true';
       if ('addEventListener' in mobileDocsNav) mobileDocsNav.addEventListener('change', setResponsiveDefault);
       else mobileDocsNav.onchange = setResponsiveDefault;
     }

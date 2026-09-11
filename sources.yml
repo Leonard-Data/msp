@@ -1,11 +1,3 @@
 sources:
-  - repo: company/powerapps-ui
-    localPath: example-sources/powerapps-ui
-    defaultBranch: main
-
-  - repo: company/agent-engineering
-    localPath: example-sources/agent-engineering
-    defaultBranch: main
-
   - repo: Leonard-Data/firstmate-docs
     defaultBranch: main

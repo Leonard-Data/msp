@@ -15,7 +15,6 @@ const homeHref = withBase(base);
 const docsHref = withBase(base, 'docs/');
 const howItWorksHref = withBase(base, 'docs/how-it-works/');
 const searchHref = withBase(base, 'search/');
-const logoHref = withBase(base, 'assets/logo-mark.svg');
 const addDocsHref = `${repoUrl}/issues/new/choose`;
 ---
 <!doctype html>
@@ -41,15 +40,10 @@ const addDocsHref = `${repoUrl}/issues/new/choose`;
                 aria-expanded="false"
                 aria-label="Toggle documentation navigation"
               >
-                <span aria-hidden="true">☰</span>
+                <span class="topbar__toggle-icon" aria-hidden="true"></span>
               </button>
             ) : null}
-            <a class="brand" href={homeHref}>
-              <img src={logoHref} alt="MSP Docs" />
-              <span class="brand__copy">
-                <span>MSP Docs</span>
-              </span>
-            </a>
+            <a class="brand" href={homeHref}>MSP Docs</a>
           </div>
           <nav class="topnav" aria-label="Primary">
             <a href={docsHref}>Library</a>

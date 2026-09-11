@@ -27,13 +27,13 @@ Each source repository needs:
 Example metadata:
 
 ```yml
-id: powerapps-ui
-name: Power Apps UI
-category: Power Platform
-description: Reusable Power Apps components and UI guidance.
+id: project-docs
+name: Project Docs
+category: Engineering
+description: Architecture, operational, and user guidance for a project.
 docs_path: docs
-tags: [powerapps, ui]
-navigation: [guides, patterns]
+tags: [project, docs]
+navigation: [concepts, guides, reference]
 ```
 
 ## Registry

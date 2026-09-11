@@ -56,7 +56,7 @@ scripts/sync-sources.mjs
 ```
 
 ```embed:yaml
-example-sources/agent-engineering/.docs-source.yml
+sources.yml
 ```
 
 SVG images in the project are rendered inline so you can style them with CSS:

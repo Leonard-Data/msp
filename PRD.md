@@ -621,7 +621,7 @@ Astro UI
 
 # 17. Portal Homepage and  Documentation Page Layout
 
-Follow the System Design of MSP-design
+Follow the system design in `DESIGN.md`.
 
 ---
 

@@ -157,7 +157,7 @@ function buildSidebar(portalPages, categories) {
       label: category.name,
       items: category.sources.map((source) => ({
         label: source.name,
-        href: source.pages[0]?.href || '#',
+        href: source.pages.find((page) => isRootReadme(page.relativePath))?.href || source.pages[0]?.href || '#',
         children: buildSourceTree(source)
       })).sort(byLabel)
     }))

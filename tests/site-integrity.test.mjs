@@ -44,15 +44,14 @@ test('site builds with semantic heading rendering and base-aware single-owner na
   const docsHref = href(base, 'docs/');
   const howItWorksHref = href(base, 'docs/how-it-works/');
   const searchHref = href(base, 'search/');
-  const aiCategoryHref = `${searchHref}?category=${encodeURIComponent('AI')}`;
-  const powerPlatformCategoryHref = `${searchHref}?category=${encodeURIComponent('Power Platform')}`;
-  const overviewHref = href(base, 'docs/sources/agent-engineering/');
+  const agentHarnessCategoryHref = `${searchHref}?category=${encodeURIComponent('Agent Harness')}`;
+  const overviewHref = href(base, 'docs/sources/firstmate-docs/');
   const addDocsHref = 'https://github.com/owner/msp-portal/issues/new/choose';
 
   buildSite(env);
 
   const home = readFileSync('dist/index.html', 'utf8');
-  const sourceDoc = readFileSync('dist/docs/sources/agent-engineering/index.html', 'utf8');
+  const sourceDoc = readFileSync('dist/docs/sources/firstmate-docs/index.html', 'utf8');
   const docsHome = readFileSync('dist/docs/index.html', 'utf8');
   const portalDoc = readFileSync('dist/docs/orches-harness/index.html', 'utf8');
   const generatedDocs = JSON.parse(readFileSync('src/generated/docs-data.json', 'utf8'));
@@ -60,13 +59,12 @@ test('site builds with semantic heading rendering and base-aware single-owner na
 
   assert.doesNotMatch(home, /href="\/\//, 'base-prefixed links should not become protocol-relative');
   assert.doesNotMatch(home, /src="\/\//, 'base-prefixed assets should not become protocol-relative');
-  assert.match(home, new RegExp(`<a class="brand" href="${escapeRegex(base)}">[\\s\\S]*?<img[\\s\\S]*?<span>MSP Docs<\\/span>[\\s\\S]*?<\\/a>`), 'brand should wrap its visible content and keep the configured base');
+  assert.match(home, new RegExp(`<a class="brand" href="${escapeRegex(base)}">MSP Docs<\\/a>`), 'text-only brand should keep the configured base');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(docsHref)}"[^>]*>Library<\\/a>`, 'g')), 1, 'library should have one header owner');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(howItWorksHref)}"[^>]*>How it works<\\/a>`, 'g')), 1, 'how-it-works should have one header owner');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(searchHref)}"[^>]*>Search<\\/a>`, 'g')), 1, 'search should stay reachable from the nav');
   assert.equal(countMatches(home, new RegExp(`href="${escapeRegex(addDocsHref)}"[^>]*>Add documentation<\\/a>`, 'g')), 1, 'add documentation should have one header action owner');
-  assert.match(home, new RegExp(`href="${escapeRegex(aiCategoryHref)}"[^>]*>[\\s\\S]*?<h3>AI<\\/h3>`), 'AI category card should link into the existing search route');
-  assert.match(home, new RegExp(`href="${escapeRegex(powerPlatformCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Power Platform<\\/h3>`), 'Power Platform category card should link into the existing search route');
+  assert.match(home, new RegExp(`href="${escapeRegex(agentHarnessCategoryHref)}"[^>]*>[\\s\\S]*?<h3>Agent Harness<\\/h3>`), 'source category card should link into the existing search route');
   assert.doesNotMatch(home, /fonts\.(googleapis|gstatic)\.com/, 'home should not depend on third-party font hosts');
 
   assert.equal(existsSync('dist/docs/review-link-check/index.html'), false, 'site should not ship the review-link-check page');
@@ -120,7 +118,7 @@ test('empty source shelves link to the repository when no docs exist yet', () =>
     GITHUB_REPOSITORY: 'owner/msp-portal',
     GITHUB_REPOSITORY_OWNER: 'owner',
   };
-  const tempSourceDir = 'example-sources/empty-source';
+  const tempSourceDir = '.tmp/test-sources/empty-source';
   const tempDocsDir = `${tempSourceDir}/docs`;
   const sourcesYaml = readFileSync('sources.yml', 'utf8');
   const originalDocsData = readFileSync('src/generated/docs-data.json', 'utf8');
@@ -139,7 +137,7 @@ test('empty source shelves link to the repository when no docs exist yet', () =>
     'docs_path: docs',
     '',
   ].join('\n'));
-  writeFileSync('sources.yml', `${sourcesYaml.trimEnd()}\n\n  - repo: company/empty-source\n    repoUrl: https://github.com/company/empty-source\n    localPath: example-sources/empty-source\n    defaultBranch: main\n`);
+  writeFileSync('sources.yml', `${sourcesYaml.trimEnd()}\n\n  - repo: company/empty-source\n    repoUrl: https://github.com/company/empty-source\n    localPath: .tmp/test-sources/empty-source\n    defaultBranch: main\n`);
 
   try {
     buildSite(env);
