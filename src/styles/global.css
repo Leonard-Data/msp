@@ -175,8 +175,6 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .button--source:hover, .button--edit:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
 .button--source span, .button--edit span { color: var(--ink-muted); font-size: 15px; line-height: 1; }
 .prose { width: 100%; max-width: none; padding-top: 26px; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
-.docs-content > .prose > h1:first-child,
-.docs-content > .prose > h1:first-child + p { display: none; }
 .prose h1 { max-width: none; }
 .prose strong { font-weight: 600; color: var(--ink); }
 .prose p, .prose li, .prose blockquote, .prose table { color: var(--ink-soft); }
