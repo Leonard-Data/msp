@@ -166,7 +166,7 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .workflow-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .workflow-card--muted { background: var(--paper-strong); }
 .pill { display: inline-flex; align-items: center; width: fit-content; min-height: 26px; padding: 4px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--ink); font-size: 12px; font-weight: 600; }
-.doc-header { margin-bottom: 0; padding: 8px 0 30px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.doc-header { margin-bottom: 0; padding: 8px 0 30px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; box-shadow: none; }
 .doc-header h1 { max-width: 46ch; color: var(--ink); }
 .doc-meta { color: var(--ink-muted); font-size: 13px; }
 .doc-actions { padding-top: 6px; }
