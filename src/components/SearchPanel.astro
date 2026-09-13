@@ -77,7 +77,15 @@ const searchPageHref = withBase(base, 'search/');
     async function loadIndex() {
       if (index) return index;
       if (!loadPromise) {
-        if (results) results.innerHTML = '<p class="muted">Loading…</p>';
+        if (results) {
+          results.innerHTML = `
+            <div class="search-loading" role="status" aria-live="polite" aria-label="Loading search results">
+              <span class="search-skeleton search-skeleton--short"></span>
+              <span class="search-skeleton"></span>
+              <span class="search-skeleton search-skeleton--medium"></span>
+            </div>
+          `;
+        }
         loadPromise = fetch(searchIndexUrl)
           .then((response) => {
             if (!response.ok) throw new Error(`Search index request failed: ${response.status}`);

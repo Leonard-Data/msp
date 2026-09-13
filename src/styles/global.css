@@ -197,19 +197,37 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .prose th, .prose td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
 .prose th { background: var(--paper-strong); color: var(--ink); }
 .footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink-muted); font-size: 14px; }
-.search-dialog { width: min(760px, calc(100% - 2 * var(--gutter))); max-width: 760px; border: 0; padding: 0; background: transparent; opacity: 0; transform: translateY(-12px) scale(.985); transition: opacity var(--motion-fast) ease, transform var(--motion-base) var(--ease-out), overlay var(--motion-base) allow-discrete, display var(--motion-base) allow-discrete; }
+.search-dialog { width: min(780px, calc(100% - 2 * var(--gutter))); max-width: 780px; border: 0; padding: 0; background: transparent; opacity: 0; transform: translateY(-10px) scale(.985); transition: opacity var(--motion-fast) ease, transform var(--motion-base) var(--ease-out), overlay var(--motion-base) allow-discrete, display var(--motion-base) allow-discrete; }
 .search-dialog[open] { opacity: 1; transform: translateY(0) scale(1); }
 .search-dialog:not([open]) { display: none; }
-.search-dialog::backdrop { background: rgba(23, 25, 29, 0); backdrop-filter: blur(0); transition: background-color var(--motion-fast) ease, backdrop-filter var(--motion-base) ease, overlay var(--motion-base) allow-discrete, display var(--motion-base) allow-discrete; }
-.search-dialog[open]::backdrop { background: rgba(23, 25, 29, .38); backdrop-filter: blur(3px); }
-.search-dialog__surface { display: grid; gap: 18px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); box-shadow: 0 24px 72px rgba(23, 25, 29, .18); }
-.search-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.search-dialog::backdrop { background: rgba(23, 25, 29, 0); backdrop-filter: blur(0); transition: background-color var(--motion-base) ease, backdrop-filter var(--motion-base) ease, overlay var(--motion-base) allow-discrete, display var(--motion-base) allow-discrete; }
+.search-dialog[open]::backdrop { background: rgba(23, 25, 29, .42); backdrop-filter: blur(6px); }
+.search-dialog__surface { position: relative; display: grid; gap: 20px; padding: 24px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: 0 28px 90px rgba(23, 25, 29, .22); }
+.search-dialog__surface::before { position: absolute; inset: 0 0 auto; height: 3px; background: var(--accent); content: ''; }
+.search-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 2px; }
+.search-dialog__header h2 { color: var(--ink); }
 .search-panel--dialog { min-height: 0; padding: 0; border: 0; background: transparent; }
-.search-panel--dialog .search-results { max-height: min(52vh, 480px); overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; }
+.search-panel--dialog input { min-height: 56px; border-color: var(--line-strong); border-radius: var(--radius); box-shadow: 0 0 0 0 rgba(13, 128, 107, 0); transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out); }
+.search-panel--dialog input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); transform: translateY(-1px); outline: 0; }
+.search-panel--dialog .search-hint { max-width: 68ch; }
+.search-panel--dialog .search-results { display: grid; max-height: min(52vh, 480px); overflow-y: auto; overscroll-behavior: contain; padding: 2px 4px 4px 0; }
+.search-panel--dialog .search-result-card { background: var(--surface-strong); box-shadow: none; transition: border-color var(--motion-fast) ease, background-color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out); }
+.search-panel--dialog .search-result-card:hover { transform: translateY(-2px); }
+.search-loading { display: grid; gap: 10px; padding: 6px 0 2px; }
+.search-skeleton { position: relative; display: block; height: 14px; overflow: hidden; border-radius: 4px; background: var(--paper-strong); }
+.search-skeleton::after { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.72) 45%, transparent 70%); transform: translateX(-100%); animation: search-shimmer 1.25s var(--ease-out) infinite; content: ''; }
+.search-skeleton--short { width: 28%; height: 11px; }
+.search-skeleton--medium { width: 72%; }
+@keyframes search-shimmer { to { transform: translateX(100%); } }
 
 @starting-style {
-  .search-dialog[open] { opacity: 0; transform: translateY(-12px) scale(.985); }
+  .search-dialog[open] { opacity: 0; transform: translateY(-10px) scale(.985); }
   .search-dialog[open]::backdrop { background: rgba(23, 25, 29, 0); backdrop-filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-dialog, .search-dialog::backdrop, .search-panel--dialog input, .search-panel--dialog .search-result-card { transition: none; }
+  .search-skeleton::after { animation: none; }
 }
 
 @media (max-width: 1279px) {
