@@ -19,19 +19,19 @@ const featuredSources = docsData.sourceGroups.slice(0, 4);
   <main class="content library-home">
     <section class="library-hero">
       <div class="library-hero__copy">
-        <p class="library-kicker">Documentation Library</p>
-        <h1>One library for every repository your team documents.</h1>
-        <p class="lead">MSP keeps docs with the project that owns them, then turns every source into one searchable reading experience built for phone and desktop.</p>
+        <p class="library-kicker">Engineering documentation, assembled</p>
+        <h1>The shortest path from a question to the code that answers it.</h1>
+        <p class="lead">MSP brings repository-owned docs into one dependable reading system—so engineers can find the right implementation detail, understand its context, and keep moving.</p>
         <div class="library-hero__actions">
           <a class="button button--primary" href={docsHref}>Browse library</a>
           <a class="button button--ghost" href={createSectionHref} target="_blank" rel="noreferrer">Add documentation</a>
         </div>
       </div>
       <form class="hero-search" action={searchHref} method="get">
-        <label for="home-search">Search across every synced repository</label>
-        <input id="home-search" name="q" type="search" placeholder="Search for patterns, snippets, workflows, or errors" />
-        <button class="button button--primary" type="submit">Open search</button>
-        <p class="muted">Static search today, replaceable indexing later. Same portal, better results whenever you upgrade.</p>
+        <label for="home-search">Find an implementation detail</label>
+        <input id="home-search" name="q" type="search" placeholder="Try “authentication”, “deployment”, or “API errors”" />
+        <button class="button button--primary" type="submit">Search docs</button>
+        <p class="muted">Search across every synced repository, with ownership and source context kept intact.</p>
       </form>
     </section>
 
