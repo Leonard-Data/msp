@@ -84,7 +84,10 @@ renderer.code = ({ text = '', lang = '', escaped = false }) => {
 };
 
 marked.setOptions({ gfm: true, breaks: false, renderer });
-const html = marked.parse(page.raw);
+const contentWithoutHeader = page.raw
+  .replace(/^\s*#\s+[^\n]+\n+/, '')
+  .replace(new RegExp(`^\\s*${escapeRegExp(page.description || '')}\\s*\\n+`, 'i'), '');
+const html = marked.parse(contentWithoutHeader);
 
 function plainText(tokens = []) {
   return tokens.map((token) => token.text || token.raw || plainText(token.tokens || [])).join('');
@@ -246,6 +249,10 @@ function getYoutubeId(href) {
     }
   } catch {}
   return null;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function escapeHtml(value) {

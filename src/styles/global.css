@@ -8,9 +8,9 @@
   --ink-muted: #778681;
   --line: #d9e1dc;
   --line-strong: #b8c6bf;
-  --accent: #0d806b;
-  --accent-strong: #075344;
-  --accent-soft: #dff3ec;
+  --accent: #f2b632;
+  --accent-strong: #17191d;
+  --accent-soft: #fff4d6;
   --shadow-sm: 0 8px 24px rgba(23, 33, 31, .06);
   --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: var(--font-body);
@@ -37,7 +37,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; background: var(--paper); }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 var(--fs-body)/1.62 var(--font-body); -webkit-font-smoothing: antialiased; }
-body::before { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .32; background-image: linear-gradient(to right, rgba(13, 128, 107, .055) 1px, transparent 1px), linear-gradient(to bottom, rgba(13, 128, 107, .055) 1px, transparent 1px); background-size: 48px 48px; content: ''; }
+body::before { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .32; background-image: linear-gradient(to right, rgba(242, 182, 50, .055) 1px, transparent 1px), linear-gradient(to bottom, rgba(242, 182, 50, .055) 1px, transparent 1px); background-size: 48px 48px; content: ''; }
 ::selection { background: var(--accent); color: #fff; }
 * { scrollbar-width: thin; scrollbar-color: #aeb3b9 transparent; }
 a { color: inherit; text-underline-offset: .18em; }
@@ -166,10 +166,17 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .workflow-split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .workflow-card--muted { background: var(--paper-strong); }
 .pill { display: inline-flex; align-items: center; width: fit-content; min-height: 26px; padding: 4px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--ink); font-size: 12px; font-weight: 600; }
-.doc-header { margin-bottom: 0; padding: 0 0 48px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
-.doc-header h1 { max-width: none; }
+.doc-header { margin-bottom: 0; padding: 8px 0 30px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.doc-header h1 { max-width: 46ch; color: var(--ink); }
 .doc-meta { color: var(--ink-muted); font-size: 13px; }
+.doc-actions { padding-top: 6px; }
+.button--source, .button--edit { gap: 9px; border-color: var(--line-strong); background: var(--surface); color: var(--ink); box-shadow: none; }
+.button--source::before, .button--edit::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.button--source:hover, .button--edit:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
+.button--source span, .button--edit span { color: var(--ink-muted); font-size: 15px; line-height: 1; }
 .prose { width: 100%; max-width: none; padding-top: 26px; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+.docs-content > .prose > h1:first-child,
+.docs-content > .prose > h1:first-child + p { display: none; }
 .prose h1 { max-width: none; }
 .prose strong { font-weight: 600; color: var(--ink); }
 .prose p, .prose li, .prose blockquote, .prose table { color: var(--ink-soft); }
@@ -207,7 +214,7 @@ input, textarea, button, select { font: inherit; caret-color: var(--ink); }
 .search-dialog__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-top: 2px; }
 .search-dialog__header h2 { color: var(--ink); }
 .search-panel--dialog { min-height: 0; padding: 0; border: 0; background: transparent; }
-.search-panel--dialog input { min-height: 56px; border-color: var(--line-strong); border-radius: var(--radius); box-shadow: 0 0 0 0 rgba(13, 128, 107, 0); transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out); }
+.search-panel--dialog input { min-height: 56px; border-color: var(--line-strong); border-radius: var(--radius); box-shadow: 0 0 0 0 rgba(242, 182, 50, 0); transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease, transform var(--motion-fast) var(--ease-out); }
 .search-panel--dialog input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); transform: translateY(-1px); outline: 0; }
 .search-panel--dialog .search-hint { max-width: 68ch; }
 .search-panel--dialog .search-results { display: grid; max-height: min(52vh, 480px); overflow-y: auto; overscroll-behavior: contain; padding: 2px 4px 4px 0; }

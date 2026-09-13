@@ -39,9 +39,9 @@ function githubEditUrl(repository, branch, file) {
     <h1>{page.title}</h1>
     <p class="lead">{page.description}</p>
     <div class="doc-actions">
-      {page.kind === 'source' ? <span class="meta-label">Source repository</span> : <span class="meta-label">Portal page</span>}
-      {page.kind === 'source' ? <a class="button button--ghost button--sm" href={page.repoUrl} target="_blank" rel="noreferrer">Open source repository</a> : null}
-      <a class="button button--ghost button--sm" href={editUrl} target="_blank" rel="noreferrer">Edit on GitHub</a>
+      <span class="meta-label">{page.kind === 'source' ? 'Source repository' : 'Portal page'}</span>
+      {page.kind === 'source' ? <a class="button button--source button--sm" href={page.repoUrl} target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a> : null}
+      <a class="button button--edit button--sm" href={editUrl} target="_blank" rel="noopener noreferrer">Edit this page <span aria-hidden="true">↗</span></a>
     </div>
   </header>
   <MarkdownContent page={page} />
